@@ -2,18 +2,18 @@
 
 
 
-# TP2 Algoritmos 3: {AlgoBlocks}
+# TP2 Algoritmos 3: AlgoBlocks
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {9}
+## Grupo 9
 
 * **Integrante 1** - [Luis Araujo](https://github.com/LuisAraujo96)
 * **Integrante 2** - [Sebastian Arroyo](https://github.com/Bastian1998)
 * **Integrante 3** - [integrante3](https://github.com/integrante3)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
-Corrector: **{Diego Sánchez}**
+Corrector: **Diego Sánchez**
 
 ### Pre-requisitos
 
