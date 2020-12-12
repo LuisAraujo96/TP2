@@ -14,7 +14,7 @@ class BloqueLapizAbajoTest {
 
         bloqueLapizAbajo.ejecutar(personaje);
 
-        //Falta corregir estos asserts para hacer buenas pruebas del bloque
-        //no se me ocurrio que asserts colocar (pueden completarlos para que queden bien).
+
+        assertEquals(LapizAbajo.class,personaje.direccionLapiz().getClass());
     }
 }

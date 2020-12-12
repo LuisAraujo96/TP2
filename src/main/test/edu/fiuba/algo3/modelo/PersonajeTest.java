@@ -11,11 +11,7 @@ class PersonajeTest {
 
         Personaje personaje = new Personaje();
 
-        //Falta corregir estos asserts para hacer buenas pruebas del personaje
-        //como los metodos del personaje no devuelven nada todavía no se me ocurrio
-        //que asserts colocar (pueden completarlos para que queden bien).
-        assertEquals(personaje, personaje);
-        assertSame(personaje, personaje);
+        assertEquals(LapizArriba.class,personaje.direccionLapiz().getClass());
     }
 
 }
