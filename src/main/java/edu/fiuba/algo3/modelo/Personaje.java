@@ -4,6 +4,8 @@ public class Personaje {
     private Lapiz lapiz = new Lapiz();
     //private SectorDibujo dibujo = new SectorDibujo();
 
+    public LapizEstado direccionLapiz() { return lapiz.direccion(); }
+
     public void subirLapiz() { lapiz.subirLapiz(); }
 
     public void bajarLapiz() { lapiz.bajarLapiz(); }

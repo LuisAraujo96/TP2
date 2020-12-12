@@ -11,6 +11,10 @@ public class Lapiz {
         this.estado = new LapizAbajo();
     }
 
+    public LapizEstado direccion () {
+        return this.estado;
+    }
+
     public void dibujar(SectorDibujo dibujo){
         estado.dibujar(dibujo);
     }
