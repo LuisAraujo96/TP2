@@ -4,7 +4,7 @@ public class Personaje {
     private Lapiz lapiz = new Lapiz();
     private Posicion posicion = new Posicion(0, 0);
 
-    public LapizEstado direccionLapiz() { return lapiz.direccion(); }
+    protected LapizEstado direccionLapiz() { return lapiz.direccion(); }
 
     public void subirLapiz() { lapiz.subirLapiz(); }
 
