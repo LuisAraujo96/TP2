@@ -1,35 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.BloqueDerecha;
-import edu.fiuba.algo3.modelo.BloqueIzquierda;
-import edu.fiuba.algo3.modelo.Personaje;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BloqueDerechaTest {
 
-    /*@Test
-    public void test01CreoUnPersonajeYLeIndicoQueSeMuevaHaciaLaDerechaConElBloqueDerecha(){
-
-        Personaje personaje = new Personaje();
-        BloqueDerecha bloqueDerecha = new BloqueDerecha();
-
-        bloqueDerecha.ejecutar(personaje);
-
-        assertEquals(Derecha.class, personaje.consultarPosicion().getClass());
-    }
-
     @Test
-    public void test02AUnPersonajeLeIndicoQueSeMuevaDeIzquierdaADerecha(){
-
+    public void test01PersonajeEjecutaBloqueDerechaYSuPosicionEsLaCorrecta(){
         Personaje personaje = new Personaje();
-        BloqueDerecha bloqueDerecha = new BloqueDerecha();
-        BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
+        BloqueDerecha bloque = new BloqueDerecha();
+        Posicion posicion = new Posicion(1,0);
 
-        bloqueIzquierda.ejecutar(personaje);
-        bloqueDerecha.ejecutar(personaje);
+        personaje.ejecutarBloque(bloque);
 
-        assertEquals(Derecha.class, personaje.consultarPosicion().getClass());
-    }*/
+        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
+    }
 }
