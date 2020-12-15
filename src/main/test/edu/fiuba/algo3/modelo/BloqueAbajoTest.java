@@ -14,4 +14,18 @@ class BloqueAbajoTest {
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
     }
+    @Test
+    public void test02PersonajeEjecutaBloqueAbajoYBloqueArribaYSuPosicionEsLaCorrecta(){
+        Personaje personaje = new Personaje();
+        BloqueAbajo bloque = new BloqueAbajo();
+        BloqueArriba bloque2 = new BloqueArriba();
+        Posicion origen = new Posicion(0,0);
+
+        personaje.ejecutarBloque(bloque);
+        personaje.ejecutarBloque(bloque2);
+
+        assertTrue(personaje.obtenerPosicion().compararPosiciones(origen));
+    }
+    
 }
+    
