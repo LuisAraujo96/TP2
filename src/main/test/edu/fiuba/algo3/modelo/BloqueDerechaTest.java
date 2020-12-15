@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.BloqueDerecha;
 import edu.fiuba.algo3.modelo.BloqueIzquierda;
-import edu.fiuba.algo3.modelo.Derecha;
 import edu.fiuba.algo3.modelo.Personaje;
 import org.junit.jupiter.api.Test;
 

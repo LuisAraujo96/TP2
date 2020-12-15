@@ -11,7 +11,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 1** - [Luis Araujo](https://github.com/LuisAraujo96)
 * **Integrante 2** - [Sebastian Arroyo](https://github.com/Bastian1998)
 * **Integrante 3** - [Nicolas San Martin](https://github.com/nicosanmartin)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Integrante 4** - [Branko Ivan Tintilay Tacacho](https://github.com/BITT97)
 
 Corrector: **Diego Sánchez**
 
