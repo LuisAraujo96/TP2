@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class Personaje {
     private Lapiz lapiz = new Lapiz();
-    //private SectorDibujo dibujo = new SectorDibujo();
+    private Posicion posicion = new Posicion(0, 0);
 
     public LapizEstado direccionLapiz() { return lapiz.direccion(); }
 
@@ -10,22 +10,11 @@ public class Personaje {
 
     public void bajarLapiz() { lapiz.bajarLapiz(); }
 
-    public void moverseHaciaArriba() {}
+    public void moverseHaciaArriba() { this.posicion.moverseHaciaArriba(); }
 
-    public void moverseHaciaAbajo() {}
+    public void moverseHaciaAbajo() { this.posicion.moverseHaciaAbajo(); }
 
-    public void moverseHaciaDerecha() {
-        //Los metodos de dibujar sobre el tablero no son necesarios para implementar en esta entrega
-        //Tienen que ser implementados una vez que ya este creado el sector dibujo (para la entrega de febrero).
-        //Falta terminar de implementar el movimiento del personaje en si, como de momento no esta hecho.
-        //el sector en el que se va a mover, no llegue a pensar como hacerlo
+    public void moverseHaciaDerecha() { this.posicion.moverseHaciaDerecha(); }
 
-        //lapiz.dibujar(dibujo);
-        //moverseADerecha
-        //lapiz.dibujar(dibujo);
-        //moverseADerecha
-        //lapiz.dibujar(dibujo);
-    }
-
-    public void moverseHaciaIzquierda() {}
+    public void moverseHaciaIzquierda() { this.posicion.moverseHaciaIzquierda(); }
 }
