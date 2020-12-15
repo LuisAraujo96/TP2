@@ -6,7 +6,7 @@ public class Personaje {
 
     public LapizEstado direccionLapiz() { return lapiz.direccion(); }
 
-        public void subirLapiz() { lapiz.subirLapiz(); }
+    public void subirLapiz() { lapiz.subirLapiz(); }
 
     public void bajarLapiz() { lapiz.bajarLapiz(); }
 
