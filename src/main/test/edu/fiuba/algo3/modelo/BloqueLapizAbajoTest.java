@@ -44,7 +44,7 @@ class BloqueLapizAbajoTest {
     }
 
     @Test
-    public void test04CreoUnPersonajeYLeOrdenoSubirElLapizDosVecesConDosBloquesDistintos() {
+    public void test04CreoUnPersonajeYLeOrdenoBajarElLapizDosVecesConDosBloquesDistintos() {
 
         Personaje personaje = new Personaje();
         BloqueLapizAbajo bloqueLapizAbajoUno = new BloqueLapizAbajo();
