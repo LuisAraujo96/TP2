@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PersonajeTest {
 
@@ -33,6 +34,49 @@ class PersonajeTest {
         personaje.subirLapiz();
 
         assertEquals(LapizArriba.class, personaje.direccionLapiz().getClass());
+    }
+
+    @Test
+    public void test04CreoUnPesonajeNuevoYConsultoSiEstaEnElOrigen(){
+        Personaje personaje = new Personaje();
+        Posicion origen = new Posicion(0, 0);
+
+        assertTrue((personaje.obtenerPosicion()).compararPosiciones(origen));
+    }
+    @Test
+    public void test05CreoUnPersonajeLoMuevoALaDerechaYCalculoSuPosicion(){
+        Personaje personaje = new Personaje();
+        Posicion derecha = new Posicion(1, 0);
+        personaje.moverseHaciaDerecha();
+
+        assertTrue((personaje.obtenerPosicion()).compararPosiciones(derecha));
+    }
+
+    @Test
+    public void test06CreoUnPersonajeLoMuevoALaIzquierdaYCalculoSuPosicion(){
+        Personaje personaje = new Personaje();
+        Posicion izquierda = new Posicion(-1, 0);
+        personaje.moverseHaciaIzquierda();
+
+        assertTrue((personaje.obtenerPosicion()).compararPosiciones(izquierda));
+    }
+
+    @Test
+    public void test07CreoUnPersonajeLoMuevoALaArribaYCalculoSuPosicion(){
+        Personaje personaje = new Personaje();
+        Posicion arriba = new Posicion(0, 1);
+        personaje.moverseHaciaArriba();
+
+        assertTrue((personaje.obtenerPosicion()).compararPosiciones(arriba));
+    }
+
+    @Test
+    public void test08CreoUnPersonajeLoMuevoALaAbajoYCalculoSuPosicion(){
+        Personaje personaje = new Personaje();
+        Posicion abajo = new Posicion(0, -1);
+        personaje.moverseHaciaAbajo();
+
+        assertTrue((personaje.obtenerPosicion()).compararPosiciones(abajo));
     }
 
     /*@Test

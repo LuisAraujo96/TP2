@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 public class Posicion {
-    private int x = 0;
-    private int y = 0;
+    private int x;
+    private int y;
 
     public Posicion(int unaPosicion, int otraPosicion){ this.x = unaPosicion; this.y = otraPosicion;}
 
