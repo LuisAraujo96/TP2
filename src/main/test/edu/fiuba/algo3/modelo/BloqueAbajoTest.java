@@ -10,7 +10,7 @@ class BloqueAbajoTest {
         BloqueAbajo bloque = new BloqueAbajo();
         Posicion posicion = new Posicion(0,-1);
 
-        personaje.ejecutarBloque(bloque);
+        bloque.ejecutar(personaje);
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
     }
@@ -21,8 +21,8 @@ class BloqueAbajoTest {
         BloqueArriba bloque2 = new BloqueArriba();
         Posicion origen = new Posicion(0,0);
 
-        personaje.ejecutarBloque(bloque);
-        personaje.ejecutarBloque(bloque2);
+        bloque.ejecutar(personaje);
+        bloque2.ejecutar(personaje);
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(origen));
     }
