@@ -8,7 +8,8 @@ class BloqueIzquierdaTest {
 
     @Test
     public void test01PersonajeEjecutaBloqueIzquierdaYSuPosicionEsLaCorrecta(){
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueIzquierda bloque = new BloqueIzquierda();
         Posicion posicion = new Posicion(-1,0);
 
@@ -19,7 +20,8 @@ class BloqueIzquierdaTest {
 
     @Test
     public void test02PersonajeEjecutaBloqueIzquierdaLuegoBloqueDerechaYSuPosicionDebeSer00(){
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueIzquierda bloqueIzq = new BloqueIzquierda();
         BloqueDerecha bloqueDer = new BloqueDerecha();
         Posicion posicion = new Posicion(0,0);

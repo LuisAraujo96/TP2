@@ -8,7 +8,8 @@ class BloqueArribaTest {
 
     @Test
     public void test01PersonajeEjecutaBloqueArribaYSuPosicionEsLaCorrecta(){
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueArriba bloque = new BloqueArriba();
         Posicion posicion = new Posicion(0,1);
 
@@ -19,7 +20,8 @@ class BloqueArribaTest {
 
     @Test
     public void test02EjecutarBloqueArribaYBloqueAbajoSobreUnPersonajeLoDejaEnLaPosicionInicial(){
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueArriba bloqueArriba = new BloqueArriba();
         BloqueAbajo bloqueAbajo = new BloqueAbajo();
         Posicion posicion = new Posicion(0,0);
