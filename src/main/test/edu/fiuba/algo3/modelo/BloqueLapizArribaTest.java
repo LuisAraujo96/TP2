@@ -9,10 +9,11 @@ class BloqueLapizArribaTest {
     @Test
     public void test01CreoUnPersonajeConElLapizArribaYLeOrdenoSubirloIgualmente() {
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
 
-        bloqueLapizArriba.ejecutar(personaje);
+        bloqueLapizArriba.ejecutarSobre(personaje);
 
         assertEquals(LapizArriba.class, personaje.direccionLapiz().getClass());
     }
@@ -20,12 +21,13 @@ class BloqueLapizArribaTest {
     @Test
     public void test02CreoUnPersonajeConElLapizArribaBajoYSuboSuLapizUsandoBloques() {
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
         BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
 
-        bloqueLapizAbajo.ejecutar(personaje);
-        bloqueLapizArriba.ejecutar(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
+        bloqueLapizArriba.ejecutarSobre(personaje);
 
         assertEquals(LapizArriba.class, personaje.direccionLapiz().getClass());
     }
@@ -33,11 +35,12 @@ class BloqueLapizArribaTest {
     @Test
     public void test03CreoUnPersonajeYLeOrdenoSubirElLapizDosVeces() {
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
 
-        bloqueLapizArriba.ejecutar(personaje);
-        bloqueLapizArriba.ejecutar(personaje);
+        bloqueLapizArriba.ejecutarSobre(personaje);
+        bloqueLapizArriba.ejecutarSobre(personaje);
 
         assertEquals(LapizArriba.class, personaje.direccionLapiz().getClass());
     }
@@ -45,12 +48,13 @@ class BloqueLapizArribaTest {
     @Test
     public void test04CreoUnPersonajeYLeOrdenoSubirElLapizDosVecesConDosBloquesDistintos() {
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizArriba bloqueLapizArribaUno = new BloqueLapizArriba();
         BloqueLapizArriba bloqueLapizArribaDos = new BloqueLapizArriba();
 
-        bloqueLapizArribaUno.ejecutar(personaje);
-        bloqueLapizArribaDos.ejecutar(personaje);
+        bloqueLapizArribaUno.ejecutarSobre(personaje);
+        bloqueLapizArribaDos.ejecutarSobre(personaje);
 
         assertEquals(LapizArriba.class, personaje.direccionLapiz().getClass());
     }

@@ -8,24 +8,26 @@ class BloqueDerechaTest {
 
     @Test
     public void test01PersonajeEjecutaBloqueDerechaYSuPosicionEsLaCorrecta(){
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueDerecha bloque = new BloqueDerecha();
         Posicion posicion = new Posicion(1,0);
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutarSobre(personaje);
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
     }
 
     @Test
     public void test02PersonajeEjecutaBloqueDerechaLuegoBloqueIzquierdaYSuPosicionDebeSer00(){
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueDerecha bloqueDer = new BloqueDerecha();
         BloqueIzquierda bloqueIzq = new BloqueIzquierda();
         Posicion posicion = new Posicion(0,0);
 
-        bloqueDer.ejecutar(personaje);
-        bloqueIzq.ejecutar(personaje);
+        bloqueDer.ejecutarSobre(personaje);
+        bloqueIzq.ejecutarSobre(personaje);
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
     }

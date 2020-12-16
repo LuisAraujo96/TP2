@@ -1,14 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
 public class Personaje {
-    private Lapiz lapiz = new Lapiz();
+    private Dibujador dibujador;
     private Posicion posicion = new Posicion(0, 0);
 
-    protected LapizEstado direccionLapiz() { return lapiz.direccion(); }
+    public Personaje(Dibujador unDibujador){ this.dibujador = unDibujador; }
 
-    public void subirLapiz() { lapiz.subirLapiz(); }
+    protected Dibujador direccionLapiz() { return this.dibujador; }
 
-    public void bajarLapiz() { lapiz.bajarLapiz(); }
+    public void subirLapiz() { this.dibujador = new LapizArriba(); }
+
+    public void bajarLapiz() { this.dibujador = new LapizAbajo(); }
 
     public void moverseHaciaArriba() { this.posicion.moverseHaciaArriba(); }
 

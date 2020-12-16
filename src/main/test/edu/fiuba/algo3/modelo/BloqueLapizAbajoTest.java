@@ -9,10 +9,11 @@ class BloqueLapizAbajoTest {
     @Test
     public void test01CreoUnPersonajeConElLapizArribaYBajoSuLapizUsandoElBloqueLapizAbajo(){
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
 
-        bloqueLapizAbajo.ejecutar(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class,personaje.direccionLapiz().getClass());
     }
@@ -20,13 +21,14 @@ class BloqueLapizAbajoTest {
     @Test
     public void test02CreoUnPersonajeBajoSuLapizLoSuboYLoVuelvoABajarConBloques(){
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
         BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
 
-        bloqueLapizAbajo.ejecutar(personaje);
-        bloqueLapizArriba.ejecutar(personaje);
-        bloqueLapizAbajo.ejecutar(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
+        bloqueLapizArriba.ejecutarSobre(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class,personaje.direccionLapiz().getClass());
     }
@@ -34,11 +36,12 @@ class BloqueLapizAbajoTest {
     @Test
     public void test03CreoUnPersonajeYLeOrdenoBajarElLapizDosVeces() {
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
 
-        bloqueLapizAbajo.ejecutar(personaje);
-        bloqueLapizAbajo.ejecutar(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class, personaje.direccionLapiz().getClass());
     }
@@ -46,12 +49,13 @@ class BloqueLapizAbajoTest {
     @Test
     public void test04CreoUnPersonajeYLeOrdenoBajarElLapizDosVecesConDosBloquesDistintos() {
 
-        Personaje personaje = new Personaje();
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajoUno = new BloqueLapizAbajo();
         BloqueLapizAbajo bloqueLapizAbajoDos = new BloqueLapizAbajo();
 
-        bloqueLapizAbajoUno.ejecutar(personaje);
-        bloqueLapizAbajoDos.ejecutar(personaje);
+        bloqueLapizAbajoUno.ejecutarSobre(personaje);
+        bloqueLapizAbajoDos.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class, personaje.direccionLapiz().getClass());
     }
