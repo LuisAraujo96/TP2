@@ -13,7 +13,7 @@ class BloqueDerechaTest {
         BloqueDerecha bloque = new BloqueDerecha();
         Posicion posicion = new Posicion(1,0);
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutarSobre(personaje);
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
     }
@@ -26,8 +26,8 @@ class BloqueDerechaTest {
         BloqueIzquierda bloqueIzq = new BloqueIzquierda();
         Posicion posicion = new Posicion(0,0);
 
-        bloqueDer.ejecutar(personaje);
-        bloqueIzq.ejecutar(personaje);
+        bloqueDer.ejecutarSobre(personaje);
+        bloqueIzq.ejecutarSobre(personaje);
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
     }

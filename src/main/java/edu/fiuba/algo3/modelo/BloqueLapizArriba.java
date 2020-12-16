@@ -3,5 +3,5 @@ package edu.fiuba.algo3.modelo;
 public class BloqueLapizArriba implements Bloque{
 
     @Override
-    public void ejecutar(Personaje personaje){ personaje.subirLapiz(); }
+    public void ejecutarSobre(Personaje personaje){ personaje.subirLapiz(); }
 }

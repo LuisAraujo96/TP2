@@ -13,7 +13,7 @@ class BloqueLapizAbajoTest {
         Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
 
-        bloqueLapizAbajo.ejecutar(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class,personaje.direccionLapiz().getClass());
     }
@@ -26,9 +26,9 @@ class BloqueLapizAbajoTest {
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
         BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
 
-        bloqueLapizAbajo.ejecutar(personaje);
-        bloqueLapizArriba.ejecutar(personaje);
-        bloqueLapizAbajo.ejecutar(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
+        bloqueLapizArriba.ejecutarSobre(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class,personaje.direccionLapiz().getClass());
     }
@@ -40,8 +40,8 @@ class BloqueLapizAbajoTest {
         Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
 
-        bloqueLapizAbajo.ejecutar(personaje);
-        bloqueLapizAbajo.ejecutar(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
+        bloqueLapizAbajo.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class, personaje.direccionLapiz().getClass());
     }
@@ -54,8 +54,8 @@ class BloqueLapizAbajoTest {
         BloqueLapizAbajo bloqueLapizAbajoUno = new BloqueLapizAbajo();
         BloqueLapizAbajo bloqueLapizAbajoDos = new BloqueLapizAbajo();
 
-        bloqueLapizAbajoUno.ejecutar(personaje);
-        bloqueLapizAbajoDos.ejecutar(personaje);
+        bloqueLapizAbajoUno.ejecutarSobre(personaje);
+        bloqueLapizAbajoDos.ejecutarSobre(personaje);
 
         assertEquals(LapizAbajo.class, personaje.direccionLapiz().getClass());
     }
