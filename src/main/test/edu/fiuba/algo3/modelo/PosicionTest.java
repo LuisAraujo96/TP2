@@ -54,4 +54,32 @@ class PosicionTest {
 
         assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
     }
+
+    @Test
+    public void test06PosicionCeroYCeroSeMueveTresVecesHaciaLaDerechaYDosVecesArribaYTerminaEnLaPosicionTresYDos(){
+        Posicion PosicionInicial = new Posicion(0, 0);
+        Posicion PosicionFinal = new Posicion(3, 2);
+
+        PosicionInicial.moverseHaciaDerecha();
+        PosicionInicial.moverseHaciaDerecha();
+        PosicionInicial.moverseHaciaDerecha();
+        PosicionInicial.moverseHaciaArriba();
+        PosicionInicial.moverseHaciaArriba();
+
+        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+    }
+
+    @Test
+    public void test07PosicionCuatroYUnoSeMueveCuatroVecesHaciaLaIzquierdaYUnaVezHaciaAbajoYTerminaEnLaPosicionCeroYCero(){
+        Posicion PosicionInicial = new Posicion(4, 1);
+        Posicion PosicionFinal = new Posicion(0, 0);
+
+        PosicionInicial.moverseHaciaIzquierda();
+        PosicionInicial.moverseHaciaIzquierda();
+        PosicionInicial.moverseHaciaIzquierda();
+        PosicionInicial.moverseHaciaIzquierda();
+        PosicionInicial.moverseHaciaAbajo();
+
+        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+    }
 }
