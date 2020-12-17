@@ -14,4 +14,14 @@ class PosicionTest {
 
         assertTrue(primerPosicion.compararPosiciones(segundaPosicion));
     }
+
+    @Test
+    public void test02MoverPosicionCeroYCeroALaDerechaLaDejaEnPosicionUnoYCero(){
+        Posicion PosicionInicial = new Posicion(0, 0);
+        Posicion PosicionFinal = new Posicion(1, 0);
+
+        PosicionInicial.moverseHaciaDerecha();
+
+        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+    }
 }
