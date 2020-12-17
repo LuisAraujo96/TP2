@@ -32,4 +32,21 @@ class BloqueArribaTest {
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
     }
+
+    @Test
+    public void test03EjecutarCincoVecesBloqueArribaDejaAlPersonajeEnLaPosicionCeroYCinco(){
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
+        BloqueArriba bloque = new BloqueArriba();
+
+        Posicion posicionFinal = new Posicion(0,5);
+
+        bloque.ejecutarSobre(personaje);
+        bloque.ejecutarSobre(personaje);
+        bloque.ejecutarSobre(personaje);
+        bloque.ejecutarSobre(personaje);
+        bloque.ejecutarSobre(personaje);
+
+        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicionFinal));
+    }
 }

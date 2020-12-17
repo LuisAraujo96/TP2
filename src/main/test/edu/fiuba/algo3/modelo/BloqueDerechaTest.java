@@ -30,5 +30,23 @@ class BloqueDerechaTest {
         bloqueIzq.ejecutarSobre(personaje);
 
         assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
+
+    }
+
+    @Test
+    public void test03EjecutarCincoVecesBloqueDerechaDejaAlPersonajeEnLaPosicionCincoYCero(){
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
+        BloqueDerecha bloqueDer = new BloqueDerecha();
+
+        Posicion posicionFinal = new Posicion(5,0);
+
+        bloqueDer.ejecutarSobre(personaje);
+        bloqueDer.ejecutarSobre(personaje);
+        bloqueDer.ejecutarSobre(personaje);
+        bloqueDer.ejecutarSobre(personaje);
+        bloqueDer.ejecutarSobre(personaje);
+
+        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicionFinal));
     }
 }
