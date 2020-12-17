@@ -24,4 +24,34 @@ class PosicionTest {
 
         assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
     }
+
+    @Test
+    public void test03MoverPosicionCeroYCeroALaIzquierdaLaDejaEnPosicionMenosUnoYCero(){
+        Posicion PosicionInicial = new Posicion(0, 0);
+        Posicion PosicionFinal = new Posicion(-1, 0);
+
+        PosicionInicial.moverseHaciaIzquierda();
+
+        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+    }
+
+    @Test
+    public void test04MoverPosicionCeroYCeroHaciaArribaLaDejaEnPosicionCeroYUno(){
+        Posicion PosicionInicial = new Posicion(0, 0);
+        Posicion PosicionFinal = new Posicion(0, 1);
+
+        PosicionInicial.moverseHaciaArriba();
+
+        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+    }
+
+    @Test
+    public void test05MoverPosicionCeroYCeroHaciaAbajoLaDejaEnPosicionCeroYMenosUno(){
+        Posicion PosicionInicial = new Posicion(0, 0);
+        Posicion PosicionFinal = new Posicion(0, -1);
+
+        PosicionInicial.moverseHaciaAbajo();
+
+        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+    }
 }
