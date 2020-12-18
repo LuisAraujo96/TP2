@@ -2,51 +2,50 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BloqueArribaTest {
 
     @Test
-    public void test01PersonajeEjecutaBloqueArribaYSuPosicionEsLaCorrecta(){
+    public void test01MoverAlPersonajeArribaLoDejaEnLaPosicionCeroYUno(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        BloqueArriba bloque = new BloqueArriba();
-        Posicion posicion = new Posicion(0,1);
+        BloqueArriba bloqueArriba = new BloqueArriba();
+        Posicion posicionDestino = new Posicion(0,1);
 
-        bloque.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
 
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
     @Test
-    public void test02EjecutarBloqueArribaYBloqueAbajoSobreUnPersonajeLoDejaEnLaPosicionInicial(){
+    public void test02MoverAlPersonajeArribaYAbajoLoDejaEnLaPosicionCeroYCero(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
         BloqueArriba bloqueArriba = new BloqueArriba();
         BloqueAbajo bloqueAbajo = new BloqueAbajo();
-        Posicion posicion = new Posicion(0,0);
+        Posicion posicionOrigen = new Posicion(0,0);
 
         bloqueArriba.ejecutarSobre(personaje);
         bloqueAbajo.ejecutarSobre(personaje);
 
-
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
+        assertEquals(personaje.obtenerPosicion(), posicionOrigen);
     }
 
     @Test
-    public void test03EjecutarCincoVecesBloqueArribaDejaAlPersonajeEnLaPosicionCeroYCinco(){
+    public void test03MoverAlPersonajeArribaCincoVecesLoDejaEnLaPosicionCeroYCinco(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        BloqueArriba bloque = new BloqueArriba();
+        BloqueArriba bloqueArriba = new BloqueArriba();
 
-        Posicion posicionFinal = new Posicion(0,5);
+        Posicion posicionDestino = new Posicion(0,5);
 
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
 
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicionFinal));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 }
