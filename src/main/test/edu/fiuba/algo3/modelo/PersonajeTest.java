@@ -13,7 +13,7 @@ class PersonajeTest {
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
 
-        assertEquals(LapizArriba.class, personaje.direccionLapiz().getClass());
+        assertEquals(LapizArriba.class, personaje.lapiz().getClass());
     }
 
     @Test
@@ -24,7 +24,7 @@ class PersonajeTest {
 
         personaje.bajarLapiz();
 
-        assertEquals(LapizAbajo.class, personaje.direccionLapiz().getClass());
+        assertEquals(LapizAbajo.class, personaje.lapiz().getClass());
     }
 
     @Test
@@ -36,7 +36,7 @@ class PersonajeTest {
         personaje.bajarLapiz();
         personaje.subirLapiz();
 
-        assertEquals(LapizArriba.class, personaje.direccionLapiz().getClass());
+        assertEquals(LapizArriba.class, personaje.lapiz().getClass());
     }
 
     @Test

@@ -6,7 +6,7 @@ public class Personaje {
 
     public Personaje(Dibujador unDibujador){ this.dibujador = unDibujador; }
 
-    protected Dibujador direccionLapiz() { return this.dibujador; }
+    protected Dibujador lapiz() { return this.dibujador; }
 
     public void subirLapiz() { this.dibujador = new LapizArriba(); }
 

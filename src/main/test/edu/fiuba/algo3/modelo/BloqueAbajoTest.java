@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BloqueAbajoTest {
 
@@ -15,7 +16,7 @@ class BloqueAbajoTest {
 
         bloque.ejecutarSobre(personaje);
 
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
+        assertEquals(personaje.obtenerPosicion(), posicion);
     }
     @Test
     public void test02PersonajeEjecutaBloqueAbajoYBloqueArribaYSuPosicionEsLaCorrecta(){
