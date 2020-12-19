@@ -7,46 +7,45 @@ import static org.junit.jupiter.api.Assertions.*;
 class BloqueDerechaTest {
 
     @Test
-    public void test01PersonajeEjecutaBloqueDerechaYSuPosicionEsLaCorrecta(){
+    public void test01MoverAlPersonajeADerechaLoDejaEnLaPosicionUnoYCero(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        BloqueDerecha bloque = new BloqueDerecha();
-        Posicion posicion = new Posicion(1,0);
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+        Posicion posicionDestino = new Posicion(1,0);
 
-        bloque.ejecutarSobre(personaje);
+        bloqueDerecha.ejecutarSobre(personaje);
 
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
     @Test
-    public void test02PersonajeEjecutaBloqueDerechaLuegoBloqueIzquierdaYSuPosicionDebeSer00(){
+    public void test02MoverAlPersonajeADerechaYAIzquierdaLoDejaEnLaPosicionCeroYCero(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        BloqueDerecha bloqueDer = new BloqueDerecha();
-        BloqueIzquierda bloqueIzq = new BloqueIzquierda();
-        Posicion posicion = new Posicion(0,0);
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+        BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
+        Posicion posicionOrigen = new Posicion(0,0);
 
-        bloqueDer.ejecutarSobre(personaje);
-        bloqueIzq.ejecutarSobre(personaje);
+        bloqueDerecha.ejecutarSobre(personaje);
+        bloqueIzquierda.ejecutarSobre(personaje);
 
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicion));
-
+        assertEquals(personaje.obtenerPosicion(), posicionOrigen);
     }
 
     @Test
-    public void test03EjecutarCincoVecesBloqueDerechaDejaAlPersonajeEnLaPosicionCincoYCero(){
+    public void test03MoverAlPersonajeADerechaCincoVecesLoDejaEnLaPosicionCincoYCero(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        BloqueDerecha bloqueDer = new BloqueDerecha();
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
 
-        Posicion posicionFinal = new Posicion(5,0);
+        Posicion posicionDestino = new Posicion(5,0);
 
-        bloqueDer.ejecutarSobre(personaje);
-        bloqueDer.ejecutarSobre(personaje);
-        bloqueDer.ejecutarSobre(personaje);
-        bloqueDer.ejecutarSobre(personaje);
-        bloqueDer.ejecutarSobre(personaje);
+        bloqueDerecha.ejecutarSobre(personaje);
+        bloqueDerecha.ejecutarSobre(personaje);
+        bloqueDerecha.ejecutarSobre(personaje);
+        bloqueDerecha.ejecutarSobre(personaje);
+        bloqueDerecha.ejecutarSobre(personaje);
 
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicionFinal));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 }

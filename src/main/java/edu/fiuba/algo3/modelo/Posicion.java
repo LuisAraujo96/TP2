@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Posicion {
     private int x;
+    private int y;
 
     @Override
     public boolean equals(Object o) {
@@ -17,8 +18,6 @@ public class Posicion {
     public int hashCode() {
         return Objects.hash(x, y);
     }
-
-    private int y;
 
     public Posicion(int unaPosicion, int otraPosicion){ this.x = unaPosicion; this.y = otraPosicion;}
 

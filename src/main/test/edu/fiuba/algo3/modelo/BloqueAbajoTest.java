@@ -1,53 +1,51 @@
 package edu.fiuba.algo3.modelo;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BloqueAbajoTest {
 
     @Test
-    public void test01PersonajeEjecutaBloqueAbajoYSuPosicionEsLaCorrecta(){
+        public void test01MoverAlPersonajeAbajoLoDejaEnLaPosicionCeroYMenosUno(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        BloqueAbajo bloque = new BloqueAbajo();
-        Posicion posicion = new Posicion(0,-1);
+        BloqueAbajo bloqueAbajo = new BloqueAbajo();
+        Posicion posicionDestino = new Posicion(0,-1);
 
-        bloque.ejecutarSobre(personaje);
+        bloqueAbajo.ejecutarSobre(personaje);
 
-        assertEquals(personaje.obtenerPosicion(), posicion);
-    }
-    @Test
-    public void test02PersonajeEjecutaBloqueAbajoYBloqueArribaYSuPosicionEsLaCorrecta(){
-        LapizArriba lapiz = new LapizArriba();
-        Personaje personaje = new Personaje(lapiz);
-        BloqueAbajo bloque = new BloqueAbajo();
-        BloqueArriba bloque2 = new BloqueArriba();
-        Posicion origen = new Posicion(0,0);
-
-        bloque.ejecutarSobre(personaje);
-        bloque2.ejecutarSobre(personaje);
-
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(origen));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
     @Test
-    public void test03EjecutarCincoVecesBloqueAbajoDejaAlPersonajeEnLaPosicionCeroYMenosCinco(){
+    public void test02MoverAlPersonajeAbajoYArribaLoDejaEnLaPosicionCeroYCero(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        BloqueAbajo bloque = new BloqueAbajo();
+        BloqueAbajo bloqueAbajo = new BloqueAbajo();
+        BloqueArriba bloqueArriba = new BloqueArriba();
+        Posicion posicionOrigen = new Posicion(0,0);
 
-        Posicion posicionFinal = new Posicion(0,-5);
+        bloqueAbajo.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
 
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
-        bloque.ejecutarSobre(personaje);
-
-        assertTrue(personaje.obtenerPosicion().compararPosiciones(posicionFinal));
+        assertEquals(personaje.obtenerPosicion(), posicionOrigen);
     }
-    
+
+    @Test
+    public void test03MoverAlPersonajeAbajoCincoVecesLoDejaEnLaPosicionCeroYMenosCinco(){
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
+        BloqueAbajo bloqueAbajo = new BloqueAbajo();
+
+        Posicion posicionDestino = new Posicion(0,-5);
+
+        bloqueAbajo.ejecutarSobre(personaje);
+        bloqueAbajo.ejecutarSobre(personaje);
+        bloqueAbajo.ejecutarSobre(personaje);
+        bloqueAbajo.ejecutarSobre(personaje);
+        bloqueAbajo.ejecutarSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
+    }
 }
-    
