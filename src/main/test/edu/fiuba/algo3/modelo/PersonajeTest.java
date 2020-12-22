@@ -43,47 +43,89 @@ class PersonajeTest {
     public void test04CreoUnPesonajeNuevoYConsultoSiEstaEnElOrigen(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        Posicion origen = new Posicion(0, 0);
+        Posicion posicionOrigen = new Posicion(0, 0);
 
-        assertTrue((personaje.obtenerPosicion()).compararPosiciones(origen));
+        assertEquals(personaje.obtenerPosicion(), posicionOrigen);
     }
     @Test
     public void test05CreoUnPersonajeLoMuevoALaDerechaYCalculoSuPosicion(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        Posicion derecha = new Posicion(1, 0);
+        Posicion posicionDestino = new Posicion(1, 0);
         personaje.moverseHaciaDerecha();
 
-        assertTrue((personaje.obtenerPosicion()).compararPosiciones(derecha));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
     @Test
     public void test06CreoUnPersonajeLoMuevoALaIzquierdaYCalculoSuPosicion(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        Posicion izquierda = new Posicion(-1, 0);
+        Posicion posicionDestino = new Posicion(-1, 0);
         personaje.moverseHaciaIzquierda();
 
-        assertTrue((personaje.obtenerPosicion()).compararPosiciones(izquierda));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
     @Test
     public void test07CreoUnPersonajeLoMuevoALaArribaYCalculoSuPosicion(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        Posicion arriba = new Posicion(0, 1);
+        Posicion posicionDestino = new Posicion(0, 1);
         personaje.moverseHaciaArriba();
 
-        assertTrue((personaje.obtenerPosicion()).compararPosiciones(arriba));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
     @Test
     public void test08CreoUnPersonajeLoMuevoALaAbajoYCalculoSuPosicion(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
-        Posicion abajo = new Posicion(0, -1);
+        Posicion posicionDestino = new Posicion(0, -1);
         personaje.moverseHaciaAbajo();
 
-        assertTrue((personaje.obtenerPosicion()).compararPosiciones(abajo));
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
+    }
+
+    @Test
+    public void test09MuevoElPersonajeHaciaArribaConElLapizArribaYNoDibujaNada(){
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
+
+        int resultado = personaje.moverseHaciaArriba();
+
+        assertEquals(0, resultado);
+    }
+
+    @Test
+    public void test10MuevoElPersonajeHaciaAbajoConElLapizArribaYNoDibujaNada(){
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
+
+        int resultado = personaje.moverseHaciaAbajo();
+
+        assertEquals(0, resultado);
+    }
+
+    @Test
+    public void test11MuevoElPersonajeHaciaArribaConElLapizAbajoYSiDibuja(){
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
+
+        personaje.bajarLapiz();
+        int resultado = personaje.moverseHaciaArriba();
+
+        assertEquals(1, resultado);
+    }
+
+    @Test
+    public void test12MuevoElPersonajeHaciaAbajoConElLapizAbajoYSiDibuja(){
+        LapizArriba lapiz = new LapizArriba();
+        Personaje personaje = new Personaje(lapiz);
+
+        personaje.bajarLapiz();
+        int resultado = personaje.moverseHaciaAbajo();
+
+        assertEquals(1, resultado);
     }
 }
