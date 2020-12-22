@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PosicionTest {
 
-    @Test
+    /*@Test
     public void test01CreoDosPosicionesIgualesYLasComparo(){
 
         Posicion primerPosicion = new Posicion(0, 0);
@@ -81,5 +81,5 @@ class PosicionTest {
         PosicionInicial.moverseHaciaAbajo();
 
         assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
-    }
+    }*/
 }
