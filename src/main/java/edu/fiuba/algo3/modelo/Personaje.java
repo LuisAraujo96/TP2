@@ -1,24 +1,45 @@
 package edu.fiuba.algo3.modelo;
 
 public class Personaje {
-    private Dibujador dibujador;
-    private Posicion posicion = new Posicion(0, 0);
+    private Lapiz lapiz;
+    private SectorDibujo dibujo;
 
-    public Personaje(Dibujador unDibujador){ this.dibujador = unDibujador; }
+    public Personaje(Lapiz unLapiz){
+        this.lapiz = unLapiz;
+        this.dibujo = new SectorDibujo();
+    }
 
-    protected Dibujador lapiz() { return this.dibujador; }
+    protected Lapiz lapiz() { return this.lapiz; }
 
-    public void subirLapiz() { this.dibujador = new LapizArriba(); }
+    public void subirLapiz() { this.lapiz = new LapizArriba(); }
 
-    public void bajarLapiz() { this.dibujador = new LapizAbajo(); }
+    public void bajarLapiz() { this.lapiz = new LapizAbajo(); }
 
-    public void moverseHaciaArriba() { this.posicion.moverseHaciaArriba(); }
+    private int utilizarLapiz() { return this.dibujo.dibujar(this.lapiz); }
 
-    public void moverseHaciaAbajo() { this.posicion.moverseHaciaAbajo(); }
+    public int moverseHaciaArriba() {
+        this.utilizarLapiz();
+        this.dibujo.moverseHaciaArriba();
+        int resultadoDelDibujo = this.utilizarLapiz();
+        return resultadoDelDibujo; }
 
-    public void moverseHaciaDerecha() { this.posicion.moverseHaciaDerecha(); }
+    public int moverseHaciaAbajo() {
+        this.utilizarLapiz();
+        this.dibujo.moverseHaciaAbajo();
+        int resultadoDelDibujo = this.utilizarLapiz();
+        return resultadoDelDibujo; }
 
-    public void moverseHaciaIzquierda() { this.posicion.moverseHaciaIzquierda(); }
+    public int moverseHaciaDerecha() {
+        this.utilizarLapiz();
+        this.dibujo.moverseHaciaDerecha();
+        int resultadoDelDibujo = this.utilizarLapiz();
+        return resultadoDelDibujo; }
 
-    protected Posicion obtenerPosicion() { return posicion; }
+    public int moverseHaciaIzquierda() {
+        this.utilizarLapiz();
+        this.dibujo.moverseHaciaIzquierda();
+        int resultadoDelDibujo = this.utilizarLapiz();
+        return resultadoDelDibujo; }
+
+    protected Posicion obtenerPosicion() { return this.dibujo.obtenerPosicion(); }
 }
