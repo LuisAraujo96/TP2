@@ -1,56 +1,44 @@
 package edu.fiuba.algo3.modelo;
 
 public class SectorDibujo {
-    private int extension;
-    private Posicion posicion[][];
-    private int filaPersonaje;
-    private int columnaPersonaje;
-    private int calculoAuxiliarPositivo;
-    private int calculoAuxiliarNegativo;
+    private Posicion matrizDePosiciones[][];
+    private int yDelPersonaje;
+    private int xDelPersonaje;
 
     public SectorDibujo(){
-        this.extension = 101; //Numeros impares solamente
-        this.calculoAuxiliarPositivo = (this.extension / 2);
-        this.calculoAuxiliarNegativo = (this.extension / 2) * (-1);
+        int extensionDeLaMatriz = 101; //Matriz de 101x101. Usar numeros impares para la matriz unicamente
+        int extremoYPositivo = (extensionDeLaMatriz / 2); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
+        int extremoXNegativo = (extensionDeLaMatriz / 2) * (-1); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
 
-        this.posicion = new Posicion[this.extension][this.extension];
+        this.matrizDePosiciones = new Posicion[extensionDeLaMatriz][extensionDeLaMatriz];
 
-        for(int fila = 0; fila < this.extension; fila++){
-            for(int columna = 0; columna < this.extension; columna++){
-                this.posicion[fila][columna] = new Posicion(this.calculoAuxiliarNegativo + columna, this.calculoAuxiliarPositivo - fila);
+        for(int fila = 0; fila < extensionDeLaMatriz; fila++){
+            for(int columna = 0; columna < extensionDeLaMatriz; columna++){
+                this.matrizDePosiciones[fila][columna] = new Posicion(extremoXNegativo + columna, extremoYPositivo - fila);
             }
         }
 
-        this.filaPersonaje = (this.extension / 2);
-        this.columnaPersonaje = (this.extension / 2);
+        this.yDelPersonaje = (extensionDeLaMatriz / 2);
+        this.xDelPersonaje = (extensionDeLaMatriz / 2);
     }
 
-    public Posicion obtenerPosicion() {
-        return this.posicion[this.filaPersonaje][this.columnaPersonaje];
+    public Posicion obtenerPosicionDelPersonaje() {
+        return this.matrizDePosiciones[this.yDelPersonaje][this.xDelPersonaje];
     }
 
-    public int dibujar(Lapiz unLapiz){
-        return unLapiz.utilizarSobre(this.posicion[this.filaPersonaje][this.columnaPersonaje]);
-    }
+    public void moverPersonajeArriba(){ this.yDelPersonaje -= 1; }
 
-    public void moverseHaciaArriba(){ this.filaPersonaje -= 1; }
+    public void moverPersonajeAbajo(){ this.yDelPersonaje += 1; }
 
-    public void moverseHaciaAbajo(){ this.filaPersonaje += 1; }
+    public void moverPersonajeADerecha() { this.xDelPersonaje += 1; }
 
-    public void moverseHaciaDerecha() { this.columnaPersonaje += 1; }
+    public void moverPersonajeAIzquierda() { this.xDelPersonaje -= 1; }
 
-    public void moverseHaciaIzquierda() { this.columnaPersonaje -= 1; }
-
-    //Deberia estar compuesto por una matriz donde cada posicion este llena de 0's,
+    //El Sector Dibujo esta compuesto por una matriz donde cada posicion este llena de 0's,
     //donde el 0 significa que es una posicion la cual no esta pintada o pintada de blanco
     //y el 1 significa que es una posicion que esta pintada de negro.
     //
     //El personaje es el unico que pinta las posicion de negro (con 1), y no puede volverse a pintar
     //con posiciones blancas (con 0).
     //
-    //No implementé el sector dibujo ya que se tiene que implementar para una futura entrega.
-    //
-    //Tampoco me parece necesario implementarlo ahora, porque es un vistazo general
-    //y estas ideas pueden sufrir cambios a futuro.
-
 }
