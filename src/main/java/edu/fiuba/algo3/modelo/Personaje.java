@@ -13,24 +13,9 @@ public class Personaje {
 
     public void subirLapiz() { this.lapiz = new LapizArriba(); }
 
-    public int moverseHaciaArriba() {
+    public int moverseHacia(Direccion unaDireccion){
         int resultadoDelDibujo = this.dibujar();
-        this.sectorDibujo.moverPersonajeArriba();
-        return resultadoDelDibujo; }
-
-    public int moverseHaciaAbajo() {
-        int resultadoDelDibujo = this.dibujar();
-        this.sectorDibujo.moverPersonajeAbajo();
-        return resultadoDelDibujo; }
-
-    public int moverseHaciaIzquierda() {
-        int resultadoDelDibujo = this.dibujar();
-        this.sectorDibujo.moverPersonajeAIzquierda();
-        return resultadoDelDibujo; }
-
-    public int moverseHaciaDerecha() {
-        int resultadoDelDibujo = this.dibujar();
-        this.sectorDibujo.moverPersonajeADerecha();
+        this.sectorDibujo.moverPersonajeA(unaDireccion);
         return resultadoDelDibujo; }
 
     protected Posicion obtenerPosicion() { return this.sectorDibujo.obtenerPosicionDelPersonaje(); }
