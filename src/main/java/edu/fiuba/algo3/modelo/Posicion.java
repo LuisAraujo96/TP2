@@ -29,17 +29,4 @@ public class Posicion {
     public int hashCode() {
         return Objects.hash(x, y, representacion);
     }
-
-    /*public void moverseHaciaArriba() { y++; }
-
-    public void moverseHaciaAbajo() { y--; }
-
-    public void moverseHaciaDerecha() { x++; }
-
-    public void moverseHaciaIzquierda() { x--; }
-
-    public boolean compararPosiciones(Posicion otraPosicion){
-
-        return (this.x == otraPosicion.x && this.y == otraPosicion.y);
-    }*/
 }
