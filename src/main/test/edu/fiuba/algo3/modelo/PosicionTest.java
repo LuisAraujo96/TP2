@@ -7,79 +7,39 @@ import static org.junit.jupiter.api.Assertions.*;
 class PosicionTest {
 
     @Test
-    public void test01CreoDosPosicionesIgualesYLasComparo(){
+    public void test01UnaPosicionConLasCoordenadasCeroCeroEsIgualAOtraPosicionConLasCoordenadasCeroCero(){
+        Posicion unaPosicion = new Posicion(0, 0);
+        Posicion otraPosicion = new Posicion(0, 0);
 
-        Posicion primerPosicion = new Posicion(0, 0);
-        Posicion segundaPosicion = new Posicion(0, 0);
-
-        assertEquals(primerPosicion, segundaPosicion);
+        assertEquals(unaPosicion, otraPosicion);
     }
 
     @Test
-    public void test02MoverPosicionCeroYCeroALaDerechaLaDejaEnPosicionUnoYCero(){
-        Posicion PosicionInicial = new Posicion(0, 0);
-        Posicion PosicionFinal = new Posicion(1, 0);
+    public void test02UnaPosicionPintadaYOtraSinPintarConLasMismasCoordenadasNoSonIguales(){
+        Posicion unaPosicion = new Posicion(0, 0);
+        Posicion otraPosicion = new Posicion(0, 0);
 
-        PosicionInicial.moverseHaciaDerecha();
+        unaPosicion.dibujar();
 
-        assertEquals(PosicionInicial, PosicionFinal);
+        assertNotEquals(unaPosicion, otraPosicion);
     }
 
     @Test
-    public void test03MoverPosicionCeroYCeroALaIzquierdaLaDejaEnPosicionMenosUnoYCero(){
-        Posicion PosicionInicial = new Posicion(0, 0);
-        Posicion PosicionFinal = new Posicion(-1, 0);
+    public void test03RepresentarUnaPosicionRecienCreadaDevuelveComoResultado0(){
+        Posicion unaPosicion = new Posicion(0, 0);
 
-        PosicionInicial.moverseHaciaIzquierda();
+        int resultado = unaPosicion.representar();
 
-        assertEquals(PosicionInicial, PosicionFinal);
+        assertEquals(0, resultado);
     }
 
     @Test
-    public void test04MoverPosicionCeroYCeroHaciaArribaLaDejaEnPosicionCeroYUno(){
-        Posicion PosicionInicial = new Posicion(0, 0);
-        Posicion PosicionFinal = new Posicion(0, 1);
+    public void test04RepresentarUnaPosicionRecienDibujadaDevuelveComoResultado1(){
+        Posicion unaPosicion = new Posicion(0, 0);
 
-        PosicionInicial.moverseHaciaArriba();
+        unaPosicion.dibujar();
+        int resultado = unaPosicion.representar();
 
-        assertEquals(PosicionInicial, PosicionFinal);
-    }
-
-    @Test
-    public void test05MoverPosicionCeroYCeroHaciaAbajoLaDejaEnPosicionCeroYMenosUno(){
-        Posicion PosicionInicial = new Posicion(0, 0);
-        Posicion PosicionFinal = new Posicion(0, -1);
-
-        PosicionInicial.moverseHaciaAbajo();
-
-        assertEquals(PosicionInicial, PosicionFinal);
-    }
-
-    @Test
-    public void test06PosicionCeroYCeroSeMueveTresVecesHaciaLaDerechaYDosVecesArribaYTerminaEnLaPosicionTresYDos(){
-        Posicion PosicionInicial = new Posicion(0, 0);
-        Posicion PosicionFinal = new Posicion(3, 2);
-
-        PosicionInicial.moverseHaciaDerecha();
-        PosicionInicial.moverseHaciaDerecha();
-        PosicionInicial.moverseHaciaDerecha();
-        PosicionInicial.moverseHaciaArriba();
-        PosicionInicial.moverseHaciaArriba();
-
-        assertEquals(PosicionInicial, PosicionFinal);
-    }
-
-    @Test
-    public void test07PosicionCuatroYUnoSeMueveCuatroVecesHaciaLaIzquierdaYUnaVezHaciaAbajoYTerminaEnLaPosicionCeroYCero(){
-        Posicion PosicionInicial = new Posicion(4, 1);
-        Posicion PosicionFinal = new Posicion(0, 0);
-
-        PosicionInicial.moverseHaciaIzquierda();
-        PosicionInicial.moverseHaciaIzquierda();
-        PosicionInicial.moverseHaciaIzquierda();
-        PosicionInicial.moverseHaciaIzquierda();
-        PosicionInicial.moverseHaciaAbajo();
-
-        assertEquals(PosicionInicial, PosicionFinal);
+        assertEquals(1, resultado);
     }
 }
