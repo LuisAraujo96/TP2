@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PosicionTest {
 
-    /*@Test
+    @Test
     public void test01CreoDosPosicionesIgualesYLasComparo(){
 
         Posicion primerPosicion = new Posicion(0, 0);
         Posicion segundaPosicion = new Posicion(0, 0);
 
-        assertTrue(primerPosicion.compararPosiciones(segundaPosicion));
+        assertEquals(primerPosicion, segundaPosicion);
     }
 
     @Test
@@ -22,7 +22,7 @@ class PosicionTest {
 
         PosicionInicial.moverseHaciaDerecha();
 
-        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+        assertEquals(PosicionInicial, PosicionFinal);
     }
 
     @Test
@@ -32,7 +32,7 @@ class PosicionTest {
 
         PosicionInicial.moverseHaciaIzquierda();
 
-        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+        assertEquals(PosicionInicial, PosicionFinal);
     }
 
     @Test
@@ -42,7 +42,7 @@ class PosicionTest {
 
         PosicionInicial.moverseHaciaArriba();
 
-        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+        assertEquals(PosicionInicial, PosicionFinal);
     }
 
     @Test
@@ -52,7 +52,7 @@ class PosicionTest {
 
         PosicionInicial.moverseHaciaAbajo();
 
-        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+        assertEquals(PosicionInicial, PosicionFinal);
     }
 
     @Test
@@ -66,7 +66,7 @@ class PosicionTest {
         PosicionInicial.moverseHaciaArriba();
         PosicionInicial.moverseHaciaArriba();
 
-        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
+        assertEquals(PosicionInicial, PosicionFinal);
     }
 
     @Test
@@ -80,6 +80,6 @@ class PosicionTest {
         PosicionInicial.moverseHaciaIzquierda();
         PosicionInicial.moverseHaciaAbajo();
 
-        assertTrue(PosicionInicial.compararPosiciones(PosicionFinal));
-    }*/
+        assertEquals(PosicionInicial, PosicionFinal);
+    }
 }
