@@ -24,9 +24,4 @@ public class Posicion {
         Posicion posicion = (Posicion) o;
         return x == posicion.x && y == posicion.y && representacion == posicion.representacion;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y, representacion);
-    }
 }
