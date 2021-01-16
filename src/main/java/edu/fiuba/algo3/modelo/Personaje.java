@@ -1,24 +1,39 @@
 package edu.fiuba.algo3.modelo;
 
 public class Personaje {
-    private Dibujador dibujador;
-    private Posicion posicion = new Posicion(0, 0);
+    private Lapiz lapiz;
+    private SectorDibujo sectorDibujo;
 
-    public Personaje(Dibujador unDibujador){ this.dibujador = unDibujador; }
+    public Personaje(Lapiz unLapiz){
+        this.lapiz = unLapiz;
+        this.sectorDibujo = new SectorDibujo(); //El constructor deberia recibir el sector dibujo por parametro
+    }
 
-    protected Dibujador lapiz() { return this.dibujador; }
+    public void bajarLapiz() { this.lapiz = new LapizAbajo(); }
 
-    public void subirLapiz() { this.dibujador = new LapizArriba(); }
+    public void subirLapiz() { this.lapiz = new LapizArriba(); }
 
-    public void bajarLapiz() { this.dibujador = new LapizAbajo(); }
+    public int moverseHaciaArriba() {
+        int resultadoDelDibujo = this.dibujar();
+        this.sectorDibujo.moverPersonajeArriba();
+        return resultadoDelDibujo; }
 
-    public void moverseHaciaArriba() { this.posicion.moverseHaciaArriba(); }
+    public int moverseHaciaAbajo() {
+        int resultadoDelDibujo = this.dibujar();
+        this.sectorDibujo.moverPersonajeAbajo();
+        return resultadoDelDibujo; }
 
-    public void moverseHaciaAbajo() { this.posicion.moverseHaciaAbajo(); }
+    public int moverseHaciaIzquierda() {
+        int resultadoDelDibujo = this.dibujar();
+        this.sectorDibujo.moverPersonajeAIzquierda();
+        return resultadoDelDibujo; }
 
-    public void moverseHaciaDerecha() { this.posicion.moverseHaciaDerecha(); }
+    public int moverseHaciaDerecha() {
+        int resultadoDelDibujo = this.dibujar();
+        this.sectorDibujo.moverPersonajeADerecha();
+        return resultadoDelDibujo; }
 
-    public void moverseHaciaIzquierda() { this.posicion.moverseHaciaIzquierda(); }
+    protected Posicion obtenerPosicion() { return this.sectorDibujo.obtenerPosicionDelPersonaje(); }
 
-    protected Posicion obtenerPosicion() { return posicion; }
+    protected int dibujar() { return this.lapiz.utilizarSobre(this.obtenerPosicion()); }
 }
