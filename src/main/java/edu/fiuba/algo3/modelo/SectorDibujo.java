@@ -26,13 +26,10 @@ public class SectorDibujo {
         return this.matrizDePosiciones[this.yDelPersonaje][this.xDelPersonaje];
     }
 
-    public void moverPersonajeArriba(){ this.yDelPersonaje -= 1; }
-
-    public void moverPersonajeAbajo(){ this.yDelPersonaje += 1; }
-
-    public void moverPersonajeADerecha() { this.xDelPersonaje += 1; }
-
-    public void moverPersonajeAIzquierda() { this.xDelPersonaje -= 1; }
+    public void moverPersonajeA(Direccion unaDireccion) {
+        this.xDelPersonaje += unaDireccion.direccionEnX();
+        this.yDelPersonaje -= unaDireccion.direccionEnY();
+    }
 
     //El Sector Dibujo esta compuesto por una matriz donde cada posicion este llena de 0's,
     //donde el 0 significa que es una posicion la cual no esta pintada o pintada de blanco

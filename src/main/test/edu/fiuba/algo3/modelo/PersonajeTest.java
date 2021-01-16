@@ -138,8 +138,9 @@ class PersonajeTest {
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
         Posicion posicionDestino = new Posicion(0, 1);
+        Direccion arriba = new DireccionArriba();
 
-        personaje.moverseHaciaArriba();
+        personaje.moverseHacia(arriba);
 
         assertEquals(posicionDestino, personaje.obtenerPosicion());
     }
@@ -149,8 +150,9 @@ class PersonajeTest {
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
         Posicion posicionDestino = new Posicion(0, -1);
+        Direccion abajo = new DireccionAbajo();
 
-        personaje.moverseHaciaAbajo();
+        personaje.moverseHacia(abajo);
 
         assertEquals(posicionDestino, personaje.obtenerPosicion());
     }
@@ -160,8 +162,9 @@ class PersonajeTest {
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
         Posicion posicionDestino = new Posicion(-1, 0);
+        Direccion izquierda = new DireccionIzquierda();
 
-        personaje.moverseHaciaIzquierda();
+        personaje.moverseHacia(izquierda);
 
         assertEquals(posicionDestino, personaje.obtenerPosicion());
     }
@@ -171,8 +174,9 @@ class PersonajeTest {
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
         Posicion posicionDestino = new Posicion(1, 0);
+        Direccion derecha = new DireccionDerecha();
 
-        personaje.moverseHaciaDerecha();
+        personaje.moverseHacia(derecha);
 
         assertEquals(posicionDestino, personaje.obtenerPosicion());
     }
@@ -181,8 +185,9 @@ class PersonajeTest {
     public void test16MuevoElPersonajeHaciaArribaConElLapizArribaYNoDibujaNada(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion arriba = new DireccionArriba();
 
-        int resultado = personaje.moverseHaciaArriba();
+        int resultado = personaje.moverseHacia(arriba);
 
         assertEquals(0, resultado);
     }
@@ -191,8 +196,9 @@ class PersonajeTest {
     public void test17MuevoElPersonajeHaciaAbajoConElLapizArribaYNoDibujaNada(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion abajo = new DireccionAbajo();
 
-        int resultado = personaje.moverseHaciaAbajo();
+        int resultado = personaje.moverseHacia(abajo);
 
         assertEquals(0, resultado);
     }
@@ -201,8 +207,9 @@ class PersonajeTest {
     public void test18MuevoElPersonajeHaciaIzquierdaConElLapizArribaYNoDibujaNada(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion izquierda = new DireccionIzquierda();
 
-        int resultado = personaje.moverseHaciaIzquierda();
+        int resultado = personaje.moverseHacia(izquierda);
 
         assertEquals(0, resultado);
     }
@@ -211,8 +218,9 @@ class PersonajeTest {
     public void test19MuevoElPersonajeHaciaDerechaConElLapizArribaYNoDibujaNada(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion derecha = new DireccionDerecha();
 
-        int resultado = personaje.moverseHaciaDerecha();
+        int resultado = personaje.moverseHacia(derecha);
 
         assertEquals(0, resultado);
     }
@@ -221,9 +229,10 @@ class PersonajeTest {
     public void test20MuevoElPersonajeHaciaArribaConElLapizAbajoYSiDibuja(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion arriba = new DireccionArriba();
 
         personaje.bajarLapiz();
-        int resultado = personaje.moverseHaciaArriba();
+        int resultado = personaje.moverseHacia(arriba);
 
         assertEquals(1, resultado);
     }
@@ -232,9 +241,10 @@ class PersonajeTest {
     public void test21MuevoElPersonajeHaciaAbajoConElLapizAbajoYSiDibuja(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion abajo = new DireccionAbajo();
 
         personaje.bajarLapiz();
-        int resultado = personaje.moverseHaciaAbajo();
+        int resultado = personaje.moverseHacia(abajo);
 
         assertEquals(1, resultado);
     }
@@ -243,9 +253,10 @@ class PersonajeTest {
     public void test22MuevoElPersonajeHaciaIzquierdaConElLapizAbajoYSiDibuja(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion izquierda = new DireccionIzquierda();
 
         personaje.bajarLapiz();
-        int resultado = personaje.moverseHaciaIzquierda();
+        int resultado = personaje.moverseHacia(izquierda);
 
         assertEquals(1, resultado);
     }
@@ -254,9 +265,10 @@ class PersonajeTest {
     public void test23MuevoElPersonajeHaciaDerechaConElLapizAbajoYSiDibuja(){
         LapizArriba lapiz = new LapizArriba();
         Personaje personaje = new Personaje(lapiz);
+        Direccion derecha = new DireccionDerecha();
 
         personaje.bajarLapiz();
-        int resultado = personaje.moverseHaciaDerecha();
+        int resultado = personaje.moverseHacia(derecha);
 
         assertEquals(1, resultado);
     }

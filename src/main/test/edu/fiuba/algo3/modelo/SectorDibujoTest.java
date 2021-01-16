@@ -22,8 +22,9 @@ class SectorDibujoTest {
 
         Posicion posicionFinal = new Posicion(0, 1);
         SectorDibujo sectorDibujo = new SectorDibujo();
+        Direccion arriba = new DireccionArriba();
 
-        sectorDibujo.moverPersonajeArriba();
+        sectorDibujo.moverPersonajeA(arriba);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
@@ -33,8 +34,9 @@ class SectorDibujoTest {
     public void test03MoverAlPersonajeDesdeLaPosicionCeroCeroHaciaAbajoLoDejaEnLaPosicionCeroMenosUno(){
         Posicion posicionFinal = new Posicion(0, -1);
         SectorDibujo sectorDibujo = new SectorDibujo();
+        Direccion abajo = new DireccionAbajo();
 
-        sectorDibujo.moverPersonajeAbajo();
+        sectorDibujo.moverPersonajeA(abajo);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
@@ -44,8 +46,9 @@ class SectorDibujoTest {
     public void test04MoverAlPersonajeDesdeLaPosicionCeroCeroAIzquierdaLoDejaEnLaPosicionMenosUnoCero(){
         Posicion posicionFinal = new Posicion(-1, 0);
         SectorDibujo sectorDibujo = new SectorDibujo();
+        Direccion izquierda = new DireccionIzquierda();
 
-        sectorDibujo.moverPersonajeAIzquierda();
+        sectorDibujo.moverPersonajeA(izquierda);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
@@ -55,8 +58,9 @@ class SectorDibujoTest {
     public void test05MoverAlPersonajeDesdeLaPosicionCeroCeroADerechaLoDejaEnLaPosicionUnoCero(){
         Posicion posicionFinal = new Posicion(1, 0);
         SectorDibujo sectorDibujo = new SectorDibujo();
+        Direccion derecha = new DireccionDerecha();
 
-        sectorDibujo.moverPersonajeADerecha();
+        sectorDibujo.moverPersonajeA(derecha);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
