@@ -9,25 +9,25 @@ public class SectorDibujo {
     public SectorDibujo(){
         int ejeMedio = (extensionDeLaMatriz / 2); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
 
-        this.matrizDePosiciones = new Posicion[extensionDeLaMatriz][extensionDeLaMatriz];
+        matrizDePosiciones = new Posicion[extensionDeLaMatriz][extensionDeLaMatriz];
 
         for(int fila = 0; fila < extensionDeLaMatriz; fila++){
             for(int columna = 0; columna < extensionDeLaMatriz; columna++){
-                this.matrizDePosiciones[columna][fila] = new Posicion(columna - ejeMedio, ejeMedio - fila);
+                matrizDePosiciones[columna][fila] = new Posicion(columna - ejeMedio, ejeMedio - fila);
             }
         }
 
-        this.yDelPersonaje = ejeMedio;
-        this.xDelPersonaje = ejeMedio;
+        yDelPersonaje = ejeMedio;
+        xDelPersonaje = ejeMedio;
     }
 
     public Posicion obtenerPosicionDelPersonaje() {
-        return this.matrizDePosiciones[this.xDelPersonaje][this.yDelPersonaje];
+        return matrizDePosiciones[xDelPersonaje][yDelPersonaje];
     }
 
     public void moverPersonajeA(Direccion unaDireccion) {
-        this.xDelPersonaje += unaDireccion.direccionEnX();
-        this.yDelPersonaje -= unaDireccion.direccionEnY();
+        xDelPersonaje += unaDireccion.direccionEnX();
+        yDelPersonaje -= unaDireccion.direccionEnY();
     }
 
     //El Sector Dibujo esta compuesto por una matriz donde cada posicion este llena de 0's,
