@@ -4,9 +4,8 @@ public class BloqueRepetidor implements Bloque{
     private int cantidadDeRepeticiones;
     private Bloque bloqueARepetir;
 
-    public BloqueRepetidor(int unaCantidad, Bloque unBloque){
+    public BloqueRepetidor(int unaCantidad){
         cantidadDeRepeticiones = unaCantidad;
-        bloqueARepetir = unBloque;
     }
 
     @Override
@@ -16,4 +15,7 @@ public class BloqueRepetidor implements Bloque{
         }
     }
 
+    public void agregarBloque(Bloque unBloque){
+        bloqueARepetir = unBloque;
+    }
 }
