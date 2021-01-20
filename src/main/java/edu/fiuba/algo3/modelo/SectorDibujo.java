@@ -27,7 +27,7 @@ public class SectorDibujo {
         return this.matrizDePosiciones[this.yDelPersonaje][this.xDelPersonaje];
     }
 
-    public void moverPersonajeHacia(Direccion unaDireccion) {
+    public void cambiarPosicionDePersonajeHacia(Direccion unaDireccion) {
         this.xDelPersonaje = (this.xDelPersonaje + unaDireccion.direccionEnX()) % this.extensionDeLaMatriz;
         this.yDelPersonaje = (this.yDelPersonaje - unaDireccion.direccionEnY()) % this.extensionDeLaMatriz;
     }

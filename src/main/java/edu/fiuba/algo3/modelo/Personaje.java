@@ -15,7 +15,7 @@ public class Personaje {
 
     public int moverseHacia(Direccion unaDireccion){
         this.dibujar();
-        this.sectorDibujo.moverPersonajeHacia(unaDireccion);
+        this.sectorDibujo.cambiarPosicionDePersonajeHacia(unaDireccion);
         return this.dibujar();
     }
 
