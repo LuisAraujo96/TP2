@@ -9,7 +9,7 @@ class BloqueLapizAbajoTest {
     @Test
     public void test01CreoUnPersonajeConElLapizArribaYBajoSuLapizUsandoElBloqueLapizAbajo(){
 
-        LapizArriba lapiz = new LapizArriba();
+        Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
 
@@ -22,7 +22,7 @@ class BloqueLapizAbajoTest {
     @Test
     public void test02CreoUnPersonajeBajoSuLapizLoSuboYLoVuelvoABajarConBloques(){
 
-        LapizArriba lapiz = new LapizArriba();
+        Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
         BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
@@ -38,7 +38,7 @@ class BloqueLapizAbajoTest {
     @Test
     public void test03CreoUnPersonajeYLeOrdenoBajarElLapizDosVeces() {
 
-        LapizArriba lapiz = new LapizArriba();
+        Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
 
@@ -52,7 +52,7 @@ class BloqueLapizAbajoTest {
     @Test
     public void test04CreoUnPersonajeYLeOrdenoBajarElLapizDosVecesConDosBloquesDistintos() {
 
-        LapizArriba lapiz = new LapizArriba();
+        Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueLapizAbajo bloqueLapizAbajoUno = new BloqueLapizAbajo();
         BloqueLapizAbajo bloqueLapizAbajoDos = new BloqueLapizAbajo();

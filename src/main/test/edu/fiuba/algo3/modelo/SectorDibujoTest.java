@@ -24,7 +24,7 @@ class SectorDibujoTest {
         SectorDibujo sectorDibujo = new SectorDibujo();
         Direccion arriba = new DireccionArriba();
 
-        sectorDibujo.moverPersonajeA(arriba);
+        sectorDibujo.moverPersonajeHacia(arriba);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
@@ -36,7 +36,7 @@ class SectorDibujoTest {
         SectorDibujo sectorDibujo = new SectorDibujo();
         Direccion abajo = new DireccionAbajo();
 
-        sectorDibujo.moverPersonajeA(abajo);
+        sectorDibujo.moverPersonajeHacia(abajo);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
@@ -48,7 +48,7 @@ class SectorDibujoTest {
         SectorDibujo sectorDibujo = new SectorDibujo();
         Direccion izquierda = new DireccionIzquierda();
 
-        sectorDibujo.moverPersonajeA(izquierda);
+        sectorDibujo.moverPersonajeHacia(izquierda);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
@@ -60,7 +60,7 @@ class SectorDibujoTest {
         SectorDibujo sectorDibujo = new SectorDibujo();
         Direccion derecha = new DireccionDerecha();
 
-        sectorDibujo.moverPersonajeA(derecha);
+        sectorDibujo.moverPersonajeHacia(derecha);
         Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
 
         assertEquals(posicionFinal, posicionDestino);
