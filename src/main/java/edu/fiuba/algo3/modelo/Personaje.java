@@ -9,14 +9,15 @@ public class Personaje {
         this.sectorDibujo = new SectorDibujo(); //El constructor deberia recibir el sector dibujo por parametro
     }
 
-    public void bajarLapiz() { this.lapiz = new LapizAbajo(); }
+    public void bajarLapiz() { lapiz.bajarLapiz(); }
 
-    public void subirLapiz() { this.lapiz = new LapizArriba(); }
+    public void subirLapiz() { lapiz.subirLapiz(); }
 
     public int moverseHacia(Direccion unaDireccion){
-        int resultadoDelDibujo = this.dibujar();
-        this.sectorDibujo.moverPersonajeA(unaDireccion);
-        return resultadoDelDibujo; }
+        this.dibujar();
+        this.sectorDibujo.moverPersonajeHacia(unaDireccion);
+        return this.dibujar();
+    }
 
     protected Posicion obtenerPosicion() { return this.sectorDibujo.obtenerPosicionDelPersonaje(); }
 
