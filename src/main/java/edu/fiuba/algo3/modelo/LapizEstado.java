@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-public interface Lapiz {
+public interface LapizEstado {
     int utilizarSobre(Posicion posicion);
 }
