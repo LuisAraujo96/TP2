@@ -28,8 +28,8 @@ public class SectorDibujo {
     }
 
     public void cambiarPosicionDePersonajeHacia(Direccion unaDireccion) {
-        this.xDelPersonaje = (this.xDelPersonaje + unaDireccion.direccionEnX()) % this.extensionDeLaMatriz;
-        this.yDelPersonaje = (this.yDelPersonaje - unaDireccion.direccionEnY()) % this.extensionDeLaMatriz;
+        this.xDelPersonaje = Math.floorMod(this.xDelPersonaje + unaDireccion.direccionEnX(), this.extensionDeLaMatriz);
+        this.yDelPersonaje = Math.floorMod(this.yDelPersonaje - unaDireccion.direccionEnY(), this.extensionDeLaMatriz);
     }
 
     //El Sector Dibujo esta compuesto por una matriz donde cada posicion este llena de 0's,
