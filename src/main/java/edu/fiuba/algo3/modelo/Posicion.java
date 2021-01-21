@@ -1,27 +1,25 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Objects;
-
 public class Posicion {
     private int x;
     private int y;
-    private int representacion;
+    private Representacion representacion;
 
     public Posicion(int unaCoordenada, int otraCoordenada){
         this.x = unaCoordenada;
         this.y = otraCoordenada;
-        this.representacion = 0;
+        this.representacion = new SinDibujar();
     }
 
-    public void dibujar(){ this.representacion = 1; }
+    public void dibujar(){ this.representacion = new Dibujada(); }
 
-    public int representar(){ return this.representacion; }
+    public int representar(){ return this.representacion.representar(); }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Posicion posicion = (Posicion) o;
-        return x == posicion.x && y == posicion.y && representacion == posicion.representacion;
+        return x == posicion.x && y == posicion.y && representacion.representar() == posicion.representacion.representar();
     }
 }

@@ -1,22 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
 public class Personaje {
-    private Lapiz lapiz;
+    private HerramientaDeDibujo lapiz;
     private SectorDibujo sectorDibujo;
 
-    public Personaje(Lapiz unLapiz){
+    public Personaje(HerramientaDeDibujo unLapiz){
         this.lapiz = unLapiz;
         this.sectorDibujo = new SectorDibujo(); //El constructor deberia recibir el sector dibujo por parametro
     }
 
-    public void bajarLapiz() { this.lapiz = new LapizAbajo(); }
+    public void bajarLapiz() { lapiz.bajarHerramienta(); }
 
-    public void subirLapiz() { this.lapiz = new LapizArriba(); }
+    public void subirLapiz() { lapiz.subirHerramienta(); }
 
     public int moverseHacia(Direccion unaDireccion){
-        int resultadoDelDibujo = this.dibujar();
-        this.sectorDibujo.moverPersonajeA(unaDireccion);
-        return resultadoDelDibujo; }
+        this.dibujar();
+        this.sectorDibujo.cambiarPosicionDePersonajeHacia(unaDireccion);
+        return this.dibujar();
+    }
 
     protected Posicion obtenerPosicion() { return this.sectorDibujo.obtenerPosicionDelPersonaje(); }
 

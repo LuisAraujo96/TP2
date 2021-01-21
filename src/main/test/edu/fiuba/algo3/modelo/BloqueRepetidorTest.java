@@ -8,7 +8,7 @@ public class BloqueRepetidorTest {
 
     @Test
     public void test01RepitoMovimientoHaciaArriba(){
-        Personaje personaje = new Personaje(new LapizArriba());
+        Personaje personaje = new Personaje(new Lapiz());
         BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
         bloqueRepetidor.agregarBloque(new BloqueArriba());
         Posicion posicionDestino = new Posicion(0,2);
@@ -20,7 +20,7 @@ public class BloqueRepetidorTest {
 
     @Test
     public void test02RepitoMovimientoHaciaAbajo(){
-        Personaje personaje = new Personaje(new LapizArriba());
+        Personaje personaje = new Personaje(new Lapiz());
         BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
         bloqueRepetidor.agregarBloque(new BloqueAbajo());
         Posicion posicionDestino = new Posicion(0,-2);
@@ -32,7 +32,7 @@ public class BloqueRepetidorTest {
 
     @Test
     public void test03RepitoMovimientoHaciaLaDerecha(){
-        Personaje personaje = new Personaje(new LapizArriba());
+        Personaje personaje = new Personaje(new Lapiz());
         BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
         bloqueRepetidor.agregarBloque(new BloqueDerecha());
         Posicion posicionDestino = new Posicion(2,0);
@@ -44,7 +44,7 @@ public class BloqueRepetidorTest {
 
     @Test
     public void test04RepitoMovimientoHaciaLaIzquierda(){
-        Personaje personaje = new Personaje(new LapizArriba());
+        Personaje personaje = new Personaje(new Lapiz());
         BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
         bloqueRepetidor.agregarBloque(new BloqueIzquierda());
         Posicion posicionDestino = new Posicion(-2,0);
@@ -56,7 +56,7 @@ public class BloqueRepetidorTest {
 
     @Test
     public void test05RepitoLapizArriba(){
-        Personaje personaje = new Personaje(new LapizArriba());
+        Personaje personaje = new Personaje(new Lapiz());
         BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
         bloqueRepetidor.agregarBloque(new BloqueLapizArriba());
 
@@ -68,7 +68,7 @@ public class BloqueRepetidorTest {
 
     @Test
     public void test06RepitoLapizAbajo(){
-        Personaje personaje = new Personaje(new LapizArriba());
+        Personaje personaje = new Personaje(new Lapiz());
         BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
         bloqueRepetidor.agregarBloque(new BloqueLapizAbajo());
 

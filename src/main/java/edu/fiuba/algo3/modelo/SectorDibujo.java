@@ -1,33 +1,35 @@
 package edu.fiuba.algo3.modelo;
 
 public class SectorDibujo {
+    private int extensionDeLaMatriz;
     private Posicion matrizDePosiciones[][];
-    private int extensionDeLaMatriz = 11;
     private int yDelPersonaje;
     private int xDelPersonaje;
 
     public SectorDibujo(){
-        int ejeMedio = (extensionDeLaMatriz / 2); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
+        this.extensionDeLaMatriz = 101; //Matriz de 101x101. Usar numeros impares para la matriz unicamente
+        int extremoYPositivo = (this.extensionDeLaMatriz / 2); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
+        int extremoXNegativo = (this.extensionDeLaMatriz / 2) * (-1); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
 
-        matrizDePosiciones = new Posicion[extensionDeLaMatriz][extensionDeLaMatriz];
+        this.matrizDePosiciones = new Posicion[extensionDeLaMatriz][extensionDeLaMatriz];
 
-        for(int fila = 0; fila < extensionDeLaMatriz; fila++){
-            for(int columna = 0; columna < extensionDeLaMatriz; columna++){
-                matrizDePosiciones[columna][fila] = new Posicion(columna - ejeMedio, ejeMedio - fila);
+        for(int fila = 0; fila < this.extensionDeLaMatriz; fila++){
+            for(int columna = 0; columna < this.extensionDeLaMatriz; columna++){
+                this.matrizDePosiciones[fila][columna] = new Posicion(extremoXNegativo + columna, extremoYPositivo - fila);
             }
         }
 
-        yDelPersonaje = ejeMedio;
-        xDelPersonaje = ejeMedio;
+        this.yDelPersonaje = (this.extensionDeLaMatriz / 2);
+        this.xDelPersonaje = (this.extensionDeLaMatriz / 2);
     }
 
     public Posicion obtenerPosicionDelPersonaje() {
-        return matrizDePosiciones[xDelPersonaje][yDelPersonaje];
+        return this.matrizDePosiciones[this.yDelPersonaje][this.xDelPersonaje];
     }
 
-    public void moverPersonajeA(Direccion unaDireccion) {
-        xDelPersonaje += unaDireccion.direccionEnX();
-        yDelPersonaje -= unaDireccion.direccionEnY();
+    public void cambiarPosicionDePersonajeHacia(Direccion unaDireccion) {
+        this.xDelPersonaje = (this.xDelPersonaje + unaDireccion.direccionEnX()) % this.extensionDeLaMatriz;
+        this.yDelPersonaje = (this.yDelPersonaje - unaDireccion.direccionEnY()) % this.extensionDeLaMatriz;
     }
 
     //El Sector Dibujo esta compuesto por una matriz donde cada posicion este llena de 0's,
