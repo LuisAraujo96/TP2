@@ -4,5 +4,4 @@ public interface ContenedorDeBloques {
 
     void agregarBloque(Bloque bloque);
 
-    Bloque removerBloque();
 }
