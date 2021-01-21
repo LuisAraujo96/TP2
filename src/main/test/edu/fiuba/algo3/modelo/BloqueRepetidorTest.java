@@ -80,7 +80,7 @@ public class BloqueRepetidorTest {
 
     @Test
     public void test07RepitoVariosMovimientos(){
-        Personaje personaje = new Personaje(new LapizArriba());
+        Personaje personaje = new Personaje(new Lapiz());
         BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
 
         bloqueRepetidor.agregarBloque(new BloqueArriba());
