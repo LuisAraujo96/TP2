@@ -77,4 +77,20 @@ public class BloqueRepetidorTest {
 
         assertEquals(1, resultado);
     }
+
+    @Test
+    public void test07RepitoVariosMovimientos(){
+        Personaje personaje = new Personaje(new LapizArriba());
+        BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
+
+        bloqueRepetidor.agregarBloque(new BloqueArriba());
+        bloqueRepetidor.agregarBloque(new BloqueArriba());
+        bloqueRepetidor.agregarBloque(new BloqueAbajo());
+
+        Posicion posicionDestino = new Posicion(0,2);
+
+        bloqueRepetidor.ejecutarSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
+    }
 }

@@ -1,21 +1,30 @@
 package edu.fiuba.algo3.modelo;
-public class BloqueRepetidor implements Bloque{
+
+public class BloqueRepetidor implements Bloque, ContenedorDeBloques{
 
     private int cantidadDeRepeticiones;
-    private Bloque bloqueARepetir;
+    private BloqueAlgoritmo bloqueAlgoritmo;
 
     public BloqueRepetidor(int unaCantidad){
-        cantidadDeRepeticiones = unaCantidad;
+        this.cantidadDeRepeticiones = unaCantidad;
+        this.bloqueAlgoritmo = new BloqueAlgoritmo();
     }
 
     @Override
     public void ejecutarSobre(Personaje personaje){
-        for (int iteracion = 0; iteracion < cantidadDeRepeticiones; ++iteracion){
-            bloqueARepetir.ejecutarSobre(personaje);
+
+        for (int iteracion = 0; iteracion < cantidadDeRepeticiones; ++iteracion) {
+            bloqueAlgoritmo.ejecutarSobre(personaje);
         }
     }
 
-    public void agregarBloque(Bloque unBloque){
-        bloqueARepetir = unBloque;
+    @Override
+    public void agregarBloque(Bloque unBloque) {
+        bloqueAlgoritmo.agregarBloque(unBloque);
+    }
+
+    @Override
+    public Bloque removerBloque() {
+        return bloqueAlgoritmo.removerBloque();
     }
 }
