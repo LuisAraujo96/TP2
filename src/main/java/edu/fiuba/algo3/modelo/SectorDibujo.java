@@ -7,7 +7,7 @@ public class SectorDibujo {
     private int xDelPersonaje;
 
     public SectorDibujo(){
-        this.extensionDeLaMatriz = 101; //Matriz de 101x101. Usar numeros impares para la matriz unicamente
+        this.extensionDeLaMatriz = 21; //Matriz de 21x21. Usar numeros impares para la matriz unicamente
         int extremoYPositivo = (this.extensionDeLaMatriz / 2); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
         int extremoXNegativo = (this.extensionDeLaMatriz / 2) * (-1); //Calculo que sirve para que cada posicion de la matriz tenga un x e y correcto
 
