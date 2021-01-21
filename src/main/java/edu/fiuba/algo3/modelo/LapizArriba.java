@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class LapizArriba implements Lapiz {
+public class LapizArriba implements LapizEstado {
 
     @Override
     public int utilizarSobre(Posicion posicion) {

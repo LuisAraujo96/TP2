@@ -8,7 +8,7 @@ class BloqueIzquierdaTest {
 
     @Test
     public void test01MoverAlPersonajeAIzquierdaLoDejaEnLaPosicionMenosUnoYCero(){
-        LapizArriba lapiz = new LapizArriba();
+        Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
         Posicion posicionDestino = new Posicion(-1,0);
@@ -20,7 +20,7 @@ class BloqueIzquierdaTest {
 
     @Test
     public void test02MoverAlPersonajeAIzquierdaYADerechaLoDejaEnLaPosicionCeroYCero(){
-        LapizArriba lapiz = new LapizArriba();
+        Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
         BloqueDerecha bloqueDerecha = new BloqueDerecha();
@@ -34,7 +34,7 @@ class BloqueIzquierdaTest {
 
     @Test
     public void test03MoverAlPersonajeAIzquierdaCincoVecesLoDejaEnLaPosicionMenosCincoYCero(){
-        LapizArriba lapiz = new LapizArriba();
+        Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
 
