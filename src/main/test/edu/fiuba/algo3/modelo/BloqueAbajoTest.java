@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class BloqueAbajoTest {
 
     @Test
-        public void test01MoverAlPersonajeAbajoLoDejaEnLaPosicionCeroYMenosUno(){
+    public void test01MoverAlPersonajeAbajoLoDejaEnLaPosicionCeroYMenosUno(){
         Lapiz lapiz = new Lapiz();
         Personaje personaje = new Personaje(lapiz);
         BloqueAbajo bloqueAbajo = new BloqueAbajo();
