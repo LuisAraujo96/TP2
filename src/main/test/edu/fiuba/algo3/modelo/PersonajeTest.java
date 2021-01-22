@@ -8,8 +8,7 @@ class PersonajeTest {
 
     @Test
     public void test01UnPersonajeDibujaConElLapizArribaYComoResultadoDevuelve0(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         int resultado = personaje.dibujar();
 
@@ -18,8 +17,7 @@ class PersonajeTest {
 
     @Test
     public void test02UnPersonajeSubeSuLapizDibujaConElYComoResultadoDevuelve0(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.subirLapiz();
         int resultado = personaje.dibujar();
@@ -29,8 +27,7 @@ class PersonajeTest {
 
     @Test
     public void test03UnPersonajeBajaSuLapizDibujaConElYComoResultadoDevuelve1(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.bajarLapiz();
         int resultado = personaje.dibujar();
@@ -40,8 +37,7 @@ class PersonajeTest {
 
     @Test
     public void test04UnPersonajeSubeYBajaSuLapizDibujaConElYComoResultadoDevuelve1(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.subirLapiz();
         personaje.bajarLapiz();
@@ -52,8 +48,7 @@ class PersonajeTest {
 
     @Test
     public void test05UnPersonajeBajaYSubeSuLapizDibujaConElYComoResultadoDevuelve0(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.bajarLapiz();
         personaje.subirLapiz();
@@ -64,8 +59,7 @@ class PersonajeTest {
 
     @Test
     public void test06UnPersonajeSubeBajaYSubeSuLapizDibujaConElYComoResultadoDevuelve0(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.subirLapiz();
         personaje.bajarLapiz();
@@ -77,8 +71,7 @@ class PersonajeTest {
 
     @Test
     public void test07UnPersonajeBajaSubeYBajaSuLapizDibujaConElYComoResultadoDevuelve1(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.bajarLapiz();
         personaje.subirLapiz();
@@ -90,8 +83,7 @@ class PersonajeTest {
 
     @Test
     public void test08LaPosicionObtenidaDeUnPersonajeRecienCreadoEsLaPosicionCeroCero(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         Posicion posicionOrigen = new Posicion(0,0);
 
@@ -100,8 +92,7 @@ class PersonajeTest {
 
     @Test
     public void test09LaPosicionObtenidaDelPersonajeLuegoDeDibujarseConUnLapizArribaSeRepresentaConUn0(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.dibujar();
         Posicion posicionOrigen = personaje.obtenerPosicion();
@@ -111,8 +102,7 @@ class PersonajeTest {
 
     @Test
     public void test10LaPosicionObtenidaDelPersonajeLuegoDeSubirElLapizYDibujarlaSeRepresentaConUn0(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.subirLapiz();
         personaje.dibujar();
@@ -123,8 +113,7 @@ class PersonajeTest {
 
     @Test
     public void test11LaPosicionObtenidaDelPersonajeLuegoDeBajarElLapizYDibujarlaSeRepresentaConUn1(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
         personaje.bajarLapiz();
         personaje.dibujar();
@@ -135,8 +124,7 @@ class PersonajeTest {
 
     @Test
     public void test12LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaArribaEsLaPosicionCeroUno(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Posicion posicionDestino = new Posicion(0, 1);
         Direccion arriba = new DireccionArriba();
 
@@ -147,8 +135,7 @@ class PersonajeTest {
 
     @Test
     public void test13LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaAbajoEsLaPosicionCeroMenosUno(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Posicion posicionDestino = new Posicion(0, -1);
         Direccion abajo = new DireccionAbajo();
 
@@ -159,8 +146,7 @@ class PersonajeTest {
 
     @Test
     public void test14LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaIzquierdaEsLaPosicionMenosUnoCero(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Posicion posicionDestino = new Posicion(-1, 0);
         Direccion izquierda = new DireccionIzquierda();
 
@@ -171,8 +157,7 @@ class PersonajeTest {
 
     @Test
     public void test15LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaDerechaEsLaPosicionUnoCero(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Posicion posicionDestino = new Posicion(1, 0);
         Direccion derecha = new DireccionDerecha();
 
@@ -183,8 +168,7 @@ class PersonajeTest {
 
     @Test
     public void test16MuevoElPersonajeHaciaArribaConElLapizArribaYNoDibujaNada(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion arriba = new DireccionArriba();
 
         int resultado = personaje.moverseHacia(arriba);
@@ -194,8 +178,7 @@ class PersonajeTest {
 
     @Test
     public void test17MuevoElPersonajeHaciaAbajoConElLapizArribaYNoDibujaNada(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion abajo = new DireccionAbajo();
 
         int resultado = personaje.moverseHacia(abajo);
@@ -205,8 +188,7 @@ class PersonajeTest {
 
     @Test
     public void test18MuevoElPersonajeHaciaIzquierdaConElLapizArribaYNoDibujaNada(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion izquierda = new DireccionIzquierda();
 
         int resultado = personaje.moverseHacia(izquierda);
@@ -216,8 +198,7 @@ class PersonajeTest {
 
     @Test
     public void test19MuevoElPersonajeHaciaDerechaConElLapizArribaYNoDibujaNada(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion derecha = new DireccionDerecha();
 
         int resultado = personaje.moverseHacia(derecha);
@@ -227,8 +208,7 @@ class PersonajeTest {
 
     @Test
     public void test20MuevoElPersonajeHaciaArribaConElLapizAbajoYSiDibuja(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion arriba = new DireccionArriba();
 
         personaje.bajarLapiz();
@@ -239,8 +219,7 @@ class PersonajeTest {
 
     @Test
     public void test21MuevoElPersonajeHaciaAbajoConElLapizAbajoYSiDibuja(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion abajo = new DireccionAbajo();
 
         personaje.bajarLapiz();
@@ -251,8 +230,7 @@ class PersonajeTest {
 
     @Test
     public void test22MuevoElPersonajeHaciaIzquierdaConElLapizAbajoYSiDibuja(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion izquierda = new DireccionIzquierda();
 
         personaje.bajarLapiz();
@@ -263,8 +241,7 @@ class PersonajeTest {
 
     @Test
     public void test23MuevoElPersonajeHaciaDerechaConElLapizAbajoYSiDibuja(){
-        Lapiz lapiz = new Lapiz();
-        Personaje personaje = new Personaje(lapiz);
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         Direccion derecha = new DireccionDerecha();
 
         personaje.bajarLapiz();

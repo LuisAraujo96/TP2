@@ -4,9 +4,9 @@ public class Personaje {
     private HerramientaDeDibujo lapiz;
     private SectorDibujo sectorDibujo;
 
-    public Personaje(HerramientaDeDibujo unLapiz){
+    public Personaje(HerramientaDeDibujo unLapiz, SectorDibujo sectorDibujo){
         this.lapiz = unLapiz;
-        this.sectorDibujo = new SectorDibujo(); //El constructor deberia recibir el sector dibujo por parametro
+        this.sectorDibujo = sectorDibujo;
     }
 
     public void bajarLapiz() { lapiz.bajarHerramienta(); }
