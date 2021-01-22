@@ -69,49 +69,45 @@ class SectorDibujoTest {
     @Test
     public void test06MoverAlPersonajeDesdeLaPosicion10Y0ADerechaLoDejaEnLaPosicion10NegativoY0(){
         Posicion posicionFinal = new Posicion(-10, 0);
-        Personaje personaje = new Personaje(new Lapiz());
-        //LLega a (10,0) y luego se mueve una ves mas a la derecha
-        BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(11);
-        bloqueRepetidor.agregarBloque(new BloqueDerecha());
-        bloqueRepetidor.ejecutarSobre(personaje);
+        SectorDibujo sectorDibujo = new SectorDibujo();
 
-        assertEquals(posicionFinal, personaje.obtenerPosicion());
+        for (int i = 0; i < 11; ++i)
+            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionDerecha());
+
+        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
     }
 
     @Test
     public void test07MoverAlPersonajeDesdeLaPosicion0Y10ArribaLoDejaEnLaPosicion0Y10Negativo(){
         Posicion posicionFinal = new Posicion(0, -10);
-        Personaje personaje = new Personaje(new Lapiz());
-        //LLega a (0,10) y luego se mueve una ves mas arriba
-        BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(11);
-        bloqueRepetidor.agregarBloque(new BloqueArriba());
-        bloqueRepetidor.ejecutarSobre(personaje);
+        SectorDibujo sectorDibujo = new SectorDibujo();
 
-        assertEquals(posicionFinal, personaje.obtenerPosicion());
+        for (int i = 0; i < 11; ++i)
+            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionArriba());
+
+        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
     }
 
     @Test
     public void test08MoverAlPersonajeDesdeLaPosicion10NegativoY0ALaIzquierdaLoDejaEnLaPosicion10Y0(){
         Posicion posicionFinal = new Posicion(10, 0);
-        Personaje personaje = new Personaje(new Lapiz());
-        //LLega a (-10,0) y luego se mueve una ves mas a la izquierda
-        BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(11);
-        bloqueRepetidor.agregarBloque(new BloqueIzquierda());
-        bloqueRepetidor.ejecutarSobre(personaje);
+        SectorDibujo sectorDibujo = new SectorDibujo();
 
-        assertEquals(posicionFinal, personaje.obtenerPosicion());
+        for (int i = 0; i < 11; ++i)
+            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionIzquierda());
+
+        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
     }
 
     @Test
     public void test09MoverAlPersonajeDesdeLaPosicion0Y10NegativoAbajoLoDejaEnLaPosicion0Y10() {
         Posicion posicionFinal = new Posicion(0, 10);
-        Personaje personaje = new Personaje(new Lapiz());
-        //LLega a (-10,0) y luego se mueve una ves mas a la izquierda
-        BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(11);
-        bloqueRepetidor.agregarBloque(new BloqueAbajo());
-        bloqueRepetidor.ejecutarSobre(personaje);
+        SectorDibujo sectorDibujo = new SectorDibujo();
 
-        assertEquals(posicionFinal, personaje.obtenerPosicion());
+        for (int i = 0; i < 11; ++i)
+            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionAbajo());
+
+        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
     }
 
 }
