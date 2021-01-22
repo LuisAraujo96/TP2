@@ -6,8 +6,5 @@ public class LapizAbajo implements LapizEstado {
     public int utilizarSobre(Posicion posicion) {
         posicion.dibujar();
         return posicion.representar();
-        //Acá debería pintar el dibujo con un 1 en esa posición, sin importar que contenga la matriz
-        //del SectorDibujo previamente en esa posición.
-        //Para mas info revisar la clase SectorDibujo.
     }
 }
