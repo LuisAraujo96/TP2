@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Bloques;
+
+import edu.fiuba.algo3.modelo.Personaje;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;

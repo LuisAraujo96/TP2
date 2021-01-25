@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.HerramientaDeDibujo;
+
+import edu.fiuba.algo3.modelo.Posicion.Posicion;
 
 public class LapizArriba implements LapizEstado {
 

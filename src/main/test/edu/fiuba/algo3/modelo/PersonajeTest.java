@@ -1,5 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bloques.BloqueAbajo;
+import edu.fiuba.algo3.modelo.Bloques.BloqueArriba;
+import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
+import edu.fiuba.algo3.modelo.Bloques.BloqueIzquierda;
+import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.*;
+import edu.fiuba.algo3.modelo.HerramientaDeDibujo.Lapiz;
+import edu.fiuba.algo3.modelo.Juego.SectorDibujo;
+import edu.fiuba.algo3.modelo.Posicion.Posicion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -248,5 +256,65 @@ class PersonajeTest {
         int resultado = personaje.moverseHacia(derecha);
 
         assertEquals(1, resultado);
+    }
+
+
+    @Test
+    // test de integración
+    public void test24MoverElPersonajeConBloquesHaciaLaDerechaConLapizAbajoDebeDibujarYLuegoMoverloALaDerechaConLapizArribaNoDebeDibujar(){
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+
+        personaje.bajarLapiz();
+        bloqueDerecha.ejecutarSobre(personaje);
+
+        int resultadoPrimerMovimiento = personaje.obtenerPosicion().representar();
+
+        personaje.subirLapiz();
+        bloqueDerecha.ejecutarSobre(personaje);
+        int resultadoSegundoMovimiento = personaje.obtenerPosicion().representar();
+
+        assertEquals(1, resultadoPrimerMovimiento);
+        assertEquals(0, resultadoSegundoMovimiento);
+    }
+
+    @Test
+    public void test25MoverElPersonaje4VecesHaciaLaDerechaConLapizArribaNoDebeDibujarNingunaPosicion(){
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+
+
+        bloqueDerecha.ejecutarSobre(personaje);
+        int resultadoPrimerMovimiento = personaje.obtenerPosicion().representar();
+        bloqueDerecha.ejecutarSobre(personaje);
+        int resultadoSegundoMovimiento = personaje.obtenerPosicion().representar();
+        bloqueDerecha.ejecutarSobre(personaje);
+        int resultadoTercerMovimiento = personaje.obtenerPosicion().representar();
+        bloqueDerecha.ejecutarSobre(personaje);
+        int resultadoCuartoMovimiento = personaje.obtenerPosicion().representar();
+
+        assertEquals(0, resultadoPrimerMovimiento);
+        assertEquals(0, resultadoSegundoMovimiento);
+        assertEquals(0, resultadoTercerMovimiento);
+        assertEquals(0, resultadoCuartoMovimiento);
+    }
+
+
+    @Test
+    public void test26MuevoConBloquesElPersonajeEnVariasDireccionesPeroDebeTerminarEnSuPosicionOrigen(){
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+        BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
+        BloqueArriba bloqueArriba = new BloqueArriba();
+        BloqueAbajo bloqueAbajo = new BloqueAbajo();
+
+        Posicion posicionOrigen = personaje.obtenerPosicion();
+        bloqueDerecha.ejecutarSobre(personaje);
+        bloqueIzquierda.ejecutarSobre(personaje);
+        bloqueArriba.ejecutarSobre(personaje);
+        bloqueAbajo.ejecutarSobre(personaje);
+
+        assertEquals(posicionOrigen, personaje.obtenerPosicion());
+
     }
 }

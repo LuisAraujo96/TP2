@@ -1,4 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Bloques;
+
+import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.Direccion;
+import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.DireccionIzquierda;
+import edu.fiuba.algo3.modelo.Personaje;
 
 public class BloqueIzquierda implements Bloque{
 
