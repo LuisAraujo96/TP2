@@ -93,4 +93,30 @@ public class BloqueRepetidorTest {
 
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
+
+    @Test
+    public void testComplejo (){
+        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
+        BloqueRepetidor zigzag = new BloqueRepetidor(2);
+
+        zigzag.agregarBloque(new BloqueDerecha());
+        zigzag.agregarBloque(new BloqueArriba());
+        zigzag.agregarBloque(new BloqueIzquierda());
+        zigzag.agregarBloque(new BloqueArriba());
+
+        BloqueRepetidor bajar = new BloqueRepetidor(4);
+
+        bajar.agregarBloque(new BloqueAbajo());
+
+        BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
+
+        bloqueRepetidor.agregarBloque( zigzag );
+        bloqueRepetidor.agregarBloque( bajar );
+        bloqueRepetidor.agregarBloque( new BloqueDerecha());
+        bloqueRepetidor.agregarBloque( new BloqueDerecha());
+
+        bloqueRepetidor.ejecutarSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), new Posicion(4,0));
+    }
 }
