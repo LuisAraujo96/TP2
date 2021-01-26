@@ -99,7 +99,7 @@ public class BloqueRepetidorTest {
     }
 
     @Test
-    public void test08AgregoVariosBloquesDeRepeticionDentroDeUnBloqueDeRepeticionYSeRepitenMovimientos (){
+    public void testComplejo (){
         Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
         BloqueRepetidor zigzag = new BloqueRepetidor(2);
 
