@@ -6,8 +6,8 @@ import edu.fiuba.algo3.modelo.Posicion.Posicion;
 public class SectorDibujo {
     private int extensionDeLaMatriz;
     private Posicion matrizDePosiciones[][];
-    private int yDelPersonaje;
-    private int xDelPersonaje;
+    private int filaDelPersonaje;
+    private int columnaDelPersonaje;
 
     public SectorDibujo(){
         this.extensionDeLaMatriz = 21;
@@ -22,16 +22,16 @@ public class SectorDibujo {
             }
         }
 
-        this.yDelPersonaje = (this.extensionDeLaMatriz / 2);
-        this.xDelPersonaje = (this.extensionDeLaMatriz / 2);
+        this.filaDelPersonaje = (this.extensionDeLaMatriz / 2);
+        this.columnaDelPersonaje = (this.extensionDeLaMatriz / 2);
     }
 
     public Posicion obtenerPosicionDelPersonaje() {
-        return this.matrizDePosiciones[this.yDelPersonaje][this.xDelPersonaje];
+        return this.matrizDePosiciones[this.filaDelPersonaje][this.columnaDelPersonaje];
     }
 
     public void cambiarPosicionDePersonajeHacia(Direccion unaDireccion) {
-        this.xDelPersonaje = Math.floorMod(this.xDelPersonaje + unaDireccion.direccionEnX(), this.extensionDeLaMatriz);
-        this.yDelPersonaje = Math.floorMod(this.yDelPersonaje - unaDireccion.direccionEnY(), this.extensionDeLaMatriz);
+        this.columnaDelPersonaje = Math.floorMod(this.columnaDelPersonaje + unaDireccion.columnaDelPersonaje(), this.extensionDeLaMatriz);
+        this.filaDelPersonaje = Math.floorMod(this.filaDelPersonaje - unaDireccion.filaDelPersonaje(), this.extensionDeLaMatriz);
     }
 }
