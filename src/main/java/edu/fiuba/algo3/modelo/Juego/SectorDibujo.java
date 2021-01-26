@@ -31,7 +31,7 @@ public class SectorDibujo {
     }
 
     public void cambiarPosicionDePersonajeHacia(Direccion unaDireccion) {
-        this.columnaDelPersonaje = Math.floorMod(this.columnaDelPersonaje + unaDireccion.columnaDelPersonaje(), this.extensionDeLaMatriz);
-        this.filaDelPersonaje = Math.floorMod(this.filaDelPersonaje - unaDireccion.filaDelPersonaje(), this.extensionDeLaMatriz);
+        this.columnaDelPersonaje = Math.floorMod(this.columnaDelPersonaje + unaDireccion.obtenerColumnaDelPersonaje(), this.extensionDeLaMatriz);
+        this.filaDelPersonaje = Math.floorMod(this.filaDelPersonaje - unaDireccion.obtenerFilaDelPersonaje(), this.extensionDeLaMatriz);
     }
 }

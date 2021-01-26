@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.DireccionesDeMovimiento;
 
 public interface Direccion {
-    int columnaDelPersonaje();
+    int obtenerColumnaDelPersonaje();
 
-    int filaDelPersonaje();
+    int obtenerFilaDelPersonaje();
 }
