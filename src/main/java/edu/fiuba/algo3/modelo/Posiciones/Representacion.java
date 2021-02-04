@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.Posicion;
+package edu.fiuba.algo3.modelo.Posiciones;
 
 public interface Representacion {
 

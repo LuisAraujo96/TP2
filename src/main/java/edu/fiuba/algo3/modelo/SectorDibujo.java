@@ -1,7 +1,7 @@
-package edu.fiuba.algo3.modelo.Juego;
+package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.Direccion;
-import edu.fiuba.algo3.modelo.Posicion.Posicion;
+import edu.fiuba.algo3.modelo.Posiciones.Posicion;
 
 public class SectorDibujo {
     private int extensionDeLaMatriz;

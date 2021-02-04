@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.HerramientaDeDibujo;
+package edu.fiuba.algo3.modelo.HerramientasDeDibujo;
 
-import edu.fiuba.algo3.modelo.Posicion.Posicion;
+import edu.fiuba.algo3.modelo.Posiciones.Posicion;
 
 public interface HerramientaDeDibujo {
 

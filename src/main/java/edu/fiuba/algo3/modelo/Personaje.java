@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.Direccion;
-import edu.fiuba.algo3.modelo.HerramientaDeDibujo.HerramientaDeDibujo;
-import edu.fiuba.algo3.modelo.Juego.SectorDibujo;
-import edu.fiuba.algo3.modelo.Posicion.Posicion;
+import edu.fiuba.algo3.modelo.HerramientasDeDibujo.HerramientaDeDibujo;
+import edu.fiuba.algo3.modelo.Posiciones.Posicion;
 
 public class Personaje {
     private HerramientaDeDibujo lapiz;

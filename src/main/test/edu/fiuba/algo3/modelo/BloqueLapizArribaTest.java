@@ -2,8 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.BloqueLapizAbajo;
 import edu.fiuba.algo3.modelo.Bloques.BloqueLapizArriba;
-import edu.fiuba.algo3.modelo.HerramientaDeDibujo.Lapiz;
-import edu.fiuba.algo3.modelo.Juego.SectorDibujo;
+import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
