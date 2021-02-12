@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Posiciones;
 
+import java.util.Objects;
+
 public class Posicion {
     private int x;
     private int y;
@@ -21,5 +23,10 @@ public class Posicion {
         if (o == null || getClass() != o.getClass()) return false;
         Posicion posicion = (Posicion) o;
         return x == posicion.x && y == posicion.y && representacion.representar() == posicion.representacion.representar();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
