@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo.HerramientasDeDibujo;
 
-import edu.fiuba.algo3.modelo.Posiciones.Posicion;
+import edu.fiuba.algo3.modelo.Posicion;
 
 public interface HerramientaDeDibujo {
 
-    void dibujarLinea(Posicion posicionInicial, Posicion posicionFinal);
+    void dibujar(Posicion posicionInicial, Posicion posicionFinal);
 }

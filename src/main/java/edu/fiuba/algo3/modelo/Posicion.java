@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.Posiciones;
+package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.Direccion;
 
@@ -14,8 +14,8 @@ public class Posicion {
     }
 
     public Posicion obtenerPosicionHacia(Direccion unaDireccion){
-        int nuevaX = this.x + unaDireccion.obtenerColumnaDelPersonaje();
-        int nuevaY = this.y + unaDireccion.obtenerFilaDelPersonaje();
+        int nuevaX = this.x + unaDireccion.cambioEnX();
+        int nuevaY = this.y + unaDireccion.cambioEnY();
 
         return new Posicion(nuevaX, nuevaY);
     }

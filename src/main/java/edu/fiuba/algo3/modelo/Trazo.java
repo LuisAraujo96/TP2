@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Posiciones.Posicion;
-
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class Trazo {
-    HashMap<Posicion, HashSet> lineas;
+    private HashMap<Posicion, HashSet> lineas;
 
     public Trazo(){
         lineas = new HashMap<>();
