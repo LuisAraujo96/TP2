@@ -5,25 +5,23 @@ import edu.fiuba.algo3.modelo.HerramientasDeDibujo.HerramientaDeDibujo;
 import edu.fiuba.algo3.modelo.Posiciones.Posicion;
 
 public class Personaje {
-    private HerramientaDeDibujo lapiz;
-    private SectorDibujo sectorDibujo;
+    private HerramientaDeDibujo herramienta;
+    private Posicion posicionActual;
+    private FormaDeMoverse formaDeMoverse;
 
-    public Personaje(HerramientaDeDibujo unLapiz, SectorDibujo sectorDibujo){
-        this.lapiz = unLapiz;
-        this.sectorDibujo = sectorDibujo;
+    public Personaje(HerramientaDeDibujo unaHerramienta){
+        this.posicionActual = new Posicion(0,0);
+        this.formaDeMoverse = new MoverseSinDibujar();
+        this.herramienta = unaHerramienta;
     }
 
-    public void bajarLapiz() { lapiz.bajarHerramienta(); }
+    public void bajarLapiz() { formaDeMoverse = new MoverseDibujando(herramienta); }
 
-    public void subirLapiz() { lapiz.subirHerramienta(); }
+    public void subirLapiz() { formaDeMoverse = new MoverseSinDibujar(); }
 
-    public int moverseHacia(Direccion unaDireccion){
-        this.dibujar();
-        this.sectorDibujo.cambiarPosicionDePersonajeHacia(unaDireccion);
-        return this.dibujar();
+    public void moverseHacia(Direccion unaDireccion){
+        posicionActual = formaDeMoverse.moverHacia(posicionActual, unaDireccion);
     }
 
-    protected Posicion obtenerPosicion() { return this.sectorDibujo.obtenerPosicionDelPersonaje(); }
-
-    protected int dibujar() { return this.lapiz.utilizarSobre(this.obtenerPosicion()); }
+    protected Posicion obtenerPosicion() { return this.posicionActual; }
 }

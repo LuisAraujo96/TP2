@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BloqueLapizArribaTest {
-
+/*
     @Test
     public void test01CreoUnPersonajeConElLapizArribaYLeOrdenoSubirloIgualmente() {
         Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
@@ -57,4 +57,5 @@ class BloqueLapizArribaTest {
 
         assertEquals(0, resultado);
     }
+ */
 }

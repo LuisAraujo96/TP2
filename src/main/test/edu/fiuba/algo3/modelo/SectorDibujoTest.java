@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SectorDibujoTest {
-
+/*
     @Test
     public void test01AlCrearseElSectorDibujoLaPosicionInicialDelPersonajeEsLaPosicionCeroCero(){
 
@@ -111,5 +111,5 @@ class SectorDibujoTest {
 
         assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
     }
-
+*/
 }
