@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Trazo {
-    HashMap<Posicion, HashSet> lineas;
+    private HashMap<Posicion, HashSet> lineas;
 
     public Trazo(){
         lineas = new HashMap<>();
