@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.Bloques;
 
 import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.Direccion;
 import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.DireccionAbajo;
+import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.DireccionArriba;
 import edu.fiuba.algo3.modelo.Personaje;
 
 public class BloqueAbajo implements Bloque{
@@ -12,7 +13,7 @@ public class BloqueAbajo implements Bloque{
         personaje.moverseHacia(abajo);
     }
 
-
+    @Override
     public void ejecutarInversoSobre(Personaje personaje){
         Direccion arriba = new DireccionArriba();
         personaje.moverseHacia(arriba);

@@ -1,23 +1,23 @@
 package edu.fiuba.algo3.modelo.Bloques;
 
+import edu.fiuba.algo3.modelo.ContenedorDeBloques;
 import edu.fiuba.algo3.modelo.Personaje;
 
-public class BloqueRepetidor implements Bloque {
+public class BloqueRepetidor extends ContenedorDeBloques implements Bloque{
 
-    private ContenedorDeBloques contenedor;
-    private int cantidadDeRepeticiones;
+    private final int cantidadDeRepeticiones;
 
     public BloqueRepetidor(int unaCantidad){
-        this.contenedor = new ContenedorDeBloques();
         this.cantidadDeRepeticiones = unaCantidad;
     }
 
     @Override
     public void ejecutarSobre(Personaje personaje){
-        for (int iteracion = 0; iteracion < cantidadDeRepeticiones; ++iteracion) {
-            this.contenedor.ejecutarBloquesCon(personaje);
-        }
+        for (int i = 0; i < cantidadDeRepeticiones; ++i) this.ejecutar(bloque -> bloque.ejecutarSobre(personaje));
     }
 
-    public void agregarBloque(Bloque unBloque) { this.contenedor.agregarBloque(unBloque); }
+    @Override
+    public void ejecutarInversoSobre(Personaje personaje) {
+        for (int i = 0; i < cantidadDeRepeticiones; ++i) this.ejecutar(bloque -> bloque.ejecutarInversoSobre(personaje));
+    }
 }
