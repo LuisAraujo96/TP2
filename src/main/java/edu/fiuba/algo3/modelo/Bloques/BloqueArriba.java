@@ -11,4 +11,9 @@ public class BloqueArriba implements Bloque {
         Direccion arriba = new DireccionArriba();
         personaje.moverseHacia(arriba);
     }
+
+    public void ejecutarInversoSobre(Personaje personaje){
+        Direccion abajo = new DireccionAbajo();
+        personaje.moverseHacia(abajo);
+    }
 }
