@@ -1,13 +1,5 @@
 package edu.fiuba.algo3.modelo.Entrega2;
 
-import edu.fiuba.algo3.modelo.Bloques.*;
-import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.*;
-import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
-import edu.fiuba.algo3.modelo.Personaje;
-import edu.fiuba.algo3.modelo.Posiciones.Posicion;
-import edu.fiuba.algo3.modelo.SectorDibujo;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Entrega2Test {

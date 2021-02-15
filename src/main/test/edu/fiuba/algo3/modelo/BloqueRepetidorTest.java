@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
-import edu.fiuba.algo3.modelo.Posiciones.Posicion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
