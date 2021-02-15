@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
-import edu.fiuba.algo3.modelo.Bloques.ContenedorDeBloques;
 
-public class SectorAlgoritmo {
+public class SectorAlgoritmo extends ContenedorDeBloques{
 
     private ContenedorDeBloques contenedor;
 
@@ -11,7 +10,8 @@ public class SectorAlgoritmo {
         this.contenedor = new ContenedorDeBloques();
     }
 
-    public void ejecutar(Personaje personaje){ this.contenedor.ejecutarBloquesCon(personaje); }
+    public void ejecutarPrograma (Personaje personaje) { this.ejecutar(bloque -> bloque.ejecutarSobre(personaje)); }
+
 
     public void agregarBloque(Bloque unBloque) { this.contenedor.agregarBloque(unBloque); }
 }
