@@ -48,4 +48,16 @@ class BloqueArribaTest {
 
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
+
+    @Test
+    public void test04MoverAlPersonajeConBloqueArribaInvertidoDebeMoverloHaciaAbajo(){
+        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+        BloqueArriba bloqueArriba = new BloqueArriba();
+        Posicion posicionDestino = new Posicion(0,-1);
+
+
+        bloqueArriba.ejecutarInversoSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
+    }
 }

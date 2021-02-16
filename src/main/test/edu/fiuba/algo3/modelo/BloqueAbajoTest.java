@@ -18,6 +18,7 @@ class BloqueAbajoTest {
         bloqueAbajo.ejecutarSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
+
     }
 
     @Test
@@ -45,6 +46,17 @@ class BloqueAbajoTest {
         bloqueAbajo.ejecutarSobre(personaje);
         bloqueAbajo.ejecutarSobre(personaje);
         bloqueAbajo.ejecutarSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
+    }
+    @Test
+    public void test04MoverAlPersonajeConBloqueAbajoInvertidoDebeMoverloHaciaArriba(){
+        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+        BloqueAbajo bloqueAbajo = new BloqueAbajo();
+        Posicion posicionDestino = new Posicion(0,1);
+
+
+        bloqueAbajo.ejecutarInversoSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }

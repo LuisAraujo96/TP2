@@ -60,6 +60,19 @@ public class BloqueRepetidorTest {
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
+    @Test
+    public void test05RepitoConBloqueMovimientoHaciaLaIzquierdaYAlInvertirElBloqueSeDebeMoverALaDerecha(){
+        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+        BloqueRepetidor bloqueRepetidor = new BloqueRepetidor(2);
+        Posicion posicionDestino = new Posicion(2,0);
+
+        bloqueRepetidor.agregarBloque(new BloqueIzquierda());
+
+        bloqueRepetidor.ejecutarInversoSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
+    }
+
     /*
     @Test
     public void test05RepitoLapizArriba(){
@@ -128,4 +141,6 @@ public class BloqueRepetidorTest {
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(4,0));
     }
+
+
 }
