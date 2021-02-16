@@ -1,22 +1,29 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
+import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
+
+import java.util.HashMap;
 
 public class SectorBloques {
 
-    public Bloque seleccionarBloqueArriba(){return new BloqueArriba(); }
+    private HashMap<String, FabricaDeBloques> menuBloques;
 
-    public Bloque seleccionarBloqueAbajo(){ return new BloqueAbajo(); }
+    public SectorBloques(){
+        this.menuBloques = new HashMap<>();
+        this.menuBloques.put("arriba", new FabricaBloqueArriba());
+        this.menuBloques.put("abajo", new FabricaBloqueAbajo());
+        this.menuBloques.put("izquierda", new FabricaBloqueIzquierda());
+        this.menuBloques.put("derecha", new FabricaBloqueDerecha());
+        this.menuBloques.put("lapizarriba", new FabricaBloqueLapizArriba());
+        this.menuBloques.put("lapizabajo", new FabricaBloqueLapizAbajo());
+        this.menuBloques.put("repetidordoble", new FabricaBloqueRepetidorDoble());
+        this.menuBloques.put("repetidortriple", new FabricaBloqueRepetidorTriple());
+        this.menuBloques.put("inversor", new FabricaBloqueInversor());
+    }
 
-    public Bloque seleccionarBloqueIzquierda(){ return new BloqueIzquierda(); }
-
-    public Bloque seleccionarBloqueDerecha(){ return new BloqueDerecha(); }
-
-    public Bloque seleccionarBloqueLapizArriba(){ return new BloqueLapizArriba(); }
-
-    public Bloque seleccionarBloqueLapizAbajo(){ return new BloqueLapizAbajo(); }
-
-    public Bloque seleccionarBloqueRepetidorDos(){ return new BloqueRepetidor(2); }
-
-    public Bloque seleccionarBloqueRepetidorTres(){ return new BloqueRepetidor(3); }
+    public Bloque seleccionarBloque(String nombreBloque){
+        FabricaDeBloques fabricaSeleccionada = this.menuBloques.get(nombreBloque);
+        return fabricaSeleccionada.crearBloque();
+    }
 }
