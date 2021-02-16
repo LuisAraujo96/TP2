@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
+
 
 /**
  * JavaFX App
@@ -26,6 +26,13 @@ public class App extends Application {
         Label etiquetaDibujo = new Label();
         etiquetaDibujo.setText("Sector Dibujo");
 
+        Button boton1 = new Button();
+        boton1.setText("Seleccionar Bloque");
+        Button boton2 = new Button();
+        boton2.setText("Agregar Bloque");
+        Button boton3 = new Button();
+        boton3.setText("Ejecutar Bloque");
+
         GridPane gridPane = new GridPane();
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setPercentWidth(33);
@@ -34,15 +41,26 @@ public class App extends Application {
         ColumnConstraints col3 = new ColumnConstraints();
         col3.setPercentWidth(33);
         gridPane.getColumnConstraints().addAll(col1,col2,col3);
-
+        RowConstraints rowBase = new RowConstraints();
+        rowBase.setPercentHeight(100);
+        gridPane.getRowConstraints().add(rowBase);
         gridPane.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
-        Pane bloqueStackPane = new StackPane(etiquetaBloques);
-        Pane algoritmoStackPane = new StackPane(etiquetaAlgoritmos);
-        Pane dibujoStackPane = new StackPane(etiquetaDibujo);
 
-        gridPane.add(bloqueStackPane,0,0);
-        gridPane.add(algoritmoStackPane,1,0);
-        gridPane.add(dibujoStackPane,2,0);
+        TilePane bloqueTilePane = new TilePane();
+        TilePane algoritmoTilePane = new TilePane();
+        TilePane dibujoTilePane = new TilePane();
+
+        bloqueTilePane.getChildren().addAll(etiquetaBloques, boton1);
+        algoritmoTilePane.getChildren().addAll(etiquetaAlgoritmos, boton2);
+        dibujoTilePane.getChildren().addAll(etiquetaDibujo, boton3);
+
+        bloqueTilePane.setPrefColumns(1);
+        algoritmoTilePane.setPrefColumns(1);
+        dibujoTilePane.setPrefColumns(1);
+
+        gridPane.add(bloqueTilePane,0,0);
+        gridPane.add(algoritmoTilePane,1,0);
+        gridPane.add(dibujoTilePane,2,0);
 
         Scene scene = new Scene(gridPane,600, 300);
 
