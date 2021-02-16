@@ -1,12 +1,13 @@
 package edu.fiuba.algo3;
 
 import javafx.application.Application;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.*;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
@@ -46,21 +47,22 @@ public class App extends Application {
         gridPane.getRowConstraints().add(rowBase);
         gridPane.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
 
-        TilePane bloqueTilePane = new TilePane();
-        TilePane algoritmoTilePane = new TilePane();
-        TilePane dibujoTilePane = new TilePane();
+        Separator separator1 = new Separator(Orientation.HORIZONTAL);
+        Separator separator2 = new Separator(Orientation.HORIZONTAL);
+        Separator separator3 = new Separator(Orientation.HORIZONTAL);
+        VBox bloqueVBox = new VBox(etiquetaBloques,separator1, boton1);
+        bloqueVBox.setSpacing(10);
+        bloqueVBox.setAlignment(Pos.BASELINE_CENTER);
+        VBox algoritmoVBox = new VBox(etiquetaAlgoritmos,separator2, boton2);
+        algoritmoVBox.setSpacing(10);
+        algoritmoVBox.setAlignment(Pos.BASELINE_CENTER);
+        VBox dibujoVBox = new VBox(etiquetaDibujo,separator3, boton3);
+        dibujoVBox.setSpacing(10);
+        dibujoVBox.setAlignment(Pos.BASELINE_CENTER);
 
-        bloqueTilePane.getChildren().addAll(etiquetaBloques, boton1);
-        algoritmoTilePane.getChildren().addAll(etiquetaAlgoritmos, boton2);
-        dibujoTilePane.getChildren().addAll(etiquetaDibujo, boton3);
-
-        bloqueTilePane.setPrefColumns(1);
-        algoritmoTilePane.setPrefColumns(1);
-        dibujoTilePane.setPrefColumns(1);
-
-        gridPane.add(bloqueTilePane,0,0);
-        gridPane.add(algoritmoTilePane,1,0);
-        gridPane.add(dibujoTilePane,2,0);
+        gridPane.add(bloqueVBox,0,0);
+        gridPane.add(algoritmoVBox,1,0);
+        gridPane.add(dibujoVBox,2,0);
 
         Scene scene = new Scene(gridPane,600, 300);
 
