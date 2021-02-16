@@ -1,14 +1,13 @@
 package edu.fiuba.algo3;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 
 /**
@@ -27,18 +26,25 @@ public class App extends Application {
         Label etiquetaDibujo = new Label();
         etiquetaDibujo.setText("Sector Dibujo");
 
-        VBox contenedorSectorBloques = new VBox(etiquetaBloques);
-        contenedorSectorBloques.setSpacing(10);
-        VBox contenedorSectorAlgoritmo = new VBox(etiquetaAlgoritmos);
-        contenedorSectorAlgoritmo.setSpacing(10);
-        VBox contenedorSectorDibujo = new VBox(etiquetaDibujo);
-        contenedorSectorDibujo.setSpacing(10);
+        GridPane gridPane = new GridPane();
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPercentWidth(33);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPercentWidth(33);
+        ColumnConstraints col3 = new ColumnConstraints();
+        col3.setPercentWidth(33);
+        gridPane.getColumnConstraints().addAll(col1,col2,col3);
 
-        HBox contenedorPrincipal = new HBox(contenedorSectorBloques, contenedorSectorAlgoritmo, contenedorSectorDibujo);
-        contenedorPrincipal.setSpacing(10);
-        contenedorPrincipal.setPadding(new Insets(20));
+        gridPane.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
+        Pane bloqueStackPane = new StackPane(etiquetaBloques);
+        Pane algoritmoStackPane = new StackPane(etiquetaAlgoritmos);
+        Pane dibujoStackPane = new StackPane(etiquetaDibujo);
 
-        Scene scene = new Scene(contenedorPrincipal,500, 700);
+        gridPane.add(bloqueStackPane,0,0);
+        gridPane.add(algoritmoStackPane,1,0);
+        gridPane.add(dibujoStackPane,2,0);
+
+        Scene scene = new Scene(gridPane,600, 300);
 
         stage.setScene(scene);
         stage.show();
