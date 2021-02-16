@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 
 public class ContenedorDeBloques {
 
-    private final ArrayList<Bloque> bloques;
+    protected final ArrayList<Bloque> bloques;
 
     public ContenedorDeBloques(){
         this.bloques = new ArrayList<>();
