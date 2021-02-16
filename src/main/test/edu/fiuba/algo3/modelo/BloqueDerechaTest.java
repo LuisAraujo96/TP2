@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bloques.BloqueAbajo;
 import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
 import edu.fiuba.algo3.modelo.Bloques.BloqueIzquierda;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
@@ -45,6 +46,19 @@ class BloqueDerechaTest {
         bloqueDerecha.ejecutarSobre(personaje);
         bloqueDerecha.ejecutarSobre(personaje);
         bloqueDerecha.ejecutarSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), posicionDestino);
+    }
+
+
+    @Test
+    public void test04MoverAlPersonajeConBloqueDerechaInvertidoDebeMoverloHaciaLaIzquierda(){
+        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+        Posicion posicionDestino = new Posicion(-1,0);
+
+
+        bloqueDerecha.ejecutarInversoSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
