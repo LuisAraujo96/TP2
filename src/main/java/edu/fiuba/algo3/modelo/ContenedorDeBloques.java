@@ -19,9 +19,7 @@ public class ContenedorDeBloques {
         bloques.add(unBloque); 
     }
     
-    public void removerBloque( Bloque unBloque ) {
-        bloques.remove(unBloque);
-    }
+    public void removerBloque() { bloques.remove((bloques.size() - 1)); }
     
     protected void ejecutar(Consumer<Bloque> funcion){
         bloques.forEach(funcion);
