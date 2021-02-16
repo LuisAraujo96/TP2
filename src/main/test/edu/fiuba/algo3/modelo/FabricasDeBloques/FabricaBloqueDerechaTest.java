@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FabricaBloqueDerechaTest {
 
     @Test
-    public void testFabricaBloqueAbajoCreaUnBLoqueAbajo(){
+    public void testFabricaBloqueDerechaCreaUnBLoqueDerecha(){
         Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
         FabricaDeBloques fabrica = new FabricaBloqueDerecha();
         Bloque bloque = fabrica.crearBloque();
