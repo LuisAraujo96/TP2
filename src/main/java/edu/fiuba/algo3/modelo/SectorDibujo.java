@@ -1,13 +1,29 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
+
 public class SectorDibujo {
-    private Trazo trazos;
+    private final HashMap<Posicion, HashSet<Posicion>> trazos;
 
     public SectorDibujo(){
-        trazos = new Trazo();
+        trazos = new HashMap<>();
     }
 
-    public Trazo obtenerTrazos(){
-        return this.trazos;
+    public void agregarTrazo (Posicion inicio, Posicion fin){
+        trazos.putIfAbsent(inicio, new HashSet<>());
+        trazos.putIfAbsent(fin, new HashSet<>());
+
+        trazos.get(inicio).add(fin);
+        trazos.get(fin).add(inicio);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SectorDibujo that = (SectorDibujo) o;
+        return Objects.equals(trazos, that.trazos);
     }
 }

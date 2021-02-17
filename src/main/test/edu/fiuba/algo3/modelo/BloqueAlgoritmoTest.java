@@ -57,13 +57,13 @@ class BloqueAlgoritmoTest {
 
         algoritmo.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(0,1));
-        trazosEsperados.agregarLinea(new Posicion(0,1), new Posicion(1,1));
-        trazosEsperados.agregarLinea(new Posicion(1,1), new Posicion(1,0));
-        trazosEsperados.agregarLinea(new Posicion(1,0), new Posicion(0,0));
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
+        dibujoEsperado.agregarTrazo(new Posicion(0,1), new Posicion(1,1));
+        dibujoEsperado.agregarTrazo(new Posicion(1,1), new Posicion(1,0));
+        dibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(0,0));
 
-        assertEquals(sector.obtenerTrazos(), trazosEsperados);
+        assertEquals(sector, dibujoEsperado);
         assertEquals(personaje.obtenerPosicion(), new Posicion(-1,0));
     }
 
@@ -86,10 +86,10 @@ class BloqueAlgoritmoTest {
 
         algoritmo.ejecutarInversoSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(1,0));
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
 
-        assertEquals(sector.obtenerTrazos(), trazosEsperados);
+        assertEquals(sector, dibujoEsperado);
         assertEquals(personaje.obtenerPosicion(), new Posicion(1,0));
     }
 }
