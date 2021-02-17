@@ -14,26 +14,10 @@ import javafx.stage.Stage;
 /**
  * JavaFX App
  */
+
 public class App extends Application {
 
-    @Override
-    public void start(Stage stage) {
-        stage.setTitle("Algo3 - TP2");
-
-        Label etiquetaBloques = new Label();
-        etiquetaBloques.setText("Sector Bloques");
-        Label etiquetaAlgoritmos = new Label();
-        etiquetaAlgoritmos.setText("Sector Algoritmos");
-        Label etiquetaDibujo = new Label();
-        etiquetaDibujo.setText("Sector Dibujo");
-
-        Button boton1 = new Button();
-        boton1.setText("Seleccionar Bloque");
-        Button boton2 = new Button();
-        boton2.setText("Agregar Bloque");
-        Button boton3 = new Button();
-        boton3.setText("Ejecutar Bloque");
-
+    public GridPane construirGridPaneBase(){
         GridPane gridPane = new GridPane();
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setPercentWidth(33);
@@ -45,7 +29,23 @@ public class App extends Application {
         RowConstraints rowBase = new RowConstraints();
         rowBase.setPercentHeight(100);
         gridPane.getRowConstraints().add(rowBase);
-        gridPane.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
+        gridPane.getStyleClass().add("game-grid");
+        return gridPane;
+    }
+
+    @Override
+    public void start(Stage stage) {
+        stage.setTitle("Algo3 - TP2");
+
+        Label etiquetaBloques = new Label("Sector Bloques");
+        Label etiquetaAlgoritmos = new Label("Sector Algoritmos");
+        Label etiquetaDibujo = new Label("Sector Dibujo");
+
+        Button boton1 = new Button("Seleccionar");
+        Button boton2 = new Button("Ejecutar");
+        Button boton3 = new Button("Limpiar");
+
+        GridPane gridPane = construirGridPaneBase();
 
         Separator separator1 = new Separator(Orientation.HORIZONTAL);
         Separator separator2 = new Separator(Orientation.HORIZONTAL);
@@ -65,7 +65,7 @@ public class App extends Application {
         gridPane.add(dibujoVBox,2,0);
 
         Scene scene = new Scene(gridPane,600, 300);
-
+        scene.getStylesheets().add(String.valueOf(getClass().getClassLoader().getResource("interfaz.css")));
         stage.setScene(scene);
         stage.show();
     }
