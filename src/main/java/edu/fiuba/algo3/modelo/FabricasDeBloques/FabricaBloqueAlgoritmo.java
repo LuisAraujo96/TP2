@@ -12,6 +12,6 @@ public class FabricaBloqueAlgoritmo implements FabricaDeBloques{
     }
 
     @Override
-    public Bloque crearBloque() { return new BloqueAlgoritmo("quitarDeConstructor", this.bloquesAlgoritmo); }
+    public Bloque crearBloque() { return new BloqueAlgoritmo(this.bloquesAlgoritmo); }
 }
 

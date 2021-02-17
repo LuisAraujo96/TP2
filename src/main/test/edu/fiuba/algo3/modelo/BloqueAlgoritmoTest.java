@@ -9,19 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class BloqueAlgoritmoTest {
 
     @Test
-    public void test01BloqueAlgoritmoDevuelveCorrectamenteElNombreConElQueSeCreo () {
-        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo("TEST", new Bloque[0]);
-
-        assertEquals("TEST", algoritmo.obtenerNombre());
-    }
-
-    @Test
-    public void test02BloqueAlgoritmoEjecutaCorrectamenteUnBloque () {
+    public void test01BloqueAlgoritmoEjecutaCorrectamenteUnBloque () {
         Bloque[] bloques = new Bloque[1];
 
         bloques[0] = new BloqueArriba();
 
-        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo("TEST", bloques);
+        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo(bloques);
 
         Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
 
@@ -31,12 +24,12 @@ class BloqueAlgoritmoTest {
     }
 
     @Test
-    public void test03BloqueAlgoritmoEjecutaCorrectamenteElInversoDeUnBloque () {
+    public void test02BloqueAlgoritmoEjecutaCorrectamenteElInversoDeUnBloque () {
         Bloque[] bloques = new Bloque[1];
 
         bloques[0] = new BloqueArriba();
 
-        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo("TEST", bloques);
+        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo(bloques);
 
         Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
 
@@ -46,7 +39,7 @@ class BloqueAlgoritmoTest {
     }
 
     @Test
-    public void test04BloqueAlgoritmoEjecutaCorrectamenteVariosBloque () {
+    public void test03BloqueAlgoritmoEjecutaCorrectamenteVariosBloque () {
         Bloque[] bloques = new Bloque[7];
 
         bloques[0] = new BloqueLapizAbajo();
@@ -57,7 +50,7 @@ class BloqueAlgoritmoTest {
         bloques[5] = new BloqueLapizArriba();
         bloques[6] = new BloqueIzquierda();
 
-        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo("TEST", bloques);
+        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo(bloques);
 
         SectorDibujo sector = new SectorDibujo();
         Personaje personaje = new Personaje(new Lapiz(sector));
@@ -75,7 +68,7 @@ class BloqueAlgoritmoTest {
     }
 
     @Test
-    public void test05BloqueAlgoritmoEjecutaCorrectamenteElInversoDeVariosBloque () {
+    public void test04BloqueAlgoritmoEjecutaCorrectamenteElInversoDeVariosBloque () {
         Bloque[] bloques = new Bloque[7];
 
         bloques[0] = new BloqueLapizAbajo();
@@ -86,7 +79,7 @@ class BloqueAlgoritmoTest {
         bloques[5] = new BloqueLapizArriba();
         bloques[6] = new BloqueIzquierda();
 
-        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo("TEST", bloques);
+        BloqueAlgoritmo algoritmo = new BloqueAlgoritmo(bloques);
 
         SectorDibujo sector = new SectorDibujo();
         Personaje personaje = new Personaje(new Lapiz(sector));
