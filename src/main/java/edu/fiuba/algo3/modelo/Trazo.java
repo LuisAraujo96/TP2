@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Trazo {
-    private HashMap<Posicion, HashSet> lineas;
+    private final HashMap<Posicion, HashSet<Posicion>> lineas;
 
     public Trazo(){
         lineas = new HashMap<>();
     }
 
     public void agregarLinea (Posicion inicio, Posicion fin){
-        lineas.putIfAbsent(inicio, new HashSet<Posicion>());
-        lineas.putIfAbsent(fin, new HashSet<Posicion>());
+        lineas.putIfAbsent(inicio, new HashSet<>());
+        lineas.putIfAbsent(fin, new HashSet<>());
 
         lineas.get(inicio).add(fin);
         lineas.get(fin).add(inicio);
