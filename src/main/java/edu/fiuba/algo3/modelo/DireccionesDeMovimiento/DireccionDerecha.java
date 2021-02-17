@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo.DireccionesDeMovimiento;
 public class DireccionDerecha implements Direccion{
 
     @Override
-    public int obtenerColumnaDelPersonaje() { return 1; }
+    public int cambioEnX() { return 1; }
 
     @Override
-    public int obtenerFilaDelPersonaje() { return 0; }
+    public int cambioEnY() { return 0; }
 }

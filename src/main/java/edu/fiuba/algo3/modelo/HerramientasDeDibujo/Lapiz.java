@@ -1,17 +1,18 @@
 package edu.fiuba.algo3.modelo.HerramientasDeDibujo;
 
-import edu.fiuba.algo3.modelo.Posiciones.Posicion;
+import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.modelo.SectorDibujo;
+import edu.fiuba.algo3.modelo.Trazo;
 
 public class Lapiz implements HerramientaDeDibujo{
-    private LapizEstado lapizEstado;
+    private SectorDibujo dibujo;
 
-    public Lapiz() {
-        this.lapizEstado = new LapizArriba();
+    public Lapiz(SectorDibujo sectorDibujo) {
+        this.dibujo = sectorDibujo;
     }
 
-    public void bajarHerramienta(){ this.lapizEstado = new LapizAbajo(); }
-
-    public void subirHerramienta(){ this.lapizEstado = new LapizArriba(); }
-
-    public int utilizarSobre(Posicion unaPosicion){ return this.lapizEstado.utilizarSobre(unaPosicion); }
+    public void dibujar(Posicion posicionInicial, Posicion posicionFinal){
+        Trazo trazos = this.dibujo.obtenerTrazos();
+        trazos.agregarLinea(posicionInicial, posicionFinal);
+    }
 }

@@ -2,28 +2,28 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.Direccion;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.HerramientaDeDibujo;
-import edu.fiuba.algo3.modelo.Posiciones.Posicion;
+import edu.fiuba.algo3.modelo.Movimientos.MoverseDibujando;
+import edu.fiuba.algo3.modelo.Movimientos.MoverseSinDibujar;
+import edu.fiuba.algo3.modelo.Movimientos.Movimiento;
 
 public class Personaje {
-    private HerramientaDeDibujo lapiz;
-    private SectorDibujo sectorDibujo;
+    private HerramientaDeDibujo herramienta;
+    private Posicion posicion;
+    private Movimiento movimiento;
 
-    public Personaje(HerramientaDeDibujo unLapiz, SectorDibujo sectorDibujo){
-        this.lapiz = unLapiz;
-        this.sectorDibujo = sectorDibujo;
+    public Personaje(HerramientaDeDibujo unaHerramienta){
+        this.posicion = new Posicion(0,0);
+        this.movimiento = new MoverseSinDibujar();
+        this.herramienta = unaHerramienta;
     }
 
-    public void bajarLapiz() { lapiz.bajarHerramienta(); }
+    public void bajarLapiz() { this.movimiento = new MoverseDibujando(herramienta); }
 
-    public void subirLapiz() { lapiz.subirHerramienta(); }
+    public void subirLapiz() { this.movimiento = new MoverseSinDibujar(); }
 
-    public int moverseHacia(Direccion unaDireccion){
-        this.dibujar();
-        this.sectorDibujo.cambiarPosicionDePersonajeHacia(unaDireccion);
-        return this.dibujar();
+    public void moverseHacia(Direccion unaDireccion){
+        this.posicion = this.movimiento.cambiarPosicion(this.posicion, unaDireccion);
     }
 
-    protected Posicion obtenerPosicion() { return this.sectorDibujo.obtenerPosicionDelPersonaje(); }
-
-    protected int dibujar() { return this.lapiz.utilizarSobre(this.obtenerPosicion()); }
+    public Posicion obtenerPosicion() { return this.posicion; }
 }

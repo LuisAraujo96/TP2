@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
 import edu.fiuba.algo3.modelo.Bloques.BloqueLapizAbajo;
 import edu.fiuba.algo3.modelo.Bloques.BloqueLapizArriba;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
@@ -10,51 +11,51 @@ import static org.junit.jupiter.api.Assertions.*;
 class BloqueLapizArribaTest {
 
     @Test
-    public void test01CreoUnPersonajeConElLapizArribaYLeOrdenoSubirloIgualmente() {
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
+    public void test01CreoUnPersonajeYAlMoverseNoDebeDibujar() {
+        SectorDibujo sectorDibujo = new SectorDibujo();
+        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+        bloqueDerecha.ejecutarSobre(personaje);
 
-        bloqueLapizArriba.ejecutarSobre(personaje);
-        int resultado = personaje.dibujar();
-
-        assertEquals(0, resultado);
+        SectorDibujo sectorDibujoVacio = new SectorDibujo();
+        assertEquals(sectorDibujo.obtenerTrazos(), sectorDibujoVacio.obtenerTrazos());
     }
 
     @Test
-    public void test02CreoUnPersonajeConElLapizArribaBajoYSuboSuLapizUsandoBloques() {
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
+    public void test02CreoUnPersonajeConElLapizArribaBajoYSuboSuLapizUsandoBloquesYNoDebeDibujar() {
+        SectorDibujo sectorDibujo = new SectorDibujo();
+        SectorDibujo sectorDibujoVacio = new SectorDibujo();
+
+        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
         BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
 
         bloqueLapizAbajo.ejecutarSobre(personaje);
         bloqueLapizArriba.ejecutarSobre(personaje);
-        int resultado = personaje.dibujar();
 
-        assertEquals(0, resultado);
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+        bloqueDerecha.ejecutarSobre(personaje);
+
+
+        assertEquals(sectorDibujo.obtenerTrazos(), sectorDibujoVacio.obtenerTrazos());
+
     }
 
-    @Test
-    public void test03CreoUnPersonajeYLeOrdenoSubirElLapizDosVeces() {
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
+   @Test
+    public void test03CreoUnPersonajeYLeOrdenoSubirElLapizDosVecesYAlMoverseNoDebeDibujar() {
+       SectorDibujo sectorDibujo = new SectorDibujo();
+       Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+       BloqueLapizArriba bloqueLapizArriba = new BloqueLapizArriba();
+       BloqueDerecha bloqueDerecha = new BloqueDerecha();
 
-        bloqueLapizArriba.ejecutarSobre(personaje);
-        bloqueLapizArriba.ejecutarSobre(personaje);
-        int resultado = personaje.dibujar();
+       bloqueLapizArriba.ejecutarSobre(personaje);
+       bloqueLapizArriba.ejecutarSobre(personaje);
+       bloqueDerecha.ejecutarSobre(personaje);
 
-        assertEquals(0, resultado);
+       SectorDibujo sectorDibujoVacio = new SectorDibujo();
+       assertEquals(sectorDibujo.obtenerTrazos(), sectorDibujoVacio.obtenerTrazos());
+
     }
 
-    @Test
-    public void test04CreoUnPersonajeYLeOrdenoSubirElLapizDosVecesConDosBloquesDistintos() {
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        BloqueLapizArriba bloqueLapizArribaUno = new BloqueLapizArriba();
-        BloqueLapizArriba bloqueLapizArribaDos = new BloqueLapizArriba();
-
-        bloqueLapizArribaUno.ejecutarSobre(personaje);
-        bloqueLapizArribaDos.ejecutarSobre(personaje);
-        int resultado = personaje.dibujar();
-
-        assertEquals(0, resultado);
-    }
 }
