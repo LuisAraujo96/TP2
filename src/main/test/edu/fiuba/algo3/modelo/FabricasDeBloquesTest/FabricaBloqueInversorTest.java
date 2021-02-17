@@ -17,16 +17,16 @@ public class FabricaBloqueInversorTest {
     @Test
     public void testFabricaBloqueInversorCreaUnBLoqueInversor(){
         Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
-        FabricaDeBloques fabrica = new FabricaBloqueInversor();
-        BloqueInversor bloque = (BloqueInversor) fabrica.crearBloque();
+        FabricaDeBloques bloqueFabricador = new FabricaBloqueInversor();
+        BloqueInversor bloqueCreado = (BloqueInversor) bloqueFabricador.crearBloque();
 
-        bloque.agregarBloque(new BloqueAbajo());
+        bloqueCreado.agregarBloque(new BloqueAbajo());
 
-        bloque.ejecutarSobre(personaje);
+        bloqueCreado.ejecutarSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,1));
 
-        bloque.ejecutarInversoSobre(personaje);
+        bloqueCreado.ejecutarInversoSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,0));
     }

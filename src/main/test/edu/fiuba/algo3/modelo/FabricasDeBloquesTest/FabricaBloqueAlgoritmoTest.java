@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo.FabricasDeBloquesTest;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
-import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.DireccionAbajo;
-import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.DireccionArriba;
-import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.DireccionDerecha;
-import edu.fiuba.algo3.modelo.DireccionesDeMovimiento.DireccionIzquierda;
-import edu.fiuba.algo3.modelo.FabricasDeBloques.FabricaBloqueLapizAbajo;
+import edu.fiuba.algo3.modelo.Bloques.BloqueArriba;
+import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
+import edu.fiuba.algo3.modelo.FabricasDeBloques.FabricaBloqueAlgoritmo;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.FabricaDeBloques;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 import edu.fiuba.algo3.modelo.Personaje;
@@ -16,21 +14,20 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FabricaBloqueLapizAbajoTest {
+public class FabricaBloqueAlgoritmoTest {
 
     @Test
-    public void testFabricaBloqueLapizAbajoCreaUnBLoqueLapizAbajo(){
+    public void testFabricaBloqueAlgoritmo(){
+        Bloque[] bloques = new Bloque[2];
+
+        bloques[0] = new BloqueArriba();
+        bloques[1] = new BloqueDerecha();
+
+        FabricaDeBloques bloqueFabricador = new FabricaBloqueAlgoritmo(bloques);
         SectorDibujo sector = new SectorDibujo();
         Personaje personaje = new Personaje(new Lapiz(sector));
-        FabricaDeBloques bloqueFabricador = new FabricaBloqueLapizAbajo();
+
         Bloque bloqueCreado = bloqueFabricador.crearBloque();
-
-        bloqueCreado.ejecutarSobre(personaje);
-
-        personaje.moverseHacia(new DireccionArriba());
-        personaje.moverseHacia(new DireccionDerecha());
-        personaje.moverseHacia(new DireccionAbajo());
-        personaje.moverseHacia(new DireccionIzquierda());
 
         Trazo trazosEsperados = new Trazo();
 
@@ -39,7 +36,15 @@ public class FabricaBloqueLapizAbajoTest {
         trazosEsperados.agregarLinea(new Posicion(0,1), new Posicion(1,1));
         trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(1,0));
 
+        personaje.bajarLapiz();
+        bloqueCreado.ejecutarSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), new Posicion(1,1));
+
+        bloqueCreado.ejecutarInversoSobre(personaje);
+
+        assertEquals(personaje.obtenerPosicion(), new Posicion(0,0));
+
         assertEquals(trazosEsperados, sector.obtenerTrazos());
     }
-
 }

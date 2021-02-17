@@ -19,13 +19,14 @@ public class FabricaBloqueLapizArribaTest {
     public void testFabricaBloqueLapizArribaCreaUnBLoqueLapizArriba(){
         SectorDibujo sector = new SectorDibujo();
         Personaje personaje = new Personaje(new Lapiz(sector));
-        FabricaDeBloques fabrica = new FabricaBloqueLapizArriba();
+        FabricaDeBloques bloqueFabricador = new FabricaBloqueLapizArriba();
 
-        Bloque bloque = fabrica.crearBloque();
+        Bloque bloqueCreado = bloqueFabricador.crearBloque();
 
         personaje.bajarLapiz();
         personaje.moverseHacia(new DireccionDerecha());
-        bloque.ejecutarSobre(personaje);
+
+        bloqueCreado.ejecutarSobre(personaje);
         personaje.moverseHacia(new DireccionDerecha());
 
         Trazo trazosEsperados = new Trazo();
