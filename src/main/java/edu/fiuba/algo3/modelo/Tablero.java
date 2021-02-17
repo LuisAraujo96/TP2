@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Bloques.Bloque;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 
 public class Tablero {
@@ -30,7 +29,6 @@ public class Tablero {
     }
 
     public void guardarBloqueAlgoritmoPersonalizado(String nombreBloqueAlgoritmo){
-        //este metodo solo puede estar disponible cuando el sectoralgoritmo tenga mas de 1 bloque dentro
         this.sectorBloques.guardarBloqueAlgoritmoPersonalizado(nombreBloqueAlgoritmo, this.sectorAlgoritmo.obtenerBloques());
     }
 }
