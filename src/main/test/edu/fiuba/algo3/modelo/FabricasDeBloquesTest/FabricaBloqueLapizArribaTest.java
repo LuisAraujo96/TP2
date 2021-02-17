@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.SectorDibujo;
-import edu.fiuba.algo3.modelo.Trazo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,11 +28,11 @@ public class FabricaBloqueLapizArribaTest {
         bloqueCreado.ejecutarSobre(personaje);
         personaje.moverseHacia(new DireccionDerecha());
 
-        Trazo trazosEsperados = new Trazo();
+        SectorDibujo dibujoEsperado = new SectorDibujo();
 
-        trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(1,0));
+        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
 
-        assertEquals(trazosEsperados, sector.obtenerTrazos());
+        assertEquals(dibujoEsperado, sector);
     }
 
 }

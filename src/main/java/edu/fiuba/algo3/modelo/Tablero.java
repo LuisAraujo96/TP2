@@ -16,8 +16,9 @@ public class Tablero {
         this.personaje = new Personaje(new Lapiz(this.sectorDibujo));
     }
 
-    public void ejecutarPrograma(){
+    public SectorDibujo ejecutarPrograma(){
         this.sectorAlgoritmo.ejecutarPrograma(this.personaje);
+        return this.sectorDibujo;
     }
 
     public void agregarBloque(String nombreBloque){

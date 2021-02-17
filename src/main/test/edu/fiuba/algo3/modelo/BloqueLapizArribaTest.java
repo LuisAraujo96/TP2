@@ -18,7 +18,7 @@ class BloqueLapizArribaTest {
         bloqueDerecha.ejecutarSobre(personaje);
 
         SectorDibujo sectorDibujoVacio = new SectorDibujo();
-        assertEquals(sectorDibujo.obtenerTrazos(), sectorDibujoVacio.obtenerTrazos());
+        assertEquals(sectorDibujo, sectorDibujoVacio);
     }
 
     @Test
@@ -38,7 +38,7 @@ class BloqueLapizArribaTest {
         bloqueDerecha.ejecutarSobre(personaje);
 
 
-        assertEquals(sectorDibujo.obtenerTrazos(), sectorDibujoVacio.obtenerTrazos());
+        assertEquals(sectorDibujo, sectorDibujoVacio);
 
     }
 
@@ -54,7 +54,7 @@ class BloqueLapizArribaTest {
        bloqueDerecha.ejecutarSobre(personaje);
 
        SectorDibujo sectorDibujoVacio = new SectorDibujo();
-       assertEquals(sectorDibujo.obtenerTrazos(), sectorDibujoVacio.obtenerTrazos());
+       assertEquals(sectorDibujo, sectorDibujoVacio);
 
     }
 

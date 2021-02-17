@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.SectorDibujo;
-import edu.fiuba.algo3.modelo.Trazo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,9 +17,9 @@ public class Entrega2Test {
     public void test01PedirleTrazosAlSectorDibujoDevuelveTrazosVacios(){
 
         SectorDibujo sectorDibujo = new SectorDibujo();
-        Trazo trazosEsperados = new Trazo();
+        SectorDibujo dibujoEsperado = new SectorDibujo();
 
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
 
@@ -37,8 +36,8 @@ public class Entrega2Test {
 
         bloqueArriba.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -50,8 +49,8 @@ public class Entrega2Test {
 
         bloqueAbajo.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -63,8 +62,8 @@ public class Entrega2Test {
 
         bloqueIzquierda.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -76,8 +75,8 @@ public class Entrega2Test {
 
         bloqueDerecha.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -91,9 +90,9 @@ public class Entrega2Test {
         bloqueLapizAbajo.ejecutarSobre(personaje);
         bloqueArriba.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(0,1));
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -107,9 +106,9 @@ public class Entrega2Test {
         bloqueLapizAbajo.ejecutarSobre(personaje);
         bloqueAbajo.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(0,-1));
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(0,-1));
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -123,9 +122,9 @@ public class Entrega2Test {
         bloqueLapizAbajo.ejecutarSobre(personaje);
         bloqueIzquierda.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(-1,0), new Posicion(0,0));
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(-1,0), new Posicion(0,0));
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -139,9 +138,9 @@ public class Entrega2Test {
         bloqueLapizAbajo.ejecutarSobre(personaje);
         bloqueDerecha.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(1,0), new Posicion(0,0));
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(0,0));
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
 
@@ -161,8 +160,8 @@ public class Entrega2Test {
 
         bloqueRepetidor.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -178,11 +177,11 @@ public class Entrega2Test {
 
         bloqueRepetidor.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(0,1));
-        trazosEsperados.agregarLinea(new Posicion(0,1), new Posicion(0,2));
-        trazosEsperados.agregarLinea(new Posicion(0,2), new Posicion(0,3));
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
+        dibujoEsperado.agregarTrazo(new Posicion(0,1), new Posicion(0,2));
+        dibujoEsperado.agregarTrazo(new Posicion(0,2), new Posicion(0,3));
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 
     @Test
@@ -198,11 +197,11 @@ public class Entrega2Test {
 
         bloqueRepetidor.ejecutarSobre(personaje);
 
-        Trazo trazosEsperados = new Trazo();
-        trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(0,1));
-        trazosEsperados.agregarLinea(new Posicion(0,1), new Posicion(0,2));
-        trazosEsperados.agregarLinea(new Posicion(0,2), new Posicion(0,3));
-        trazosEsperados.agregarLinea(new Posicion(0,3), new Posicion(0,4));
-        assertEquals(trazosEsperados, sectorDibujo.obtenerTrazos());
+        SectorDibujo dibujoEsperado = new SectorDibujo();
+        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
+        dibujoEsperado.agregarTrazo(new Posicion(0,1), new Posicion(0,2));
+        dibujoEsperado.agregarTrazo(new Posicion(0,2), new Posicion(0,3));
+        dibujoEsperado.agregarTrazo(new Posicion(0,3), new Posicion(0,4));
+        assertEquals(dibujoEsperado, sectorDibujo);
     }
 }
