@@ -5,15 +5,9 @@ import edu.fiuba.algo3.modelo.Personaje;
 public class BloqueAlgoritmo implements Bloque{
 
     private Bloque[] bloques;
-    private String nombre;
 
-    public BloqueAlgoritmo(String unNombre, Bloque[] unosBloques){
+    public BloqueAlgoritmo(Bloque[] unosBloques){
         this.bloques = unosBloques;
-        this.nombre = unNombre;
-    }
-
-    public String obtenerNombre () {
-        return this.nombre;
     }
 
     @Override
