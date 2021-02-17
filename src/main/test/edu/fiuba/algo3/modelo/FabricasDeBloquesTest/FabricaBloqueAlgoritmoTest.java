@@ -23,11 +23,11 @@ public class FabricaBloqueAlgoritmoTest {
         bloques[0] = new BloqueArriba();
         bloques[1] = new BloqueDerecha();
 
-        FabricaDeBloques fabrica = new FabricaBloqueAlgoritmo(bloques);
+        FabricaDeBloques bloqueFabricador = new FabricaBloqueAlgoritmo(bloques);
         SectorDibujo sector = new SectorDibujo();
         Personaje personaje = new Personaje(new Lapiz(sector));
 
-        Bloque bloqueFabrica = fabrica.crearBloque();
+        Bloque bloqueCreado = bloqueFabricador.crearBloque();
 
         Trazo trazosEsperados = new Trazo();
 
@@ -37,11 +37,11 @@ public class FabricaBloqueAlgoritmoTest {
         trazosEsperados.agregarLinea(new Posicion(0,0), new Posicion(1,0));
 
         personaje.bajarLapiz();
-        bloqueFabrica.ejecutarSobre(personaje);
+        bloqueCreado.ejecutarSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(1,1));
 
-        bloqueFabrica.ejecutarInversoSobre(personaje);
+        bloqueCreado.ejecutarInversoSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,0));
 

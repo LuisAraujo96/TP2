@@ -22,10 +22,10 @@ public class FabricaBloqueLapizAbajoTest {
     public void testFabricaBloqueLapizAbajoCreaUnBLoqueLapizAbajo(){
         SectorDibujo sector = new SectorDibujo();
         Personaje personaje = new Personaje(new Lapiz(sector));
-        FabricaDeBloques fabrica = new FabricaBloqueLapizAbajo();
-        Bloque bloque = fabrica.crearBloque();
+        FabricaDeBloques bloqueFabricador = new FabricaBloqueLapizAbajo();
+        Bloque bloqueCreado = bloqueFabricador.crearBloque();
 
-        bloque.ejecutarSobre(personaje);
+        bloqueCreado.ejecutarSobre(personaje);
 
         personaje.moverseHacia(new DireccionArriba());
         personaje.moverseHacia(new DireccionDerecha());

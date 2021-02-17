@@ -16,14 +16,14 @@ public class FabricaBloqueArribaTest  {
     @Test
     public void testFabricaBloqueArribaCreaUnBLoqueArriba(){
         Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
-        FabricaDeBloques fabrica = new FabricaBloqueArriba();
-        Bloque bloque = fabrica.crearBloque();
+        FabricaDeBloques bloqueFabricador = new FabricaBloqueArriba();
+        Bloque bloqueCreado = bloqueFabricador.crearBloque();
 
-        bloque.ejecutarSobre(personaje);
+        bloqueCreado.ejecutarSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,1));
 
-        bloque.ejecutarInversoSobre(personaje);
+        bloqueCreado.ejecutarInversoSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,0));
     }

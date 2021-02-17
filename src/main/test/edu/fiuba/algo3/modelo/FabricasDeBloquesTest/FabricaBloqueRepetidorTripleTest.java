@@ -17,16 +17,16 @@ public class FabricaBloqueRepetidorTripleTest {
     @Test
     public void testFabricaBloquerepetidorTripleCreaUnBLoqueRepetidorDeTresRepeticiones(){
         Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
-        FabricaDeBloques fabrica = new FabricaBloqueRepetidorTriple();
-        BloqueRepetidor bloque = (BloqueRepetidor) fabrica.crearBloque();
+        FabricaDeBloques bloqueFabricador = new FabricaBloqueRepetidorTriple();
+        BloqueRepetidor bloqueCreado = (BloqueRepetidor) bloqueFabricador.crearBloque();
 
-        bloque.agregarBloque(new BloqueArriba());
+        bloqueCreado.agregarBloque(new BloqueArriba());
 
-        bloque.ejecutarSobre(personaje);
+        bloqueCreado.ejecutarSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,3));
 
-        bloque.ejecutarInversoSobre(personaje);
+        bloqueCreado.ejecutarInversoSobre(personaje);
 
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,0));
     }
