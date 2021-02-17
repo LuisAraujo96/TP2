@@ -26,8 +26,4 @@ public class Trazo {
         return lineas.equals(otroTrazo.lineas);
     }
 
-    @Override
-    public int hashCode() {
-        return lineas.hashCode();
-    }
 }
