@@ -6,11 +6,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.stage.Stage;
 
 public class ContenedorBloqueComplejo extends VBox {
     Button agregar;
     Button limpiar;
+    Button ejecutarAlgoritmo;
     Button agregarAlgoritmo;
+    Button salir;
     ChoiceBox<String> choiceBox;
     public ContenedorBloqueComplejo(){
 
@@ -28,10 +31,15 @@ public class ContenedorBloqueComplejo extends VBox {
         miniContenedorBotones.setSpacing(10);
         miniContenedorBotones.setAlignment(Pos.BASELINE_CENTER);
 
+        ejecutarAlgoritmo = new Button("Ejecutar algoritmo");
+
         agregarAlgoritmo = new Button("Guardar bloque algoritmo");
         agregarAlgoritmo.setOnAction(e -> AlertBox.display("Guardar bloque algoritmo", "Ingrese nombre para su bloque algoritmo: "));
 
-        VBox miniContenedorBotonAlgoritmo = new VBox(agregarAlgoritmo);
+        salir = new Button("Salir");
+        salir.setOnAction(e -> ((Stage)(((Button)e.getSource()).getScene().getWindow())).close());
+
+        VBox miniContenedorBotonAlgoritmo = new VBox(ejecutarAlgoritmo, agregarAlgoritmo, salir);
         miniContenedorBotonAlgoritmo.setSpacing(10);
         miniContenedorBotonAlgoritmo.setAlignment(Pos.BASELINE_CENTER);
 
