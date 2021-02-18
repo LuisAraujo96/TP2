@@ -1,109 +1,74 @@
 package edu.fiuba.algo3.modelo;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 class SectorDibujoTest {
-/*
+
     @Test
-    public void test01AlCrearseElSectorDibujoLaPosicionInicialDelPersonajeEsLaPosicionCeroCero(){
+    void test01DosTrazosVaciosSonIguales(){
+        SectorDibujo primerDibujo = new SectorDibujo();
+        SectorDibujo segundoDibujo = new SectorDibujo();
 
-        Posicion posicionInicial = new Posicion(0, 0);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-
-        Posicion posicionOrigen = sectorDibujo.obtenerPosicionDelPersonaje();
-
-        assertEquals(posicionInicial, posicionOrigen);
+        assertEquals(primerDibujo, segundoDibujo);
     }
 
     @Test
-    public void test02MoverAlPersonajeDesdeLaPosicionCeroCeroHaciaArribaLoDejaEnLaPosicionCeroUno(){
+    void test02TrazoConUnaLineaEsDiferenteAUnTrazoVacio(){
+        SectorDibujo primerDibujo = new SectorDibujo();
+        SectorDibujo segundoDibujo = new SectorDibujo();
 
-        Posicion posicionFinal = new Posicion(0, 1);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        Direccion arriba = new DireccionArriba();
+        primerDibujo.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
 
-        sectorDibujo.cambiarPosicionDePersonajeHacia(arriba);
-        Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
-
-        assertEquals(posicionFinal, posicionDestino);
+        assertNotEquals(primerDibujo, segundoDibujo);
     }
 
     @Test
-    public void test03MoverAlPersonajeDesdeLaPosicionCeroCeroHaciaAbajoLoDejaEnLaPosicionCeroMenosUno(){
-        Posicion posicionFinal = new Posicion(0, -1);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        Direccion abajo = new DireccionAbajo();
+    void test03DosTrazosConLaMismaLineaSonIgualesIndependientementeDeLaDireccionDeLaMisma(){
+        SectorDibujo primerDibujo = new SectorDibujo();
+        SectorDibujo segundoDibujo = new SectorDibujo();
 
-        sectorDibujo.cambiarPosicionDePersonajeHacia(abajo);
-        Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
+        primerDibujo.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
+        segundoDibujo.agregarTrazo(new Posicion(0,1), new Posicion(0,0));
 
-        assertEquals(posicionFinal, posicionDestino);
+        assertEquals(primerDibujo, segundoDibujo);
     }
 
     @Test
-    public void test04MoverAlPersonajeDesdeLaPosicionCeroCeroAIzquierdaLoDejaEnLaPosicionMenosUnoCero(){
-        Posicion posicionFinal = new Posicion(-1, 0);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        Direccion izquierda = new DireccionIzquierda();
+    void test03DosTrazosConLasMismaLineasSonIgualesIndependientementeDeLaDireccionYOrdenDeLasMismas(){
+        SectorDibujo primerDibujo = new SectorDibujo();
+        SectorDibujo segundoDibujo = new SectorDibujo();
 
-        sectorDibujo.cambiarPosicionDePersonajeHacia(izquierda);
-        Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
+        primerDibujo.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
+        primerDibujo.agregarTrazo(new Posicion(0,1), new Posicion(1,1));
+        primerDibujo.agregarTrazo(new Posicion(1,1), new Posicion(1,0));
+        primerDibujo.agregarTrazo(new Posicion(1,0), new Posicion(0,0));
 
-        assertEquals(posicionFinal, posicionDestino);
+        segundoDibujo.agregarTrazo(new Posicion(0,1), new Posicion(0,0));
+        segundoDibujo.agregarTrazo(new Posicion(1,1), new Posicion(1,0));
+        segundoDibujo.agregarTrazo(new Posicion(1,1), new Posicion(0,1));
+        segundoDibujo.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+
+        assertEquals(primerDibujo, segundoDibujo);
     }
 
     @Test
-    public void test05MoverAlPersonajeDesdeLaPosicionCeroCeroADerechaLoDejaEnLaPosicionUnoCero(){
-        Posicion posicionFinal = new Posicion(1, 0);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        Direccion derecha = new DireccionDerecha();
+    void test04DosTrazosConLineasNoConectadasSonIguales(){
+        SectorDibujo primerDibujo = new SectorDibujo();
+        SectorDibujo segundoDibujo = new SectorDibujo();
 
-        sectorDibujo.cambiarPosicionDePersonajeHacia(derecha);
-        Posicion posicionDestino = sectorDibujo.obtenerPosicionDelPersonaje();
+        primerDibujo.agregarTrazo(new Posicion(0,0), new Posicion(0,1));
+        primerDibujo.agregarTrazo(new Posicion(1,0), new Posicion(1,1));
+        primerDibujo.agregarTrazo(new Posicion(2,0), new Posicion(2,1));
+        primerDibujo.agregarTrazo(new Posicion(3,0), new Posicion(3,1));
 
-        assertEquals(posicionFinal, posicionDestino);
+        segundoDibujo.agregarTrazo(new Posicion(2,1), new Posicion(2,0));
+        segundoDibujo.agregarTrazo(new Posicion(3,1), new Posicion(3,0));
+        segundoDibujo.agregarTrazo(new Posicion(1,1), new Posicion(1,0));
+        segundoDibujo.agregarTrazo(new Posicion(0,1), new Posicion(0,0));
+
+        assertEquals(primerDibujo, segundoDibujo);
     }
-
-    @Test
-    public void test06MoverAlPersonajeDesdeLaPosicion10Y0ADerechaLoDejaEnLaPosicion10NegativoY0(){
-        Posicion posicionFinal = new Posicion(-10, 0);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-
-        for (int i = 0; i < 11; ++i)
-            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionDerecha());
-
-        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
-    }
-
-    @Test
-    public void test07MoverAlPersonajeDesdeLaPosicion0Y10ArribaLoDejaEnLaPosicion0Y10Negativo(){
-        Posicion posicionFinal = new Posicion(0, -10);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-
-        for (int i = 0; i < 11; ++i)
-            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionArriba());
-
-        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
-    }
-
-    @Test
-    public void test08MoverAlPersonajeDesdeLaPosicion10NegativoY0ALaIzquierdaLoDejaEnLaPosicion10Y0(){
-        Posicion posicionFinal = new Posicion(10, 0);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-
-        for (int i = 0; i < 11; ++i)
-            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionIzquierda());
-
-        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
-    }
-
-    @Test
-    public void test09MoverAlPersonajeDesdeLaPosicion0Y10NegativoAbajoLoDejaEnLaPosicion0Y10() {
-        Posicion posicionFinal = new Posicion(0, 10);
-        SectorDibujo sectorDibujo = new SectorDibujo();
-
-        for (int i = 0; i < 11; ++i)
-            sectorDibujo.cambiarPosicionDePersonajeHacia(new DireccionAbajo());
-
-        assertEquals(posicionFinal, sectorDibujo.obtenerPosicionDelPersonaje());
-    }
-*/
 }
