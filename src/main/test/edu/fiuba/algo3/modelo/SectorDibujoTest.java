@@ -2,8 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SectorDibujoTest {
 
@@ -70,5 +69,10 @@ class SectorDibujoTest {
         segundoDibujo.agregarTrazo(new Posicion(0,1), new Posicion(0,0));
 
         assertEquals(primerDibujo, segundoDibujo);
+    }
+
+    @Test
+    void test06TestEquals(){
+        assertTrue(new SectorDibujo().equals(new SectorDibujo()));
     }
 }
