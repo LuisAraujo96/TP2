@@ -57,6 +57,12 @@ class PosicionTest {
         assertEquals(posicionAbajo, posicionObtenida);
     }
 
+    @Test
+    public void test06TestEquals(){
+        assertTrue(new Posicion(0,0).equals(new Posicion(0, 0)));
+    }
+
+
     /*
     @Test
     public void test03RepresentarUnaPosicionRecienCreadaDevuelveComoResultado0(){
