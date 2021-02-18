@@ -18,12 +18,13 @@ public class ContenedorBloquesBasicos extends VBox {
         this.setSpacing(10);
         this.setAlignment(Pos.BASELINE_CENTER);
         this.setPadding(new Insets(10));
-        bloqueArriba = new BotonBloque("Bloque arriba");
-        bloqueAbajo = new BotonBloque("Bloque abajo");
-        bloqueIzquierda = new BotonBloque("Bloque izquierda");
-        bloqueDerecha = new BotonBloque("Bloque derecha");
-        bloqueLapizArriba = new BotonBloque("Bloque lapiz arriba");
-        bloqueLapizAbajo = new BotonBloque("Bloque lapiz abajo");
+
+        bloqueArriba = new BotonBloque("Bloque arriba","src/main/resources/arrows_circle_up.png");
+        bloqueAbajo = new BotonBloque("Bloque abajo", "src/main/resources/arrows_circle_down.png");
+        bloqueIzquierda = new BotonBloque("Bloque izquierda", "src/main/resources/arrows_circle_left.png");
+        bloqueDerecha = new BotonBloque("Bloque derecha", "src/main/resources/arrows_circle_right.png");
+        bloqueLapizArriba = new BotonBloque("Bloque lapiz arriba", "src/main/resources/software_pencil.png");
+        bloqueLapizAbajo = new BotonBloque("Bloque lapiz abajo", "src/main/resources/software_pencil_on.png");
 
         this.getChildren().addAll(bloqueArriba, bloqueAbajo, bloqueIzquierda, bloqueDerecha, bloqueLapizArriba, bloqueLapizAbajo);
     }
