@@ -16,19 +16,21 @@ public class ContenedorPrincipal extends GridPane {
         sectorDibujo = new ContenedorSector("Dibujo");
 
         ColumnConstraints col1 = new ColumnConstraints();
-        col1.setPercentWidth(33.333);
+        col1.setPercentWidth(25);
         ColumnConstraints col2 = new ColumnConstraints();
-        col2.setPercentWidth(33.333);
+        col2.setPercentWidth(25);
         ColumnConstraints col3 = new ColumnConstraints();
-        col3.setPercentWidth(33.333);
+        col3.setPercentWidth(50);
         this.getColumnConstraints().addAll(col1,col2,col3);
         RowConstraints rowBase = new RowConstraints();
         rowBase.setPercentHeight(100);
         this.getRowConstraints().add(rowBase);
 
-        ContenedorBloquesBasicos contenedorBloquesBasicos = new ContenedorBloquesBasicos();
+        ContenedorBloqueAlgoritmo ContenedorBloqueAlgoritmo = new ContenedorBloqueAlgoritmo();
+        ContenedorBloquesBasicos contenedorBloquesBasicos = new ContenedorBloquesBasicos(ContenedorBloqueAlgoritmo);
         ContenedorBloqueComplejo contenedorBloqueComplejo = new ContenedorBloqueComplejo();
         sectorBloques.getChildren().addAll(contenedorBloquesBasicos , contenedorBloqueComplejo);
+        sectorAlgoritmo.getChildren().addAll(ContenedorBloqueAlgoritmo);
 
         this.add(sectorBloques,0 ,0);
         this.add(sectorAlgoritmo, 1, 0);
