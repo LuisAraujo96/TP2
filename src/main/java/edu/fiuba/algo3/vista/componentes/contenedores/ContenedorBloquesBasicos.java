@@ -19,12 +19,12 @@ public class ContenedorBloquesBasicos extends VBox {
         this.setAlignment(Pos.BASELINE_CENTER);
         this.setPadding(new Insets(10));
 
-        bloqueArriba = new BotonBloque("Bloque arriba","src/main/resources/arrows_circle_up.png");
-        bloqueAbajo = new BotonBloque("Bloque abajo", "src/main/resources/arrows_circle_down.png");
-        bloqueIzquierda = new BotonBloque("Bloque izquierda", "src/main/resources/arrows_circle_left.png");
-        bloqueDerecha = new BotonBloque("Bloque derecha", "src/main/resources/arrows_circle_right.png");
-        bloqueLapizArriba = new BotonBloque("Bloque lapiz arriba", "src/main/resources/software_pencil.png");
-        bloqueLapizAbajo = new BotonBloque("Bloque lapiz abajo", "src/main/resources/software_pencil_on.png");
+        bloqueArriba = new BotonBloque("Moverse arriba","src/main/resources/arrows_circle_up.png");
+        bloqueAbajo = new BotonBloque("Moverse abajo", "src/main/resources/arrows_circle_down.png");
+        bloqueIzquierda = new BotonBloque("Moverse izquierda", "src/main/resources/arrows_circle_right.png");
+        bloqueDerecha = new BotonBloque("Moverse derecha", "src/main/resources/arrows_circle_left.png");
+        bloqueLapizArriba = new BotonBloque("Subir lapiz", "src/main/resources/software_pencil.png");
+        bloqueLapizAbajo = new BotonBloque("Bajar lapiz", "src/main/resources/software_pencil_on.png");
 
         this.getChildren().addAll(bloqueArriba, bloqueAbajo, bloqueIzquierda, bloqueDerecha, bloqueLapizArriba, bloqueLapizAbajo);
     }
