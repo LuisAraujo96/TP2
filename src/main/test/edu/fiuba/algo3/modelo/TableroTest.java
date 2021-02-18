@@ -55,8 +55,9 @@ public class TableroTest {
       assertEquals(tablero.ejecutarPrograma(), dibujoEsperado);
    }
 
+
    @Test
-   public void test04AlgoritmoPersonalizado(){
+   public void test04SeleccionoBloquesYCreoUnBloqueAlgoritmoPersonalizadoLuegoLoSeleccionoYLoEjecuto(){
       Tablero tablero = new Tablero();
       SectorDibujo dibujoEsperado = new SectorDibujo();
 

@@ -18,22 +18,45 @@ public class SectorBloquesTest {
       SectorDibujo sectorDibujo = new SectorDibujo();
       SectorDibujo dibujoEsperado = new SectorDibujo();
 
-      Bloque bloqueElegidoLapizAbajo = sectorBloques.seleccionarBloque("lapizabajo");
       Bloque bloqueElegidoDerecha = sectorBloques.seleccionarBloque("derecha");
       
       Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
-      
-      bloqueElegidoLapizAbajo.ejecutarSobre(personaje);
-      bloqueElegidoDerecha.ejecutarSobre(personaje);
 
-      dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+      bloqueElegidoDerecha.ejecutarSobre(personaje);
 
       assertEquals(sectorDibujo, dibujoEsperado);
 
    }
 
    @Test
-   public void test02GuardoUnBloquePersonalizadoConMovimientosYLoEjecutoDebeDibujarSobreElSectorDibujo(){
+   public void test02SeleccionoBloquesConLapizAbajoYAlEjecutarloSobreSectorDibujoDebeDibujar(){
+      SectorBloques sectorBloques = new SectorBloques();
+
+      SectorDibujo sectorDibujo = new SectorDibujo();
+      SectorDibujo dibujoEsperado = new SectorDibujo();
+
+      Bloque bloqueElegidoLapizAbajo = sectorBloques.seleccionarBloque("lapizabajo");
+      Bloque bloqueElegidoDerecha = sectorBloques.seleccionarBloque("derecha");
+      Bloque bloqueElegidoAbajo = sectorBloques.seleccionarBloque("abajo");
+
+      Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+
+      bloqueElegidoLapizAbajo.ejecutarSobre(personaje);
+      bloqueElegidoDerecha.ejecutarSobre(personaje);
+      bloqueElegidoAbajo.ejecutarSobre(personaje);
+      bloqueElegidoDerecha.ejecutarSobre(personaje);
+
+      dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+      dibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(1,-1));
+      dibujoEsperado.agregarTrazo(new Posicion(1,-1), new Posicion(2, -1));
+
+      assertEquals(sectorDibujo, dibujoEsperado);
+
+   }
+
+
+   @Test
+   public void test03GuardoUnBloquePersonalizadoConMovimientosYLoEjecutoDebeDibujarSobreElSectorDibujo(){
       SectorBloques sectorBloques = new SectorBloques();
       SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
 
