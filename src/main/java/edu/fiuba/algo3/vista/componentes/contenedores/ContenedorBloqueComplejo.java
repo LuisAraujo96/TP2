@@ -13,13 +13,14 @@ public class ContenedorBloqueComplejo extends VBox {
     public ContenedorBloqueComplejo(){
 
         choiceBox = new ChoiceBox<>();
+        choiceBox.setValue("Espacio de trabajo");
+        choiceBox.getItems().add("Espacio de trabajo");
         choiceBox.getItems().add("Bloque Repetidor");
         choiceBox.getItems().add("Bloque Inversor");
-        choiceBox.getItems().add("Bloque Algoritmo");
         choiceBox.setPrefSize(160,20);
 
-        agregar = new Button("Agregar");
-        limpiar = new Button("Limpiar");
+        agregar = new Button("Agregar bloque");
+        limpiar = new Button("Quitar bloque");
 
         HBox miniContenedorBotones = new HBox(agregar, limpiar);
         miniContenedorBotones.setSpacing(10);

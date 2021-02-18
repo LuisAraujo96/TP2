@@ -14,9 +14,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Algo3 - TP2");
+        stage.setTitle("AlgoBlocks");
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal();
-        Scene scene = new Scene(contenedorPrincipal,600, 300);
+        Scene scene = new Scene(contenedorPrincipal,1280, 720);
         scene.getStylesheets().add(String.valueOf(getClass().getClassLoader().getResource("interfaz.css")));
         stage.setScene(scene);
         stage.show();
