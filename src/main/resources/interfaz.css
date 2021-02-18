@@ -1,4 +1,4 @@
-.game-grid {
+#ContenedorPrincipal {
     -fx-background-color: white;
     -fx-grid-lines-visible: true;
 }
