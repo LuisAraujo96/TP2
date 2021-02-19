@@ -1,19 +1,15 @@
 codecov:
-  notify:
-    require_ci_to_pass: yes
+  require_ci_to_pass: yes
 
 coverage:
   precision: 2
   round: down
   range: "70...100"
-  ignore:
-    - "src/main/java/edu/fiuba/algo3/vista.componentes/**"
-    - "src/main/java/edu/fiuba/algo3/App.java"
-    - "src/main/java/edu/fiuba/algo3/SystemInfo.java"
-  status:
-    project: yes
-    patch: yes
-    changes: no
+
+ignore:
+  - "src/main/java/edu/fiuba/algo3/vista.componentes/**"
+  - "src/main/java/edu/fiuba/algo3/App.java"
+  - "src/main/java/edu/fiuba/algo3/SystemInfo.java"
 
 parsers:
   gcov:
@@ -24,6 +20,6 @@ parsers:
       macro: no
 
 comment:
-  layout: "header, diff"
+  layout: "reach,diff,flags,files,footer"
   behavior: default
-require_changes: no
+  require_changes: no
