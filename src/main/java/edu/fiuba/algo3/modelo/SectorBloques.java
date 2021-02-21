@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
+import edu.fiuba.algo3.modelo.Excepciones.BloqueAlgoritmoNoEncontradoException;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
 
 import java.util.HashMap;
@@ -23,12 +24,13 @@ public class SectorBloques {
     }
 
     public Bloque seleccionarBloque(String nombreBloque){
+        //if (!this.menuBloques.containsKey(nombreBloque)) throw new BloqueAlgoritmoNoEncontradoException();
+
         FabricaDeBloques fabricaSeleccionada = this.menuBloques.get(nombreBloque);
         return fabricaSeleccionada.crearBloque();
     }
 
     public void guardarBloqueAlgoritmoPersonalizado(String nombreBloque, Bloque[] bloquesAlgoritmo){
-        //verificacion el nombre de bloque algoritmo para guardar en el hashmap (loop mediante javafx), que puede elevar excepcion
         this.menuBloques.put(nombreBloque, new FabricaBloqueAlgoritmo(bloquesAlgoritmo));
     }
 }

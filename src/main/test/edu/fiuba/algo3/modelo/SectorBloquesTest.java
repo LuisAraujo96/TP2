@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
@@ -71,11 +72,15 @@ public class SectorBloquesTest {
       sectorAlgoritmo.agregarBloque(bloqueDerecha);
       sectorAlgoritmo.agregarBloque(bloqueArriba);
 
+      try {
       sectorBloques.guardarBloqueAlgoritmoPersonalizado("prueba", sectorAlgoritmo.obtenerBloques());
-      Bloque bloquePrueba = sectorBloques.seleccionarBloque("prueba");
+
+      } catch (AlgoritmoSinBloquesException e){
+
+      }
 
       Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
-      
+      Bloque bloquePrueba = sectorBloques.seleccionarBloque("prueba");
       bloquePrueba.ejecutarSobre(personaje);
 
       dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));

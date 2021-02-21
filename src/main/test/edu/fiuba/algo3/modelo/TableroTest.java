@@ -2,23 +2,21 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.fiuba.algo3.modelo.Bloques.*;
+import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
+import edu.fiuba.algo3.modelo.Excepciones.BloqueAlgoritmoNoEncontradoException;
 import org.junit.jupiter.api.Test;
-
-import edu.fiuba.algo3.modelo.Bloques.BloqueArriba;
-import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
-import edu.fiuba.algo3.modelo.Bloques.BloqueIzquierda;
-import edu.fiuba.algo3.modelo.Bloques.BloqueLapizAbajo;
 
 public class TableroTest {
    @Test
    public void test01CreoUnTableroYSeleccionoBloquesEjecutoElAlgoritmoYDebenVerseReflejadosEnElSectorDibujo(){
       Tablero tablero = new Tablero();
       SectorDibujo dibujoEsperado = new SectorDibujo();
- 
-      tablero.agregarBloque("lapizabajo");
-      tablero.agregarBloque("derecha");
-      tablero.agregarBloque("arriba");
-      tablero.agregarBloque("arriba");
+
+      tablero.agregarBloque(new BloqueLapizAbajo());
+      tablero.agregarBloque(new BloqueDerecha());
+      tablero.agregarBloque(new BloqueArriba());
+      tablero.agregarBloque(new BloqueArriba());
       
       dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
       dibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(1,1));
@@ -31,9 +29,9 @@ public class TableroTest {
       Tablero tablero = new Tablero();
       SectorDibujo dibujoEsperado = new SectorDibujo();
 
-      tablero.agregarBloque("derecha");
-      tablero.agregarBloque("arriba");
-      tablero.agregarBloque("arriba");
+      tablero.agregarBloque(new BloqueDerecha());
+      tablero.agregarBloque(new BloqueArriba());
+      tablero.agregarBloque(new BloqueArriba());
       
       assertEquals(tablero.ejecutarPrograma(), dibujoEsperado);
    }
@@ -42,10 +40,10 @@ public class TableroTest {
       Tablero tablero = new Tablero();
       SectorDibujo dibujoEsperado = new SectorDibujo();
 
-      tablero.agregarBloque("lapizabajo");
-      tablero.agregarBloque("derecha");
-      tablero.agregarBloque("arriba");
-      tablero.agregarBloque("arriba");
+      tablero.agregarBloque(new BloqueLapizAbajo());
+      tablero.agregarBloque(new BloqueDerecha());
+      tablero.agregarBloque(new BloqueArriba());
+      tablero.agregarBloque(new BloqueArriba());
 
       tablero.removerBloque();
       
@@ -61,11 +59,22 @@ public class TableroTest {
       Tablero tablero = new Tablero();
       SectorDibujo dibujoEsperado = new SectorDibujo();
 
-      tablero.agregarBloque("lapizabajo");
-      tablero.agregarBloque("abajo"); 
-      tablero.agregarBloque("derecha"); 
-      tablero.guardarBloqueAlgoritmoPersonalizado("prueba");
-      tablero.agregarBloque("prueba");
+      tablero.agregarBloque(new BloqueLapizAbajo());
+      tablero.agregarBloque(new BloqueAbajo());
+      tablero.agregarBloque(new BloqueDerecha());
+
+      try {
+         tablero.guardarBloqueAlgoritmoPersonalizado("prueba");
+
+      } catch (AlgoritmoSinBloquesException e){
+      }
+
+      try {
+         Bloque BloqueAlgoritmo = tablero.seleccionarBloqueAlgoritmoPersonalizado("prueba");
+         tablero.agregarBloque(BloqueAlgoritmo);
+
+      } catch (BloqueAlgoritmoNoEncontradoException e){
+      }
 
       dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(0,-1));
       dibujoEsperado.agregarTrazo(new Posicion(0,-1), new Posicion(1,-1));
