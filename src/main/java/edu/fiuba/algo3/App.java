@@ -1,10 +1,7 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.vista.componentes.contenedores.ContenedorPrincipal;
+import edu.fiuba.algo3.vista.contenedores.ContenedorPrincipal;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

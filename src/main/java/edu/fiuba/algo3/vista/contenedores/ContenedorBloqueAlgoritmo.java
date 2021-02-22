@@ -1,6 +1,5 @@
-package edu.fiuba.algo3.vista.componentes.contenedores;
+package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.vista.componentes.botones.BotonBloque;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

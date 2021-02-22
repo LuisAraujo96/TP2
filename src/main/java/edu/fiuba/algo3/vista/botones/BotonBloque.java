@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.componentes.botones;
+package edu.fiuba.algo3.vista.botones;
 
 import edu.fiuba.algo3.App;
 import javafx.scene.control.Button;

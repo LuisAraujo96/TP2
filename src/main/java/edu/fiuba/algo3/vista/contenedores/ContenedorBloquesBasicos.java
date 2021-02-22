@@ -1,12 +1,11 @@
-package edu.fiuba.algo3.vista.componentes.contenedores;
+package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.vista.componentes.botones.BotonBloque;
-import javafx.event.ActionEvent;
+import edu.fiuba.algo3.vista.botones.BotonBloque;
+import edu.fiuba.algo3.vista.contenedores.ContenedorBloqueAlgoritmo;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class ContenedorBloquesBasicos extends VBox implements EventHandler {

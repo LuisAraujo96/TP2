@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.componentes.alertas;
+package edu.fiuba.algo3.vista.alertas;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

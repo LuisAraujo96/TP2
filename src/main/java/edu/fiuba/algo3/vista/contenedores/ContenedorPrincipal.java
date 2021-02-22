@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.componentes.contenedores;
+package edu.fiuba.algo3.vista.contenedores;
 
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
