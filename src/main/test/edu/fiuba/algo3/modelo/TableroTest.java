@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
-import edu.fiuba.algo3.modelo.Excepciones.BloqueAlgoritmoNoEncontradoException;
 import org.junit.jupiter.api.Test;
 
 public class TableroTest {
@@ -69,12 +68,8 @@ public class TableroTest {
       } catch (AlgoritmoSinBloquesException e){
       }
 
-      try {
-         Bloque BloqueAlgoritmo = tablero.seleccionarBloqueAlgoritmoPersonalizado("prueba");
-         tablero.agregarBloque(BloqueAlgoritmo);
-
-      } catch (BloqueAlgoritmoNoEncontradoException e){
-      }
+      Bloque BloqueAlgoritmo = tablero.seleccionarBloqueAlgoritmoPersonalizado("prueba");
+      tablero.agregarBloque(BloqueAlgoritmo);
 
       dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(0,-1));
       dibujoEsperado.agregarTrazo(new Posicion(0,-1), new Posicion(1,-1));

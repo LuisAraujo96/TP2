@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
 import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
-import edu.fiuba.algo3.modelo.Excepciones.BloqueAlgoritmoNoEncontradoException;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 
 public class Tablero {
@@ -36,7 +35,7 @@ public class Tablero {
         this.sectorBloques.guardarBloqueAlgoritmoPersonalizado(nombreBloqueAlgoritmo, this.sectorAlgoritmo.obtenerBloques());
     }
 
-    public Bloque seleccionarBloqueAlgoritmoPersonalizado(String nombreBloqueAlgoritmo) throws BloqueAlgoritmoNoEncontradoException {
+    public Bloque seleccionarBloqueAlgoritmoPersonalizado(String nombreBloqueAlgoritmo){
         return this.sectorBloques.seleccionarBloque(nombreBloqueAlgoritmo);
     }
 }
