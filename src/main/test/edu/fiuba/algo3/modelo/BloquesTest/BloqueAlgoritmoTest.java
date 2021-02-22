@@ -1,12 +1,16 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.BloquesTest;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
+import edu.fiuba.algo3.modelo.Personaje;
+import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.modelo.SectorDibujo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BloqueAlgoritmoTest {
+public class BloqueAlgoritmoTest {
 
     @Test
     public void test01BloqueAlgoritmoEjecutaCorrectamenteUnBloque () {
@@ -20,7 +24,7 @@ class BloqueAlgoritmoTest {
 
         algoritmo.ejecutarSobre(personaje);
 
-        assertEquals(personaje.obtenerPosicion(), new Posicion(0,1));
+        Assertions.assertEquals(personaje.obtenerPosicion(), new Posicion(0,1));
     }
 
     @Test

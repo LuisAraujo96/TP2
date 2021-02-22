@@ -1,5 +1,5 @@
-package edu.fiuba.algo3.vista.componentes.contenedores;
-import edu.fiuba.algo3.vista.componentes.alertas.AlertBox;
+package edu.fiuba.algo3.vista.contenedores;
+import edu.fiuba.algo3.vista.alertas.AlertBox;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;

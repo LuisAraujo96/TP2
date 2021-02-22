@@ -28,7 +28,6 @@ public class SectorBloques {
     }
 
     public void guardarBloqueAlgoritmoPersonalizado(String nombreBloque, Bloque[] bloquesAlgoritmo){
-        //verificacion el nombre de bloque algoritmo para guardar en el hashmap (loop mediante javafx), que puede elevar excepcion
         this.menuBloques.put(nombreBloque, new FabricaBloqueAlgoritmo(bloquesAlgoritmo));
     }
 }

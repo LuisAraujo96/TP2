@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.componentes.contenedores;
+package edu.fiuba.algo3.vista.contenedores;
 
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
