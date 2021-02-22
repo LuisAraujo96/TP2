@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BloqueLapizAbajoTest {
+public class BloqueLapizAbajoTest {
     @Test
     public void test01CreoUnPersonajeYAlBajarSuLapizYMoverseDebeDibujar() {
         SectorDibujo sectorDibujo = new SectorDibujo();

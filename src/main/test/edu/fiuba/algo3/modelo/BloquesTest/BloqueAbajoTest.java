@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BloqueAbajoTest {
+public class BloqueAbajoTest {
 
     @Test
     public void test01MoverAlPersonajeAbajoLoDejaEnLaPosicionCeroYMenosUno(){

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BloqueLapizArribaTest {
+public class BloqueLapizArribaTest {
 
     @Test
     public void test01CreoUnPersonajeYAlMoverseNoDebeDibujar() {

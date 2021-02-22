@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BloqueAlgoritmoTest {
+public class BloqueAlgoritmoTest {
 
     @Test
     public void test01BloqueAlgoritmoEjecutaCorrectamenteUnBloque () {
