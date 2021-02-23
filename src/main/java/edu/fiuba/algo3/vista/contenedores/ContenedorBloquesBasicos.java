@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.vista.botones.BotonBloque;
+import edu.fiuba.algo3.vista.botones.BotonConIcono;
 import edu.fiuba.algo3.vista.contenedores.ContenedorBloqueAlgoritmo;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -9,12 +10,12 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 
 public class ContenedorBloquesBasicos extends VBox implements EventHandler {
-    BotonBloque bloqueArriba;
-    BotonBloque bloqueAbajo;
-    BotonBloque bloqueIzquierda;
-    BotonBloque bloqueDerecha;
-    BotonBloque bloqueLapizArriba;
-    BotonBloque bloqueLapizAbajo;
+    BotonConIcono bloqueArriba;
+    BotonConIcono bloqueAbajo;
+    BotonConIcono bloqueIzquierda;
+    BotonConIcono bloqueDerecha;
+    BotonConIcono bloqueLapizArriba;
+    BotonConIcono bloqueLapizAbajo;
     BotonBloque bloqueNuevo;
     ContenedorBloqueAlgoritmo contenedorBloqueAlgoritmo;
 
@@ -25,17 +26,18 @@ public class ContenedorBloquesBasicos extends VBox implements EventHandler {
         this.setPadding(new Insets(10));
         this.contenedorBloqueAlgoritmo = contenedorBloqueAlgoritmo;
 
-        bloqueArriba = new BotonBloque("Moverse arriba","src/main/resources/arrows_circle_up.png");
+        bloqueArriba = new BotonConIcono("Moverse arriba","src/main/resources/flecha_arriba.png");
+
         bloqueArriba.setOnAction(this);
-        bloqueAbajo = new BotonBloque("Moverse abajo", "src/main/resources/arrows_circle_down.png");
+        bloqueAbajo = new BotonConIcono("Moverse abajo", "src/main/resources/flecha_abajo.png");
         bloqueAbajo.setOnAction(this);
-        bloqueIzquierda = new BotonBloque("Moverse izquierda", "src/main/resources/arrows_circle_right.png");
+        bloqueIzquierda = new BotonConIcono("Moverse izquierda", "src/main/resources/flecha_izquierda.png");
         bloqueIzquierda.setOnAction(this);
-        bloqueDerecha = new BotonBloque("Moverse derecha", "src/main/resources/arrows_circle_left.png");
+        bloqueDerecha = new BotonConIcono("Moverse derecha", "src/main/resources/flecha_derecha.png");
         bloqueDerecha.setOnAction(this);
-        bloqueLapizArriba = new BotonBloque("Subir lapiz", "src/main/resources/software_pencil.png");
+        bloqueLapizArriba = new BotonConIcono("Subir lapiz", "src/main/resources/lapiz_arriba.png");
         bloqueLapizArriba.setOnAction(this);
-        bloqueLapizAbajo = new BotonBloque("Bajar lapiz", "src/main/resources/software_pencil_on.png");
+        bloqueLapizAbajo = new BotonConIcono("Bajar lapiz", "src/main/resources/lapiz_abajo.png");
         bloqueLapizAbajo.setOnAction(this);
 
         this.getChildren().addAll(bloqueArriba, bloqueAbajo, bloqueIzquierda, bloqueDerecha, bloqueLapizArriba, bloqueLapizAbajo);
