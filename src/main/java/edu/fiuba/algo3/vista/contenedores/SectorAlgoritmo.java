@@ -11,6 +11,7 @@ public class SectorAlgoritmo extends HBox {
         super();
 
         ScrollPane seccionDeBloques = new ScrollPane();
+        seccionDeBloques.setPrefSize(700,150);
 
         BotonConIcono botonEjecutarSectorAlgoritmo =
             new BotonConIcono("BotonEjecutarSectorAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");

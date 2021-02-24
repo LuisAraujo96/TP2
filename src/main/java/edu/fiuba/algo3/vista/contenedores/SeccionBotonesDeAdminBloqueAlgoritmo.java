@@ -22,6 +22,7 @@ public class SeccionBotonesDeAdminBloqueAlgoritmo extends HBox {
 
         setSpacing(40);
         setPadding(new Insets(0,30,0,30));
+        setHeight(75);
 
     }
 }
