@@ -5,9 +5,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class SectorAlgoritmo extends HBox {
+public class SeccionAlgoritmo extends HBox {
 
-    public SectorAlgoritmo(){
+    public SeccionAlgoritmo(){
         super();
 
         ScrollPane seccionDeBloques = new ScrollPane();
@@ -18,6 +18,8 @@ public class SectorAlgoritmo extends HBox {
 
         BotonConIcono botonLimpiarSectorAlgoritmo =
             new BotonConIcono("BotonLimpiarSectorAlgoritmo","src/main/resources/limpiar_sector_algoritmo.png");
+
+        botonEjecutarSectorAlgoritmo.setMinHeight(80);
 
         VBox seccionDeBotones = new VBox(20, botonEjecutarSectorAlgoritmo, botonLimpiarSectorAlgoritmo);
 

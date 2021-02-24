@@ -10,13 +10,13 @@ public class SeccionPrincipal extends HBox {
 
         setPadding(new Insets(30,30,30,30));
 
-        SectorBloques sectorBloques = new SectorBloques();
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
+        SeccionBloques seccionBloques = new SeccionBloques();
+        SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo();
+        SeccionDibujo seccionDibujo = new SeccionDibujo();
 
-        VBox SegundaColumna = new VBox(40, sectorDibujo, sectorAlgoritmo);
+        VBox SegundaColumna = new VBox(40, seccionDibujo, seccionAlgoritmo);
 
-        getChildren().addAll(sectorBloques, SegundaColumna);
+        getChildren().addAll(seccionBloques, SegundaColumna);
 
         setId("ContenedorPrincipal");
 

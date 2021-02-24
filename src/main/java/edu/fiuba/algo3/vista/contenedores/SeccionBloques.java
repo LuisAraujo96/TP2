@@ -5,9 +5,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 
-public class SectorBloques extends VBox {
+public class SeccionBloques extends VBox {
 
-    public SectorBloques(){
+    public SeccionBloques(){
         super(40);
 
         VBox BotonesDeAcciones = botonesDeAcciones();
@@ -28,10 +28,11 @@ public class SectorBloques extends VBox {
         BotonConIcono botonUsarBloqueAlgoritmo =
                 new BotonConIcono("UsarBloqueAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
 
-        botonUsarBloqueAlgoritmo.setPrefSize(75,50);
-        botonUsarBloqueAlgoritmo.setAlignment(Pos.CENTER);
+        botonUsarBloqueAlgoritmo.setMinWidth(75);
 
-        VBox subSeccion = new VBox(50,bloquesSimples, bloquesContenedores, botonUsarBloqueAlgoritmo);
+        VBox subSeccion = new VBox(50, bloquesSimples, bloquesContenedores, botonUsarBloqueAlgoritmo);
+
+        subSeccion.setAlignment(Pos.CENTER);
 
         setMargin(bloquesSimples, new Insets(25, 25, 0, 25));
 
@@ -50,13 +51,13 @@ public class SectorBloques extends VBox {
         BotonConIcono botonGuardarBloqueAlgoritmo =
             new BotonConIcono("GuardarBloqueAlgoritmo", "src/main/resources/guardar_bloque_algoritmo.png");
 
-        botonBorrarBloqueAlgoritmo.setPrefSize(75,75);
-        botonGuardarBloqueAlgoritmo.setPrefSize(75,75);
+        botonBorrarBloqueAlgoritmo.setMinSize(75,75);
+        botonGuardarBloqueAlgoritmo.setMinSize(75,75);
 
         HBox subSeccion = new HBox(50, botonBorrarBloqueAlgoritmo, botonGuardarBloqueAlgoritmo);
 
         subSeccion.setPadding(new Insets(0,30,0,30));
-        subSeccion.setPrefHeight(75);
+        subSeccion.setMinHeight(75);
 
         return subSeccion;
     }
@@ -73,11 +74,13 @@ public class SectorBloques extends VBox {
         BotonConIcono botonBloqueRepetidorTriple =
                 new BotonConIcono("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
 
-        botonBloqueInversor.setPrefHeight(75);
-        botonBloqueRepetidorDoble.setPrefHeight(75);
-        botonBloqueRepetidorTriple.setPrefHeight(75);
+        botonBloqueInversor.setMinHeight(75);
+        botonBloqueRepetidorDoble.setMinHeight(75);
+        botonBloqueRepetidorTriple.setMinHeight(75);
 
         HBox subSeccion = new HBox(25, botonBloqueInversor, botonBloqueRepetidorDoble, botonBloqueRepetidorTriple);
+
+        subSeccion.setMinWidth(200);
 
         return subSeccion;
     }
@@ -103,10 +106,16 @@ public class SectorBloques extends VBox {
         BotonConIcono botonBajarLapiz =
                 new BotonConIcono("BotonBajarLapiz", "src/main/resources/lapiz_abajo.png");
 
+        Pane panelVacio = new Pane();
+
+        panelVacio.setMinSize(50,50);
+
         grid.add(botonMoverArriba,1,0);
         grid.add(botonMoverIzquierda,0,1);
         grid.add(botonMoverDerecha,2,1);
         grid.add(botonMoverAbajo, 1,2);
+
+        grid.add(panelVacio,1,3);
 
         grid.add(botonSubirLapiz, 0,4);
         grid.add(botonBajarLapiz, 2,4);
