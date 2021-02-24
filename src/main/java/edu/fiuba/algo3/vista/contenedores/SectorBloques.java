@@ -10,31 +10,36 @@ public class SectorBloques extends VBox {
     public SectorBloques(){
         super(40);
 
-        HBox BotonesAdminBloquesAlgoritmo =
+        VBox BotonesDeAcciones = botonesDeAcciones();
 
-        VBox subSeccion = new VBox();
+        HBox BotonesAdminBloquesAlgoritmo = botonesDeControlDeBloquesAlgoritmo();
 
-        SeccionBotonesDeAdminBloqueAlgoritmo botonesDeControlDeBloquesAlgoritmo = new SeccionBotonesDeAdminBloqueAlgoritmo();
+        getChildren().addAll(BotonesDeAcciones, BotonesAdminBloquesAlgoritmo);
 
-        SeccionBotonesDeBloquesSimples bloquesSimples = new SeccionBotonesDeBloquesSimples();
+        setHeight(575);
+    }
 
-        SeccionBotonesDeBloquesContenedores bloquesContenedores = new SeccionBotonesDeBloquesContenedores();
+    private VBox botonesDeAcciones(){
 
+        GridPane bloquesSimples = BloquesSimples();
+
+        HBox bloquesContenedores = BloquesContenedores();
 
         BotonConIcono botonUsarBloqueAlgoritmo =
-            new BotonConIcono("UsarBloqueAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
+                new BotonConIcono("UsarBloqueAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
 
         botonUsarBloqueAlgoritmo.setPrefSize(75,50);
         botonUsarBloqueAlgoritmo.setAlignment(Pos.CENTER);
 
-        getChildren().addAll(bloquesSimples, bloquesContenedores, botonUsarBloqueAlgoritmo);
+        VBox subSeccion = new VBox(50,bloquesSimples, bloquesContenedores, botonUsarBloqueAlgoritmo);
 
         setMargin(bloquesSimples, new Insets(25, 25, 0, 25));
 
-        setHeight(575);
-        setSpacing(50);
-        setPadding(new Insets(25,25,25,25));
-        setBorder(new Border(new BorderStroke(null, BorderStrokeStyle.SOLID, null, BorderStroke.THIN)));
+        subSeccion.setPadding(new Insets(25,25,25,25));
+
+        subSeccion.setBorder(new Border(new BorderStroke(null, BorderStrokeStyle.SOLID, null, BorderStroke.THIN)));
+
+        return subSeccion;
     }
 
     private HBox botonesDeControlDeBloquesAlgoritmo(){
@@ -54,5 +59,58 @@ public class SectorBloques extends VBox {
         subSeccion.setPrefHeight(75);
 
         return subSeccion;
+    }
+
+
+    private HBox BloquesContenedores(){
+
+        BotonConIcono botonBloqueInversor =
+                new BotonConIcono("BotonBloqueInversor", "src/main/resources/inverso.png");
+
+        BotonConIcono botonBloqueRepetidorDoble =
+                new BotonConIcono("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
+
+        BotonConIcono botonBloqueRepetidorTriple =
+                new BotonConIcono("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
+
+        botonBloqueInversor.setPrefHeight(75);
+        botonBloqueRepetidorDoble.setPrefHeight(75);
+        botonBloqueRepetidorTriple.setPrefHeight(75);
+
+        HBox subSeccion = new HBox(25, botonBloqueInversor, botonBloqueRepetidorDoble, botonBloqueRepetidorTriple);
+
+        return subSeccion;
+    }
+
+    private GridPane BloquesSimples(){
+        GridPane grid = new GridPane();
+
+        BotonConIcono botonMoverArriba =
+                new BotonConIcono("BotonMoverArriba", "src/main/resources/flecha_arriba.png");
+
+        BotonConIcono botonMoverAbajo =
+                new BotonConIcono("BotonMoverAbajo", "src/main/resources/flecha_abajo.png");
+
+        BotonConIcono botonMoverIzquierda =
+                new BotonConIcono("BotonMoverIzquierda", "src/main/resources/flecha_izquierda.png");
+
+        BotonConIcono botonMoverDerecha =
+                new BotonConIcono("BotonMoverDerecha", "src/main/resources/flecha_derecha.png");
+
+        BotonConIcono botonSubirLapiz =
+                new BotonConIcono("BotonSubirLapiz", "src/main/resources/lapiz_arriba.png");
+
+        BotonConIcono botonBajarLapiz =
+                new BotonConIcono("BotonBajarLapiz", "src/main/resources/lapiz_abajo.png");
+
+        grid.add(botonMoverArriba,1,0);
+        grid.add(botonMoverIzquierda,0,1);
+        grid.add(botonMoverDerecha,2,1);
+        grid.add(botonMoverAbajo, 1,2);
+
+        grid.add(botonSubirLapiz, 0,4);
+        grid.add(botonBajarLapiz, 2,4);
+
+        return grid;
     }
 }
