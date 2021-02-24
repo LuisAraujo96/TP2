@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.agarradores.DragDroppedEventHandler;
-import edu.fiuba.algo3.controlador.agarradores.DragOverEventHandler;
+import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragDroppedEventHandler;
+import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragOverEventHandler;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
@@ -12,8 +12,8 @@ public class SeccionAlgoritmo extends HBox {
     public SeccionAlgoritmo(){
         super();
 
-        ScrollPane seccionDeBloques = new ScrollPane();
-        seccionDeBloques.setPrefSize(700,150);
+        ScrollPane seccionAlgoritmoContenedorDeBloques = new ScrollPane();
+        seccionAlgoritmoContenedorDeBloques.setPrefSize(700,150);
 
         BotonDePrograma botonEjecutarSectorAlgoritmo =
                 new BotonDePrograma("BotonEjecutarSectorAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
@@ -23,16 +23,12 @@ public class SeccionAlgoritmo extends HBox {
 
         VBox seccionDeBotones = new VBox(20, botonEjecutarSectorAlgoritmo, botonLimpiarSectorAlgoritmo);
 
-        getChildren().addAll(seccionDeBloques, seccionDeBotones);
+        getChildren().addAll(seccionAlgoritmoContenedorDeBloques, seccionDeBotones);
 
         HBox botoneraDeScroll = new HBox();
-        seccionDeBloques.setContent(botoneraDeScroll);
+        seccionAlgoritmoContenedorDeBloques.setContent(botoneraDeScroll);
 
-        seccionDeBloques.setOnDragOver(new DragOverEventHandler(botoneraDeScroll));
-        seccionDeBloques.setOnDragDropped(new DragDroppedEventHandler(botoneraDeScroll));
-    }
-
-    public void setOnActionBoton(){
-        //sectorAlgoritmo.ejecutarPrograma();
+        seccionAlgoritmoContenedorDeBloques.setOnDragOver(new SeccionAlgoritmoDragOverEventHandler(botoneraDeScroll));
+        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(new SeccionAlgoritmoDragDroppedEventHandler(botoneraDeScroll));
     }
 }

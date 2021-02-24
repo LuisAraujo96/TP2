@@ -6,12 +6,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
-public class DragOverEventHandler implements EventHandler<DragEvent> {
-    private HBox seccionDeBloques;
+public class SeccionAlgoritmoDragOverEventHandler implements EventHandler<DragEvent> {
+    private Pane seccionAlgoritmoContenedorDeBloques;
 
-    public DragOverEventHandler(HBox seccionDeBloques){
-        this.seccionDeBloques = seccionDeBloques;
+    public SeccionAlgoritmoDragOverEventHandler(Pane seccionDeBloques){
+        this.seccionAlgoritmoContenedorDeBloques = seccionAlgoritmoContenedorDeBloques;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class DragOverEventHandler implements EventHandler<DragEvent> {
 
         /* accept it only if it is  not dragged from the same node
          * and if it has a string data */
-        if (dragEvent.getGestureSource() != this.seccionDeBloques &&
+        if (dragEvent.getGestureSource() != this.seccionAlgoritmoContenedorDeBloques &&
                 dragEvent.getDragboard().hasString()) {
             /* allow for both copying and moving, whatever user chooses */
             dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
