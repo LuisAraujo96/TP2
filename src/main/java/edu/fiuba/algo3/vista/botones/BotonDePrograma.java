@@ -7,9 +7,11 @@ import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class BotonConIcono extends Button {
+public class BotonDePrograma extends Button {
 
-    public BotonConIcono(String bloqueID, String imgPath){
+    private Image imagenDelBoton;
+
+    public BotonDePrograma(String bloqueID, String imgPath){
         super();
 
         try { setImage(imgPath); } catch (FileNotFoundException e) { System.out.println( bloqueID + " no encontro icono: " + imgPath); }
@@ -29,6 +31,11 @@ public class BotonConIcono extends Button {
         imageView.setSmooth(true);
         imageView.setCache(true);
         this.setGraphic(imageView);
+
+        this.imagenDelBoton = image; //guardo la imagen del boton en un atributo privado del tipo Image
     }
 
+    public String obtenerIDdelBoton(){ return this.getId(); }
+
+    public Image obtenerImagenDelBoton(){ return this.imagenDelBoton; } //devuelve la imagen del boton
 }
