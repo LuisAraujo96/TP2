@@ -6,9 +6,9 @@ import javafx.scene.image.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class SectorDibujo extends Canvas {
+public class SeccionDibujo extends Canvas {
 
-    public SectorDibujo(){
+    public SeccionDibujo(){
         super(750, 500);
 
         try { loadImage("src/main/resources/fondo_sector_dibujo.png"); } catch (FileNotFoundException e) {}

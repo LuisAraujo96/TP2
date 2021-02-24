@@ -1,13 +1,15 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.vista.botones.BotonConIcono;
+import edu.fiuba.algo3.vista.botones.BotonBloqueComplejo;
+import edu.fiuba.algo3.vista.botones.BotonBloqueSimple;
+import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 
-public class SectorBloques extends VBox {
+public class SeccionBloques extends VBox {
 
-    public SectorBloques(){
+    public SeccionBloques(){
         super(40);
 
         VBox BotonesDeAcciones = botonesDeAcciones();
@@ -25,8 +27,8 @@ public class SectorBloques extends VBox {
 
         HBox bloquesContenedores = BloquesContenedores();
 
-        BotonConIcono botonUsarBloqueAlgoritmo =
-                new BotonConIcono("UsarBloqueAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
+        BotonDePrograma botonUsarBloqueAlgoritmo =
+                new BotonDePrograma("UsarBloqueAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
 
         botonUsarBloqueAlgoritmo.setPrefSize(75,50);
         botonUsarBloqueAlgoritmo.setAlignment(Pos.CENTER);
@@ -44,11 +46,11 @@ public class SectorBloques extends VBox {
 
     private HBox botonesDeControlDeBloquesAlgoritmo(){
 
-        BotonConIcono botonBorrarBloqueAlgoritmo =
-            new BotonConIcono("BorrarBloqueAlgoritmo", "src/main/resources/borrar_bloque_algoritmo.png");
+        BotonDePrograma botonBorrarBloqueAlgoritmo =
+            new BotonDePrograma("BorrarBloqueAlgoritmo", "src/main/resources/borrar_bloque_algoritmo.png");
 
-        BotonConIcono botonGuardarBloqueAlgoritmo =
-            new BotonConIcono("GuardarBloqueAlgoritmo", "src/main/resources/guardar_bloque_algoritmo.png");
+        BotonDePrograma botonGuardarBloqueAlgoritmo =
+            new BotonDePrograma("GuardarBloqueAlgoritmo", "src/main/resources/guardar_bloque_algoritmo.png");
 
         botonBorrarBloqueAlgoritmo.setPrefSize(75,75);
         botonGuardarBloqueAlgoritmo.setPrefSize(75,75);
@@ -64,14 +66,14 @@ public class SectorBloques extends VBox {
 
     private HBox BloquesContenedores(){
 
-        BotonConIcono botonBloqueInversor =
-                new BotonConIcono("BotonBloqueInversor", "src/main/resources/inverso.png");
+        BotonDePrograma botonBloqueInversor =
+                new BotonBloqueComplejo("BotonBloqueInversor", "src/main/resources/inverso.png");
 
-        BotonConIcono botonBloqueRepetidorDoble =
-                new BotonConIcono("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
+        BotonDePrograma botonBloqueRepetidorDoble =
+                new BotonBloqueComplejo("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
 
-        BotonConIcono botonBloqueRepetidorTriple =
-                new BotonConIcono("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
+        BotonDePrograma botonBloqueRepetidorTriple =
+                new BotonBloqueComplejo("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
 
         botonBloqueInversor.setPrefHeight(75);
         botonBloqueRepetidorDoble.setPrefHeight(75);
@@ -85,23 +87,23 @@ public class SectorBloques extends VBox {
     private GridPane BloquesSimples(){
         GridPane grid = new GridPane();
 
-        BotonConIcono botonMoverArriba =
-                new BotonConIcono("BotonMoverArriba", "src/main/resources/flecha_arriba.png");
+        BotonBloqueSimple botonMoverArriba =
+                new BotonBloqueSimple("BotonMoverArriba", "src/main/resources/flecha_arriba.png");
 
-        BotonConIcono botonMoverAbajo =
-                new BotonConIcono("BotonMoverAbajo", "src/main/resources/flecha_abajo.png");
+        BotonBloqueSimple botonMoverAbajo =
+                new BotonBloqueSimple("BotonMoverAbajo", "src/main/resources/flecha_abajo.png");
 
-        BotonConIcono botonMoverIzquierda =
-                new BotonConIcono("BotonMoverIzquierda", "src/main/resources/flecha_izquierda.png");
+        BotonBloqueSimple botonMoverIzquierda =
+                new BotonBloqueSimple("BotonMoverIzquierda", "src/main/resources/flecha_izquierda.png");
 
-        BotonConIcono botonMoverDerecha =
-                new BotonConIcono("BotonMoverDerecha", "src/main/resources/flecha_derecha.png");
+        BotonBloqueSimple botonMoverDerecha =
+                new BotonBloqueSimple("BotonMoverDerecha", "src/main/resources/flecha_derecha.png");
 
-        BotonConIcono botonSubirLapiz =
-                new BotonConIcono("BotonSubirLapiz", "src/main/resources/lapiz_arriba.png");
+        BotonBloqueSimple botonSubirLapiz =
+                new BotonBloqueSimple("BotonSubirLapiz", "src/main/resources/lapiz_arriba.png");
 
-        BotonConIcono botonBajarLapiz =
-                new BotonConIcono("BotonBajarLapiz", "src/main/resources/lapiz_abajo.png");
+        BotonBloqueSimple botonBajarLapiz =
+                new BotonBloqueSimple("BotonBajarLapiz", "src/main/resources/lapiz_abajo.png");
 
         grid.add(botonMoverArriba,1,0);
         grid.add(botonMoverIzquierda,0,1);
