@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.SectorBloques;
-import edu.fiuba.algo3.vista.botones.BotonBloqueComplejo;
+import edu.fiuba.algo3.vista.botones.BotonBloqueContenedor;
 import edu.fiuba.algo3.vista.botones.BotonBloqueSimple;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
@@ -69,13 +69,13 @@ public class SeccionBloques extends VBox {
     private HBox BloquesContenedores(){
 
         BotonDePrograma botonBloqueInversor =
-                new BotonBloqueComplejo("BotonBloqueInversor", "src/main/resources/inverso.png");
+                new BotonBloqueContenedor("BotonBloqueInversor", "src/main/resources/inverso.png");
 
         BotonDePrograma botonBloqueRepetidorDoble =
-                new BotonBloqueComplejo("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
+                new BotonBloqueContenedor("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
 
         BotonDePrograma botonBloqueRepetidorTriple =
-                new BotonBloqueComplejo("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
+                new BotonBloqueContenedor("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
 
         botonBloqueInversor.setMinHeight(75);
         botonBloqueRepetidorDoble.setMinHeight(75);
