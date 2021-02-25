@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.agarradores.BotonEjecutarAlgoritmoEventHandler;
-import edu.fiuba.algo3.controlador.agarradores.BotonLimpiarSeccionAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.cliqueadores.BotonEjecutarAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.cliqueadores.BotonLimpiarSeccionAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragDroppedEventHandler;

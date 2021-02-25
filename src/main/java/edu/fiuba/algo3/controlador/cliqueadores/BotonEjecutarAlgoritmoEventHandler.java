@@ -1,13 +1,9 @@
-package edu.fiuba.algo3.controlador.agarradores;
+package edu.fiuba.algo3.controlador.cliqueadores;
 
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
 
 public class BotonEjecutarAlgoritmoEventHandler implements EventHandler<ActionEvent> {
 
@@ -22,7 +18,9 @@ public class BotonEjecutarAlgoritmoEventHandler implements EventHandler<ActionEv
     @Override
     public void handle(ActionEvent actionEvent) {
         sectorAlgoritmo.ejecutarPrograma(this.personaje);
-        
+        //Debugger
+        System.out.println("X = " + this.personaje.obtenerPosicion().getX());
+        System.out.println("Y = " + this.personaje.obtenerPosicion().getY());
     }
 
 

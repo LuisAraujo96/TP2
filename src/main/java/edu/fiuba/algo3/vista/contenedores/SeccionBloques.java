@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.agarradores.BotonGuardarAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.cliqueadores.BotonGuardarAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.vista.botones.BotonBloqueContenedor;
@@ -17,7 +17,7 @@ public class SeccionBloques extends VBox {
 
         VBox BotonesDeAcciones = botonesDeAcciones();
 
-        HBox BotonesAdminBloquesAlgoritmo = botonesDeControlDeBloquesAlgoritmo(sectorAlgoritmo);
+        HBox BotonesAdminBloquesAlgoritmo = botonesDeControlDeBloquesAlgoritmo(sectorAlgoritmo, sectorBloques);
 
         getChildren().addAll(BotonesDeAcciones, BotonesAdminBloquesAlgoritmo);
 
@@ -48,7 +48,7 @@ public class SeccionBloques extends VBox {
         return subSeccion;
     }
 
-    private HBox botonesDeControlDeBloquesAlgoritmo(SectorAlgoritmo sectorAlgoritmo){
+    private HBox botonesDeControlDeBloquesAlgoritmo(SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques){
 
         BotonDePrograma botonBorrarBloqueAlgoritmo =
             new BotonDePrograma("BorrarBloqueAlgoritmo", "src/main/resources/borrar_bloque_algoritmo.png");
@@ -59,7 +59,7 @@ public class SeccionBloques extends VBox {
         botonBorrarBloqueAlgoritmo.setMinSize(75,75);
         botonGuardarBloqueAlgoritmo.setMinSize(75,75);
 
-        botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(sectorAlgoritmo));
+        botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(sectorAlgoritmo, sectorBloques));
 
         HBox subSeccion = new HBox(50, botonBorrarBloqueAlgoritmo, botonGuardarBloqueAlgoritmo);
 

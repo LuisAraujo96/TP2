@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.vista.alertas;
 
+import edu.fiuba.algo3.controlador.cliqueadores.GuardarAlgoritmoPersonalizadoEventHandler;
+import edu.fiuba.algo3.modelo.SectorAlgoritmo;
+import edu.fiuba.algo3.modelo.SectorBloques;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +15,7 @@ import javafx.stage.Stage;
 
 public class AlertBox {
 
-    public static void display(String titulo, String mensaje){
+    public static void display(String titulo, String mensaje, SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques){
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -26,7 +29,11 @@ public class AlertBox {
         textField.setOnAction(e -> window.close());
 
         Button okButton = new Button("Aceptar");
-        okButton.setOnAction(e -> window.close());
+
+
+        okButton.setOnAction(new GuardarAlgoritmoPersonalizadoEventHandler(textField, sectorAlgoritmo, sectorBloques));
+
+
 
         Button closeButton = new Button("Cancelar");
         closeButton.setOnAction(e -> window.close());

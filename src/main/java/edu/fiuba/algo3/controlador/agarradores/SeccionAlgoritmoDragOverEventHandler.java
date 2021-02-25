@@ -16,7 +16,6 @@ public class SeccionAlgoritmoDragOverEventHandler implements EventHandler<DragEv
     @Override
     public void handle(DragEvent dragEvent) {
         /* data is dragged over the target */
-        System.out.println("onDragOver");
 
         /* accept it only if it is  not dragged from the same node
          * and if it has a string data */
