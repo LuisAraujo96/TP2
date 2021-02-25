@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import edu.fiuba.algo3.controlador.agarradores.BotonEjecutarAlgoritmoEventHandler;
+import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragDroppedEventHandler;
 import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragOverEventHandler;
@@ -10,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 public class SeccionAlgoritmo extends HBox {
 
-    public SeccionAlgoritmo(SectorAlgoritmo sectorAlgoritmo){
+    public SeccionAlgoritmo(SectorAlgoritmo sectorAlgoritmo, Personaje personaje){
         super();
 
         ScrollPane seccionAlgoritmoContenedorDeBloques = new ScrollPane();
@@ -21,6 +23,8 @@ public class SeccionAlgoritmo extends HBox {
 
         BotonDePrograma botonLimpiarSectorAlgoritmo =
                 new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/limpiar_sector_algoritmo.png");
+
+        botonEjecutarSectorAlgoritmo.setOnAction(new BotonEjecutarAlgoritmoEventHandler(personaje, sectorAlgoritmo));
 
         VBox seccionDeBotones = new VBox(20, botonEjecutarSectorAlgoritmo, botonLimpiarSectorAlgoritmo);
 
