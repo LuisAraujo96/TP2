@@ -26,7 +26,7 @@ public class BotonBloqueContenedorDragDroppedEventHandler implements EventHandle
         /* if there is a string data on dragboard, read it and use it */
         Dragboard db = dragEvent.getDragboard();
         boolean success = false;
-        if (db.hasString()) {
+        if (db.hasString() && db.getString() != "BotonBloqueInversor" && db.getString() != "BotonRepetidorDoble" && db.getString() != "BotonRepetidorTriple") {
 
             ImageView imageView = new ImageView(db.getImage());
             this.contenedorDeBloquesVertical.getChildren().add(imageView);
