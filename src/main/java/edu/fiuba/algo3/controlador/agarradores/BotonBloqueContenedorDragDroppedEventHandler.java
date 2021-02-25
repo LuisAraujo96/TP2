@@ -4,16 +4,15 @@ import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class ContenedorDeBloquesVerticalDragDroppedEventHandler implements EventHandler<DragEvent> {
+public class BotonBloqueContenedorDragDroppedEventHandler implements EventHandler<DragEvent> {
     private VBox contenedorDeBloquesVertical;
-    private ContenedorDeBloquesHorizontalDragDroppedEventHandler evento;
+    private SeccionAlgoritmoDragDroppedEventHandler eventoContenedorHorizontalDeBloques;
 
-    public ContenedorDeBloquesVerticalDragDroppedEventHandler(VBox contenedorDeBloquesVertical, ContenedorDeBloquesHorizontalDragDroppedEventHandler evento){
+    public BotonBloqueContenedorDragDroppedEventHandler(VBox contenedorDeBloquesVertical, SeccionAlgoritmoDragDroppedEventHandler eventoContenedorHorizontalDeBloques){
         this.contenedorDeBloquesVertical = contenedorDeBloquesVertical;
-        this.evento = evento;
+        this.eventoContenedorHorizontalDeBloques = eventoContenedorHorizontalDeBloques;
     }
 
     @Override
@@ -28,7 +27,7 @@ public class ContenedorDeBloquesVerticalDragDroppedEventHandler implements Event
             ImageView imageView = new ImageView(db.getImage());
             this.contenedorDeBloquesVertical.getChildren().add(imageView);
 
-            this.evento.agregueDesdeUnContenedorComplejo();
+            this.eventoContenedorHorizontalDeBloques.agregueDesdeUnContenedorComplejo();
 
             success = true;
         }

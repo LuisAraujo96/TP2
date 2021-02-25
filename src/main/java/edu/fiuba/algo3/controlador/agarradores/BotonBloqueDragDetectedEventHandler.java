@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.controlador.agarradores;
 
-import edu.fiuba.algo3.vista.botones.BotonBloqueSimple;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.event.EventHandler;
 import javafx.scene.input.ClipboardContent;

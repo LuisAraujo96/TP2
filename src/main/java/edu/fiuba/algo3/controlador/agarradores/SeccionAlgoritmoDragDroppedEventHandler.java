@@ -7,11 +7,11 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class ContenedorDeBloquesHorizontalDragDroppedEventHandler implements EventHandler<DragEvent> {
+public class SeccionAlgoritmoDragDroppedEventHandler implements EventHandler<DragEvent> {
     private HBox contenedorDeBloquesHorizontal;
     private boolean agregadoDesdeUnContenedorComplejo = false;
 
-    public ContenedorDeBloquesHorizontalDragDroppedEventHandler(HBox contenedorDeBloquesHorizontal){
+    public SeccionAlgoritmoDragDroppedEventHandler(HBox contenedorDeBloquesHorizontal){
         this.contenedorDeBloquesHorizontal = contenedorDeBloquesHorizontal;
     }
 
@@ -22,17 +22,16 @@ public class ContenedorDeBloquesHorizontalDragDroppedEventHandler implements Eve
         /* if there is a string data on dragboard, read it and use it */
         Dragboard db = dragEvent.getDragboard();
         boolean success = false;
-        if (db.hasString()) {
+        if (db.hasString() && !this.agregadoDesdeUnContenedorComplejo) {
 
             ImageView imageView = new ImageView(db.getImage());
 
             if (db.getString() == "BotonBloqueInversor" || db.getString() == "BotonRepetidorDoble" || db.getString() == "BotonRepetidorTriple"){
 
                 VBox contenedorDeBloquesVertical = new VBox(imageView);
-                contenedorDeBloquesVertical.setStyle("-fx-background-color: green");
 
-                contenedorDeBloquesVertical.setOnDragOver(new ContenedorDeBloquesVerticalDragOverEventHandler(contenedorDeBloquesVertical));
-                contenedorDeBloquesVertical.setOnDragDropped(new ContenedorDeBloquesVerticalDragDroppedEventHandler(contenedorDeBloquesVertical, this));
+                contenedorDeBloquesVertical.setOnDragOver(new BotonBloqueContenedorDragOverEventHandler(contenedorDeBloquesVertical));
+                contenedorDeBloquesVertical.setOnDragDropped(new BotonBloqueContenedorDragDroppedEventHandler(contenedorDeBloquesVertical, this));
 
                 this.contenedorDeBloquesHorizontal.getChildren().add(contenedorDeBloquesVertical);
 
@@ -40,14 +39,11 @@ public class ContenedorDeBloquesHorizontalDragDroppedEventHandler implements Eve
                 this.contenedorDeBloquesHorizontal.getChildren().add(imageView);
             }
 
-            if (this.agregadoDesdeUnContenedorComplejo) {
-
-                this.contenedorDeBloquesHorizontal.getChildren().remove(imageView);
-                this.agregadoDesdeUnContenedorComplejo = false;
-            }
-
             success = true;
         }
+
+        if (this.agregadoDesdeUnContenedorComplejo) { this.agregadoDesdeUnContenedorComplejo = false; }
+
         /* let the source know whether the string was successfully
          * transferred and used */
         dragEvent.setDropCompleted(success);

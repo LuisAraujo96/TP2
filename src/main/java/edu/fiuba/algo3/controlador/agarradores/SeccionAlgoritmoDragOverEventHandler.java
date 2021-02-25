@@ -2,16 +2,14 @@ package edu.fiuba.algo3.controlador.agarradores;
 
 import edu.fiuba.algo3.vista.contenedores.SeccionAlgoritmo;
 import javafx.event.EventHandler;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 
-public class ContenedorDeBloquesHorizontalDragOverEventHandler implements EventHandler<DragEvent> {
+public class SeccionAlgoritmoDragOverEventHandler implements EventHandler<DragEvent> {
     private HBox contenedorDeBloquesHorizontal;
 
-    public ContenedorDeBloquesHorizontalDragOverEventHandler(HBox seccionDeBloques){
+    public SeccionAlgoritmoDragOverEventHandler(HBox contenedorDeBloquesHorizontal){
         this.contenedorDeBloquesHorizontal = contenedorDeBloquesHorizontal;
     }
 

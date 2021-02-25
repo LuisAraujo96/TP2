@@ -3,13 +3,12 @@ package edu.fiuba.algo3.controlador.agarradores;
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class ContenedorDeBloquesVerticalDragOverEventHandler implements EventHandler<DragEvent> {
+public class BotonBloqueContenedorDragOverEventHandler implements EventHandler<DragEvent> {
     private VBox contenedorDeBloquesVertical;
 
-    public ContenedorDeBloquesVerticalDragOverEventHandler(VBox contenedorDeBloquesVertical){
+    public BotonBloqueContenedorDragOverEventHandler(VBox contenedorDeBloquesVertical){
         this.contenedorDeBloquesVertical = contenedorDeBloquesVertical;
     }
 

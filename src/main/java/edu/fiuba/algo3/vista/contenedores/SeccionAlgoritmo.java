@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.agarradores.ContenedorDeBloquesHorizontalDragDroppedEventHandler;
-import edu.fiuba.algo3.controlador.agarradores.ContenedorDeBloquesHorizontalDragOverEventHandler;
+import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragDroppedEventHandler;
+import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragOverEventHandler;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
@@ -28,7 +28,7 @@ public class SeccionAlgoritmo extends HBox {
         HBox contenedorDeBloquesHorizontal = new HBox();
         seccionAlgoritmoContenedorDeBloques.setContent(contenedorDeBloquesHorizontal);
 
-        seccionAlgoritmoContenedorDeBloques.setOnDragOver(new ContenedorDeBloquesHorizontalDragOverEventHandler(contenedorDeBloquesHorizontal));
-        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(new ContenedorDeBloquesHorizontalDragDroppedEventHandler(contenedorDeBloquesHorizontal));
+        seccionAlgoritmoContenedorDeBloques.setOnDragOver(new SeccionAlgoritmoDragOverEventHandler(contenedorDeBloquesHorizontal));
+        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(new SeccionAlgoritmoDragDroppedEventHandler(contenedorDeBloquesHorizontal));
     }
 }
