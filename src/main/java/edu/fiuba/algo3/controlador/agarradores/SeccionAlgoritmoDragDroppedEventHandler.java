@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controlador.agarradores;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.ContenedorDeBloques;
+import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -11,11 +12,13 @@ import javafx.scene.layout.VBox;
 
 public class SeccionAlgoritmoDragDroppedEventHandler implements EventHandler<DragEvent> {
     private HBox contenedorDeBloquesHorizontal;
-    private boolean agregadoDesdeUnContenedorComplejo = false;
-    //private SectorAlgoritmo sectorAlgoritmo;
+    private boolean agregadoDesdeUnContenedorComplejo;
+    private SectorAlgoritmo sectorAlgoritmo;
 
-    public SeccionAlgoritmoDragDroppedEventHandler(HBox contenedorDeBloquesHorizontal){
+    public SeccionAlgoritmoDragDroppedEventHandler(HBox contenedorDeBloquesHorizontal, SectorAlgoritmo sectorAlgoritmo){
         this.contenedorDeBloquesHorizontal = contenedorDeBloquesHorizontal;
+        this.sectorAlgoritmo = sectorAlgoritmo;
+        this.agregadoDesdeUnContenedorComplejo = false;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class SeccionAlgoritmoDragDroppedEventHandler implements EventHandler<Dra
             bloqueCreado = new BloqueRepetidor(3);
         }
 
-        //this.sectorAlgoritmo.agregarBloque(bloqueCreado);
+        this.sectorAlgoritmo.agregarBloque(bloqueCreado);
         return bloqueCreado;
     }
 }

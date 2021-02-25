@@ -30,6 +30,6 @@ public class SeccionAlgoritmo extends HBox {
         seccionAlgoritmoContenedorDeBloques.setContent(contenedorDeBloquesHorizontal);
 
         seccionAlgoritmoContenedorDeBloques.setOnDragOver(new SeccionAlgoritmoDragOverEventHandler(contenedorDeBloquesHorizontal));
-        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(new SeccionAlgoritmoDragDroppedEventHandler(contenedorDeBloquesHorizontal));
+        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(new SeccionAlgoritmoDragDroppedEventHandler(contenedorDeBloquesHorizontal, sectorAlgoritmo));
     }
 }
