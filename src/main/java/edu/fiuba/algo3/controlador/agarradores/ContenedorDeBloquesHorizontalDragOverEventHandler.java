@@ -8,11 +8,11 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class SeccionAlgoritmoDragOverEventHandler implements EventHandler<DragEvent> {
-    private Pane seccionAlgoritmoContenedorDeBloques;
+public class ContenedorDeBloquesHorizontalDragOverEventHandler implements EventHandler<DragEvent> {
+    private HBox contenedorDeBloquesHorizontal;
 
-    public SeccionAlgoritmoDragOverEventHandler(Pane seccionDeBloques){
-        this.seccionAlgoritmoContenedorDeBloques = seccionAlgoritmoContenedorDeBloques;
+    public ContenedorDeBloquesHorizontalDragOverEventHandler(HBox seccionDeBloques){
+        this.contenedorDeBloquesHorizontal = contenedorDeBloquesHorizontal;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class SeccionAlgoritmoDragOverEventHandler implements EventHandler<DragEv
 
         /* accept it only if it is  not dragged from the same node
          * and if it has a string data */
-        if (dragEvent.getGestureSource() != this.seccionAlgoritmoContenedorDeBloques &&
+        if (dragEvent.getGestureSource() != this.contenedorDeBloquesHorizontal &&
                 dragEvent.getDragboard().hasString()) {
             /* allow for both copying and moving, whatever user chooses */
             dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);

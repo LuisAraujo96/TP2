@@ -9,8 +9,5 @@ public class BotonBloqueContenedor extends BotonDePrograma {
         super(bloqueID,imgPath );
 
         this.setOnDragDetected(new BotonBloqueDragDetectedEventHandler(this));
-        //this.setOnDragOver();
-        //this.setOnDragDropped();
-
     }
 }
