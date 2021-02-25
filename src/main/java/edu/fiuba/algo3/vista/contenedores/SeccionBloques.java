@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.vista.botones.BotonBloqueComplejo;
 import edu.fiuba.algo3.vista.botones.BotonBloqueSimple;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
@@ -9,7 +10,7 @@ import javafx.scene.layout.*;
 
 public class SeccionBloques extends VBox {
 
-    public SeccionBloques(){
+    public SeccionBloques(SectorBloques sectorBloques){
         super(40);
 
         VBox BotonesDeAcciones = botonesDeAcciones();
