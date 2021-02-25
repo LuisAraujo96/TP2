@@ -14,7 +14,7 @@ public class SeccionPrincipal extends HBox {
 
         setPadding(new Insets(30,30,30,30));
 
-        SeccionBloques seccionBloques = new SeccionBloques(sectorBloques);
+        SeccionBloques seccionBloques = new SeccionBloques(sectorBloques, sectorAlgoritmo);
         SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo(sectorAlgoritmo, personaje);
         SeccionDibujo seccionDibujo = new SeccionDibujo(sectorDibujo, personaje);
 
