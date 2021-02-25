@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.agarradores.BotonEjecutarAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.agarradores.BotonLimpiarSeccionAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragDroppedEventHandler;
@@ -24,7 +25,8 @@ public class SeccionAlgoritmo extends HBox {
         BotonDePrograma botonLimpiarSectorAlgoritmo =
                 new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/limpiar_sector_algoritmo.png");
 
-        botonEjecutarSectorAlgoritmo.setOnAction(new BotonEjecutarAlgoritmoEventHandler(personaje, sectorAlgoritmo));
+
+
 
         VBox seccionDeBotones = new VBox(20, botonEjecutarSectorAlgoritmo, botonLimpiarSectorAlgoritmo);
 
@@ -33,7 +35,11 @@ public class SeccionAlgoritmo extends HBox {
         HBox contenedorDeBloquesHorizontal = new HBox();
         seccionAlgoritmoContenedorDeBloques.setContent(contenedorDeBloquesHorizontal);
 
+        SeccionAlgoritmoDragDroppedEventHandler seccionAlgoritmoDragDroppedEventHandler= new SeccionAlgoritmoDragDroppedEventHandler(contenedorDeBloquesHorizontal, sectorAlgoritmo);
+        botonEjecutarSectorAlgoritmo.setOnAction(new BotonEjecutarAlgoritmoEventHandler(personaje, sectorAlgoritmo));
+        botonLimpiarSectorAlgoritmo.setOnAction(new BotonLimpiarSeccionAlgoritmoEventHandler(sectorAlgoritmo, seccionAlgoritmoDragDroppedEventHandler));
+
         seccionAlgoritmoContenedorDeBloques.setOnDragOver(new SeccionAlgoritmoDragOverEventHandler(contenedorDeBloquesHorizontal));
-        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(new SeccionAlgoritmoDragDroppedEventHandler(contenedorDeBloquesHorizontal, sectorAlgoritmo));
+        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(seccionAlgoritmoDragDroppedEventHandler);
     }
 }
