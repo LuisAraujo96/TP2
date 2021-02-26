@@ -15,10 +15,13 @@ public class SeccionAlgoritmoDragDroppedEventHandler implements EventHandler<Dra
     private boolean agregadoDesdeUnContenedorComplejo;
     private SectorAlgoritmo sectorAlgoritmo;
 
+
+
     public SeccionAlgoritmoDragDroppedEventHandler(HBox contenedorDeBloquesHorizontal, SectorAlgoritmo sectorAlgoritmo){
         this.contenedorDeBloquesHorizontal = contenedorDeBloquesHorizontal;
         this.sectorAlgoritmo = sectorAlgoritmo;
         this.agregadoDesdeUnContenedorComplejo = false;
+
     }
 
     @Override
@@ -86,5 +89,9 @@ public class SeccionAlgoritmoDragDroppedEventHandler implements EventHandler<Dra
 
         this.sectorAlgoritmo.agregarBloque(bloqueCreado);
         return bloqueCreado;
+    }
+
+    public void limpiarContenedor() {
+        contenedorDeBloquesHorizontal.getChildren().clear();
     }
 }

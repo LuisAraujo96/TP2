@@ -11,4 +11,8 @@ public class SectorAlgoritmo extends ContenedorDeBloques{
         if (this.bloques.isEmpty()) { throw new AlgoritmoSinBloquesException(); }
         return this.bloques.toArray(new Bloque[this.bloques.size()]);
     }
+
+    public void vaciarSector(){
+        bloques.clear();
+    }
 }
