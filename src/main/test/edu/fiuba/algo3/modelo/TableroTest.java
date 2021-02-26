@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 import org.junit.jupiter.api.Test;
 
 public class TableroTest {
+   /*
    @Test
    public void test01CreoUnTableroYSeleccionoBloquesEjecutoElAlgoritmoYDebenVerseReflejadosEnElSectorDibujo(){
       Tablero tablero = new Tablero();
@@ -78,4 +79,5 @@ public class TableroTest {
           
       assertEquals(tablero.ejecutarPrograma(), dibujoEsperado);
    }
+    */
 }

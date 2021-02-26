@@ -27,9 +27,11 @@ public class Tablero {
         this.sectorAlgoritmo.agregarBloque(unBloque);
     }
 
+    /*
     public void removerBloque(){
         this.sectorAlgoritmo.removerBloque();
     }
+    */
 
     public void guardarBloqueAlgoritmoPersonalizado(String nombreBloqueAlgoritmo) throws SinBloquesADevolverException {
         this.sectorBloques.guardarBloqueAlgoritmoPersonalizado(nombreBloqueAlgoritmo, this.sectorAlgoritmo.obtenerBloques());
