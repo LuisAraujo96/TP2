@@ -1,6 +1,5 @@
-package edu.fiuba.algo3.controlador.agarradores;
+package edu.fiuba.algo3.controlador.arrastradores;
 
-import edu.fiuba.algo3.vista.contenedores.SeccionAlgoritmo;
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;

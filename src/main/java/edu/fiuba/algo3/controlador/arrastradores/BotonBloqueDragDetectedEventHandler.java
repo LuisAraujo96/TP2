@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador.agarradores;
+package edu.fiuba.algo3.controlador.arrastradores;
 
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.event.EventHandler;
