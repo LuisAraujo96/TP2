@@ -13,7 +13,7 @@ public class SeccionDibujo extends StackPane {
     public SeccionDibujo(){
         super();
 
-        Canvas subSeccionDeDibujo = new Canvas(750,550);
+        Canvas subSeccionDeDibujo = new Canvas(750,500);
 
         GridPane subSeccionDePersonaje = new GridPane();
 

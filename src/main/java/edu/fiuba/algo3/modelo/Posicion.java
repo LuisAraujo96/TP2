@@ -40,4 +40,9 @@ public class Posicion {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    @Override
+    public String toString() {
+        return "Posicion(" + this.x + " , " + this.y + " )";
+    }
 }
