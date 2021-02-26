@@ -50,18 +50,15 @@ public class SeccionBloques extends VBox {
 
     private HBox botonesDeControlDeBloquesAlgoritmo(SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques){
 
-        BotonDePrograma botonBorrarBloqueAlgoritmo =
-            new BotonDePrograma("BorrarBloqueAlgoritmo", "src/main/resources/borrar_bloque_algoritmo.png");
 
         BotonDePrograma botonGuardarBloqueAlgoritmo =
             new BotonDePrograma("GuardarBloqueAlgoritmo", "src/main/resources/guardar_bloque_algoritmo.png");
 
-        botonBorrarBloqueAlgoritmo.setMinSize(75,75);
         botonGuardarBloqueAlgoritmo.setMinSize(75,75);
 
         botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(sectorAlgoritmo, sectorBloques));
 
-        HBox subSeccion = new HBox(50, botonBorrarBloqueAlgoritmo, botonGuardarBloqueAlgoritmo);
+        HBox subSeccion = new HBox(50, botonGuardarBloqueAlgoritmo);
 
         subSeccion.setPadding(new Insets(0,30,0,30));
         subSeccion.setMinHeight(75);
