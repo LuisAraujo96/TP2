@@ -37,7 +37,6 @@ public class BloqueContenedor implements Bloque, Subject {
     }
 
 
-
     @Override
     public void ejecutarSobre(Personaje personaje) {
         for (Bloque bloque : bloques) bloque.ejecutarSobre(personaje);

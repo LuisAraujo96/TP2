@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controlador.cliqueadores;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
-import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
+import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
 import javafx.event.Event;
@@ -30,7 +30,7 @@ public class GuardarAlgoritmoPersonalizadoEventHandler implements EventHandler{
             Bloque[] bloques = sectorAlgoritmo.obtenerBloques();
             sectorBloques.guardarBloqueAlgoritmoPersonalizado(textfield.getText(), bloques);
             window.close();
-        } catch (AlgoritmoSinBloquesException e) {
+        } catch (SinBloquesADevolverException e) {
 
         }
     }

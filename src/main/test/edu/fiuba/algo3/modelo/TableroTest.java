@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
-import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
+import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 import org.junit.jupiter.api.Test;
 
 public class TableroTest {
@@ -65,7 +65,7 @@ public class TableroTest {
       try {
          tablero.guardarBloqueAlgoritmoPersonalizado("prueba");
 
-      } catch (AlgoritmoSinBloquesException e){
+      } catch (SinBloquesADevolverException e){
       }
 
       Bloque BloqueAlgoritmo = tablero.seleccionarBloqueAlgoritmoPersonalizado("prueba");

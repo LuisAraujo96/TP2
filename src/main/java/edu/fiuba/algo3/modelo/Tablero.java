@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
-import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
+import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 
 public class Tablero {
@@ -31,7 +31,7 @@ public class Tablero {
         this.sectorAlgoritmo.removerBloque();
     }
 
-    public void guardarBloqueAlgoritmoPersonalizado(String nombreBloqueAlgoritmo) throws AlgoritmoSinBloquesException {
+    public void guardarBloqueAlgoritmoPersonalizado(String nombreBloqueAlgoritmo) throws SinBloquesADevolverException {
         this.sectorBloques.guardarBloqueAlgoritmoPersonalizado(nombreBloqueAlgoritmo, this.sectorAlgoritmo.obtenerBloques());
     }
 
