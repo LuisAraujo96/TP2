@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista.botones;
 
-import edu.fiuba.algo3.controlador.agarradores.BotonBloqueDragDetectedEventHandler;
+import edu.fiuba.algo3.controlador.arrastradores.BotonBloqueDragDetectedEventHandler;
 
 public class BotonBloqueSimple extends BotonDePrograma {
 

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador.agarradores;
+package edu.fiuba.algo3.controlador.arrastradores;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;

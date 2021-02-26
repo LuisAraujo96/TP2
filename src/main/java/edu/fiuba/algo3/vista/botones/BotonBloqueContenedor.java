@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.botones;
 
-import edu.fiuba.algo3.controlador.agarradores.BotonBloqueDragDetectedEventHandler;
-import javafx.scene.image.Image;
+import edu.fiuba.algo3.controlador.arrastradores.BotonBloqueDragDetectedEventHandler;
 
 public class BotonBloqueContenedor extends BotonDePrograma {
 

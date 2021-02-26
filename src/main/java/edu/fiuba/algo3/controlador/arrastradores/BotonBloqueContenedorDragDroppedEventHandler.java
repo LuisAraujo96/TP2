@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador.agarradores;
+package edu.fiuba.algo3.controlador.arrastradores;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.ContenedorDeBloques;
@@ -23,9 +23,11 @@ public class BotonBloqueContenedorDragDroppedEventHandler implements EventHandle
     public void handle(DragEvent dragEvent) {
         /* data dropped */
         System.out.println("onDragDropped");
+
         /* if there is a string data on dragboard, read it and use it */
         Dragboard db = dragEvent.getDragboard();
         boolean success = false;
+
         if (db.hasString() && db.getString() != "BotonBloqueInversor" && db.getString() != "BotonRepetidorDoble" && db.getString() != "BotonRepetidorTriple") {
 
             ImageView imageView = new ImageView(db.getImage());
@@ -33,7 +35,7 @@ public class BotonBloqueContenedorDragDroppedEventHandler implements EventHandle
 
             this.agregarUnBloqueAlBloqueContenedor(db.getString());
 
-            this.eventoContenedorHorizontalDeBloques.agregueDesdeUnContenedorComplejo();
+            //this.eventoContenedorHorizontalDeBloques.agregueDesdeUnContenedorComplejo();
 
             success = true;
         }
