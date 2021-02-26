@@ -26,11 +26,18 @@ public class SeccionAlgoritmo extends HBox {
                 new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/limpiar_sector_algoritmo.png");
 
 
+        BotonDePrograma botonLimpiarCanvas =
+                new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/limpiar_sector_algoritmo.png");
+
+        botonLimpiarSectorAlgoritmo.setMinSize(50,50);
+        botonLimpiarCanvas.setMinSize(50,50);
+
+        botonEjecutarSectorAlgoritmo.setMinSize(50,100);
 
 
-        VBox seccionDeBotones = new VBox(20, botonEjecutarSectorAlgoritmo, botonLimpiarSectorAlgoritmo);
+        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas);
 
-        getChildren().addAll(seccionAlgoritmoContenedorDeBloques, seccionDeBotones);
+        getChildren().addAll(seccionDeBotones,seccionAlgoritmoContenedorDeBloques, botonEjecutarSectorAlgoritmo);
 
         HBox contenedorDeBloquesHorizontal = new HBox();
         seccionAlgoritmoContenedorDeBloques.setContent(contenedorDeBloquesHorizontal);
