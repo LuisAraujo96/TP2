@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
 import edu.fiuba.algo3.modelo.Bloques.Bloque;

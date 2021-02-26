@@ -5,8 +5,6 @@ import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
-//
-
 public class SelectorDeContenedoresEventHandler implements EventHandler<MouseEvent> {
     private SectorAlgoritmo sectorAlgoritmo;
     private BloqueContenedor contenedor;

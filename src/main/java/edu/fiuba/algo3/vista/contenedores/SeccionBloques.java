@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import edu.fiuba.algo3.controlador.CreadorDeBloquesContenedoresEventHandler;
+import edu.fiuba.algo3.controlador.CreadorDeBloquesEventHandler;
 import edu.fiuba.algo3.controlador.cliqueadores.BotonGuardarAlgoritmoEventHandler;
+import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
-import edu.fiuba.algo3.vista.botones.BotonBloqueContenedor;
 import edu.fiuba.algo3.vista.botones.BotonBloqueSimple;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
@@ -15,7 +17,7 @@ public class SeccionBloques extends VBox {
     public SeccionBloques(SectorBloques sectorBloques, SectorAlgoritmo sectorAlgoritmo){
         super(40);
 
-        VBox BotonesDeAcciones = botonesDeAcciones();
+        VBox BotonesDeAcciones = botonesDeAcciones(sectorAlgoritmo);
 
         HBox BotonesAdminBloquesAlgoritmo = botonesDeControlDeBloquesAlgoritmo(sectorAlgoritmo, sectorBloques);
 
@@ -24,11 +26,11 @@ public class SeccionBloques extends VBox {
         setHeight(575);
     }
 
-    private VBox botonesDeAcciones(){
+    private VBox botonesDeAcciones(SectorAlgoritmo sectorAlgoritmo){
 
-        GridPane bloquesSimples = BloquesSimples();
+        GridPane bloquesSimples = BloquesSimples(sectorAlgoritmo);
 
-        HBox bloquesContenedores = BloquesContenedores();
+        HBox bloquesContenedores = BloquesContenedores(sectorAlgoritmo);
 
         VBox subSeccion = new VBox(50, bloquesSimples, bloquesContenedores);
 
@@ -47,7 +49,7 @@ public class SeccionBloques extends VBox {
 
 
         BotonDePrograma botonGuardarBloqueAlgoritmo =
-            new BotonDePrograma("GuardarBloqueAlgoritmo", "src/main/resources/guardar_bloque_algoritmo.png");
+                new BotonDePrograma("GuardarBloqueAlgoritmo", "src/main/resources/guardar_bloque_algoritmo.png");
 
         botonGuardarBloqueAlgoritmo.setMinSize(75,75);
 
@@ -62,16 +64,21 @@ public class SeccionBloques extends VBox {
     }
 
 
-    private HBox BloquesContenedores(){
+    private HBox BloquesContenedores(SectorAlgoritmo sectorAlgoritmo){
 
         BotonDePrograma botonBloqueInversor =
-                new BotonBloqueContenedor("BotonBloqueInversor", "src/main/resources/inverso.png");
+                new BotonDePrograma("BotonBloqueInversor", "src/main/resources/inverso.png");
 
         BotonDePrograma botonBloqueRepetidorDoble =
-                new BotonBloqueContenedor("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
+                new BotonDePrograma("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
 
         BotonDePrograma botonBloqueRepetidorTriple =
-                new BotonBloqueContenedor("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
+                new BotonDePrograma("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
+
+        botonBloqueInversor.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueInversor() ));
+        botonBloqueRepetidorDoble.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueRepetidorDoble() ));
+        botonBloqueRepetidorTriple.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueRepetidorTriple() ));
+
 
         botonBloqueInversor.setMinHeight(75);
         botonBloqueRepetidorDoble.setMinHeight(75);
@@ -84,7 +91,7 @@ public class SeccionBloques extends VBox {
         return subSeccion;
     }
 
-    private GridPane BloquesSimples(){
+    private GridPane BloquesSimples(SectorAlgoritmo sectorAlgoritmo){
         GridPane grid = new GridPane();
 
         BotonBloqueSimple botonMoverArriba =
@@ -105,6 +112,13 @@ public class SeccionBloques extends VBox {
         BotonBloqueSimple botonBajarLapiz =
                 new BotonBloqueSimple("BotonBajarLapiz", "src/main/resources/lapiz_abajo.png");
 
+        botonMoverArriba.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueArriba() ));
+        botonMoverAbajo.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueAbajo() ));
+        botonMoverIzquierda.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueIzquierda() ));
+        botonMoverDerecha.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueDerecha() ));
+        botonBajarLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueLapizAbajo()));
+        botonSubirLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueLapizArriba()));
+
         Pane panelVacio = new Pane();
 
         panelVacio.setMinSize(50,50);
@@ -122,3 +136,4 @@ public class SeccionBloques extends VBox {
         return grid;
     }
 }
+

@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+
 public class EjecutadorDeSectorAlgoritmoEventHandler implements EventHandler<ActionEvent> {
     private SectorAlgoritmo sectorAlgoritmo;
     private Personaje personaje;
