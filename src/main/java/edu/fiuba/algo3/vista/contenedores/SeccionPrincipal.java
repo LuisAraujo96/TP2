@@ -10,7 +10,7 @@ import javafx.scene.layout.*;
 public class SeccionPrincipal extends HBox {
 
     public SeccionPrincipal(SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques, SectorDibujo sectorDibujo, Personaje personaje){
-        super(60);
+        super(45);
 
         setPadding(new Insets(30,30,30,30));
 
@@ -20,7 +20,9 @@ public class SeccionPrincipal extends HBox {
 
         VBox SegundaColumna = new VBox(40, seccionDibujo, seccionAlgoritmo);
 
-        getChildren().addAll(seccionBloques, SegundaColumna);
+        SeccionBloquesAlgoritmo seccionBloquesAlgoritmo =  new SeccionBloquesAlgoritmo();
+
+        getChildren().addAll(seccionBloques, SegundaColumna, seccionBloquesAlgoritmo);
 
         setId("ContenedorPrincipal");
 

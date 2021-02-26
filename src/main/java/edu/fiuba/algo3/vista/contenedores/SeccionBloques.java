@@ -30,12 +30,7 @@ public class SeccionBloques extends VBox {
 
         HBox bloquesContenedores = BloquesContenedores();
 
-        BotonDePrograma botonUsarBloqueAlgoritmo =
-                new BotonDePrograma("UsarBloqueAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
-
-        botonUsarBloqueAlgoritmo.setMinWidth(75);
-
-        VBox subSeccion = new VBox(50, bloquesSimples, bloquesContenedores, botonUsarBloqueAlgoritmo);
+        VBox subSeccion = new VBox(50, bloquesSimples, bloquesContenedores);
 
         subSeccion.setAlignment(Pos.CENTER);
 
