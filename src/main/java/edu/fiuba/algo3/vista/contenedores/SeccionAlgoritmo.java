@@ -4,8 +4,8 @@ import edu.fiuba.algo3.controlador.cliqueadores.BotonEjecutarAlgoritmoEventHandl
 import edu.fiuba.algo3.controlador.cliqueadores.BotonLimpiarSeccionAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
-import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragDroppedEventHandler;
-import edu.fiuba.algo3.controlador.agarradores.SeccionAlgoritmoDragOverEventHandler;
+import edu.fiuba.algo3.controlador.arrastradores.SeccionAlgoritmoDragDroppedEventHandler;
+import edu.fiuba.algo3.controlador.arrastradores.SeccionAlgoritmoDragOverEventHandler;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
@@ -42,9 +42,9 @@ public class SeccionAlgoritmo extends HBox {
         HBox contenedorDeBloquesHorizontal = new HBox();
         seccionAlgoritmoContenedorDeBloques.setContent(contenedorDeBloquesHorizontal);
 
-        SeccionAlgoritmoDragDroppedEventHandler seccionAlgoritmoDragDroppedEventHandler= new SeccionAlgoritmoDragDroppedEventHandler(contenedorDeBloquesHorizontal, sectorAlgoritmo);
+        SeccionAlgoritmoDragDroppedEventHandler seccionAlgoritmoDragDroppedEventHandler= new SeccionAlgoritmoDragDroppedEventHandler(sectorAlgoritmo);
         botonEjecutarSectorAlgoritmo.setOnAction(new BotonEjecutarAlgoritmoEventHandler(personaje, sectorAlgoritmo));
-        botonLimpiarSectorAlgoritmo.setOnAction(new BotonLimpiarSeccionAlgoritmoEventHandler(sectorAlgoritmo, seccionAlgoritmoDragDroppedEventHandler));
+        botonLimpiarSectorAlgoritmo.setOnAction(new BotonLimpiarSeccionAlgoritmoEventHandler(sectorAlgoritmo));
 
         seccionAlgoritmoContenedorDeBloques.setOnDragOver(new SeccionAlgoritmoDragOverEventHandler(contenedorDeBloquesHorizontal));
         seccionAlgoritmoContenedorDeBloques.setOnDragDropped(seccionAlgoritmoDragDroppedEventHandler);
