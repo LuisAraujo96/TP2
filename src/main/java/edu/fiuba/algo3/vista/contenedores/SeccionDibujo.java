@@ -10,7 +10,8 @@ import java.io.FileNotFoundException;
 
 public class SeccionDibujo extends Canvas {
 
-    public SeccionDibujo(SectorDibujo sectorDibujo, Personaje personaje){
+
+    public SeccionDibujo(){
         super(750, 500);
 
         try { loadImage("src/main/resources/fondo_sector_dibujo.png"); } catch (FileNotFoundException e) {}

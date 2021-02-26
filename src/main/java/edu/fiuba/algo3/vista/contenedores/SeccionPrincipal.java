@@ -16,7 +16,7 @@ public class SeccionPrincipal extends HBox {
 
         SeccionBloques seccionBloques = new SeccionBloques(sectorBloques, sectorAlgoritmo);
         SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo(sectorAlgoritmo, personaje);
-        SeccionDibujo seccionDibujo = new SeccionDibujo(sectorDibujo, personaje);
+        SeccionDibujo seccionDibujo = new SeccionDibujo();
 
         VBox SegundaColumna = new VBox(40, seccionDibujo, seccionAlgoritmo);
 
