@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.controlador.cliqueadores;
 
-import edu.fiuba.algo3.modelo.Bloques.Bloque;
-import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
-import edu.fiuba.algo3.vista.alertas.AlertBox;
+import edu.fiuba.algo3.vista.alertas.VentanaGuardarAlgoritmoPersonalizado;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -22,6 +20,6 @@ public class BotonGuardarAlgoritmoEventHandler implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        AlertBox.display("Guardado de Algoritmo Personalizado", "Ingrese un nombre para su bloque personalizado", sectorAlgoritmo, sectorBloques);
+        VentanaGuardarAlgoritmoPersonalizado.display("Guardado de Algoritmo Personalizado", "Ingrese un nombre para su bloque personalizado", sectorAlgoritmo, sectorBloques);
     }
 }
