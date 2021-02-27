@@ -165,7 +165,7 @@ public class SeccionBloques extends VBox implements Observer{
 
 
         botonID = "BotonBloqueInversor";
-        rutaDeImagen = "src/main/resources/IconoInvertr.png";
+        rutaDeImagen = "src/main/resources/IconoInvertir.png";
 
         BotonDePrograma botonBloqueInversor = new BotonDePrograma(botonID, rutaDeImagen);
         botonBloqueInversor.setMinHeight(75);
