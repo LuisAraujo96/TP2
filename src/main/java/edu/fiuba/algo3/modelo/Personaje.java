@@ -15,6 +15,7 @@ public class Personaje {
         this.posicion = new Posicion(0,0);
         this.movimiento = new MoverseSinDibujar();
         this.herramienta = unaHerramienta;
+        //notificar a seccion personaje para incicalizar en 0,0
     }
 
     public void bajarLapiz() { this.movimiento = new MoverseDibujando(herramienta); }
