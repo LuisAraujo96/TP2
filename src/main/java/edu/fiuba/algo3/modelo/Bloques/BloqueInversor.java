@@ -14,4 +14,8 @@ public class BloqueInversor extends BloqueContenedor {
         super.ejecutarSobre(personaje);
     }
 
+    @Override
+    public String obtenerID() {
+        return this.getClass().getSimpleName();
+    }
 }

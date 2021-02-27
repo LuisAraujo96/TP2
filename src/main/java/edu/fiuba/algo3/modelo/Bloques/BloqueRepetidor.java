@@ -19,4 +19,9 @@ public class BloqueRepetidor extends BloqueContenedor {
     public void ejecutarInversoSobre(Personaje personaje) {
         for (int i = 0; i < cantidadDeRepeticiones; ++i) super.ejecutarInversoSobre(personaje);
     }
+
+    @Override
+    public String obtenerID() {
+        return this.getClass().getSimpleName() + this.cantidadDeRepeticiones;
+    }
 }

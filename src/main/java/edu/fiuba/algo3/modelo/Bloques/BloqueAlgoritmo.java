@@ -23,4 +23,9 @@ public class BloqueAlgoritmo implements Bloque{
             unBloque.ejecutarInversoSobre(personaje);
         }
     }
+
+    @Override
+    public String obtenerID() {
+        return this.getClass().getSimpleName();
+    }
 }

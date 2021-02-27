@@ -31,7 +31,7 @@ public class GuardarAlgoritmoPersonalizadoEventHandler implements EventHandler{
             sectorBloques.guardarBloqueAlgoritmoPersonalizado(textfield.getText(), bloques);
             window.close();
         } catch (SinBloquesADevolverException e) {
-
+            System.out.println("ERROR");
         }
     }
 }

@@ -36,6 +36,11 @@ public class BloqueContenedor implements Bloque, Subject {
         return bloques.toArray(new Bloque[0]);
     }
 
+    @Override
+    public String obtenerID() {
+        return this.getClass().getSimpleName();
+    }
+
 
     @Override
     public void ejecutarSobre(Personaje personaje) {

@@ -18,4 +18,9 @@ public class BloqueArriba implements Bloque {
         Direccion abajo = new DireccionAbajo();
         personaje.moverseHacia(abajo);
     }
+
+    @Override
+    public String obtenerID() {
+        return this.getClass().getSimpleName();
+    }
 }

@@ -49,7 +49,7 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
         public VistaDeBloque(Bloque unBloque){
             super();
 
-            String imgPath = "src/main/resources/" + unBloque.getClass().getSimpleName() + ".png";
+            String imgPath = "src/main/resources/" + unBloque.obtenerID() + ".png";
 
             try {
                 setImage(imgPath);
