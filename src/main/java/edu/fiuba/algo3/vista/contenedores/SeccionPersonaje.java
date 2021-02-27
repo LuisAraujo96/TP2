@@ -15,19 +15,21 @@ import javafx.scene.layout.Pane;
 public class SeccionPersonaje extends GridPane implements Observer {
     final int numCeldas;
     Personaje personaje;
-    int grindIndexAnterior;
+    int columnaAnterior;
+    int filaAnterior;
 
     public SeccionPersonaje(Personaje unPersonaje) {
         super();
         personaje = unPersonaje;
         numCeldas = 15;
         setGridLinesVisible(true);
-        grindIndexAnterior = 111;
+        columnaAnterior = 3;
+        filaAnterior = 3;
         for (int i = 0; i < numCeldas; i++) {
             for (int j = 0; j < numCeldas; j++) {
-                ImageView celda = new ImageView();
-                celda.setFitWidth(32);
-                celda.setFitHeight(32);
+                Pane celda = new Pane();
+                celda.setMaxSize(32,32);
+                celda.setMinSize(32,32);
                 celda.setStyle("-fx-background: transparent; -fx-background-color: transparent");
                 this.add(celda, i, j);
             }
@@ -40,29 +42,37 @@ public class SeccionPersonaje extends GridPane implements Observer {
         Posicion posicionActual = personaje.obtenerPosicion();
         int columna = posicionActual.getX() + (numCeldas/2);
         int fila = Math.abs(posicionActual.getY() -(numCeldas/2));
-        ImageView imageView = null;
+        try{
+            for (Node node : this.getChildren()) {
+                if (this.getColumnIndex(node) == columnaAnterior && this.getRowIndex(node) == filaAnterior)
+                    this.getChildren().remove(node);
+            }
+        }catch (NullPointerException e){
+            System.out.println("No se encontro el nodo a remover");
+        }
+
+        Pane celdaAnterior = new Pane();
+        celdaAnterior.setMaxSize(32,32);
+        celdaAnterior.setMinSize(32,32);
+        celdaAnterior.setStyle(" -fx-background-color: yellow");
+
+        this.add(celdaAnterior,columna,fila);
+
         try {
             FileInputStream input = new FileInputStream("src/main/resources/personaje.png");
             Image image = new Image(input);
-            imageView = new ImageView(image);
-        }catch(FileNotFoundException e){
-            System.out.println("No Hay archivo personaje");
+            ImageView imageView = new ImageView(image);
+            Pane celdaPersonaje = new Pane(imageView);
+            this.add(celdaPersonaje,columna,fila);
+            //this.getChildren().set(fila * numCeldas + columna, imageView);
+        }catch(FileNotFoundException e) {
+            System.out.println("No Hay archivo personaje.png");
         }
-        this.setConstraints(imageView,columna,fila);
-        ImageView imageViewAnterior = new ImageView();
-        imageViewAnterior.setFitWidth(32);
-        imageViewAnterior.setFitHeight(32);
-        imageViewAnterior.setStyle("-fx-background: transparent; -fx-background-color: transparent");
 
+        columnaAnterior = columna;
+        filaAnterior = fila;
 
-        /*int gridIndex = numCeldas * columna + fila;
-        System.out.println(gridIndex);
-        this.getChildren().remove(gridIndex);
-        this.getChildren().add(gridIndex, imageView);
-        this.getChildren().remove(grindIndexAnterior);
-        this.getChildren().add(grindIndexAnterior, imageViewAnterior);
-        this.getChildren().set(gridIndex, imageView);
-        this.getChildren().set(grindIndexAnterior, imageViewAnterior);*/
 
     };
+
 }
