@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.CreadorDeBloquesContenedoresEventHandler;
 import edu.fiuba.algo3.controlador.CreadorDeBloquesEventHandler;
 import edu.fiuba.algo3.controlador.cliqueadores.BotonGuardarAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
+import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
@@ -11,12 +12,19 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 
-public class SeccionBloques extends VBox {
+public class SeccionBloques extends VBox implements Observer{
+
+    private SectorAlgoritmo sectorAlgoritmo;
+    private BotonDePrograma botonGuardarBloqueAlgoritmo;
 
     public SeccionBloques(SectorBloques sectorBloques, SectorAlgoritmo sectorAlgoritmo){
         super(40);
 
         this.setStyle("-fx-background-color: #00BDDD");
+
+        this.sectorAlgoritmo = sectorAlgoritmo;
+
+        sectorAlgoritmo.addObserver((Observer) this);
 
         VBox BotonesDeAcciones = botonesDeAcciones(sectorAlgoritmo);
 
@@ -49,9 +57,11 @@ public class SeccionBloques extends VBox {
     private HBox botonesDeControlDeBloquesAlgoritmo(SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques){
 
 
-        BotonDePrograma botonGuardarBloqueAlgoritmo =
+        this.botonGuardarBloqueAlgoritmo =
                 new BotonDePrograma("GuardarBloqueAlgoritmo", "src/main/resources/IconoGuardarAlgoritmo" +
                         ".png");
+
+        this.botonGuardarBloqueAlgoritmo.setDisable(true);
 
         botonGuardarBloqueAlgoritmo.setMinSize(75,75);
 
@@ -136,6 +146,16 @@ public class SeccionBloques extends VBox {
         grid.add(botonBajarLapiz, 2,4);
 
         return grid;
+    }
+
+    @Override
+    public void update() {
+
+        if (this.sectorAlgoritmo.estaVacio()) {
+            this.botonGuardarBloqueAlgoritmo.setDisable(true);
+        } else {
+            this.botonGuardarBloqueAlgoritmo.setDisable(false);
+        }
     }
 }
 

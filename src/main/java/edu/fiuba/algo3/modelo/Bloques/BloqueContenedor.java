@@ -36,6 +36,10 @@ public class BloqueContenedor implements Bloque, Subject {
         return bloques.toArray(new Bloque[0]);
     }
 
+    public boolean estaVacio(){
+        return this.bloques.isEmpty();
+    }
+
     @Override
     public String obtenerID() {
         return this.getClass().getSimpleName();
