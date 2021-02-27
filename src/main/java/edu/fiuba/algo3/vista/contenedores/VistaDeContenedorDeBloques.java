@@ -1,17 +1,11 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
-import edu.fiuba.algo3.modelo.Bloques.Bloque;
 import edu.fiuba.algo3.modelo.Bloques.BloqueContenedor;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class VistaDeContenedorDeBloques extends HBox implements Observer {
     SectorAlgoritmo sectorAlgoritmo;
@@ -33,6 +27,7 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
     @Override
     public void update() {
         VistaDeBloque vistaDeBloqueActual = new VistaDeBloque(contenedor.obtenerUltimoBloque());
+        vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, contenedor));
 
         if (sectorAlgoritmo.getContenedor() == contenedor.obtenerUltimoBloque()){
             VistaDeContenedorDeBloques nuevaVistaDeContenedor = new VistaDeContenedorDeBloques(sectorAlgoritmo, sectorAlgoritmo.getContenedor());
@@ -45,33 +40,4 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
         }
     }
 
-    private class VistaDeBloque extends Pane {
-        public VistaDeBloque(Bloque unBloque){
-            super();
-
-            String imgPath = "src/main/resources/" + unBloque.obtenerID() + ".png";
-
-            try {
-                setImage(imgPath);
-
-            } catch (FileNotFoundException e){
-                System.out.println( this.getClass().getSimpleName() + " no encontro : " + imgPath);
-
-            }
-
-            setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, contenedor));
-        }
-
-        private void setImage(String imgPath) throws FileNotFoundException {
-            FileInputStream input = new FileInputStream(imgPath);
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
-            imageView.setCache(true);
-            getChildren().add(imageView);
-            setMinSize(image.getHeight(), image.getWidth());
-            setMaxSize(image.getHeight(), image.getWidth());
-        }
-    }
 }
