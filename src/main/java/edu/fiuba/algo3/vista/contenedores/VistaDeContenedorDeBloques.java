@@ -40,6 +40,16 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
             VBox Columna = new VBox(vistaDeBloqueActual, nuevaVistaDeContenedor);
             getChildren().add(Columna);
 
+            try {
+                FileInputStream inputBackground = new FileInputStream("src/main/resources/" + contenedor.obtenerUltimoBloque().obtenerID() + "Expandido.png");
+                Image imageBackground = new Image(inputBackground);
+                vistaDeBloqueActual.setBackground(new Background(new BackgroundImage(imageBackground, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+
+            } catch (FileNotFoundException e){
+                System.out.println( this.getClass().getSimpleName() + " no encontro : ");
+            }
+
+
         } else {
             getChildren().add(vistaDeBloqueActual);
         }
@@ -70,8 +80,12 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
             imageView.setSmooth(true);
             imageView.setCache(true);
             getChildren().add(imageView);
-            setMinSize(image.getWidth(), image.getHeight());
-            setMaxSize(image.getWidth(), image.getHeight());
+            //setMinSize(image.getWidth(), image.getHeight());
+            //setMaxSize(image.getWidth(), image.getHeight());
+            setMinHeight(image.getHeight());
+            setMaxHeight(image.getHeight());
+            //setStyle("-fx-background-color: #FF6C47");
+
         }
     }
 }

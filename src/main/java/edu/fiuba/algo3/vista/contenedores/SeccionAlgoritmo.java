@@ -55,9 +55,6 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         getChildren().addAll(seccionDeBotones,ventanaDeBloques, botonEjecutarSectorAlgoritmo);
 
         ventanaDeBloques.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
-        
-        this.ventana.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sector, sector.getContenedor()));
-
     }
 
     @Override
@@ -65,7 +62,6 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
         if (sector.estaVacio()) {
             ventana.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
-            ventana.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sector, sector.getContenedor()));
         }
     }
 }
