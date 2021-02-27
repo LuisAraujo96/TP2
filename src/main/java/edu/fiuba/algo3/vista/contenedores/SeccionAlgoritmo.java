@@ -55,6 +55,9 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
     @Override
     public void update() {
-        ventana.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
+
+        if (sector.estaVacio()) {
+            ventana.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
+        }
     }
 }

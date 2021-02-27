@@ -51,6 +51,7 @@ public class SectorAlgoritmo implements Subject {
 
     public void agregarBloque(Bloque unBloque) {
         contenedorActual.agregarBloque(unBloque);
+        notifyObservers();
     }
 
     public void agregarBloqueContenedor(BloqueContenedor unContenedor) {
@@ -59,18 +60,8 @@ public class SectorAlgoritmo implements Subject {
         contenedorTemp.agregarBloque(unContenedor);
     }
 
-    public void removerUltimoBloque() {
-        contenedorActual.removerBloque();
-    }
-
-    public void removerBloqueContenedor() {
-        registroDeContenedores.pop();
-
-        if (registroDeContenedores.isEmpty()) setContenedor(contenedorInicial);
-    }
-
-    public Bloque obtenerUltimoBloque() {
-        return contenedorActual.obtenerUltimoBloque();
+    public boolean estaVacio(){
+        return this.contenedorInicial.estaVacio();
     }
 
     @Override
