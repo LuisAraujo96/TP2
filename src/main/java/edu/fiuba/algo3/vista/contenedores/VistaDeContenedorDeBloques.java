@@ -70,8 +70,8 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
             imageView.setSmooth(true);
             imageView.setCache(true);
             getChildren().add(imageView);
-            setMinSize(image.getHeight(), image.getWidth());
-            setMaxSize(image.getHeight(), image.getWidth());
+            setMinSize(image.getWidth(), image.getHeight());
+            setMaxSize(image.getWidth(), image.getHeight());
         }
     }
 }
