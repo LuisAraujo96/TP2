@@ -33,7 +33,7 @@ class VistaDeBloque extends Pane {
         imageView.setSmooth(true);
         imageView.setCache(true);
         getChildren().add(imageView);
-        setMinSize(image.getHeight(), image.getWidth());
-        setMaxSize(image.getHeight(), image.getWidth());
+        setMinHeight(image.getHeight());
+        setMaxHeight(image.getHeight());
     }
 }
