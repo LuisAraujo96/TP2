@@ -1,33 +1,44 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.cliqueadores.BotonEjecutarAlgoritmoEventHandler;
-import edu.fiuba.algo3.controlador.cliqueadores.BotonLimpiarSeccionAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.EjecutadorDeSectorAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.LimpiadorDeSectorAlgoritmoDeBloques;
+import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
-import edu.fiuba.algo3.controlador.arrastradores.SeccionAlgoritmoDragDroppedEventHandler;
-import edu.fiuba.algo3.controlador.arrastradores.SeccionAlgoritmoDragOverEventHandler;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class SeccionAlgoritmo extends HBox {
+public class SeccionAlgoritmo extends HBox implements Observer {
+    private SectorAlgoritmo sector;
+    private ScrollPane ventana;
 
     public SeccionAlgoritmo(SectorAlgoritmo sectorAlgoritmo, Personaje personaje){
         super();
 
-        ScrollPane seccionAlgoritmoContenedorDeBloques = new ScrollPane();
-        seccionAlgoritmoContenedorDeBloques.setPrefSize(700,150);
+        this.sector = sectorAlgoritmo;
+        sectorAlgoritmo.addObserver(this);
+
+        ScrollPane ventanaDeBloques = new ScrollPane();
+        ventanaDeBloques.setMinSize(650,150);
+        ventanaDeBloques.setMaxSize(650,150);
+
+        this.ventana = ventanaDeBloques;
 
         BotonDePrograma botonEjecutarSectorAlgoritmo =
-                new BotonDePrograma("BotonEjecutarSectorAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
+                new BotonDePrograma("BotonEjecutarSectorAlgoritmo","src/main/resources/IconoEjecutarAlgoritmo.png");
+
+        botonEjecutarSectorAlgoritmo.setOnAction(new EjecutadorDeSectorAlgoritmoEventHandler(sectorAlgoritmo, personaje));
+
 
         BotonDePrograma botonLimpiarSectorAlgoritmo =
-                new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/limpiar_sector_algoritmo.png");
-
+                new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/IconoLimpiarAlgoritmo.png");
 
         BotonDePrograma botonLimpiarCanvas =
-                new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/limpiar_sector_algoritmo.png");
+                new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/IconoBorrarDibujo.png");
+
+        botonLimpiarSectorAlgoritmo.setOnAction(new LimpiadorDeSectorAlgoritmoDeBloques(sectorAlgoritmo));
 
         botonLimpiarSectorAlgoritmo.setMinSize(50,50);
         botonLimpiarCanvas.setMinSize(50,50);
@@ -37,16 +48,13 @@ public class SeccionAlgoritmo extends HBox {
 
         VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas);
 
-        getChildren().addAll(seccionDeBotones,seccionAlgoritmoContenedorDeBloques, botonEjecutarSectorAlgoritmo);
+        getChildren().addAll(seccionDeBotones,ventanaDeBloques, botonEjecutarSectorAlgoritmo);
 
-        HBox contenedorDeBloquesHorizontal = new HBox();
-        seccionAlgoritmoContenedorDeBloques.setContent(contenedorDeBloquesHorizontal);
+        ventanaDeBloques.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
+    }
 
-        SeccionAlgoritmoDragDroppedEventHandler seccionAlgoritmoDragDroppedEventHandler= new SeccionAlgoritmoDragDroppedEventHandler(sectorAlgoritmo);
-        botonEjecutarSectorAlgoritmo.setOnAction(new BotonEjecutarAlgoritmoEventHandler(personaje, sectorAlgoritmo));
-        botonLimpiarSectorAlgoritmo.setOnAction(new BotonLimpiarSeccionAlgoritmoEventHandler(sectorAlgoritmo));
-
-        seccionAlgoritmoContenedorDeBloques.setOnDragOver(new SeccionAlgoritmoDragOverEventHandler(contenedorDeBloquesHorizontal));
-        seccionAlgoritmoContenedorDeBloques.setOnDragDropped(seccionAlgoritmoDragDroppedEventHandler);
+    @Override
+    public void update() {
+        ventana.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
     }
 }

@@ -13,14 +13,14 @@ public class SeccionDibujo extends StackPane {
     public SeccionDibujo(){
         super();
 
-        Canvas subSeccionDeDibujo = new Canvas(750,550);
+        Canvas subSeccionDeDibujo = new Canvas(750,500);
 
         GridPane subSeccionDePersonaje = new GridPane();
 
         getChildren().add(subSeccionDeDibujo);
         getChildren().add(subSeccionDePersonaje);
 
-        try { setCanvasImage(subSeccionDeDibujo,"src/main/resources/fondo_sector_dibujo.png"); } catch (FileNotFoundException e) {}
+        try { setCanvasImage(subSeccionDeDibujo,"src/main/resources/PantallaSwitch.png"); } catch (FileNotFoundException e) {}
     }
 
     private void setCanvasImage (Canvas unCanvas, String ImgPath) throws FileNotFoundException{

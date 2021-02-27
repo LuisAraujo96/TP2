@@ -18,4 +18,9 @@ public class BloqueIzquierda implements Bloque{
         Direccion derecha = new DireccionDerecha();
         personaje.moverseHacia(derecha);
     }
+
+    @Override
+    public String obtenerID() {
+        return this.getClass().getSimpleName();
+    }
 }

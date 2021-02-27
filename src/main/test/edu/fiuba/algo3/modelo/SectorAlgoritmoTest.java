@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
-import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
+import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.FabricaBloqueAlgoritmo;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 import org.junit.jupiter.api.Test;
@@ -68,7 +68,7 @@ public class SectorAlgoritmoTest {
             Bloque bloqueAlgoritmo = fabricaBloqueAlgoritmo.crearBloque();
             bloqueAlgoritmo.ejecutarSobre(personaje);
 
-        } catch (AlgoritmoSinBloquesException e){
+        } catch (SinBloquesADevolverException e){
 
         }
 
@@ -82,6 +82,6 @@ public class SectorAlgoritmoTest {
 
         SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
 
-        assertThrows( AlgoritmoSinBloquesException.class, () -> {sectorAlgoritmo.obtenerBloques();} );
+        assertThrows( SinBloquesADevolverException.class, () -> {sectorAlgoritmo.obtenerBloques();} );
     }
 }

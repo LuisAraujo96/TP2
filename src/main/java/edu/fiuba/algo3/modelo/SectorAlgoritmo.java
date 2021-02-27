@@ -1,18 +1,92 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
-import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
+import edu.fiuba.algo3.modelo.Bloques.BloqueContenedor;
+import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 
-public class SectorAlgoritmo extends ContenedorDeBloques{
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
-    public void ejecutarPrograma (Personaje personaje) { this.ejecutar(bloque -> bloque.ejecutarSobre(personaje)); }
+public class SectorAlgoritmo implements Subject {
+    List<Observer> observadores;
 
-    public Bloque[] obtenerBloques() throws AlgoritmoSinBloquesException {
-        if (this.bloques.isEmpty()) { throw new AlgoritmoSinBloquesException(); }
-        return this.bloques.toArray(new Bloque[this.bloques.size()]);
+    BloqueContenedor contenedorInicial;
+    BloqueContenedor contenedorActual;
+    Stack<BloqueContenedor> registroDeContenedores;
+
+    public SectorAlgoritmo() {
+        contenedorInicial = new BloqueContenedor();
+        registroDeContenedores = new Stack<>();
+        setContenedor(contenedorInicial);
+
+        observadores = new ArrayList<>();
     }
 
-    public void vaciarSector(){
-        bloques.clear();
+    public void ejecutarPrograma(Personaje personaje) {
+        contenedorInicial.ejecutarSobre(personaje);
+        System.out.println(personaje.obtenerPosicion().toString());
+    }
+
+    public Bloque[] obtenerBloques() throws SinBloquesADevolverException {
+        return this.contenedorInicial.obtenerBloques();
+    }
+
+    public void vaciarSector() {
+        contenedorInicial = new BloqueContenedor();
+        registroDeContenedores = new Stack<>();
+        setContenedor(contenedorInicial);
+
+        notifyObservers();
+    }
+
+    public void setContenedor(BloqueContenedor unContenedor) {
+        registroDeContenedores.add(unContenedor);
+        contenedorActual = registroDeContenedores.peek();
+    }
+
+    public BloqueContenedor getContenedor() {
+        return contenedorActual;
+    }
+
+    public void agregarBloque(Bloque unBloque) {
+        contenedorActual.agregarBloque(unBloque);
+    }
+
+    public void agregarBloqueContenedor(BloqueContenedor unContenedor) {
+        BloqueContenedor contenedorTemp = contenedorActual;
+        setContenedor(unContenedor);
+        contenedorTemp.agregarBloque(unContenedor);
+    }
+
+    public void removerUltimoBloque() {
+        contenedorActual.removerBloque();
+    }
+
+    public void removerBloqueContenedor() {
+        registroDeContenedores.pop();
+
+        if (registroDeContenedores.isEmpty()) setContenedor(contenedorInicial);
+    }
+
+    public Bloque obtenerUltimoBloque() {
+        return contenedorActual.obtenerUltimoBloque();
+    }
+
+    @Override
+    public void addObserver(Observer obs) {
+        observadores.add(obs);
+    }
+
+    @Override
+    public void removeObserver(Observer obs) {
+        observadores.remove(obs);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer obs : observadores) obs.update();
     }
 }
+
+    //

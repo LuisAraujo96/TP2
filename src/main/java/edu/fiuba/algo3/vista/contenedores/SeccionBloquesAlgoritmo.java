@@ -9,6 +9,8 @@ public class SeccionBloquesAlgoritmo extends VBox {
     public SeccionBloquesAlgoritmo(){
         super();
 
+        this.setStyle("-fx-background-color: #FF5C4E");
+
         VBox columnaDeBotones = new VBox();
         VBox columnaDeNombres = new VBox();
 

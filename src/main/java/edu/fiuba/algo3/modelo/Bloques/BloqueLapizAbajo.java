@@ -11,4 +11,9 @@ public class BloqueLapizAbajo implements Bloque {
     public void ejecutarInversoSobre(Personaje personaje){
         personaje.subirLapiz();
     }
+
+    @Override
+    public String obtenerID() {
+        return this.getClass().getSimpleName();
+    }
 }

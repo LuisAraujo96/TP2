@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.fiuba.algo3.modelo.Excepciones.AlgoritmoSinBloquesException;
+import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
@@ -75,7 +75,7 @@ public class SectorBloquesTest {
       try {
       sectorBloques.guardarBloqueAlgoritmoPersonalizado("prueba", sectorAlgoritmo.obtenerBloques());
 
-      } catch (AlgoritmoSinBloquesException e){
+      } catch (SinBloquesADevolverException e){
 
       }
 
