@@ -19,15 +19,15 @@ public class SeccionAlgoritmo extends HBox implements Observer {
     public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, Personaje unPersonaje){
         super();
 
+        this.sectorAlgoritmo = unSectorAlgoritmo;
+        this.sectorAlgoritmo.addObserver(this);
+
+
         setBotonesDeLimpieza();
 
         setVentana();
 
         setBotonDeEjecucion(unPersonaje);
-
-
-        this.sectorAlgoritmo = unSectorAlgoritmo;
-        this.sectorAlgoritmo.addObserver(this);
 
     }
 
@@ -86,7 +86,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
     }
 
     private void setVentanaContent(){
-        this.ventana.setContent( new VistaDeContenedorDeBloques(this.sectorAlgoritmo, this.sectorAlgoritmo.getContenedor() );
+        this.ventana.setContent(new VistaDeContenedorDeBloques(this.sectorAlgoritmo, this.sectorAlgoritmo.getContenedor()));
 
     }
 

@@ -40,7 +40,7 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         for(String nombre : nombres){
             VentanaDeBloquesAlgoritmo fila = new VentanaDeBloquesAlgoritmo(nombre, sectorBloques.seleccionarBloque(nombre));
             columna.getChildren().add(fila);
-            fila.getOnMouseClicked(new CreadorDeBloquesEventHandler())
+            //fila.getOnMouseClicked(new CreadorDeBloquesEventHandler());
 
         }
     }
