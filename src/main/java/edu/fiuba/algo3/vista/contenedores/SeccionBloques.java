@@ -96,16 +96,16 @@ public class SeccionBloques extends VBox {
         GridPane grid = new GridPane();
 
         BotonBloqueSimple botonMoverArriba =
-                new BotonBloqueSimple("BotonMoverArriba", "src/main/resources/flecha_arriba.png");
+                new BotonBloqueSimple("BotonMoverArriba", "src/main/resources/IconoArriba.png");
 
         BotonBloqueSimple botonMoverAbajo =
-                new BotonBloqueSimple("BotonMoverAbajo", "src/main/resources/flecha_abajo.png");
+                new BotonBloqueSimple("BotonMoverAbajo", "src/main/resources/IconoAbajo.png");
 
         BotonBloqueSimple botonMoverIzquierda =
-                new BotonBloqueSimple("BotonMoverIzquierda", "src/main/resources/flecha_izquierda.png");
+                new BotonBloqueSimple("BotonMoverIzquierda", "src/main/resources/IconoIzquierda.png");
 
         BotonBloqueSimple botonMoverDerecha =
-                new BotonBloqueSimple("BotonMoverDerecha", "src/main/resources/flecha_derecha.png");
+                new BotonBloqueSimple("BotonMoverDerecha", "src/main/resources/IconoDerecha.png");
 
         BotonBloqueSimple botonSubirLapiz =
                 new BotonBloqueSimple("BotonSubirLapiz", "src/main/resources/IconoLapizArriba.png");
