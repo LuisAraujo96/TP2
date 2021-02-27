@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.EjecutadorDeSectorAlgoritmoEventHandler;
 import edu.fiuba.algo3.controlador.LimpiadorDeSectorAlgoritmoDeBloques;
+import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
@@ -14,9 +15,11 @@ public class SeccionAlgoritmo extends HBox implements Observer {
     private SectorAlgoritmo sector;
     private ScrollPane ventana;
 
+
     public SeccionAlgoritmo(SectorAlgoritmo sectorAlgoritmo, Personaje personaje){
         super();
 
+    
         this.sector = sectorAlgoritmo;
         sectorAlgoritmo.addObserver(this);
 
@@ -32,6 +35,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         botonEjecutarSectorAlgoritmo.setOnAction(new EjecutadorDeSectorAlgoritmoEventHandler(sectorAlgoritmo, personaje));
 
 
+        
         BotonDePrograma botonLimpiarSectorAlgoritmo =
                 new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/IconoLimpiarAlgoritmo.png");
 
@@ -51,6 +55,9 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         getChildren().addAll(seccionDeBotones,ventanaDeBloques, botonEjecutarSectorAlgoritmo);
 
         ventanaDeBloques.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
+        
+        this.ventana.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sector, sector.getContenedor()));
+
     }
 
     @Override
@@ -58,6 +65,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
         if (sector.estaVacio()) {
             ventana.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
+            ventana.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sector, sector.getContenedor()));
         }
     }
 }

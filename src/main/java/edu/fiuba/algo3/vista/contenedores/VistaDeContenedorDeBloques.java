@@ -39,5 +39,4 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
             getChildren().add(vistaDeBloqueActual);
         }
     }
-
 }
