@@ -39,9 +39,6 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         BotonDePrograma botonLimpiarSectorAlgoritmo =
                 new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/IconoLimpiarAlgoritmo.png");
 
-        BotonDePrograma botonPrueba =
-                new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/IconoLimpiarAlgoritmo.png");
-
         BotonDePrograma botonLimpiarCanvas =
                 new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/IconoBorrarDibujo.png");
 
@@ -53,7 +50,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         botonEjecutarSectorAlgoritmo.setMinSize(50,100);
 
 
-        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas, botonPrueba);
+        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas);
 
         getChildren().addAll(seccionDeBotones,ventanaDeBloques, botonEjecutarSectorAlgoritmo);
 
