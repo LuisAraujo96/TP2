@@ -26,4 +26,8 @@ public class Personaje {
     }
 
     public Posicion obtenerPosicion() { return this.posicion; }
+
+    public void resetPosicion(){
+        this.posicion = new Posicion(0,0);
+    }
 }

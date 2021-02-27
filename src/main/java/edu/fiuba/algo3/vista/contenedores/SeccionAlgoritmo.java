@@ -38,7 +38,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         BotonDePrograma botonLimpiarCanvas =
                 new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/IconoBorrarDibujo.png");
 
-        botonLimpiarSectorAlgoritmo.setOnAction(new LimpiadorDeSectorAlgoritmoDeBloques(sectorAlgoritmo));
+        botonLimpiarSectorAlgoritmo.setOnAction(new LimpiadorDeSectorAlgoritmoDeBloques(sectorAlgoritmo, personaje));
 
         botonLimpiarSectorAlgoritmo.setMinSize(50,50);
         botonLimpiarCanvas.setMinSize(50,50);
