@@ -58,6 +58,7 @@ public class SectorAlgoritmo implements Subject {
         BloqueContenedor contenedorTemp = contenedorActual;
         setContenedor(unContenedor);
         contenedorTemp.agregarBloque(unContenedor);
+        notifyObservers();
     }
 
     public boolean estaVacio(){
