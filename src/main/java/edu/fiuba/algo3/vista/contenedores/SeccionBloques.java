@@ -17,6 +17,8 @@ public class SeccionBloques extends VBox {
     public SeccionBloques(SectorBloques sectorBloques, SectorAlgoritmo sectorAlgoritmo){
         super(40);
 
+        this.setStyle("-fx-background-color: #00BDDD");
+
         VBox BotonesDeAcciones = botonesDeAcciones(sectorAlgoritmo);
 
         HBox BotonesAdminBloquesAlgoritmo = botonesDeControlDeBloquesAlgoritmo(sectorAlgoritmo, sectorBloques);

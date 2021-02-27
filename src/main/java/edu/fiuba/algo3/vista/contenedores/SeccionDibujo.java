@@ -20,7 +20,7 @@ public class SeccionDibujo extends StackPane {
         getChildren().add(subSeccionDeDibujo);
         getChildren().add(subSeccionDePersonaje);
 
-        try { setCanvasImage(subSeccionDeDibujo,"src/main/resources/fondo_sector_dibujo.png"); } catch (FileNotFoundException e) {}
+        try { setCanvasImage(subSeccionDeDibujo,"src/main/resources/PantallaSwitch.png"); } catch (FileNotFoundException e) {}
     }
 
     private void setCanvasImage (Canvas unCanvas, String ImgPath) throws FileNotFoundException{
