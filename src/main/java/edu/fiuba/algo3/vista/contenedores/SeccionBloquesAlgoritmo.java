@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import edu.fiuba.algo3.controlador.CreadorDeBloquesEventHandler;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.SectorBloques;
 import javafx.scene.control.ScrollPane;
@@ -22,6 +23,8 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
 
         this.ventanaDeBloques = new ScrollPane();
 
+        getChildren().add(this.ventanaDeBloques);
+
         ventanaDeBloques.setMinSize(200,550);
 
         setMinSize(200, 690);
@@ -35,7 +38,10 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         ventanaDeBloques.setContent(columna);
 
         for(String nombre : nombres){
-            columna.getChildren().add(new VentanaDeBloquesAlgoritmo(nombre, sectorBloques.seleccionarBloque(nombre)));
+            VentanaDeBloquesAlgoritmo fila = new VentanaDeBloquesAlgoritmo(nombre, sectorBloques.seleccionarBloque(nombre));
+            columna.getChildren().add(fila);
+            fila.getOnMouseClicked(new CreadorDeBloquesEventHandler())
+
         }
     }
 }
