@@ -27,16 +27,16 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         this.ventana = ventanaDeBloques;
 
         BotonDePrograma botonEjecutarSectorAlgoritmo =
-                new BotonDePrograma("BotonEjecutarSectorAlgoritmo","src/main/resources/ejecutar_sector_algoritmo.png");
+                new BotonDePrograma("BotonEjecutarSectorAlgoritmo","src/main/resources/IconoEjecutarAlgoritmo.png");
 
         botonEjecutarSectorAlgoritmo.setOnAction(new EjecutadorDeSectorAlgoritmoEventHandler(sectorAlgoritmo, personaje));
 
 
         BotonDePrograma botonLimpiarSectorAlgoritmo =
-                new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/limpiar_sector_algoritmo.png");
+                new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/IconoLimpiarAlgoritmo.png");
 
         BotonDePrograma botonLimpiarCanvas =
-                new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/limpiar_sector_algoritmo.png");
+                new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/IconoBorrarDibujo.png");
 
         botonLimpiarSectorAlgoritmo.setOnAction(new LimpiadorDeSectorAlgoritmoDeBloques(sectorAlgoritmo));
 

@@ -12,6 +12,8 @@ public class SeccionPrincipal extends HBox {
     public SeccionPrincipal(SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques, SectorDibujo sectorDibujo, Personaje personaje){
         super(45);
 
+        this.setStyle("-fx-background-color: #424242");
+
         setPadding(new Insets(30,30,30,30));
 
         SeccionBloques seccionBloques = new SeccionBloques(sectorBloques, sectorAlgoritmo);

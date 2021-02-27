@@ -49,7 +49,8 @@ public class SeccionBloques extends VBox {
 
 
         BotonDePrograma botonGuardarBloqueAlgoritmo =
-                new BotonDePrograma("GuardarBloqueAlgoritmo", "src/main/resources/guardar_bloque_algoritmo.png");
+                new BotonDePrograma("GuardarBloqueAlgoritmo", "src/main/resources/IconoGuardarAlgoritmo" +
+                        ".png");
 
         botonGuardarBloqueAlgoritmo.setMinSize(75,75);
 
@@ -67,13 +68,13 @@ public class SeccionBloques extends VBox {
     private HBox BloquesContenedores(SectorAlgoritmo sectorAlgoritmo){
 
         BotonDePrograma botonBloqueInversor =
-                new BotonDePrograma("BotonBloqueInversor", "src/main/resources/inverso.png");
+                new BotonDePrograma("BotonBloqueInversor", "src/main/resources/IconoInvertir.png");
 
         BotonDePrograma botonBloqueRepetidorDoble =
-                new BotonDePrograma("BotonRepetidorDoble","src/main/resources/repetir_doble.png");
+                new BotonDePrograma("BotonRepetidorDoble","src/main/resources/IconoRepetir2.png");
 
         BotonDePrograma botonBloqueRepetidorTriple =
-                new BotonDePrograma("BotonRepetidorTriple","src/main/resources/repetir_triple.png");
+                new BotonDePrograma("BotonRepetidorTriple","src/main/resources/IconoRepetir3.png");
 
         botonBloqueInversor.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueInversor() ));
         botonBloqueRepetidorDoble.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueRepetidorDoble() ));
@@ -107,10 +108,10 @@ public class SeccionBloques extends VBox {
                 new BotonBloqueSimple("BotonMoverDerecha", "src/main/resources/flecha_derecha.png");
 
         BotonBloqueSimple botonSubirLapiz =
-                new BotonBloqueSimple("BotonSubirLapiz", "src/main/resources/lapiz_arriba.png");
+                new BotonBloqueSimple("BotonSubirLapiz", "src/main/resources/IconoLapizArriba.png");
 
         BotonBloqueSimple botonBajarLapiz =
-                new BotonBloqueSimple("BotonBajarLapiz", "src/main/resources/lapiz_abajo.png");
+                new BotonBloqueSimple("BotonBajarLapiz", "src/main/resources/IconoLapizAbajo.png");
 
         botonMoverArriba.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueArriba() ));
         botonMoverAbajo.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueAbajo() ));
