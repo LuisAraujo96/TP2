@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
-import edu.fiuba.algo3.modelo.Bloques.Bloque;
 import edu.fiuba.algo3.modelo.Bloques.BloqueContenedor;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -33,6 +31,7 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
     @Override
     public void update() {
         VistaDeBloque vistaDeBloqueActual = new VistaDeBloque(contenedor.obtenerUltimoBloque());
+        vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, contenedor));
 
         if (sectorAlgoritmo.getContenedor() == contenedor.obtenerUltimoBloque()){
             VistaDeContenedorDeBloques nuevaVistaDeContenedor = new VistaDeContenedorDeBloques(sectorAlgoritmo, sectorAlgoritmo.getContenedor());
@@ -40,38 +39,18 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
             VBox Columna = new VBox(vistaDeBloqueActual, nuevaVistaDeContenedor);
             getChildren().add(Columna);
 
-        } else {
-            getChildren().add(vistaDeBloqueActual);
-        }
-    }
-
-    private class VistaDeBloque extends Pane {
-        public VistaDeBloque(Bloque unBloque){
-            super();
-
-            String imgPath = "src/main/resources/" + unBloque.obtenerID() + ".png";
-
             try {
-                setImage(imgPath);
+                FileInputStream inputBackground = new FileInputStream("src/main/resources/" + contenedor.obtenerUltimoBloque().obtenerID() + "Expandido.png");
+                Image imageBackground = new Image(inputBackground);
+                vistaDeBloqueActual.setBackground(new Background(new BackgroundImage(imageBackground, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
 
             } catch (FileNotFoundException e){
-                System.out.println( this.getClass().getSimpleName() + " no encontro : " + imgPath);
-
+                System.out.println( this.getClass().getSimpleName() + " no encontro : ");
             }
 
-            setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, contenedor));
-        }
 
-        private void setImage(String imgPath) throws FileNotFoundException {
-            FileInputStream input = new FileInputStream(imgPath);
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
-            imageView.setCache(true);
-            getChildren().add(imageView);
-            setMinSize(image.getWidth(), image.getHeight());
-            setMaxSize(image.getWidth(), image.getHeight());
+        } else {
+            getChildren().add(vistaDeBloqueActual);
         }
     }
 }

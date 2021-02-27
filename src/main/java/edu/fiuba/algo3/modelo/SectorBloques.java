@@ -3,23 +3,21 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
-public class SectorBloques {
+public class SectorBloques implements Subject{
+
+    private List<Observer> observadores;
 
     private HashMap<String, FabricaDeBloques> menuBloques;
 
     public SectorBloques(){
+        this.observadores = new ArrayList<>();
+
         this.menuBloques = new HashMap<>();
-        this.menuBloques.put("arriba", new FabricaBloqueArriba());
-        this.menuBloques.put("abajo", new FabricaBloqueAbajo());
-        this.menuBloques.put("izquierda", new FabricaBloqueIzquierda());
-        this.menuBloques.put("derecha", new FabricaBloqueDerecha());
-        this.menuBloques.put("lapizarriba", new FabricaBloqueLapizArriba());
-        this.menuBloques.put("lapizabajo", new FabricaBloqueLapizAbajo());
-        this.menuBloques.put("repetidordoble", new FabricaBloqueRepetidorDoble());
-        this.menuBloques.put("repetidortriple", new FabricaBloqueRepetidorTriple());
-        this.menuBloques.put("inversor", new FabricaBloqueInversor());
     }
 
     public Bloque seleccionarBloque(String nombreBloque){
@@ -29,5 +27,26 @@ public class SectorBloques {
 
     public void guardarBloqueAlgoritmoPersonalizado(String nombreBloque, Bloque[] bloquesAlgoritmo){
         this.menuBloques.put(nombreBloque, new FabricaBloqueAlgoritmo(bloquesAlgoritmo));
+        notifyObservers();
     }
+
+    public Set<String> obtenerListaDeBloques(){
+        return menuBloques.keySet();
+    }
+
+    @Override
+    public void addObserver(Observer obs) {
+        observadores.add(obs);
+    }
+
+    @Override
+    public void removeObserver(Observer obs) {
+        observadores.remove(obs);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer obs : observadores) obs.update();
+    }
+
 }

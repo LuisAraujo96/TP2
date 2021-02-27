@@ -22,7 +22,7 @@ public class SeccionPrincipal extends HBox {
 
         VBox SegundaColumna = new VBox(40, seccionDibujo, seccionAlgoritmo);
 
-        SeccionBloquesAlgoritmo seccionBloquesAlgoritmo =  new SeccionBloquesAlgoritmo();
+        SeccionBloquesAlgoritmo seccionBloquesAlgoritmo =  new SeccionBloquesAlgoritmo(sectorBloques);
 
         getChildren().addAll(seccionBloques, SegundaColumna, seccionBloquesAlgoritmo);
 

@@ -1,27 +1,41 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.SectorBloques;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class SeccionBloquesAlgoritmo extends VBox {
+import java.util.Set;
 
-    public SeccionBloquesAlgoritmo(){
+public class SeccionBloquesAlgoritmo extends VBox implements Observer {
+    private ScrollPane ventanaDeBloques;
+
+    SectorBloques sectorBloques;
+
+    public SeccionBloquesAlgoritmo(SectorBloques unSector){
         super();
+
+        this.sectorBloques = unSector;
+        this.sectorBloques.addObserver(this);
 
         this.setStyle("-fx-background-color: #FF5C4E");
 
-        VBox columnaDeBotones = new VBox();
-        VBox columnaDeNombres = new VBox();
+        this.ventanaDeBloques = new ScrollPane();
 
-        ScrollPane ventana = new ScrollPane();
-
-        ventana.setContent(new HBox(columnaDeBotones, columnaDeNombres));
-
-        ventana.setMinSize(200,550);
-
-        getChildren().add(ventana);
+        ventanaDeBloques.setMinSize(200,550);
 
         setMinSize(200, 690);
+    }
+
+    @Override
+    public void update() {
+        Set<String> nombres = sectorBloques.obtenerListaDeBloques();
+
+        VBox columna = new VBox();
+        ventanaDeBloques.setContent(columna);
+
+        for(String nombre : nombres){
+            columna.getChildren().add(new VentanaDeBloquesAlgoritmo(nombre, sectorBloques.seleccionarBloque(nombre)));
+        }
     }
 }

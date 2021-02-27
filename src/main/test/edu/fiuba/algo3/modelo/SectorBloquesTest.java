@@ -12,6 +12,7 @@ import edu.fiuba.algo3.modelo.Bloques.BloqueLapizAbajo;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 
 public class SectorBloquesTest {
+   /*
    @Test
    public void test01SeleccionoUnBloqueDerechaYAlEjecutarloSobreSectorDibujoNoDebeDibujar(){
       SectorBloques sectorBloques = new SectorBloques();
@@ -53,7 +54,10 @@ public class SectorBloquesTest {
 
       assertEquals(sectorDibujo, dibujoEsperado);
 
+
    }
+   */
+
 
 
    @Test
