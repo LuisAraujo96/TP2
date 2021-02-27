@@ -6,7 +6,6 @@ import edu.fiuba.algo3.controlador.cliqueadores.BotonGuardarAlgoritmoEventHandle
 import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
-import edu.fiuba.algo3.vista.botones.BotonBloqueSimple;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -97,23 +96,23 @@ public class SeccionBloques extends VBox {
     private GridPane BloquesSimples(SectorAlgoritmo sectorAlgoritmo){
         GridPane grid = new GridPane();
 
-        BotonBloqueSimple botonMoverArriba =
-                new BotonBloqueSimple("BotonMoverArriba", "src/main/resources/IconoArriba.png");
+        BotonDePrograma botonMoverArriba =
+                new BotonDePrograma("BotonMoverArriba", "src/main/resources/IconoArriba.png");
 
-        BotonBloqueSimple botonMoverAbajo =
-                new BotonBloqueSimple("BotonMoverAbajo", "src/main/resources/IconoAbajo.png");
+        BotonDePrograma botonMoverAbajo =
+                new BotonDePrograma("BotonMoverAbajo", "src/main/resources/IconoAbajo.png");
 
-        BotonBloqueSimple botonMoverIzquierda =
-                new BotonBloqueSimple("BotonMoverIzquierda", "src/main/resources/IconoIzquierda.png");
+        BotonDePrograma botonMoverIzquierda =
+                new BotonDePrograma("BotonMoverIzquierda", "src/main/resources/IconoIzquierda.png");
 
-        BotonBloqueSimple botonMoverDerecha =
-                new BotonBloqueSimple("BotonMoverDerecha", "src/main/resources/IconoDerecha.png");
+        BotonDePrograma botonMoverDerecha =
+                new BotonDePrograma("BotonMoverDerecha", "src/main/resources/IconoDerecha.png");
 
-        BotonBloqueSimple botonSubirLapiz =
-                new BotonBloqueSimple("BotonSubirLapiz", "src/main/resources/IconoLapizArriba.png");
+        BotonDePrograma botonSubirLapiz =
+                new BotonDePrograma("BotonSubirLapiz", "src/main/resources/IconoLapizArriba.png");
 
-        BotonBloqueSimple botonBajarLapiz =
-                new BotonBloqueSimple("BotonBajarLapiz", "src/main/resources/IconoLapizAbajo.png");
+        BotonDePrograma botonBajarLapiz =
+                new BotonDePrograma("BotonBajarLapiz", "src/main/resources/IconoLapizAbajo.png");
 
         botonMoverArriba.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueArriba() ));
         botonMoverAbajo.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueAbajo() ));
