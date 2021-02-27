@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.CreadorDeBloquesEventHandler;
+import edu.fiuba.algo3.controlador.CreadorDeBloquesAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -10,24 +11,26 @@ import java.util.Set;
 
 public class SeccionBloquesAlgoritmo extends VBox implements Observer {
     private ScrollPane ventanaDeBloques;
+    private SectorAlgoritmo sectorAlgoritmo;
+    private SectorBloques sectorBloques;
 
-    SectorBloques sectorBloques;
-
-    public SeccionBloquesAlgoritmo(SectorBloques unSector){
+    public SeccionBloquesAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, SectorBloques unSectorBloques){
         super();
+        this.setMinSize(250, 690);
+        this.setMaxSize(250, 690);
 
-        this.sectorBloques = unSector;
+        this.sectorAlgoritmo = unSectorAlgoritmo;
+        this.sectorBloques = unSectorBloques;
         this.sectorBloques.addObserver(this);
 
         this.setStyle("-fx-background-color: #FF5C4E");
 
         this.ventanaDeBloques = new ScrollPane();
+        this.ventanaDeBloques.setMinSize(250,550);
+        this.ventanaDeBloques.setMaxSize(250,550);
 
-        getChildren().add(this.ventanaDeBloques);
+        this.getChildren().add(this.ventanaDeBloques);
 
-        ventanaDeBloques.setMinSize(200,550);
-
-        setMinSize(200, 690);
     }
 
     @Override
@@ -38,9 +41,11 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         ventanaDeBloques.setContent(columna);
 
         for(String nombre : nombres){
-            VentanaDeBloquesAlgoritmo fila = new VentanaDeBloquesAlgoritmo(nombre, sectorBloques.seleccionarBloque(nombre));
+            VistaDeBloquesAlgoritmo fila = new VistaDeBloquesAlgoritmo(nombre, sectorBloques.seleccionarBloque(nombre));
+            fila.setOnMouseClicked(new CreadorDeBloquesAlgoritmoEventHandler(this.sectorAlgoritmo, this.sectorBloques, nombre));
+
             columna.getChildren().add(fila);
-            //fila.getOnMouseClicked(new CreadorDeBloquesEventHandler());
+
 
         }
     }
