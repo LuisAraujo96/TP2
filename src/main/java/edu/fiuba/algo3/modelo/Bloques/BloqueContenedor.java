@@ -40,6 +40,8 @@ public class BloqueContenedor implements Bloque, Subject {
         return this.bloques.isEmpty();
     }
 
+    public void vaciarContenedor(){ this.bloques.clear(); }
+
     @Override
     public String obtenerID() {
         return this.getClass().getSimpleName();
