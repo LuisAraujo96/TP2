@@ -104,7 +104,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         botonEjecutarSectorAlgoritmo.setOnAction( new EjecutadorDeSectorAlgoritmoEventHandler(this.sectorAlgoritmo, unPersonaje) );
         botonEjecutarSectorAlgoritmo.setMinSize(50,100);
 
-        BotonDePrograma botonEstablecerContenedorSectorAlgoritmo = new BotonDePrograma("BotonLimpiarSectorAlgoritmo", "src/main/resources/BotonLimpiarSectorAlgoritmo.png");
+        BotonDePrograma botonEstablecerContenedorSectorAlgoritmo = new BotonDePrograma("botonEstablecerContenedorSectorAlgoritmo", "src/main/resources/IconoSeccionAlgoritmo.png");
 
         botonEstablecerContenedorSectorAlgoritmo.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, (BloqueContenedor) sectorAlgoritmo.getContenedor()));
         VBox vbox = new VBox(botonEjecutarSectorAlgoritmo, botonEstablecerContenedorSectorAlgoritmo);

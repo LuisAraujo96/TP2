@@ -33,7 +33,7 @@ public class SectorAlgoritmo implements Subject {
     }
 
     public void vaciarSector() {
-        contenedorInicial = new BloqueContenedor();
+        contenedorInicial.vaciarContenedor();
         registroDeContenedores = new Stack<>();
         setContenedor(contenedorInicial);
 
