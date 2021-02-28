@@ -25,7 +25,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         this.sectorAlgoritmo.addObserver(this);
 
 
-        setBotonesDeLimpieza();
+        setBotonesDeLimpieza(unPersonaje);
 
         setVentana();
 
@@ -42,7 +42,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
 
 
-    private void setBotonesDeLimpieza(){
+    private void setBotonesDeLimpieza(Personaje unPersonaje){
         String botonID, rutaDeImagen;
 
 
@@ -51,7 +51,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
         BotonDePrograma botonLimpiarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
 
-        botonLimpiarSectorAlgoritmo.setOnAction( new LimpiadorDeSectorAlgoritmoDeBloques( this.sectorAlgoritmo ) );
+        botonLimpiarSectorAlgoritmo.setOnAction( new LimpiadorDeSectorAlgoritmoDeBloques( this.sectorAlgoritmo, unPersonaje ) );
 
         botonLimpiarSectorAlgoritmo.setMinSize(50,50);
 

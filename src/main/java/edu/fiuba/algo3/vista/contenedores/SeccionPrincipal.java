@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.modelo.SectorDibujo;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 
 public class SeccionPrincipal extends HBox {
@@ -18,10 +19,11 @@ public class SeccionPrincipal extends HBox {
 
         SeccionBloques seccionBloques = new SeccionBloques(sectorBloques, sectorAlgoritmo);
         SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo(sectorAlgoritmo, personaje);
-        SeccionDibujo seccionDibujo = new SeccionDibujo();
+        SeccionDibujo seccionDibujo = new SeccionDibujo(personaje);
 
         VBox SegundaColumna = new VBox(40, seccionDibujo, seccionAlgoritmo);
 
+        SegundaColumna.setAlignment(Pos.CENTER);
         SeccionBloquesAlgoritmo seccionBloquesAlgoritmo =  new SeccionBloquesAlgoritmo(sectorAlgoritmo, sectorBloques);
 
         getChildren().addAll(seccionBloques, SegundaColumna, seccionBloquesAlgoritmo);
