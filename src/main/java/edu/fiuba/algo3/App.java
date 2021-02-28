@@ -27,7 +27,7 @@ public class App extends Application {
         stage.setTitle("AlgoBlocks");
         stage.setResizable(false);
         SeccionPrincipal contenedorPrincipal = new SeccionPrincipal(sectorAlgoritmo, sectorBloques, sectorDibujo, personaje);
-        Scene scene = new Scene(contenedorPrincipal,1350, 750);
+        Scene scene = new Scene(contenedorPrincipal,1400, 750);
         //scene.getStylesheets().add(String.valueOf(getClass().getClassLoader().getResource("interfaz.css")));
         stage.setScene(scene);
         stage.show();

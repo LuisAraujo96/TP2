@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
+import edu.fiuba.algo3.modelo.Bloques.Bloque;
 import edu.fiuba.algo3.modelo.Bloques.BloqueContenedor;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,39 +18,54 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
     public VistaDeContenedorDeBloques(SectorAlgoritmo unSectorAlgoritmo, BloqueContenedor unContenedor){
         super();
 
-        setBorder(new Border(new BorderStroke(Color.BLUE, null, null, new BorderWidths(1,0,0,0))));
-        setMinHeight(75);
+        this.sectorAlgoritmo = unSectorAlgoritmo;
+        this.contenedor = unContenedor;
 
 
-        unContenedor.addObserver(this);
+        this.contenedor.addObserver(this);
 
-        sectorAlgoritmo = unSectorAlgoritmo;
-        contenedor = unContenedor;
     }
 
     @Override
     public void update() {
-        VistaDeBloque vistaDeBloqueActual = new VistaDeBloque(contenedor.obtenerUltimoBloque());
-        vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, contenedor));
+        Bloque ultimoBloque = this.contenedor.obtenerUltimoBloque();
 
-        if (sectorAlgoritmo.getContenedor() == contenedor.obtenerUltimoBloque()){
-            VistaDeContenedorDeBloques nuevaVistaDeContenedor = new VistaDeContenedorDeBloques(sectorAlgoritmo, sectorAlgoritmo.getContenedor());
-            vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, sectorAlgoritmo.getContenedor()));
-            VBox Columna = new VBox(vistaDeBloqueActual, nuevaVistaDeContenedor);
-            getChildren().add(Columna);
+        VistaDeBloque vistaDeBloqueActual = new VistaDeBloque(ultimoBloque);
+        vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(this.sectorAlgoritmo, this.contenedor));
 
-            try {
-                FileInputStream inputBackground = new FileInputStream("src/main/resources/" + contenedor.obtenerUltimoBloque().obtenerID() + "Expandido.png");
-                Image imageBackground = new Image(inputBackground);
-                vistaDeBloqueActual.setBackground(new Background(new BackgroundImage(imageBackground, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        if (sectorAlgoritmo.getContenedor() == ultimoBloque){
+            BloqueContenedor unContenedor = this.sectorAlgoritmo.getContenedor();
 
-            } catch (FileNotFoundException e){
-                System.out.println( this.getClass().getSimpleName() + " no encontro : ");
-            }
+            VistaDeContenedorDeBloques nuevaVistaDeContenedor = new VistaDeContenedorDeBloques(this.sectorAlgoritmo, unContenedor);
+            vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(this.sectorAlgoritmo, unContenedor));
+            this.setBackgroundAVista(vistaDeBloqueActual, ultimoBloque.obtenerID());
 
+            this.getChildren().add( new VBox(vistaDeBloqueActual, nuevaVistaDeContenedor));
 
         } else {
-            getChildren().add(vistaDeBloqueActual);
+            this.getChildren().add( vistaDeBloqueActual);
+
+        }
+    }
+
+
+    private void setBackgroundAVista(VistaDeBloque unaVista, String bloqueID){
+
+        try {
+            FileInputStream input = new FileInputStream("src/main/resources/" + bloqueID + "Expandido.png");
+            Image image = new Image(input);
+
+            BackgroundImage backgroundImage = new BackgroundImage(image,
+                    BackgroundRepeat.REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    BackgroundSize.DEFAULT);
+
+            unaVista.setBackground(new Background(backgroundImage));
+
+        } catch (FileNotFoundException e) {
+            System.out.println( this.getClass().getSimpleName() + " no encontro : ");
+
         }
     }
 }

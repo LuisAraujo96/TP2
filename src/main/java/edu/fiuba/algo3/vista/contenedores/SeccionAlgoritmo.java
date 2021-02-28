@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.EjecutadorDeSectorAlgoritmoEventHandler;
 import edu.fiuba.algo3.controlador.LimpiadorDeSectorAlgoritmoDeBloques;
-import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
@@ -12,56 +11,101 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class SeccionAlgoritmo extends HBox implements Observer {
-    private SectorAlgoritmo sector;
+
+    private SectorAlgoritmo sectorAlgoritmo;
     private ScrollPane ventana;
 
 
-    public SeccionAlgoritmo(SectorAlgoritmo sectorAlgoritmo, Personaje personaje){
+    public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, Personaje unPersonaje){
         super();
 
-    
-        this.sector = sectorAlgoritmo;
-        sectorAlgoritmo.addObserver(this);
-
-        ScrollPane ventanaDeBloques = new ScrollPane();
-        ventanaDeBloques.setMinSize(650,150);
-        ventanaDeBloques.setMaxSize(650,150);
-
-        this.ventana = ventanaDeBloques;
-
-        BotonDePrograma botonEjecutarSectorAlgoritmo =
-                new BotonDePrograma("BotonEjecutarSectorAlgoritmo","src/main/resources/IconoEjecutarAlgoritmo.png");
-
-        botonEjecutarSectorAlgoritmo.setOnAction(new EjecutadorDeSectorAlgoritmoEventHandler(sectorAlgoritmo, personaje));
+        this.sectorAlgoritmo = unSectorAlgoritmo;
+        this.sectorAlgoritmo.addObserver(this);
 
 
-        
-        BotonDePrograma botonLimpiarSectorAlgoritmo =
-                new BotonDePrograma("BotonLimpiarSectorAlgoritmo","src/main/resources/IconoLimpiarAlgoritmo.png");
+        setBotonesDeLimpieza();
 
-        BotonDePrograma botonLimpiarCanvas =
-                new BotonDePrograma("BotonLimpiarCanvas","src/main/resources/IconoBorrarDibujo.png");
+        setVentana();
 
-        botonLimpiarSectorAlgoritmo.setOnAction(new LimpiadorDeSectorAlgoritmoDeBloques(sectorAlgoritmo));
+        setBotonDeEjecucion(unPersonaje);
 
-        botonLimpiarSectorAlgoritmo.setMinSize(50,50);
-        botonLimpiarCanvas.setMinSize(50,50);
-
-        botonEjecutarSectorAlgoritmo.setMinSize(50,100);
-
-
-        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas);
-
-        getChildren().addAll(seccionDeBotones,ventanaDeBloques, botonEjecutarSectorAlgoritmo);
-
-        ventanaDeBloques.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
     }
 
     @Override
     public void update() {
 
-        if (sector.estaVacio()) {
-            ventana.setContent(new VistaDeContenedorDeBloques(sector, sector.getContenedor()));
-        }
+        if ( this.sectorAlgoritmo.estaVacio() ) setVentanaContent();
+
+    }
+
+
+
+    private void setBotonesDeLimpieza(){
+        String botonID, rutaDeImagen;
+
+
+        botonID = "BotonLimpiarSectorAlgoritmo";
+        rutaDeImagen = "src/main/resources/IconoLimpiarAlgoritmo.png";
+
+        BotonDePrograma botonLimpiarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
+
+        botonLimpiarSectorAlgoritmo.setOnAction( new LimpiadorDeSectorAlgoritmoDeBloques( this.sectorAlgoritmo ) );
+
+        botonLimpiarSectorAlgoritmo.setMinSize(50,50);
+
+
+
+        botonID = "BotonLimpiarCanvas";
+        rutaDeImagen = "src/main/resources/IconoBorrarDibujo.png";
+
+        BotonDePrograma botonLimpiarCanvas = new BotonDePrograma(botonID, rutaDeImagen);
+
+        botonLimpiarCanvas.setMinSize(50,50);
+
+
+
+        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas);
+
+        this.getChildren().add(seccionDeBotones);
+
+    }
+
+    private void setVentana(){
+        ScrollPane scrollPane = new ScrollPane();
+
+        scrollPane.setMinSize(650,150);
+        scrollPane.setMaxSize(650,150);
+
+        this.ventana = scrollPane;
+
+        setVentanaContent();
+
+
+        this.getChildren().add(scrollPane);
+
+    }
+
+    private void setVentanaContent(){
+        this.ventana.setContent(new VistaDeContenedorDeBloques(this.sectorAlgoritmo, this.sectorAlgoritmo.getContenedor()));
+
+    }
+
+    private void setBotonDeEjecucion(Personaje unPersonaje){
+        String botonID, rutaDeImagen;
+
+
+        botonID = "BotonEjecutarSectorAlgoritmo";
+        rutaDeImagen = "src/main/resources/IconoEjecutarAlgoritmo.png";
+
+        BotonDePrograma botonEjecutarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
+
+        botonEjecutarSectorAlgoritmo.setOnAction( new EjecutadorDeSectorAlgoritmoEventHandler(this.sectorAlgoritmo, unPersonaje) );
+
+        botonEjecutarSectorAlgoritmo.setMinSize(50,100);
+
+
+
+        this.getChildren().add(botonEjecutarSectorAlgoritmo);
+
     }
 }

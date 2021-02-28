@@ -9,12 +9,11 @@ import java.io.FileNotFoundException;
 
 public class BotonDePrograma extends Button {
 
-    private Image imagenDelBoton;
-
     public BotonDePrograma(String bloqueID, String imgPath){
         super();
 
-        try { setImage(imgPath); } catch (FileNotFoundException e) { System.out.println( bloqueID + " no encontro icono: " + imgPath); }
+        try { setImage(imgPath); }
+        catch (FileNotFoundException e) { System.out.println( bloqueID + " no encontro icono: " + imgPath); }
 
         setMinSize(50, 50);
         setMaxSize(50, 50);
@@ -31,11 +30,5 @@ public class BotonDePrograma extends Button {
         imageView.setSmooth(true);
         imageView.setCache(true);
         this.setGraphic(imageView);
-
-        this.imagenDelBoton = image; //guardo la imagen del boton en un atributo privado del tipo Image
     }
-
-    public String obtenerIDdelBoton(){ return this.getId(); }
-
-    public Image obtenerImagenDelBoton(){ return this.imagenDelBoton; } //devuelve la imagen del boton
 }
