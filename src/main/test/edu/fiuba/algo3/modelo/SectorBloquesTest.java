@@ -2,71 +2,48 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
+import edu.fiuba.algo3.vista.contenedores.SeccionBloques;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.Bloques.Bloque;
-import edu.fiuba.algo3.modelo.Bloques.BloqueArriba;
-import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
-import edu.fiuba.algo3.modelo.Bloques.BloqueLapizAbajo;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
 
+import java.util.HashMap;
+
 public class SectorBloquesTest {
-   /*
+   SectorBloques sectorBloques = new SectorBloques();
+   SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
+   SectorDibujo sectorDibujo = new SectorDibujo();
+   SectorDibujo sectorDibujoEsperado = new SectorDibujo();
+   Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+
+
    @Test
-   public void test01SeleccionoUnBloqueDerechaYAlEjecutarloSobreSectorDibujoNoDebeDibujar(){
-      SectorBloques sectorBloques = new SectorBloques();
+   public void test01GuardoDosBloquesPersonalizadosConMovimientoYLapizAbajoYDebeDibujarSobreSectorDibujoAlAgregarlosAlSectorAlgoritmo() throws SinBloquesADevolverException {
+      sectorAlgoritmo.agregarBloque(new BloqueLapizAbajo());
+      sectorAlgoritmo.agregarBloque(new BloqueDerecha());
 
-      SectorDibujo sectorDibujo = new SectorDibujo();
-      SectorDibujo dibujoEsperado = new SectorDibujo();
+      sectorBloques.guardarBloqueAlgoritmoPersonalizado("bloquePersonalizado1", sectorAlgoritmo.obtenerBloques());
+      Bloque bloquePersonalizado1 = sectorBloques.seleccionarBloque("bloquePersonalizado1");
+      sectorAlgoritmo.agregarBloque(bloquePersonalizado1);
 
-      Bloque bloqueElegidoDerecha = sectorBloques.seleccionarBloque("derecha");
-      
-      Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+      sectorBloques.guardarBloqueAlgoritmoPersonalizado("bloquePersonalizado2", sectorAlgoritmo.obtenerBloques());
+      Bloque bloquePersonalizado2 = sectorBloques.seleccionarBloque("bloquePersonalizado2");
+      sectorAlgoritmo.agregarBloque(bloquePersonalizado2);
 
-      bloqueElegidoDerecha.ejecutarSobre(personaje);
+      sectorAlgoritmo.ejecutarPrograma(personaje);
+      sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+      sectorDibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(2,0));
+      sectorDibujoEsperado.agregarTrazo(new Posicion(2,0), new Posicion(3,0));
+      sectorDibujoEsperado.agregarTrazo(new Posicion(3,0), new Posicion(4,0));
 
-      assertEquals(sectorDibujo, dibujoEsperado);
 
+      assertEquals(sectorDibujo, sectorDibujoEsperado);
    }
 
    @Test
-   public void test02SeleccionoBloquesConLapizAbajoYAlEjecutarloSobreSectorDibujoDebeDibujar(){
-      SectorBloques sectorBloques = new SectorBloques();
-
-      SectorDibujo sectorDibujo = new SectorDibujo();
-      SectorDibujo dibujoEsperado = new SectorDibujo();
-
-      Bloque bloqueElegidoLapizAbajo = sectorBloques.seleccionarBloque("lapizabajo");
-      Bloque bloqueElegidoDerecha = sectorBloques.seleccionarBloque("derecha");
-      Bloque bloqueElegidoAbajo = sectorBloques.seleccionarBloque("abajo");
-
-      Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
-
-      bloqueElegidoLapizAbajo.ejecutarSobre(personaje);
-      bloqueElegidoDerecha.ejecutarSobre(personaje);
-      bloqueElegidoAbajo.ejecutarSobre(personaje);
-      bloqueElegidoDerecha.ejecutarSobre(personaje);
-
-      dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
-      dibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(1,-1));
-      dibujoEsperado.agregarTrazo(new Posicion(1,-1), new Posicion(2, -1));
-
-      assertEquals(sectorDibujo, dibujoEsperado);
-
-
-   }
-   */
-
-
-
-   @Test
-   public void test03GuardoUnBloquePersonalizadoConMovimientosYLoEjecutoDebeDibujarSobreElSectorDibujo(){
-      SectorBloques sectorBloques = new SectorBloques();
-      SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-
-      SectorDibujo sectorDibujo = new SectorDibujo();
-      SectorDibujo dibujoEsperado = new SectorDibujo();
+   public void test02GuardoUnBloquePersonalizadoConMovimientosYLoEjecutoDebeDibujarSobreElSectorDibujo(){
 
       BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
       BloqueDerecha bloqueDerecha = new BloqueDerecha();
@@ -87,12 +64,26 @@ public class SectorBloquesTest {
       Bloque bloquePrueba = sectorBloques.seleccionarBloque("prueba");
       bloquePrueba.ejecutarSobre(personaje);
 
-      dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
-      dibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(2,0));
-      dibujoEsperado.agregarTrazo(new Posicion(2,0), new Posicion(2,1));
+      sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+      sectorDibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(2,0));
+      sectorDibujoEsperado.agregarTrazo(new Posicion(2,0), new Posicion(2,1));
 
-      assertEquals(sectorDibujo, dibujoEsperado);
+      assertEquals(sectorDibujo, sectorDibujoEsperado);
 
    }
 
+   // TESTS DE COSAS QUE NO SE PUEDEN PROBAR CON EL MODELO EN GENERAL
+
+   @Test
+   public void obtenerListaDeBloquesVaciaDebeEstarVacia(){
+      SectorBloques sectorBloques = new SectorBloques();
+      assertEquals(new HashMap<>().keySet(), sectorBloques.obtenerListaDeBloques());
+   }
+
+   @Test
+   public void testeoObservers(){
+      SeccionBloques observador = new SeccionBloques(sectorBloques, sectorAlgoritmo);
+      sectorBloques.addObserver(observador);
+      sectorBloques.removeObserver(observador);
+   }
 }
