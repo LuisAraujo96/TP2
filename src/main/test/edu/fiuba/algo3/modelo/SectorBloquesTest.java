@@ -79,5 +79,5 @@ public class SectorBloquesTest {
       SectorBloques sectorBloques = new SectorBloques();
       assertEquals(new HashMap<>().keySet(), sectorBloques.obtenerListaDeBloques());
    }
-   
+
 }

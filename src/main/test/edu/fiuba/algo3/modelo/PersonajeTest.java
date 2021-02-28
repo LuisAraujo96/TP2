@@ -11,126 +11,28 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PersonajeTest {
-/*
-    @Test
-    public void test01UnPersonajeDibujaConElLapizArribaYComoResultadoDevuelve0(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
 
-        int resultado = personaje.dibujar();
-
-        assertEquals(0, resultado);
-    }
+    SectorDibujo sectorDibujo = new SectorDibujo();
+    SectorDibujo sectorDibujoEsperado = new SectorDibujo();
+    Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
 
     @Test
-    public void test02UnPersonajeSubeSuLapizDibujaConElYComoResultadoDevuelve0(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        personaje.subirLapiz();
-        int resultado = personaje.dibujar();
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test03UnPersonajeBajaSuLapizDibujaConElYComoResultadoDevuelve1(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
+    public void test01BajoLapizDelPersonajeYAlMoverseDebeDibujar(){
         personaje.bajarLapiz();
-        int resultado = personaje.dibujar();
-
-        assertEquals(1, resultado);
+        personaje.moverseHacia(new DireccionDerecha());
+        sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
     @Test
-    public void test04UnPersonajeSubeYBajaSuLapizDibujaConElYComoResultadoDevuelve1(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        personaje.subirLapiz();
-        personaje.bajarLapiz();
-        int resultado = personaje.dibujar();
-
-        assertEquals(1, resultado);
+    public void test02PersonajeCreadoAlMoverseNoDebeDibujar(){
+        personaje.moverseHacia(new DireccionDerecha());
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
     @Test
-    public void test05UnPersonajeBajaYSubeSuLapizDibujaConElYComoResultadoDevuelve0(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
+    public void test03LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaArribaEsLaPosicionCeroUno(){
 
-        personaje.bajarLapiz();
-        personaje.subirLapiz();
-        int resultado = personaje.dibujar();
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test06UnPersonajeSubeBajaYSubeSuLapizDibujaConElYComoResultadoDevuelve0(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        personaje.subirLapiz();
-        personaje.bajarLapiz();
-        personaje.subirLapiz();
-        int resultado = personaje.dibujar();
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test07UnPersonajeBajaSubeYBajaSuLapizDibujaConElYComoResultadoDevuelve1(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        personaje.bajarLapiz();
-        personaje.subirLapiz();
-        personaje.bajarLapiz();
-        int resultado = personaje.dibujar();
-
-        assertEquals(1, resultado);
-    }
-
-    @Test
-    public void test08LaPosicionObtenidaDeUnPersonajeRecienCreadoEsLaPosicionCeroCero(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        Posicion posicionOrigen = new Posicion(0,0);
-
-        assertEquals(posicionOrigen, personaje.obtenerPosicion());
-    }
-
-    @Test
-    public void test09LaPosicionObtenidaDelPersonajeLuegoDeDibujarseConUnLapizArribaSeRepresentaConUn0(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        personaje.dibujar();
-        Posicion posicionOrigen = personaje.obtenerPosicion();
-
-        assertEquals(0, posicionOrigen.representar());
-    }
-
-    @Test
-    public void test10LaPosicionObtenidaDelPersonajeLuegoDeSubirElLapizYDibujarlaSeRepresentaConUn0(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        personaje.subirLapiz();
-        personaje.dibujar();
-        Posicion posicionOrigen = personaje.obtenerPosicion();
-
-        assertEquals(0, posicionOrigen.representar());
-    }
-
-    @Test
-    public void test11LaPosicionObtenidaDelPersonajeLuegoDeBajarElLapizYDibujarlaSeRepresentaConUn1(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-
-        personaje.bajarLapiz();
-        personaje.dibujar();
-        Posicion posicionOrigen = personaje.obtenerPosicion();
-
-        assertEquals(1, posicionOrigen.representar());
-    }
-*/
-    @Test
-    public void test12LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaArribaEsLaPosicionCeroUno(){
-        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
         Posicion posicionDestino = new Posicion(0, 1);
         Direccion arriba = new DireccionArriba();
 
@@ -140,8 +42,8 @@ class PersonajeTest {
     }
 
     @Test
-    public void test13LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaAbajoEsLaPosicionCeroMenosUno(){
-        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+    public void test04LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaAbajoEsLaPosicionCeroMenosUno(){
+
         Posicion posicionDestino = new Posicion(0, -1);
         Direccion abajo = new DireccionAbajo();
 
@@ -151,8 +53,7 @@ class PersonajeTest {
     }
 
     @Test
-    public void test14LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaIzquierdaEsLaPosicionMenosUnoCero(){
-        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+    public void test05LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaIzquierdaEsLaPosicionMenosUnoCero(){
         Posicion posicionDestino = new Posicion(-1, 0);
         Direccion izquierda = new DireccionIzquierda();
 
@@ -162,8 +63,7 @@ class PersonajeTest {
     }
 
     @Test
-    public void test15LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaDerechaEsLaPosicionUnoCero(){
-        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+    public void test06LaPosicionObtenidaDeUnPersonajeQueSeMueveHaciaDerechaEsLaPosicionUnoCero(){
         Posicion posicionDestino = new Posicion(1, 0);
         Direccion derecha = new DireccionDerecha();
 
@@ -172,136 +72,8 @@ class PersonajeTest {
         assertEquals(posicionDestino, personaje.obtenerPosicion());
     }
 
-/*
     @Test
-    public void test16MuevoElPersonajeHaciaArribaConElLapizArribaYNoDibujaNada(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion arriba = new DireccionArriba();
-
-        int resultado = personaje.moverseHacia(arriba);
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test17MuevoElPersonajeHaciaAbajoConElLapizArribaYNoDibujaNada(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion abajo = new DireccionAbajo();
-
-        int resultado = personaje.moverseHacia(abajo);
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test18MuevoElPersonajeHaciaIzquierdaConElLapizArribaYNoDibujaNada(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion izquierda = new DireccionIzquierda();
-
-        int resultado = personaje.moverseHacia(izquierda);
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test19MuevoElPersonajeHaciaDerechaConElLapizArribaYNoDibujaNada(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion derecha = new DireccionDerecha();
-
-        int resultado = personaje.moverseHacia(derecha);
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test20MuevoElPersonajeHaciaArribaConElLapizAbajoYSiDibuja(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion arriba = new DireccionArriba();
-
-        personaje.bajarLapiz();
-        int resultado = personaje.moverseHacia(arriba);
-
-        assertEquals(1, resultado);
-    }
-
-    @Test
-    public void test21MuevoElPersonajeHaciaAbajoConElLapizAbajoYSiDibuja(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion abajo = new DireccionAbajo();
-
-        personaje.bajarLapiz();
-        int resultado = personaje.moverseHacia(abajo);
-
-        assertEquals(1, resultado);
-    }
-
-    @Test
-    public void test22MuevoElPersonajeHaciaIzquierdaConElLapizAbajoYSiDibuja(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion izquierda = new DireccionIzquierda();
-
-        personaje.bajarLapiz();
-        int resultado = personaje.moverseHacia(izquierda);
-
-        assertEquals(1, resultado);
-    }
-
-    @Test
-    public void test23MuevoElPersonajeHaciaDerechaConElLapizAbajoYSiDibuja(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        Direccion derecha = new DireccionDerecha();
-
-        personaje.bajarLapiz();
-        int resultado = personaje.moverseHacia(derecha);
-
-        assertEquals(1, resultado);
-    }
-
-
-    @Test
-    // test de integración
-    public void test24MoverElPersonajeConBloquesHaciaLaDerechaConLapizAbajoDebeDibujarYLuegoMoverloALaDerechaConLapizArribaNoDebeDibujar(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        BloqueDerecha bloqueDerecha = new BloqueDerecha();
-
-        personaje.bajarLapiz();
-        bloqueDerecha.ejecutarSobre(personaje);
-
-        int resultadoPrimerMovimiento = personaje.obtenerPosicion().representar();
-
-        personaje.subirLapiz();
-        bloqueDerecha.ejecutarSobre(personaje);
-        int resultadoSegundoMovimiento = personaje.obtenerPosicion().representar();
-
-        assertEquals(1, resultadoPrimerMovimiento);
-        assertEquals(0, resultadoSegundoMovimiento);
-    }
-
-    @Test
-    public void test25MoverElPersonaje4VecesHaciaLaDerechaConLapizArribaNoDebeDibujarNingunaPosicion(){
-        Personaje personaje = new Personaje(new Lapiz(), new SectorDibujo());
-        BloqueDerecha bloqueDerecha = new BloqueDerecha();
-
-
-        bloqueDerecha.ejecutarSobre(personaje);
-        int resultadoPrimerMovimiento = personaje.obtenerPosicion().representar();
-        bloqueDerecha.ejecutarSobre(personaje);
-        int resultadoSegundoMovimiento = personaje.obtenerPosicion().representar();
-        bloqueDerecha.ejecutarSobre(personaje);
-        int resultadoTercerMovimiento = personaje.obtenerPosicion().representar();
-        bloqueDerecha.ejecutarSobre(personaje);
-        int resultadoCuartoMovimiento = personaje.obtenerPosicion().representar();
-
-        assertEquals(0, resultadoPrimerMovimiento);
-        assertEquals(0, resultadoSegundoMovimiento);
-        assertEquals(0, resultadoTercerMovimiento);
-        assertEquals(0, resultadoCuartoMovimiento);
-    }
-*/
-
-    @Test
-    public void test26MuevoConBloquesElPersonajeEnVariasDireccionesPeroDebeTerminarEnSuPosicionOrigen(){
-        Personaje personaje = new Personaje(new Lapiz(new SectorDibujo()));
+    public void test07MuevoConBloquesElPersonajeEnVariasDireccionesPeroDebeTerminarEnSuPosicionOrigen(){
         BloqueDerecha bloqueDerecha = new BloqueDerecha();
         BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
         BloqueArriba bloqueArriba = new BloqueArriba();
