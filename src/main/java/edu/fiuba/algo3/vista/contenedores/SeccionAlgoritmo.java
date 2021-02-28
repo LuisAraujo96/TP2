@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.EjecutadorDeSectorAlgoritmoEventHandler;
 import edu.fiuba.algo3.controlador.LimpiadorDeSectorAlgoritmoDeBloques;
+import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
+import edu.fiuba.algo3.modelo.Bloques.BloqueContenedor;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
@@ -100,12 +102,16 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         BotonDePrograma botonEjecutarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
 
         botonEjecutarSectorAlgoritmo.setOnAction( new EjecutadorDeSectorAlgoritmoEventHandler(this.sectorAlgoritmo, unPersonaje) );
-
         botonEjecutarSectorAlgoritmo.setMinSize(50,100);
 
+        BotonDePrograma botonEstablecerContenedorSectorAlgoritmo = new BotonDePrograma("BotonLimpiarSectorAlgoritmo", "src/main/resources/BotonLimpiarSectorAlgoritmo.png");
 
+        botonEstablecerContenedorSectorAlgoritmo.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, (BloqueContenedor) sectorAlgoritmo.getContenedor()));
+        VBox vbox = new VBox(botonEjecutarSectorAlgoritmo, botonEstablecerContenedorSectorAlgoritmo);
 
-        this.getChildren().add(botonEjecutarSectorAlgoritmo);
+        this.getChildren().add(vbox);
 
     }
+
+
 }
