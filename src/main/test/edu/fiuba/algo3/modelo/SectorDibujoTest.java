@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import net.bytebuddy.implementation.EqualsMethod;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -73,6 +74,9 @@ class SectorDibujoTest {
 
     @Test
     void test06TestEquals(){
-        assertTrue(new SectorDibujo().equals(new SectorDibujo()));
+
+        SectorDibujo s1 = new SectorDibujo();
+        SectorDibujo s2 = new SectorDibujo();
+        assertEquals(true, s1.equals(s2));
     }
 }

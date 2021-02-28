@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.BloquesTest;
 
+import edu.fiuba.algo3.modelo.Bloques.BloqueAbajo;
 import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
 import edu.fiuba.algo3.modelo.Bloques.BloqueInversor;
 import edu.fiuba.algo3.modelo.Bloques.BloqueRepetidor;
@@ -58,6 +59,9 @@ public class BloqueInversorTest {
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
 
-
+    @Test
+    public void obtenerElIDDelBloqueDebeDevolverBloqueInversor(){
+        assertEquals("BloqueInversor", (new BloqueInversor()).obtenerID());
+    }
 
 }

@@ -96,4 +96,11 @@ public class BloqueAlgoritmoTest {
         assertEquals(sector, dibujoEsperado);
         assertEquals(personaje.obtenerPosicion(), new Posicion(1,0));
     }
+
+    @Test
+    public void obtenerElIDDelBloqueDebeDevolverBloqueAlgoritmo(){
+        Bloque[] bloque = new Bloque[0];
+        assertEquals("BloqueAlgoritmo", (new BloqueAlgoritmo(bloque)).obtenerID());
+    }
+
 }

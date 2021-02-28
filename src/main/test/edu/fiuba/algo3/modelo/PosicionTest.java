@@ -59,28 +59,9 @@ class PosicionTest {
 
     @Test
     public void test06TestEquals(){
+
         assertTrue(new Posicion(0,0).equals(new Posicion(0, 0)));
     }
 
 
-    /*
-    @Test
-    public void test03RepresentarUnaPosicionRecienCreadaDevuelveComoResultado0(){
-        Posicion unaPosicion = new Posicion(0, 0);
-
-        int resultado = unaPosicion.representar();
-
-        assertEquals(0, resultado);
-    }
-
-    @Test
-    public void test04RepresentarUnaPosicionRecienDibujadaDevuelveComoResultado1(){
-        Posicion unaPosicion = new Posicion(0, 0);
-
-        unaPosicion.dibujar();
-        int resultado = unaPosicion.representar();
-
-        assertEquals(1, resultado);
-    }
- */
 }
