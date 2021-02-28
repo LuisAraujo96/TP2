@@ -4,39 +4,35 @@ import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.FabricaBloqueAlgoritmo;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
+import edu.fiuba.algo3.vista.contenedores.SeccionBloques;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SectorAlgoritmoTest {
 
+
+    SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
+    SectorDibujo sectorDibujo = new SectorDibujo();
+    SectorDibujo sectorDibujoEsperado = new SectorDibujo();
+    Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+
     @Test
     public void test01AgregarBloqueDeMovimientoDerechaYEjecutarElAlgoritmoNoDebeDibujarSobreElSectorDibujo(){
 
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        SectorDibujo sectorDibujoVacio = new SectorDibujo();
-
-        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
         BloqueDerecha bloqueDerecha = new BloqueDerecha();
 
         sectorAlgoritmo.agregarBloque(bloqueDerecha);
         sectorAlgoritmo.ejecutarPrograma(personaje);
 
-        assertEquals(sectorDibujo, sectorDibujoVacio);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
 
     }
 
     @Test
     public void test02AgregarBloqueBloqueLapizAbajoYBloqueMovimientoDerechaAlEjecutarElAlgoritmoDebeDibujarSobreElSectorDibujo(){
 
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        SectorDibujo dibujoEsperado = new SectorDibujo();
-
-        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
-
-        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+        sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
 
         BloqueDerecha bloqueDerecha = new BloqueDerecha();
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
@@ -45,17 +41,11 @@ public class SectorAlgoritmoTest {
         sectorAlgoritmo.agregarBloque(bloqueDerecha);
         sectorAlgoritmo.ejecutarPrograma(personaje);
 
-        assertEquals(sectorDibujo, dibujoEsperado);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
     @Test
-    public void test03CrearUnBloqueAlgoritmoPersonalizadoConBloquesDelSectorAlgoritmoDeberianRealizarLoMismo(){
-
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        SectorDibujo dibujoEsperado = new SectorDibujo();
-
-        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+    public void test03CrearUnBloqueAlgoritmoPersonalizadoConBloquesDelSectorAlgoritmoDeberianRealizarLoMismo() throws SinBloquesADevolverException {
 
         BloqueLapizAbajo bloqueLapizAbajo = new BloqueLapizAbajo();
         BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
@@ -63,18 +53,13 @@ public class SectorAlgoritmoTest {
         sectorAlgoritmo.agregarBloque(bloqueLapizAbajo);
         sectorAlgoritmo.agregarBloque(bloqueIzquierda);
 
-        try {
-            FabricaBloqueAlgoritmo fabricaBloqueAlgoritmo = new FabricaBloqueAlgoritmo(sectorAlgoritmo.obtenerBloques());
-            Bloque bloqueAlgoritmo = fabricaBloqueAlgoritmo.crearBloque();
-            bloqueAlgoritmo.ejecutarSobre(personaje);
+        FabricaBloqueAlgoritmo fabricaBloqueAlgoritmo = new FabricaBloqueAlgoritmo(sectorAlgoritmo.obtenerBloques());
+        Bloque bloqueAlgoritmo = fabricaBloqueAlgoritmo.crearBloque();
+        bloqueAlgoritmo.ejecutarSobre(personaje);
 
-        } catch (SinBloquesADevolverException e){
+        sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(-1,0));
 
-        }
-
-        dibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(-1,0));
-
-        assertEquals(sectorDibujo, dibujoEsperado);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
     @Test
@@ -87,68 +72,62 @@ public class SectorAlgoritmoTest {
 
     @Test
     public void test05AgregoBloquesAlSectorYEjecutoElAlgoritmoDeberiaEstarDibujadoLuegoVacioYEjecutoDeNuevoPeroNoDibuja(){
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        SectorDibujo sectorDibujoDibujado = new SectorDibujo();
-        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
 
         sectorAlgoritmo.agregarBloque(new BloqueLapizAbajo());
         sectorAlgoritmo.agregarBloque(new BloqueDerecha());
         sectorAlgoritmo.ejecutarPrograma(personaje);
 
-        sectorDibujoDibujado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+        sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
 
-        assertEquals(sectorDibujo, sectorDibujoDibujado);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
 
         sectorAlgoritmo.vaciarSector();
         sectorAlgoritmo.ejecutarPrograma(personaje);
-        assertEquals(sectorDibujo, sectorDibujoDibujado);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
     @Test
     public void test06AgregoBloqueAlContenedorInicialYAlPedirElContenedorInicialDebeEjecutarseLoQueHabiEnEl(){
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        SectorDibujo sectorDibujoDibujado = new SectorDibujo();
-        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+
         sectorAlgoritmo.agregarBloque(new BloqueLapizAbajo());
         sectorAlgoritmo.agregarBloque(new BloqueDerecha());
         BloqueContenedor bloqueContenedor = sectorAlgoritmo.getContenedor();
         bloqueContenedor.ejecutarSobre(personaje);
-        sectorDibujoDibujado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+        sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
 
-        assertEquals(sectorDibujo, sectorDibujoDibujado);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
     @Test
     public void test07CrearUnSectorAlgoritmoDebeComenzarVacio(){
 
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        SectorDibujo sectorDibujoVacio = new SectorDibujo();
-        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
         sectorAlgoritmo.ejecutarPrograma(personaje);
 
         assertEquals(sectorAlgoritmo.estaVacio(), true);
-        assertEquals(sectorDibujo, sectorDibujoVacio);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
     @Test
     public void test08AgregarBloquesConMovimientoYLapizAbajoDentroDeUnBloqueContenedorDebeDibujarRepetidasVeces(){
 
-        SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
-        SectorDibujo sectorDibujo = new SectorDibujo();
-        SectorDibujo sectorDibujoDibujado = new SectorDibujo();
-        Personaje personaje = new Personaje(new Lapiz(sectorDibujo));
+
         sectorAlgoritmo.agregarBloqueContenedor(new BloqueRepetidor(2));
         sectorAlgoritmo.agregarBloque(new BloqueLapizAbajo());
         sectorAlgoritmo.agregarBloque(new BloqueDerecha());
         sectorAlgoritmo.ejecutarPrograma(personaje);
 
-        sectorDibujoDibujado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
-        sectorDibujoDibujado.agregarTrazo(new Posicion(1,0), new Posicion(2,0));
+        sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+        sectorDibujoEsperado.agregarTrazo(new Posicion(1,0), new Posicion(2,0));
 
-        assertEquals(sectorDibujo, sectorDibujoDibujado);
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
+    }
+
+    @Test
+    public void testeoObservers(){
+        SectorBloques sectorBloques = new SectorBloques();
+        SeccionBloques observador = new SeccionBloques(sectorBloques, sectorAlgoritmo);
+        sectorBloques.addObserver(observador);
+        sectorBloques.removeObserver(observador);
     }
 
 }

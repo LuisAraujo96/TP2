@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.BloquesTest;
 
+import edu.fiuba.algo3.modelo.Bloques.BloqueAbajo;
 import edu.fiuba.algo3.modelo.Bloques.BloqueDerecha;
 import edu.fiuba.algo3.modelo.Bloques.BloqueLapizAbajo;
 import edu.fiuba.algo3.modelo.Bloques.BloqueLapizArriba;
@@ -51,6 +52,11 @@ public class BloqueLapizAbajoTest {
         bloqueDerecha.ejecutarSobre(personaje);
 
         assertEquals(sectorDibujo, otroSectorDibujo);
+    }
+
+    @Test
+    public void obtenerElIDDelBloqueDebeDevolverBloqueLapizAbajo(){
+        assertEquals("BloqueLapizAbajo", (new BloqueLapizAbajo()).obtenerID());
     }
 
 }

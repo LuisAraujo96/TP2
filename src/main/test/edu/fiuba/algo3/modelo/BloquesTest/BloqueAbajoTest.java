@@ -63,4 +63,9 @@ public class BloqueAbajoTest {
 
         assertEquals(personaje.obtenerPosicion(), posicionDestino);
     }
+
+    @Test
+    public void obtenerElIDDelBloqueDebeDevolverBloqueAbajo(){
+        assertEquals("BloqueAbajo", (new BloqueAbajo()).obtenerID());
+    }
 }

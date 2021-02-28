@@ -145,5 +145,10 @@ public class BloqueRepetidorTest {
         assertEquals(personaje.obtenerPosicion(), new Posicion(4,0));
     }
 
+    @Test
+    public void obtenerElIDDelBloqueDebeDevolverBloqueRepetidor(){
+        assertEquals("BloqueRepetidor2", (new BloqueRepetidor(2)).obtenerID());
+        assertEquals("BloqueRepetidor3", (new BloqueRepetidor(3)).obtenerID());
+    }
 
 }
