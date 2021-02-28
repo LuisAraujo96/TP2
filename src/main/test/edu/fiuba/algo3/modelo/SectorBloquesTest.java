@@ -79,11 +79,5 @@ public class SectorBloquesTest {
       SectorBloques sectorBloques = new SectorBloques();
       assertEquals(new HashMap<>().keySet(), sectorBloques.obtenerListaDeBloques());
    }
-
-   @Test
-   public void testeoObservers(){
-      SeccionBloques observador = new SeccionBloques(sectorBloques, sectorAlgoritmo);
-      sectorBloques.addObserver(observador);
-      sectorBloques.removeObserver(observador);
-   }
+   
 }

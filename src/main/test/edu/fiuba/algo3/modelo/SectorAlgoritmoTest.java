@@ -122,12 +122,4 @@ public class SectorAlgoritmoTest {
         assertEquals(sectorDibujo, sectorDibujoEsperado);
     }
 
-    @Test
-    public void testeoObservers(){
-        SectorBloques sectorBloques = new SectorBloques();
-        SeccionBloques observador = new SeccionBloques(sectorBloques, sectorAlgoritmo);
-        sectorBloques.addObserver(observador);
-        sectorBloques.removeObserver(observador);
-    }
-
 }
