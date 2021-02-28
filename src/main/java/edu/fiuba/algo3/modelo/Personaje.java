@@ -28,7 +28,9 @@ public class Personaje {
 
     public Posicion obtenerPosicion() { return this.posicion; }
 
-    public void resetPosicion(){
+    public void resetPersonaje(){
+
         this.posicion = new Posicion(0,0);
+        this.subirLapiz();
     }
 }

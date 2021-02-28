@@ -10,14 +10,12 @@ public class LimpiadorDeSectorAlgoritmoDeBloques implements EventHandler<ActionE
     private SectorAlgoritmo sectorAlgoritmo;
     private Personaje personaje;
 
-    public LimpiadorDeSectorAlgoritmoDeBloques(SectorAlgoritmo unSectorAlgoritmo, Personaje unPersonaje){
+    public LimpiadorDeSectorAlgoritmoDeBloques(SectorAlgoritmo unSectorAlgoritmo){
         this.sectorAlgoritmo = unSectorAlgoritmo;
-        this.personaje = unPersonaje;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         this.sectorAlgoritmo.vaciarSector();
-        this.personaje.resetPosicion();
     }
 }
