@@ -1,16 +1,12 @@
 package edu.fiuba.algo3.vista.contenedores;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.lang.Math;
+
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
-import edu.fiuba.algo3.modelo.Posicion;
-import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 public class SeccionPersonaje extends GridPane implements Observer {
     final int numCeldas;
@@ -22,57 +18,60 @@ public class SeccionPersonaje extends GridPane implements Observer {
         super();
         personaje = unPersonaje;
         numCeldas = 15;
-        setGridLinesVisible(true);
-        columnaAnterior = 3;
-        filaAnterior = 3;
+
+        this.personaje.addObserver(this);
+
         for (int i = 0; i < numCeldas; i++) {
             for (int j = 0; j < numCeldas; j++) {
                 Pane celda = new Pane();
-                celda.setMaxSize(32,32);
-                celda.setMinSize(32,32);
-                celda.setStyle("-fx-background: transparent; -fx-background-color: transparent");
+                celda.setMaxSize(32, 32);
+                celda.setMinSize(32, 32);
                 this.add(celda, i, j);
             }
         }
-        this.update();
 
+        this.columnaAnterior = -1;
+        this.filaAnterior = -1;
+
+        this.update();
     }
 
-    public void update(){
-        Posicion posicionActual = personaje.obtenerPosicion();
-        int columna = posicionActual.getX() + (numCeldas/2);
-        int fila = Math.abs(posicionActual.getY() -(numCeldas/2));
-        try{
-            for (Node node : this.getChildren()) {
-                if (this.getColumnIndex(node) == columnaAnterior && this.getRowIndex(node) == filaAnterior)
-                    this.getChildren().remove(node);
+    public void update() {
+
+        int columnaActual = personaje.obtenerPosicion().getX() + (numCeldas / 2);
+        int filaActual = (numCeldas / 2) - personaje.obtenerPosicion().getY();
+
+        System.out.println("ColumnaAnterior: " + this.columnaAnterior + " FilaAnterior: " + this.filaAnterior);
+
+        System.out.println("ColumnaActual: " + columnaActual + " FilaActual: " + filaActual);
+
+        for (Node node : this.getChildren()) {
+
+            if (this.getColumnIndex(node) == columnaAnterior && this.getRowIndex(node) == filaAnterior) {
+                ((Pane) node).setBackground(Background.EMPTY);
             }
-        }catch (NullPointerException e){
-            System.out.println("No se encontro el nodo a remover");
+
+            if (this.getColumnIndex(node) == columnaActual && this.getRowIndex(node) == filaActual) {
+                Image imagen = this.crearImagenParaNodo();
+
+                ((Pane) node).setBackground(new Background(new BackgroundImage(imagen, null, null, null, null)));
+            }
         }
 
-        Pane celdaAnterior = new Pane();
-        celdaAnterior.setMaxSize(32,32);
-        celdaAnterior.setMinSize(32,32);
-        celdaAnterior.setStyle(" -fx-background-color: yellow");
+        columnaAnterior = columnaActual;
+        filaAnterior = filaActual;
+    }
 
-        this.add(celdaAnterior,columna,fila);
+
+    public Image crearImagenParaNodo() {
+        Image image = null;
 
         try {
             FileInputStream input = new FileInputStream("src/main/resources/personaje.png");
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            Pane celdaPersonaje = new Pane(imageView);
-            this.add(celdaPersonaje,columna,fila);
-            //this.getChildren().set(fila * numCeldas + columna, imageView);
-        }catch(FileNotFoundException e) {
+            image = new Image(input);
+        } catch (FileNotFoundException e) {
             System.out.println("No Hay archivo personaje.png");
         }
-
-        columnaAnterior = columna;
-        filaAnterior = fila;
-
-
-    };
-
+        return image;
+    }
 }
