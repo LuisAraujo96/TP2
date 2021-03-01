@@ -22,57 +22,77 @@ public class SeccionPersonaje extends GridPane implements Observer {
         super();
         personaje = unPersonaje;
         numCeldas = 15;
-        setGridLinesVisible(true);
-        columnaAnterior = 3;
-        filaAnterior = 3;
+
+        this.personaje.addObserver(this);
+
         for (int i = 0; i < numCeldas; i++) {
             for (int j = 0; j < numCeldas; j++) {
                 Pane celda = new Pane();
-                celda.setMaxSize(32,32);
-                celda.setMinSize(32,32);
+                celda.setMaxSize(32, 32);
+                celda.setMinSize(32, 32);
                 celda.setStyle("-fx-background: transparent; -fx-background-color: transparent");
                 this.add(celda, i, j);
             }
         }
-        this.update();
 
+        this.columnaAnterior = personaje.obtenerPosicion().getX() + (numCeldas / 2);
+        this.filaAnterior = Math.abs(personaje.obtenerPosicion().getY() - (numCeldas / 2));
+
+        this.update();
+        setGridLinesVisible(true);
     }
 
-    public void update(){
-        Posicion posicionActual = personaje.obtenerPosicion();
-        int columna = posicionActual.getX() + (numCeldas/2);
-        int fila = Math.abs(posicionActual.getY() -(numCeldas/2));
-        try{
-            for (Node node : this.getChildren()) {
-                if (this.getColumnIndex(node) == columnaAnterior && this.getRowIndex(node) == filaAnterior)
-                    this.getChildren().remove(node);
+    public void update() {
+
+        int columnaActual = personaje.obtenerPosicion().getX() + (numCeldas / 2);
+        int filaActual = Math.abs(personaje.obtenerPosicion().getY() - (numCeldas / 2));
+
+        System.out.println("ColumnaAnterior: " + this.columnaAnterior);
+        System.out.println("FilaAnterior: " + this.filaAnterior);
+
+        System.out.println("ColumnaActual: " + columnaActual);
+        System.out.println("FilaActual: " + filaActual);
+
+        for (Node node : this.getChildren()) {
+
+            if (this.getColumnIndex(node) == null) {
+                continue;
             }
-        }catch (NullPointerException e){
-            System.out.println("No se encontro el nodo a remover");
+
+            if (this.getColumnIndex(node) == columnaAnterior && this.getRowIndex(node) == filaAnterior) {
+                node.setStyle(" -fx-background-color: transparent");
+            }
+
+            if (this.getColumnIndex(node) == columnaActual && this.getRowIndex(node) == filaActual) {
+                node.setStyle(" -fx-background-color: green");
+
+                //Pane nuevoNodo = this.crearNodoConImagen();
+                //this.setConstraints(nuevoNodo, columnaActual, filaActual);
+                //this.getChildren().remove(node);
+                //this.add(nuevoNodo, columnaActual, filaActual);
+            }
         }
 
-        Pane celdaAnterior = new Pane();
-        celdaAnterior.setMaxSize(32,32);
-        celdaAnterior.setMinSize(32,32);
-        celdaAnterior.setStyle(" -fx-background-color: yellow");
+        columnaAnterior = columnaActual;
+        filaAnterior = filaActual;
+    }
 
-        this.add(celdaAnterior,columna,fila);
+    public Pane crearNodoConImagen() {
+
+        Pane nodoPersonaje = null;
 
         try {
             FileInputStream input = new FileInputStream("src/main/resources/personaje.png");
             Image image = new Image(input);
             ImageView imageView = new ImageView(image);
-            Pane celdaPersonaje = new Pane(imageView);
-            this.add(celdaPersonaje,columna,fila);
-            //this.getChildren().set(fila * numCeldas + columna, imageView);
-        }catch(FileNotFoundException e) {
+            nodoPersonaje = new Pane(imageView);
+
+            System.out.println("Se creo al personaje con exito");
+
+        } catch (FileNotFoundException e) {
             System.out.println("No Hay archivo personaje.png");
         }
 
-        columnaAnterior = columna;
-        filaAnterior = fila;
-
-
-    };
-
+        return nodoPersonaje;
+    }
 }

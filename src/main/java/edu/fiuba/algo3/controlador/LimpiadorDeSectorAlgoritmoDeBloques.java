@@ -18,6 +18,6 @@ public class LimpiadorDeSectorAlgoritmoDeBloques implements EventHandler<ActionE
     @Override
     public void handle(ActionEvent actionEvent) {
         this.sectorAlgoritmo.vaciarSector();
-        this.personaje.resetPosicion();
+        //this.personaje.resetPosicion();
     }
 }
