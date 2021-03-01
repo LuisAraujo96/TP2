@@ -35,8 +35,10 @@ public class Personaje implements Subject{
 
     public Posicion obtenerPosicion() { return this.posicion; }
 
-    public void resetPosicion(){
+    public void resetPersonaje(){
         this.posicion = new Posicion(0,0);
+        this.subirLapiz();
+        notifyObservers();
     }
 
     @Override
