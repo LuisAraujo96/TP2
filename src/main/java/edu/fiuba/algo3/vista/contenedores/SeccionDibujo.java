@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
+import edu.fiuba.algo3.modelo.Posicion;
 import edu.fiuba.algo3.modelo.SectorDibujo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,35 +17,24 @@ import java.io.FileNotFoundException;
 
 public class SeccionDibujo extends StackPane implements Observer {
 
-    SectorDibujo sectorDibujo;
     SeccionPersonaje seccionPersonaje;
     Canvas seccionCanvas;
     GraphicsContext gc;
-    final int numColumnas;
-    final int numFilas;
-    double celdaXActual;
-    double celdaYActual;
-    int pixelRatio;
+    final int pixelRatio;
     Personaje personaje;
 
-    public SeccionDibujo(Personaje unPersonaje, SectorDibujo unSectorDibujo){
+    public SeccionDibujo(Personaje unPersonaje){
         super();
 
         this.setStyle("-fx-background-color: #282828");
 
         pixelRatio = 32;
-        numColumnas = 15;
-        numFilas = 15;
-        celdaXActual = 10.5;//numcelda entre 2 , no me acuerdo como hacer decimal jaja
-        celdaYActual = 7.5;
 
         setMinSize(680,510);
 
         personaje = unPersonaje;
         seccionPersonaje = new SeccionPersonaje(unPersonaje);
-        sectorDibujo = unSectorDibujo;
-        this.sectorDibujo.addObserver(this);
-
+        this.personaje.addObserver(this);
 
         seccionCanvas = new Canvas(672,480);
 
@@ -56,7 +46,7 @@ public class SeccionDibujo extends StackPane implements Observer {
         gc = seccionCanvas.getGraphicsContext2D();
         gc.setLineWidth(5);
         gc.beginPath();
-        gc.moveTo(pixelRatio * celdaXActual, pixelRatio * celdaYActual);
+        gc.moveTo(336, 240);
 
         getChildren().add(seccionCanvas);
         getChildren().add(seccionPersonaje);
@@ -71,18 +61,14 @@ public class SeccionDibujo extends StackPane implements Observer {
 
     @Override
     public void update(){
-        int varX = sectorDibujo.obtenerVariacionDePosicion().getX();
-        int varY = sectorDibujo.obtenerVariacionDePosicion().getY();
-
-        celdaXActual = celdaXActual + varX;
-        celdaYActual = celdaYActual + varY;
-        System.out.println("Se mueve:" + varX + " y " + varY);
+        int posX = personaje.obtenerPosicion().getX();
+        int posY = personaje.obtenerPosicion().getY();
         if (personaje.estaDibujando()){
-            gc.lineTo(pixelRatio*celdaXActual,pixelRatio*celdaYActual);
+            gc.lineTo( 336 + pixelRatio * posX , 240  - pixelRatio * posY);
             gc.stroke();
             System.out.println("pinta");
         }else{
-            gc.moveTo(pixelRatio*celdaXActual,pixelRatio*celdaYActual);
+            gc.moveTo( 336 + pixelRatio * posX , 240  - pixelRatio * posY);
             System.out.println("no pinta");
         }
     };
