@@ -3,6 +3,8 @@ package edu.fiuba.algo3.vista.contenedores;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorDibujo;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -58,6 +60,8 @@ public class SeccionDibujo extends StackPane implements Observer {
 
         getChildren().add(seccionCanvas);
         getChildren().add(seccionPersonaje);
+
+        this.setMargin(seccionPersonaje, new Insets(15,14,15,14));
     }
 
     private void setCanvasImage (Canvas unCanvas, String ImgPath) throws FileNotFoundException{

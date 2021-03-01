@@ -25,7 +25,6 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
     public SeccionBloquesAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, SectorBloques unSectorBloques){
         super();
         this.setMinWidth(290);
-        //this.setMinHeight(665);
         this.setAlignment(Pos.CENTER);
         this.setStyle("-fx-background-color: #ec3e3a");
 
@@ -37,6 +36,7 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
 
         this.ventanaDeBloques = new ScrollPane();
         this.ventanaDeBloques.setStyle("-fx-background-color: transparent");
+        this.ventanaDeBloques.setPannable(true);
         this.ventanaDeBloques.setMaxSize(215,565);
         this.ventanaDeBloques.setMinSize(215,565);
         this.ventanaDeBloques.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -63,8 +63,7 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         Set<String> nombres = sectorBloques.obtenerListaDeBloques();
 
         VBox columna = new VBox(16);
-        columna.setStyle("-fx-background-color: #bbbcbc");
-        columna.setMaxSize(215,565);
+        //columna.setMaxSize(215,565);
         columna.setMinSize(215,565);
         columna.setAlignment(Pos.TOP_CENTER);
         ventanaDeBloques.setContent(columna);
@@ -94,7 +93,7 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
 
         this.botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(this.sectorAlgoritmo, unSectorBloques));
 
-
+        /*
         botonID = "BorrarBloqueAlgoritmo";
         rutaDeImagen = "src/main/resources/IconoBorrarAlgoritmo.png";
 
@@ -102,9 +101,10 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         botonBorrarBloqueAlgoritmo.setStyle("-fx-background-color: transparent");
         botonBorrarBloqueAlgoritmo.setMinSize(117,80);
         botonBorrarBloqueAlgoritmo.setDisable(true);
+        */
 
 
-        HBox fila = new HBox(botonGuardarBloqueAlgoritmo, botonBorrarBloqueAlgoritmo);
+        HBox fila = new HBox(botonGuardarBloqueAlgoritmo/*, botonBorrarBloqueAlgoritmo*/);
         fila.setMaxWidth(235);
         fila.setMinHeight(80);
         fila.setStyle("-fx-background-color: #e86060");
