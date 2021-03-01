@@ -9,8 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 public class SeccionPersonaje extends GridPane implements Observer {
     final int numCeldas;
@@ -30,16 +29,19 @@ public class SeccionPersonaje extends GridPane implements Observer {
                 Pane celda = new Pane();
                 celda.setMaxSize(32, 32);
                 celda.setMinSize(32, 32);
-                celda.setStyle("-fx-background: transparent; -fx-background-color: transparent");
+                //celda.setStyle("-fx-background: transparent; -fx-background-color: transparent");
                 this.add(celda, i, j);
             }
         }
 
-        this.columnaAnterior = personaje.obtenerPosicion().getX() + (numCeldas / 2);
-        this.filaAnterior = Math.abs(personaje.obtenerPosicion().getY() - (numCeldas / 2));
+        //this.columnaAnterior = personaje.obtenerPosicion().getX() + (numCeldas / 2);
+        //this.filaAnterior = Math.abs(personaje.obtenerPosicion().getY() - (numCeldas / 2));
+
+        this.columnaAnterior = 0;
+        this.filaAnterior = 0;
 
         this.update();
-        setGridLinesVisible(true);
+        //setGridLinesVisible(true);
     }
 
     public void update() {
@@ -64,7 +66,10 @@ public class SeccionPersonaje extends GridPane implements Observer {
             }
 
             if (this.getColumnIndex(node) == columnaActual && this.getRowIndex(node) == filaActual) {
-                node.setStyle(" -fx-background-color: green");
+                //node.setStyle(" -fx-background-color: green");
+                Image imagen = this.crearImagenParaNodo();
+
+                ((Pane) node).setBackground(new Background(new BackgroundImage(imagen, null, null, null, null)));
 
                 //Pane nuevoNodo = this.crearNodoConImagen();
                 //this.setConstraints(nuevoNodo, columnaActual, filaActual);
@@ -77,6 +82,7 @@ public class SeccionPersonaje extends GridPane implements Observer {
         filaAnterior = filaActual;
     }
 
+    /*
     public Pane crearNodoConImagen() {
 
         Pane nodoPersonaje = null;
@@ -94,5 +100,18 @@ public class SeccionPersonaje extends GridPane implements Observer {
         }
 
         return nodoPersonaje;
+    }
+
+    */
+    public Image crearImagenParaNodo() {
+        Image image = null;
+
+        try {
+            FileInputStream input = new FileInputStream("src/main/resources/personaje.png");
+            image = new Image(input);
+        } catch (FileNotFoundException e) {
+            System.out.println("No Hay archivo personaje.png");
+        }
+        return image;
     }
 }
