@@ -9,6 +9,11 @@ public class VistaDeBloquesAlgoritmo extends HBox{
 
     public VistaDeBloquesAlgoritmo(String unNombre, Bloque unBLoque) {
         super();
+
+        this.setMaxWidth(215);
+        this.setMinSize(215,88);
+        this.setStyle("-fx-background-color: #a9aaaa");
+
         VistaDeBloque vistaDeBloque = new VistaDeBloque(unBLoque);
         Label nombre = new Label(unNombre);
 

@@ -10,7 +10,11 @@ import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class SeccionBloques extends VBox {
 
@@ -58,21 +62,38 @@ public class SeccionBloques extends VBox {
     private void setBotonesDeBloquesSimplesEn (GridPane unaGrilla){
         String botonID, rutaDeImagen;
 
-        unaGrilla.setStyle("-fx-background-color: #019de3");
-        unaGrilla.setMaxWidth(236);
+        try {
+            FileInputStream input = new FileInputStream("src/main/resources/FondoDeBotonesDeMovimiento.png");
+            Image imagenDeFondo = new Image(input);
+            unaGrilla.setBackground(new Background(new BackgroundImage(imagenDeFondo, null, null, null, null)));
+        } catch (FileNotFoundException e){
+            unaGrilla.setStyle("-fx-background-color: #019de3");
+        }
+
+        //unaGrilla.setStyle("-fx-background-color: #019de3");
+        unaGrilla.setMinSize(235, 235);
+        unaGrilla.setMaxSize(235, 235);
 
 
         botonID = "BotonMoverArriba";
         rutaDeImagen = "src/main/resources/IconoArriba.png";
 
         BotonDePrograma botonMoverArriba = new BotonDePrograma(botonID, rutaDeImagen);
+        botonMoverArriba.setStyle("-fx-background-color: transparent");
+        botonMoverArriba.setPickOnBounds(false);
+        botonMoverArriba.setMinSize(55, 55);
 
         botonMoverArriba.setOnAction (new CreadorDeBloquesEventHandler (sectorAlgoritmo, new FabricaBloqueArriba()));
 
 
         botonID = "BotonMoverAbajo";
         rutaDeImagen = "src/main/resources/IconoAbajo.png";
+
         BotonDePrograma botonMoverAbajo = new BotonDePrograma(botonID, rutaDeImagen);
+        botonMoverAbajo.setStyle("-fx-background-color: transparent");
+        botonMoverAbajo.setPickOnBounds(false);
+        botonMoverAbajo.setMinSize(55, 55);
+
         botonMoverAbajo.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueAbajo() ));
 
 
@@ -80,6 +101,9 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoIzquierda.png";
 
         BotonDePrograma botonMoverIzquierda = new BotonDePrograma(botonID, rutaDeImagen);
+        botonMoverIzquierda.setStyle("-fx-background-color: transparent");
+        botonMoverIzquierda.setPickOnBounds(false);
+        botonMoverIzquierda.setMinSize(55, 55);
 
         botonMoverIzquierda.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueIzquierda() ));
 
@@ -88,17 +112,24 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoDerecha.png";
 
         BotonDePrograma botonMoverDerecha = new BotonDePrograma(botonID, rutaDeImagen);
+        botonMoverDerecha.setStyle("-fx-background-color: transparent");
+        botonMoverDerecha.setPickOnBounds(false);
+        botonMoverDerecha.setMinSize(55, 55);
 
         botonMoverDerecha.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueDerecha() ));
 
 
 
         unaGrilla.add(botonMoverArriba,1,0);
+        unaGrilla.setMargin(botonMoverArriba, new Insets(27,4,4,4));
 
         unaGrilla.add(botonMoverIzquierda,0,1);
+        unaGrilla.setMargin(botonMoverIzquierda, new Insets(4,4,4,27));
         unaGrilla.add(botonMoverDerecha,2,1);
+        unaGrilla.setMargin(botonMoverDerecha, new Insets(4,24,4,4));
 
         unaGrilla.add(botonMoverAbajo, 1,2);
+        unaGrilla.setMargin(botonMoverAbajo, new Insets(4,4,27,4));
 
     }
 
@@ -107,13 +138,15 @@ public class SeccionBloques extends VBox {
 
         unaFila.setStyle("-fx-background-color: #019de3");
         unaFila.setMinHeight(90);
-        unaFila.setMaxWidth(235);
+        unaFila.setMaxWidth(236);
 
 
         botonID = "BotonSubirLapiz";
         rutaDeImagen = "src/main/resources/IconoLapizArriba.png";
 
         BotonDePrograma botonSubirLapiz = new BotonDePrograma(botonID, rutaDeImagen);
+        botonSubirLapiz.setStyle("-fx-background-color: transparent");
+        botonSubirLapiz.setMinSize(118, 90);
 
         botonSubirLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueLapizArriba()));
 
@@ -122,11 +155,11 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoLapizAbajo.png";
 
         BotonDePrograma botonBajarLapiz = new BotonDePrograma(botonID, rutaDeImagen);
+        botonBajarLapiz.setStyle("-fx-background-color: transparent");
+        botonBajarLapiz.setMinSize(118, 90);
 
         botonBajarLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueLapizAbajo()));
 
-        unaFila.setMinWidth(200);
-        unaFila.setSpacing(25);
         unaFila.getChildren().addAll(botonSubirLapiz, botonBajarLapiz);
 
     }
@@ -136,14 +169,15 @@ public class SeccionBloques extends VBox {
 
         unaFila.setStyle("-fx-background-color: #019de3");
         unaFila.setMinHeight(90);
-        unaFila.setMaxWidth(235);
+        unaFila.setMaxWidth(234);
 
 
         botonID = "BotonBloqueInversor";
         rutaDeImagen = "src/main/resources/IconoInvertir.png";
 
         BotonDePrograma botonBloqueInversor = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBloqueInversor.setMinHeight(75);
+        botonBloqueInversor.setStyle("-fx-background-color: transparent");
+        botonBloqueInversor.setMinSize(78, 90);
 
         botonBloqueInversor.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueInversor() ));
 
@@ -152,7 +186,8 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoRepetir2.png";
 
         BotonDePrograma botonBloqueRepetidorDoble = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBloqueRepetidorDoble.setMinHeight(75);
+        botonBloqueRepetidorDoble.setStyle("-fx-background-color: transparent");
+        botonBloqueRepetidorDoble.setMinSize(78, 90);
 
         botonBloqueRepetidorDoble.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueRepetidorDoble() ));
 
@@ -161,13 +196,12 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoRepetir3.png";
 
         BotonDePrograma botonBloqueRepetidorTriple = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBloqueRepetidorTriple.setMinHeight(75);
+        botonBloqueRepetidorTriple.setStyle("-fx-background-color: transparent");
+        botonBloqueRepetidorTriple.setMinSize(78, 90);
 
         botonBloqueRepetidorTriple.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueRepetidorTriple() ));
 
 
-        unaFila.setMinWidth(200);
-        unaFila.setSpacing(25);
         unaFila.getChildren().addAll(botonBloqueInversor, botonBloqueRepetidorDoble, botonBloqueRepetidorTriple);
 
     }

@@ -9,7 +9,9 @@ import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.util.Set;
@@ -23,6 +25,7 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
     public SeccionBloquesAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, SectorBloques unSectorBloques){
         super();
         this.setMinWidth(290);
+        //this.setMinHeight(665);
         this.setAlignment(Pos.CENTER);
         this.setStyle("-fx-background-color: #ec3e3a");
 
@@ -32,12 +35,21 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         this.sectorAlgoritmo.addObserver(this);
 
 
-
         this.ventanaDeBloques = new ScrollPane();
-        this.ventanaDeBloques.setMinSize(250,550);
-        this.ventanaDeBloques.setMaxSize(250,550);
+        this.ventanaDeBloques.setStyle("-fx-background-color: transparent");
+        this.ventanaDeBloques.setMaxSize(215,565);
+        this.ventanaDeBloques.setMinSize(215,565);
+        this.ventanaDeBloques.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        this.ventanaDeBloques.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        this.getChildren().add(this.ventanaDeBloques);
+
+        VBox holder = new VBox(ventanaDeBloques);
+        holder.setMaxWidth(235);
+        holder.setMinHeight(585);
+        holder.setAlignment(Pos.CENTER);
+        holder.setStyle("-fx-background-color: #bbbcbc");
+
+        this.getChildren().add(holder);
 
         this.setBotonesDeBloquesAlgoritmo(unSectorBloques);
 
@@ -50,7 +62,11 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
 
         Set<String> nombres = sectorBloques.obtenerListaDeBloques();
 
-        VBox columna = new VBox();
+        VBox columna = new VBox(16);
+        columna.setStyle("-fx-background-color: #bbbcbc");
+        columna.setMaxSize(215,565);
+        columna.setMinSize(215,565);
+        columna.setAlignment(Pos.TOP_CENTER);
         ventanaDeBloques.setContent(columna);
 
         for(String nombre : nombres){
@@ -72,22 +88,28 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         rutaDeImagen = "src/main/resources/IconoGuardarAlgoritmo.png";
 
         this.botonGuardarBloqueAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
+        this.botonGuardarBloqueAlgoritmo.setStyle("-fx-background-color: transparent");
+        this.botonGuardarBloqueAlgoritmo.setMinSize(117,80);
+        this.botonGuardarBloqueAlgoritmo.setDisable(true);
 
         this.botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(this.sectorAlgoritmo, unSectorBloques));
 
-        this.botonGuardarBloqueAlgoritmo.setDisable(true);
 
-        this.botonGuardarBloqueAlgoritmo.setMinSize(75,75);
+        botonID = "BorrarBloqueAlgoritmo";
+        rutaDeImagen = "src/main/resources/IconoBorrarAlgoritmo.png";
 
-
-
-        HBox subSeccion = new HBox(50, this.botonGuardarBloqueAlgoritmo);
-
-        subSeccion.setPadding(new Insets(0,30,0,30));
-        subSeccion.setMinHeight(75);
+        BotonDePrograma botonBorrarBloqueAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
+        botonBorrarBloqueAlgoritmo.setStyle("-fx-background-color: transparent");
+        botonBorrarBloqueAlgoritmo.setMinSize(117,80);
+        botonBorrarBloqueAlgoritmo.setDisable(true);
 
 
-        this.getChildren().add(subSeccion);
+        HBox fila = new HBox(botonGuardarBloqueAlgoritmo, botonBorrarBloqueAlgoritmo);
+        fila.setMaxWidth(235);
+        fila.setMinHeight(80);
+        fila.setStyle("-fx-background-color: #e86060");
+
+        this.getChildren().add(fila);
 
     }
 }
