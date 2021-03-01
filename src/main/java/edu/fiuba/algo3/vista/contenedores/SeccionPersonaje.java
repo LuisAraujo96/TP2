@@ -9,7 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
 public class SeccionPersonaje extends GridPane implements Observer {
-    final int numCeldas;
+    final int numColumnas;
+    final int numFilas;
     Personaje personaje;
     int columnaAnterior;
     int filaAnterior;
@@ -17,12 +18,13 @@ public class SeccionPersonaje extends GridPane implements Observer {
     public SeccionPersonaje(Personaje unPersonaje) {
         super();
         personaje = unPersonaje;
-        numCeldas = 15;
+        numColumnas = 21;
+        numFilas = 15;
 
         this.personaje.addObserver(this);
 
-        for (int i = 0; i < numCeldas; i++) {
-            for (int j = 0; j < numCeldas; j++) {
+        for (int i = 0; i < numColumnas; i++) {
+            for (int j = 0; j < numFilas; j++) {
                 Pane celda = new Pane();
                 celda.setMaxSize(32, 32);
                 celda.setMinSize(32, 32);
@@ -38,8 +40,8 @@ public class SeccionPersonaje extends GridPane implements Observer {
 
     public void update() {
 
-        int columnaActual = personaje.obtenerPosicion().getX() + (numCeldas / 2);
-        int filaActual = (numCeldas / 2) - personaje.obtenerPosicion().getY();
+        int columnaActual = personaje.obtenerPosicion().getX() + (numColumnas / 2);
+        int filaActual = (numFilas / 2) - personaje.obtenerPosicion().getY();
 
         System.out.println("ColumnaAnterior: " + this.columnaAnterior + " FilaAnterior: " + this.filaAnterior);
 

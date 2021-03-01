@@ -7,6 +7,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,7 +18,8 @@ public class SeccionDibujo extends StackPane implements Observer {
     SeccionPersonaje seccionPersonaje;
     Canvas seccionCanvas;
     GraphicsContext gc;
-    final int numCeldas;
+    final int numColumnas;
+    final int numFilas;
     double celdaXActual;
     double celdaYActual;
     int pixelRatio;
@@ -25,22 +27,29 @@ public class SeccionDibujo extends StackPane implements Observer {
 
     public SeccionDibujo(Personaje unPersonaje, SectorDibujo unSectorDibujo){
         super();
+
+        this.setStyle("-fx-background-color: #282828");
+
         pixelRatio = 32;
-        numCeldas = 15;
-        celdaXActual = 7.5;//numcelda entre 2 , no me acuerdo como hacer decimal jaja
+        numColumnas = 15;
+        numFilas = 15;
+        celdaXActual = 10.5;//numcelda entre 2 , no me acuerdo como hacer decimal jaja
         celdaYActual = 7.5;
 
-        setMaxSize(480,480);
+        setMinSize(680,510);
 
         personaje = unPersonaje;
         seccionPersonaje = new SeccionPersonaje(unPersonaje);
         sectorDibujo = unSectorDibujo;
         this.sectorDibujo.addObserver(this);
 
-        seccionCanvas = new Canvas(480,480);
-        try { setCanvasImage(seccionCanvas,"src/main/resources/canvasBackgroundTest.png"); } catch (FileNotFoundException e) {
-            System.out.println("Archivo canvas background no encontrado");
-        }
+
+        seccionCanvas = new Canvas(672,480);
+
+        seccionCanvas.getGraphicsContext2D().setFill(Color.WHITE);
+        seccionCanvas.getGraphicsContext2D().fillRect(0,0,672,480);
+        seccionCanvas.getGraphicsContext2D().setFill(Color.BLACK);
+
 
         gc = seccionCanvas.getGraphicsContext2D();
         gc.setLineWidth(5);

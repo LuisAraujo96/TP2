@@ -11,24 +11,28 @@ import javafx.scene.layout.*;
 public class SeccionPrincipal extends HBox {
 
     public SeccionPrincipal(SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques, SectorDibujo sectorDibujo, Personaje personaje){
-        super(45);
+        super();
 
-        this.setStyle("-fx-background-color: #424242");
+        this.setMinSize(1280,720);
+        this.setId("ContenedorPrincipal");
+        this.setStyle("-fx-background-color: #1e1e1e");
+        //this.setAlignment(Pos.CENTER);
 
-        setPadding(new Insets(30,30,30,30));
 
         SeccionBloques seccionBloques = new SeccionBloques(sectorBloques, sectorAlgoritmo);
-        SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo(sectorAlgoritmo, personaje);
+
         SeccionDibujo seccionDibujo = new SeccionDibujo(personaje, sectorDibujo);
+        SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo(sectorAlgoritmo, personaje);
 
-        VBox SegundaColumna = new VBox(40, seccionDibujo, seccionAlgoritmo);
-
+        VBox SegundaColumna = new VBox(seccionDibujo, seccionAlgoritmo);
         SegundaColumna.setAlignment(Pos.CENTER);
+        SegundaColumna.setMinWidth(700);
+        SegundaColumna.setMargin(seccionAlgoritmo, new Insets(25,25,25,25));
+
         SeccionBloquesAlgoritmo seccionBloquesAlgoritmo =  new SeccionBloquesAlgoritmo(sectorAlgoritmo, sectorBloques);
 
-        getChildren().addAll(seccionBloques, SegundaColumna, seccionBloquesAlgoritmo);
 
-        setId("ContenedorPrincipal");
+        getChildren().addAll(seccionBloques, SegundaColumna, seccionBloquesAlgoritmo);
 
     }
 }

@@ -12,30 +12,21 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 
-public class SeccionBloques extends VBox implements Observer{
+public class SeccionBloques extends VBox {
 
     private SectorAlgoritmo sectorAlgoritmo;
-    private BotonDePrograma botonGuardarBloqueAlgoritmo;
 
     public SeccionBloques(SectorBloques sectorBloques, SectorAlgoritmo sectorAlgoritmo){
-        super(40);
+        super();
 
-        this.setHeight(575);
+        this.setMinWidth(290);
+        this.setAlignment(Pos.CENTER);
+        this.setStyle("-fx-background-color: #01abe8");
 
-        this.setStyle("-fx-background-color: #00BDDD");
 
         this.sectorAlgoritmo = sectorAlgoritmo;
-        sectorAlgoritmo.addObserver(this);
 
         setBotonesDeBloquesDefinidos();
-
-        setBotonesDeBloquesAlgoritmo(sectorBloques);
-
-    }
-
-    @Override
-    public void update() {
-        this.botonGuardarBloqueAlgoritmo.setDisable( this.sectorAlgoritmo.estaVacio());
 
     }
 
@@ -45,48 +36,20 @@ public class SeccionBloques extends VBox implements Observer{
         GridPane subSeccionDeBloquesSimples = new GridPane();
         setBotonesDeBloquesSimplesEn(subSeccionDeBloquesSimples);
 
+        HBox subSeccionDeBloquesDeHerramientas = new HBox();
+        setBotonesDeHerramientaEn(subSeccionDeBloquesDeHerramientas);
+
         HBox subSeccionDeBloquesContenedores = new HBox();
         setBotonesDeBloquesContenedoresEn( subSeccionDeBloquesContenedores);
 
 
-        VBox subSeccionGeneral = new VBox(50, subSeccionDeBloquesSimples, subSeccionDeBloquesContenedores);
+        VBox subSeccionGeneral = new VBox(50, subSeccionDeBloquesSimples, subSeccionDeBloquesDeHerramientas, subSeccionDeBloquesContenedores);
 
         subSeccionGeneral.setAlignment(Pos.CENTER);
 
-        this.setMargin(subSeccionDeBloquesSimples, new Insets(25, 25, 0, 25));
 
-        subSeccionGeneral.setPadding(new Insets(25,25,25,25));
-
-        subSeccionGeneral.setBorder(new Border(new BorderStroke(null, BorderStrokeStyle.SOLID, null, BorderStroke.THIN)));
 
         this.getChildren().add(subSeccionGeneral);
-
-    }
-
-    private void setBotonesDeBloquesAlgoritmo (SectorBloques unSectorBloques){
-        String botonID, rutaDeImagen;
-
-
-        botonID = "GuardarBloqueAlgoritmo";
-        rutaDeImagen = "src/main/resources/IconoGuardarAlgoritmo.png";
-
-        this.botonGuardarBloqueAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
-
-        this.botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(this.sectorAlgoritmo, unSectorBloques));
-
-        this.botonGuardarBloqueAlgoritmo.setDisable(true);
-
-        this.botonGuardarBloqueAlgoritmo.setMinSize(75,75);
-
-
-
-        HBox subSeccion = new HBox(50, this.botonGuardarBloqueAlgoritmo);
-
-        subSeccion.setPadding(new Insets(0,30,0,30));
-        subSeccion.setMinHeight(75);
-
-
-        this.getChildren().add(subSeccion);
 
     }
 
@@ -94,6 +57,9 @@ public class SeccionBloques extends VBox implements Observer{
 
     private void setBotonesDeBloquesSimplesEn (GridPane unaGrilla){
         String botonID, rutaDeImagen;
+
+        unaGrilla.setStyle("-fx-background-color: #019de3");
+        unaGrilla.setMaxWidth(236);
 
 
         botonID = "BotonMoverArriba";
@@ -126,6 +92,24 @@ public class SeccionBloques extends VBox implements Observer{
         botonMoverDerecha.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueDerecha() ));
 
 
+
+        unaGrilla.add(botonMoverArriba,1,0);
+
+        unaGrilla.add(botonMoverIzquierda,0,1);
+        unaGrilla.add(botonMoverDerecha,2,1);
+
+        unaGrilla.add(botonMoverAbajo, 1,2);
+
+    }
+
+    private void setBotonesDeHerramientaEn (HBox unaFila){
+        String botonID, rutaDeImagen;
+
+        unaFila.setStyle("-fx-background-color: #019de3");
+        unaFila.setMinHeight(90);
+        unaFila.setMaxWidth(235);
+
+
         botonID = "BotonSubirLapiz";
         rutaDeImagen = "src/main/resources/IconoLapizArriba.png";
 
@@ -141,27 +125,18 @@ public class SeccionBloques extends VBox implements Observer{
 
         botonBajarLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueLapizAbajo()));
 
-
-        Pane panelVacio = new Pane();
-        panelVacio.setMinSize(50,50);
-
-
-        unaGrilla.add(botonMoverArriba,1,0);
-
-        unaGrilla.add(botonMoverIzquierda,0,1);
-        unaGrilla.add(botonMoverDerecha,2,1);
-
-        unaGrilla.add(botonMoverAbajo, 1,2);
-
-        unaGrilla.add(panelVacio,1,3);
-
-        unaGrilla.add(botonSubirLapiz, 0,4);
-        unaGrilla.add(botonBajarLapiz, 2,4);
+        unaFila.setMinWidth(200);
+        unaFila.setSpacing(25);
+        unaFila.getChildren().addAll(botonSubirLapiz, botonBajarLapiz);
 
     }
 
     private void setBotonesDeBloquesContenedoresEn (HBox unaFila){
         String botonID, rutaDeImagen;
+
+        unaFila.setStyle("-fx-background-color: #019de3");
+        unaFila.setMinHeight(90);
+        unaFila.setMaxWidth(235);
 
 
         botonID = "BotonBloqueInversor";

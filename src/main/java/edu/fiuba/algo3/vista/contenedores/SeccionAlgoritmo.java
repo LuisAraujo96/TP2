@@ -22,6 +22,8 @@ public class SeccionAlgoritmo extends HBox implements Observer {
     public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, Personaje unPersonaje){
         super();
 
+        this.setMinSize(640,170);
+
         this.sectorAlgoritmo = unSectorAlgoritmo;
         this.sectorAlgoritmo.addObserver(this);
 
@@ -77,8 +79,8 @@ public class SeccionAlgoritmo extends HBox implements Observer {
     private void setVentana(){
         ScrollPane scrollPane = new ScrollPane();
 
-        scrollPane.setMinSize(650,150);
-        scrollPane.setMaxSize(650,150);
+        scrollPane.setMinSize(520,180);
+        scrollPane.setMaxSize(520,180);
 
         this.ventana = scrollPane;
 
