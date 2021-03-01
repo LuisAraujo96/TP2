@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import edu.fiuba.algo3.controlador.BotonReiniciarPosicionDelPersonaje;
 import edu.fiuba.algo3.controlador.EjecutadorDeSectorAlgoritmoEventHandler;
 import edu.fiuba.algo3.controlador.LimpiadorDeSectorAlgoritmoDeBloques;
 import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
@@ -51,11 +52,12 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
         BotonDePrograma botonLimpiarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
 
-        botonLimpiarSectorAlgoritmo.setOnAction( new LimpiadorDeSectorAlgoritmoDeBloques( this.sectorAlgoritmo, unPersonaje ) );
+        botonLimpiarSectorAlgoritmo.setOnAction( new LimpiadorDeSectorAlgoritmoDeBloques( this.sectorAlgoritmo ) );
 
         botonLimpiarSectorAlgoritmo.setMinSize(50,50);
 
-
+        BotonDePrograma botonReiniciarPosicionDelPersonaje = new BotonDePrograma("botonReiniciarPosicionDelPersonaje", "src/main/resources/IconoMario.png");
+        botonReiniciarPosicionDelPersonaje.setOnAction(new BotonReiniciarPosicionDelPersonaje(unPersonaje));
 
         botonID = "BotonLimpiarCanvas";
         rutaDeImagen = "src/main/resources/IconoBorrarDibujo.png";
@@ -66,7 +68,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
 
 
-        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas);
+        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas, botonReiniciarPosicionDelPersonaje);
 
         this.getChildren().add(seccionDeBotones);
 

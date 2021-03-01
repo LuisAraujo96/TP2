@@ -67,7 +67,7 @@ public class SeccionPersonaje extends GridPane implements Observer {
         Image image = null;
 
         try {
-            FileInputStream input = new FileInputStream("src/main/resources/personaje.png");
+            FileInputStream input = new FileInputStream("src/main/resources/MarioFrente.png");
             image = new Image(input);
         } catch (FileNotFoundException e) {
             System.out.println("No Hay archivo personaje.png");
