@@ -73,7 +73,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
 
         botonID = "botonReiniciarPosicionDelPersonaje";
-        rutaDeImagen = "src/main/resources/IconoMario.png";
+        rutaDeImagen = "src/main/resources/IconoKirby.png";
 
         BotonDePrograma botonReiniciarPosicionDelPersonaje = new BotonDePrograma(botonID, rutaDeImagen);
         botonReiniciarPosicionDelPersonaje.setMinSize(44,44);

@@ -142,7 +142,7 @@ public class SeccionBloques extends VBox {
 
 
         botonID = "BotonSubirLapiz";
-        rutaDeImagen = "src/main/resources/IconoLapizArriba.png";
+        rutaDeImagen = "src/main/resources/IconoKirbyBrochaArriba.png";
 
         BotonDePrograma botonSubirLapiz = new BotonDePrograma(botonID, rutaDeImagen);
         botonSubirLapiz.setStyle("-fx-background-color: transparent");
@@ -152,7 +152,7 @@ public class SeccionBloques extends VBox {
 
 
         botonID = "BotonBajarLapiz";
-        rutaDeImagen = "src/main/resources/IconoLapizAbajo.png";
+        rutaDeImagen = "src/main/resources/IconoKirbyBrochaAbajo.png";
 
         BotonDePrograma botonBajarLapiz = new BotonDePrograma(botonID, rutaDeImagen);
         botonBajarLapiz.setStyle("-fx-background-color: transparent");
