@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.BotonReiniciarPosicionDelPersonaje;
-import edu.fiuba.algo3.controlador.EjecutadorDeSectorAlgoritmoEventHandler;
-import edu.fiuba.algo3.controlador.LimpiadorDeSectorAlgoritmoDeBloques;
-import edu.fiuba.algo3.controlador.SelectorDeContenedoresEventHandler;
+import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.Bloques.BloqueContenedor;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
+import edu.fiuba.algo3.modelo.SectorDibujo;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
@@ -15,12 +13,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class SeccionAlgoritmo extends HBox implements Observer {
-
+    private SectorDibujo sectorDibujo;
     private SectorAlgoritmo sectorAlgoritmo;
     private ScrollPane ventana;
 
 
-    public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, Personaje unPersonaje){
+    public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, SectorDibujo unSectorDibujo, Personaje unPersonaje){
         super(20);
 
         this.setMinSize(650,160);
@@ -28,6 +26,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         this.setStyle("-fx-background-color: #282828");
 
         this.sectorAlgoritmo = unSectorAlgoritmo;
+        this.sectorDibujo = unSectorDibujo;
         this.sectorAlgoritmo.addObserver(this);
 
 
@@ -70,6 +69,8 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         BotonDePrograma botonLimpiarCanvas = new BotonDePrograma(botonID, rutaDeImagen);
         botonLimpiarCanvas.setMinSize(44,44);
         botonLimpiarCanvas.setMaxSize(44,44);
+
+        botonLimpiarCanvas.setOnAction(new LimpiadorDeSectorDibujoEventHandler(this.sectorDibujo));
 
 
         botonID = "botonReiniciarPosicionDelPersonaje";

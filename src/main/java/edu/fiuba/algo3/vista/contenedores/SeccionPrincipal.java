@@ -21,8 +21,8 @@ public class SeccionPrincipal extends HBox {
 
         SeccionBloques seccionBloques = new SeccionBloques(sectorBloques, sectorAlgoritmo);
 
-        SeccionDibujo seccionDibujo = new SeccionDibujo(personaje);
-        SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo(sectorAlgoritmo, personaje);
+        SeccionDibujo seccionDibujo = new SeccionDibujo(personaje, sectorDibujo);
+        SeccionAlgoritmo seccionAlgoritmo = new SeccionAlgoritmo(sectorAlgoritmo, sectorDibujo, personaje);
 
         VBox SegundaColumna = new VBox(seccionDibujo, seccionAlgoritmo);
         SegundaColumna.setAlignment(Pos.CENTER);
