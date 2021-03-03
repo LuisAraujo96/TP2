@@ -230,6 +230,7 @@ public class SeccionBloques extends VBox {
         BotonDePrograma botonReiniciarPantalla = new BotonDePrograma(botonID, rutaDeImagen);
         botonReiniciarPantalla.setMinSize(44,44);
         botonReiniciarPantalla.setMaxSize(44,44);
+        botonReiniciarPantalla.setStyle("-fx-background-color: transparent");
 
         botonReiniciarPantalla.setOnAction(new ReiniciadorDePantallaEventHandler(unSectorDibujo, unPersonaje));
 

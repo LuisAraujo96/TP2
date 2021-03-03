@@ -34,13 +34,11 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         this.sectorDibujo = unSectorDibujo;
         this.sectorAlgoritmo.addObserver(this);
 
-
-        setBotonesDeLimpieza();
+        setBotonDeEjecucion(unPersonaje);
 
         setVentana();
 
-        setBotonDeEjecucion(unPersonaje);
-
+        setBotonesDeLimpieza();
     }
 
     @Override
@@ -60,6 +58,8 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         rutaDeImagen = "src/main/resources/IconoLimpiarAlgoritmo.png";
 
         BotonDePrograma botonLimpiarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
+        botonLimpiarSectorAlgoritmo.setStyle("-fx-background-color: transparent");
+        botonLimpiarSectorAlgoritmo.setPickOnBounds(false);
         botonLimpiarSectorAlgoritmo.setMinSize(44,44);
         botonLimpiarSectorAlgoritmo.setMaxSize(44,44);
 
@@ -121,6 +121,8 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         botonEjecutarSectorAlgoritmo.setOnAction( new EjecutadorDeSectorAlgoritmoEventHandler(this.sectorAlgoritmo, unPersonaje) );
         botonEjecutarSectorAlgoritmo.setMinSize(44,44);
         botonEjecutarSectorAlgoritmo.setMaxSize(44,44);
+        botonEjecutarSectorAlgoritmo.setStyle("-fx-background-color: transparent");
+        botonEjecutarSectorAlgoritmo.setPickOnBounds(false);
 
 
         this.getChildren().add(botonEjecutarSectorAlgoritmo);
