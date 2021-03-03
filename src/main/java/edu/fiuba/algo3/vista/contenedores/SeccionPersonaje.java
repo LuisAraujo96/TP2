@@ -9,7 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
 public class SeccionPersonaje extends GridPane implements Observer {
-    final int numCeldas;
+    final int numColumnas;
+    final int numFilas;
     Personaje personaje;
     int columnaAnterior;
     int filaAnterior;
@@ -17,12 +18,13 @@ public class SeccionPersonaje extends GridPane implements Observer {
     public SeccionPersonaje(Personaje unPersonaje) {
         super();
         personaje = unPersonaje;
-        numCeldas = 15;
+        numColumnas = 21;
+        numFilas = 15;
 
         this.personaje.addObserver(this);
 
-        for (int i = 0; i < numCeldas; i++) {
-            for (int j = 0; j < numCeldas; j++) {
+        for (int i = 0; i < numColumnas; i++) {
+            for (int j = 0; j < numFilas; j++) {
                 Pane celda = new Pane();
                 celda.setMaxSize(32, 32);
                 celda.setMinSize(32, 32);
@@ -30,20 +32,19 @@ public class SeccionPersonaje extends GridPane implements Observer {
             }
         }
 
-        this.columnaAnterior = -1;
-        this.filaAnterior = -1;
+        this.columnaAnterior = personaje.obtenerPosicion().getX() + (numColumnas / 2);
+        this.filaAnterior = (numFilas / 2) - personaje.obtenerPosicion().getY();
 
         this.update();
     }
 
     public void update() {
 
-        int columnaActual = personaje.obtenerPosicion().getX() + (numCeldas / 2);
-        int filaActual = (numCeldas / 2) - personaje.obtenerPosicion().getY();
+        int columnaActual = personaje.obtenerPosicion().getX() + (numColumnas / 2);
+        int filaActual = (numFilas / 2) - personaje.obtenerPosicion().getY();
 
-        System.out.println("ColumnaAnterior: " + this.columnaAnterior + " FilaAnterior: " + this.filaAnterior);
-
-        System.out.println("ColumnaActual: " + columnaActual + " FilaActual: " + filaActual);
+        //System.out.println("ColumnaAnterior: " + this.columnaAnterior + " FilaAnterior: " + this.filaAnterior);
+        //System.out.println("ColumnaActual: " + columnaActual + " FilaActual: " + filaActual);
 
         for (Node node : this.getChildren()) {
 
@@ -52,8 +53,9 @@ public class SeccionPersonaje extends GridPane implements Observer {
             }
 
             if (this.getColumnIndex(node) == columnaActual && this.getRowIndex(node) == filaActual) {
-                Image imagen = this.crearImagenParaNodo();
 
+                String rutaPersonaje = this.calcularRutaDeImagen();
+                Image imagen = this.crearImagenParaNodo(rutaPersonaje);
                 ((Pane) node).setBackground(new Background(new BackgroundImage(imagen, null, null, null, null)));
             }
         }
@@ -63,14 +65,31 @@ public class SeccionPersonaje extends GridPane implements Observer {
     }
 
 
-    public Image crearImagenParaNodo() {
+    public String calcularRutaDeImagen(){
+
+        int personajeColumnaAnterior = this.columnaAnterior - (numColumnas / 2);
+        int personajeFilaAnterior = (numFilas / 2) - this.filaAnterior;
+
+        int deltaX = this.personaje.obtenerPosicion().getX() - personajeColumnaAnterior;
+        int deltaY = this.personaje.obtenerPosicion().getY() - personajeFilaAnterior;
+
+        if (deltaX > 1 || deltaX < -1 || deltaY > 1 || deltaY < -1){ deltaX = 0; deltaY = 0; }
+
+        //System.out.println("Delta x: " + deltaX);
+        //System.out.println("Delta y: " + deltaY);
+
+        return "Personaje(" + deltaX + "," + deltaY + ").png";
+
+    }
+
+    public Image crearImagenParaNodo(String rutaPersonaje) {
         Image image = null;
 
         try {
-            FileInputStream input = new FileInputStream("src/main/resources/MarioFrente.png");
+            FileInputStream input = new FileInputStream("src/main/resources/" + rutaPersonaje);
             image = new Image(input);
         } catch (FileNotFoundException e) {
-            System.out.println("No Hay archivo personaje.png");
+            System.out.println("No hay archivo de imagen para el personaje");
         }
         return image;
     }

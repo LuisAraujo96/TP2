@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
+import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,7 +21,11 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
 
     public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, Personaje unPersonaje){
-        super();
+        super(20);
+
+        this.setMinSize(650,160);
+        this.setPadding(new Insets(14,14,14,14));
+        this.setStyle("-fx-background-color: #282828");
 
         this.sectorAlgoritmo = unSectorAlgoritmo;
         this.sectorAlgoritmo.addObserver(this);
@@ -51,20 +56,30 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         rutaDeImagen = "src/main/resources/IconoLimpiarAlgoritmo.png";
 
         BotonDePrograma botonLimpiarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
+        botonLimpiarSectorAlgoritmo.setMinSize(44,44);
+        botonLimpiarSectorAlgoritmo.setMaxSize(44,44);
 
         botonLimpiarSectorAlgoritmo.setOnAction( new LimpiadorDeSectorAlgoritmoDeBloques( this.sectorAlgoritmo ) );
 
-        botonLimpiarSectorAlgoritmo.setMinSize(50,50);
 
-        BotonDePrograma botonReiniciarPosicionDelPersonaje = new BotonDePrograma("botonReiniciarPosicionDelPersonaje", "src/main/resources/IconoMario.png");
-        botonReiniciarPosicionDelPersonaje.setOnAction(new BotonReiniciarPosicionDelPersonaje(unPersonaje));
+
 
         botonID = "BotonLimpiarCanvas";
         rutaDeImagen = "src/main/resources/IconoBorrarDibujo.png";
 
         BotonDePrograma botonLimpiarCanvas = new BotonDePrograma(botonID, rutaDeImagen);
+        botonLimpiarCanvas.setMinSize(44,44);
+        botonLimpiarCanvas.setMaxSize(44,44);
 
-        botonLimpiarCanvas.setMinSize(50,50);
+
+        botonID = "botonReiniciarPosicionDelPersonaje";
+        rutaDeImagen = "src/main/resources/IconoMario.png";
+
+        BotonDePrograma botonReiniciarPosicionDelPersonaje = new BotonDePrograma(botonID, rutaDeImagen);
+        botonReiniciarPosicionDelPersonaje.setMinSize(44,44);
+        botonReiniciarPosicionDelPersonaje.setMaxSize(44,44);
+
+        botonReiniciarPosicionDelPersonaje.setOnAction(new BotonReiniciarPosicionDelPersonaje(unPersonaje));
 
 
 
@@ -77,8 +92,8 @@ public class SeccionAlgoritmo extends HBox implements Observer {
     private void setVentana(){
         ScrollPane scrollPane = new ScrollPane();
 
-        scrollPane.setMinSize(650,150);
-        scrollPane.setMaxSize(650,150);
+        scrollPane.setMinSize(494,132);
+        scrollPane.setMaxSize(494,132);
 
         this.ventana = scrollPane;
 
@@ -104,11 +119,18 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         BotonDePrograma botonEjecutarSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
 
         botonEjecutarSectorAlgoritmo.setOnAction( new EjecutadorDeSectorAlgoritmoEventHandler(this.sectorAlgoritmo, unPersonaje) );
-        botonEjecutarSectorAlgoritmo.setMinSize(50,100);
+        botonEjecutarSectorAlgoritmo.setMinSize(44,44);
+        botonEjecutarSectorAlgoritmo.setMaxSize(44,44);
 
-        BotonDePrograma botonEstablecerContenedorSectorAlgoritmo = new BotonDePrograma("botonEstablecerContenedorSectorAlgoritmo", "src/main/resources/IconoSeccionAlgoritmo.png");
 
-        botonEstablecerContenedorSectorAlgoritmo.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, (BloqueContenedor) sectorAlgoritmo.getContenedor()));
+        botonID = "botonEstablecerContenedorSectorAlgoritmo";
+        rutaDeImagen = "src/main/resources/IconoSeccionAlgoritmo.png";
+
+        BotonDePrograma botonEstablecerContenedorSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
+        botonEstablecerContenedorSectorAlgoritmo.setMinSize(44,44);
+        botonEstablecerContenedorSectorAlgoritmo.setMaxSize(44,44);
+
+        botonEstablecerContenedorSectorAlgoritmo.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, sectorAlgoritmo.getContenedor()));
         VBox vbox = new VBox(botonEjecutarSectorAlgoritmo, botonEstablecerContenedorSectorAlgoritmo);
 
         this.getChildren().add(vbox);

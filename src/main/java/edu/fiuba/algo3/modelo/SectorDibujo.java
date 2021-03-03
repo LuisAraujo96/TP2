@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 public class SectorDibujo {
+
     private final HashMap<Posicion, HashSet<Posicion>> trazos;
 
     public SectorDibujo(){
@@ -26,4 +25,5 @@ public class SectorDibujo {
         SectorDibujo that = (SectorDibujo) o;
         return Objects.equals(trazos, that.trazos);
     }
+
 }

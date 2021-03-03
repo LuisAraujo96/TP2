@@ -15,18 +15,29 @@ public class Personaje implements Subject{
     private HerramientaDeDibujo herramienta;
     private Posicion posicion;
     private Movimiento movimiento;
+    boolean dibujando;
 
     public Personaje(HerramientaDeDibujo unaHerramienta){
         this.posicion = new Posicion(0,0);
         this.movimiento = new MoverseSinDibujar();
         this.herramienta = unaHerramienta;
-        //notificar a seccion personaje para incicalizar en 0,0
         observadores = new ArrayList<>();
+        dibujando = false;
     }
 
-    public void bajarLapiz() { this.movimiento = new MoverseDibujando(herramienta); }
+    public void bajarLapiz() {
+        this.movimiento = new MoverseDibujando(herramienta);
+        dibujando = true;
+    }
 
-    public void subirLapiz() { this.movimiento = new MoverseSinDibujar(); }
+    public void subirLapiz() {
+        this.movimiento = new MoverseSinDibujar();
+        dibujando = false;
+    }
+
+    public boolean estaDibujando(){
+        return dibujando;
+    }
 
     public void moverseHacia(Direccion unaDireccion){
         this.posicion = this.movimiento.cambiarPosicion(this.posicion, unaDireccion);
