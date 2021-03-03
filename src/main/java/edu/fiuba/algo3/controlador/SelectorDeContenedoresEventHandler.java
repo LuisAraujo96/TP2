@@ -16,6 +16,6 @@ public class SelectorDeContenedoresEventHandler implements EventHandler<MouseEve
 
     @Override
     public void handle(MouseEvent actionEvent) {
-        this.sectorAlgoritmo.setContenedor(this.contenedor);
+        this.sectorAlgoritmo.establecerContenedor(this.contenedor);
     }
 }

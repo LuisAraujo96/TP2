@@ -38,7 +38,7 @@ public class Personaje implements Subject{
 
     public Posicion obtenerPosicion() { return this.posicion; }
 
-    public void resetPersonaje(){
+    public void restablecerPersonaje(){
         this.posicion = new Posicion(0,0);
         this.subirLapiz();
         notifyObservers();

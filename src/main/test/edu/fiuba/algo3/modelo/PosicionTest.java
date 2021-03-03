@@ -61,14 +61,14 @@ class PosicionTest {
     @Test
     public void test06ObtengoCoordenadaXDeUnaPosicionConCoordenadaXEnTres(){
         Posicion posicion = new Posicion(1,3);
-        assertEquals(1, posicion.getX());
+        assertEquals(1, posicion.obtenerX());
     }
 
 
     @Test
     public void test07ObtengoCoordenadaYDeUnaPosicionConCoordenadaYEnTres(){
         Posicion posicion = new Posicion(1,3);
-        assertEquals(3, posicion.getY());
+        assertEquals(3, posicion.obtenerY());
     }
 
     @Test
@@ -78,7 +78,7 @@ class PosicionTest {
         Posicion p2 = new Posicion(0, 0);
         assertEquals(true, p1.equals(p2));
         assertEquals(true, p1.equals(p1));
-        assertEquals((p1.getX() == p1.getY()), p2.getX() == p2.getY() );
+        assertEquals((p1.obtenerX() == p1.obtenerY()), p2.obtenerX() == p2.obtenerY() );
         assertEquals(false,p1.equals(null));
     }
 

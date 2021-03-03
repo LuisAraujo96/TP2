@@ -77,8 +77,8 @@ public class SeccionDibujo extends StackPane implements Observer {
 
         for (Posicion posicionInicial: trazos.keySet())
             for (Posicion posicionFinal : trazos.get(posicionInicial))
-                gc.strokeLine(336 + pixelRatio * posicionInicial.getX(), 240 - pixelRatio * posicionInicial.getY(),
-                        336 + pixelRatio * posicionFinal.getX(), 240 - pixelRatio * posicionFinal.getY());
+                gc.strokeLine(336 + pixelRatio * posicionInicial.obtenerX(), 240 - pixelRatio * posicionInicial.obtenerY(),
+                        336 + pixelRatio * posicionFinal.obtenerX(), 240 - pixelRatio * posicionFinal.obtenerY());
     }
 }
 

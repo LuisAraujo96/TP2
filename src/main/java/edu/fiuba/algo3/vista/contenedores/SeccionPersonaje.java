@@ -32,16 +32,16 @@ public class SeccionPersonaje extends GridPane implements Observer {
             }
         }
 
-        this.columnaAnterior = personaje.obtenerPosicion().getX() + (numColumnas / 2);
-        this.filaAnterior = (numFilas / 2) - personaje.obtenerPosicion().getY();
+        this.columnaAnterior = personaje.obtenerPosicion().obtenerX() + (numColumnas / 2);
+        this.filaAnterior = (numFilas / 2) - personaje.obtenerPosicion().obtenerY();
 
         this.update();
     }
 
     public void update() {
 
-        int columnaActual = personaje.obtenerPosicion().getX() + (numColumnas / 2);
-        int filaActual = (numFilas / 2) - personaje.obtenerPosicion().getY();
+        int columnaActual = personaje.obtenerPosicion().obtenerX() + (numColumnas / 2);
+        int filaActual = (numFilas / 2) - personaje.obtenerPosicion().obtenerY();
 
         //System.out.println("ColumnaAnterior: " + this.columnaAnterior + " FilaAnterior: " + this.filaAnterior);
         //System.out.println("ColumnaActual: " + columnaActual + " FilaActual: " + filaActual);
@@ -70,8 +70,8 @@ public class SeccionPersonaje extends GridPane implements Observer {
         int personajeColumnaAnterior = this.columnaAnterior - (numColumnas / 2);
         int personajeFilaAnterior = (numFilas / 2) - this.filaAnterior;
 
-        int deltaX = this.personaje.obtenerPosicion().getX() - personajeColumnaAnterior;
-        int deltaY = this.personaje.obtenerPosicion().getY() - personajeFilaAnterior;
+        int deltaX = this.personaje.obtenerPosicion().obtenerX() - personajeColumnaAnterior;
+        int deltaY = this.personaje.obtenerPosicion().obtenerY() - personajeFilaAnterior;
 
         if (deltaX > 1 || deltaX < -1 || deltaY > 1 || deltaY < -1){ deltaX = 0; deltaY = 0; }
 

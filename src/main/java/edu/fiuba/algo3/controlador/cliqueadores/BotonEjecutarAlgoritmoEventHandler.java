@@ -19,8 +19,8 @@ public class BotonEjecutarAlgoritmoEventHandler implements EventHandler<ActionEv
     public void handle(ActionEvent actionEvent) {
         sectorAlgoritmo.ejecutarPrograma(this.personaje);
         //Debugger
-        System.out.println("X = " + this.personaje.obtenerPosicion().getX());
-        System.out.println("Y = " + this.personaje.obtenerPosicion().getY());
+        System.out.println("X = " + this.personaje.obtenerPosicion().obtenerX());
+        System.out.println("Y = " + this.personaje.obtenerPosicion().obtenerY());
     }
 
 

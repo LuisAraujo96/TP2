@@ -15,6 +15,6 @@ public class BotonReiniciarPosicionDelPersonaje implements EventHandler<ActionEv
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.personaje.resetPersonaje();
+        this.personaje.restablecerPersonaje();
     }
 }

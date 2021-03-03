@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.vista.contenedores;
 
-import edu.fiuba.algo3.controlador.CreadorDeBloquesContenedoresEventHandler;
-import edu.fiuba.algo3.controlador.CreadorDeBloquesEventHandler;
-import edu.fiuba.algo3.controlador.ReiniciadorDePantallaEventHandler;
-import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
+import edu.fiuba.algo3.controlador.*;
+import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorDibujo;
@@ -67,7 +65,7 @@ public class SeccionBloques extends VBox {
         botonMoverArriba.setPickOnBounds(false);
         botonMoverArriba.setMinSize(55, 55);
 
-        botonMoverArriba.setOnAction (new CreadorDeBloquesEventHandler (sectorAlgoritmo, new FabricaBloqueArriba()));
+        botonMoverArriba.setOnAction (new CreadorDeBloquesEventHandler (sectorAlgoritmo, new BloqueArriba()));
 
 
         botonID = "BotonMoverAbajo";
@@ -78,7 +76,7 @@ public class SeccionBloques extends VBox {
         botonMoverAbajo.setPickOnBounds(false);
         botonMoverAbajo.setMinSize(55, 55);
 
-        botonMoverAbajo.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueAbajo() ));
+        botonMoverAbajo.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new BloqueAbajo() ));
 
 
         botonID = "BotonMoverIzquierda";
@@ -89,7 +87,7 @@ public class SeccionBloques extends VBox {
         botonMoverIzquierda.setPickOnBounds(false);
         botonMoverIzquierda.setMinSize(55, 55);
 
-        botonMoverIzquierda.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueIzquierda() ));
+        botonMoverIzquierda.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new BloqueIzquierda() ));
 
 
         botonID = "BotonMoverDerecha";
@@ -100,7 +98,7 @@ public class SeccionBloques extends VBox {
         botonMoverDerecha.setPickOnBounds(false);
         botonMoverDerecha.setMinSize(55, 55);
 
-        botonMoverDerecha.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueDerecha() ));
+        botonMoverDerecha.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new BloqueDerecha() ));
 
 
 
@@ -135,7 +133,7 @@ public class SeccionBloques extends VBox {
         botonSubirLapiz.setStyle("-fx-background-color: transparent");
         botonSubirLapiz.setMinSize(118, 90);
 
-        botonSubirLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueLapizArriba()));
+        botonSubirLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new BloqueLapizArriba()));
 
 
         botonID = "BotonBajarLapiz";
@@ -145,7 +143,7 @@ public class SeccionBloques extends VBox {
         botonBajarLapiz.setStyle("-fx-background-color: transparent");
         botonBajarLapiz.setMinSize(118, 90);
 
-        botonBajarLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new FabricaBloqueLapizAbajo()));
+        botonBajarLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new BloqueLapizAbajo()));
 
         unaFila.getChildren().addAll(botonSubirLapiz, botonBajarLapiz);
 
@@ -168,7 +166,7 @@ public class SeccionBloques extends VBox {
         botonBloqueInversor.setStyle("-fx-background-color: transparent");
         botonBloqueInversor.setMinSize(78, 90);
 
-        botonBloqueInversor.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueInversor() ));
+        botonBloqueInversor.setOnAction(new CreadorDeBloquesInversoresEventHandler(sectorAlgoritmo));
 
 
         botonID = "BotonRepetidorDoble";
@@ -178,7 +176,7 @@ public class SeccionBloques extends VBox {
         botonBloqueRepetidorDoble.setStyle("-fx-background-color: transparent");
         botonBloqueRepetidorDoble.setMinSize(78, 90);
 
-        botonBloqueRepetidorDoble.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueRepetidorDoble() ));
+        botonBloqueRepetidorDoble.setOnAction(new CreadorDeBloquesRepetidoresDoblesEventHandler(sectorAlgoritmo));
 
 
         botonID = "BotonRepetidorTriple";
@@ -188,7 +186,7 @@ public class SeccionBloques extends VBox {
         botonBloqueRepetidorTriple.setStyle("-fx-background-color: transparent");
         botonBloqueRepetidorTriple.setMinSize(78, 90);
 
-        botonBloqueRepetidorTriple.setOnAction(new CreadorDeBloquesContenedoresEventHandler(sectorAlgoritmo, new FabricaBloqueRepetidorTriple() ));
+        botonBloqueRepetidorTriple.setOnAction(new CreadorDeBloquesRepetidoresTriplesEventHandler(sectorAlgoritmo));
 
 
         unaFila.getChildren().addAll(botonBloqueInversor, botonBloqueRepetidorDoble, botonBloqueRepetidorTriple);

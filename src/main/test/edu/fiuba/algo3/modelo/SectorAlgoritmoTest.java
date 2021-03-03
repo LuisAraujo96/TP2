@@ -2,9 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
 import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
-import edu.fiuba.algo3.modelo.FabricasDeBloques.FabricaBloqueAlgoritmo;
 import edu.fiuba.algo3.modelo.HerramientasDeDibujo.Lapiz;
-import edu.fiuba.algo3.vista.contenedores.SeccionBloques;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,8 +51,7 @@ public class SectorAlgoritmoTest {
         sectorAlgoritmo.agregarBloque(bloqueLapizAbajo);
         sectorAlgoritmo.agregarBloque(bloqueIzquierda);
 
-        FabricaBloqueAlgoritmo fabricaBloqueAlgoritmo = new FabricaBloqueAlgoritmo(sectorAlgoritmo.obtenerBloques());
-        Bloque bloqueAlgoritmo = fabricaBloqueAlgoritmo.crearBloque();
+        Bloque bloqueAlgoritmo = new BloqueAlgoritmo(sectorAlgoritmo.obtenerBloques());
         bloqueAlgoritmo.ejecutarSobre(personaje);
 
         sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(-1,0));
@@ -91,7 +88,7 @@ public class SectorAlgoritmoTest {
 
         sectorAlgoritmo.agregarBloque(new BloqueLapizAbajo());
         sectorAlgoritmo.agregarBloque(new BloqueDerecha());
-        BloqueContenedor bloqueContenedor = sectorAlgoritmo.getContenedor();
+        BloqueContenedor bloqueContenedor = sectorAlgoritmo.obtenerContenedor();
         bloqueContenedor.ejecutarSobre(personaje);
         sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
 

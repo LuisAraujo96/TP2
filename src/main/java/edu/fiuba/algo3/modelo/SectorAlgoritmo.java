@@ -15,7 +15,7 @@ public class SectorAlgoritmo implements Subject {
 
     public SectorAlgoritmo() {
         contenedorInicial = new BloqueContenedor();
-        setContenedor(contenedorInicial);
+        establecerContenedor(contenedorInicial);
 
         observadores = new ArrayList<>();
     }
@@ -31,16 +31,16 @@ public class SectorAlgoritmo implements Subject {
 
     public void vaciarSector() {
         contenedorInicial.vaciarContenedor();
-        setContenedor(contenedorInicial);
+        establecerContenedor(contenedorInicial);
 
         notifyObservers();
     }
 
-    public void setContenedor(BloqueContenedor unContenedor) {
+    public void establecerContenedor(BloqueContenedor unContenedor) {
         this.contenedorActual = unContenedor;
     }
 
-    public BloqueContenedor getContenedor() {
+    public BloqueContenedor obtenerContenedor() {
         return contenedorActual;
     }
 
@@ -51,7 +51,7 @@ public class SectorAlgoritmo implements Subject {
 
     public void agregarBloqueContenedor(BloqueContenedor unContenedor) {
         BloqueContenedor contenedorTemp = contenedorActual;
-        this.setContenedor(unContenedor);
+        this.establecerContenedor(unContenedor);
         contenedorTemp.agregarBloque(unContenedor);
         notifyObservers();
     }

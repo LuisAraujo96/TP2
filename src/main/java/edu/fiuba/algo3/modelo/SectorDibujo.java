@@ -25,7 +25,7 @@ public class SectorDibujo implements Subject {
         return this.trazos;
     }
 
-    public void reset(){
+    public void restablecerDibujo(){
         this.trazos.clear();
         System.out.println(this.trazos);
         notifyObservers();
