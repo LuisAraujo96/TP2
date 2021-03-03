@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorDibujo;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,8 +25,9 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
 
     public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, SectorDibujo unSectorDibujo, Personaje unPersonaje){
-        super(20);
+        super(15);
 
+        this.setAlignment(Pos.CENTER);
         this.setMinSize(650,160);
         this.setPadding(new Insets(14,14,14,14));
         this.setStyle("-fx-background-color: #282828");
@@ -72,9 +74,10 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
     private void setVentana(){
         ScrollPane scrollPane = new ScrollPane();
-
+        scrollPane.setPannable(true);
         scrollPane.setMinSize(494,132);
         scrollPane.setMaxSize(494,132);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         this.ventana = scrollPane;
 
