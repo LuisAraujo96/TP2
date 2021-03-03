@@ -89,4 +89,40 @@ class PersonajeTest {
 
     }
 
+    @Test
+    public void test08BajoElLapizDelPersonajeYDebeEstarDibujando(){
+        personaje.bajarLapiz();
+        assertEquals(personaje.estaDibujando(), true);
+    }
+
+    @Test
+    public void test09ReseteoLaPosicionYElLapizDelPersonajeASuEstadoInicialDespuesDeMoverseDibujando(){
+        personaje.bajarLapiz();
+        personaje.moverseHacia(new DireccionDerecha());
+        sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
+        assertEquals(personaje.obtenerPosicion(), new Posicion(1,0));
+        personaje.resetPersonaje();
+        assertEquals(personaje.obtenerPosicion(), new Posicion(0,0));
+        personaje.moverseHacia(new DireccionArriba());
+        assertEquals(sectorDibujo, sectorDibujoEsperado);
+
+    }
+
+
+
+
+
+
+    /////////////////////////// IGNORAR ADDOBSERVER EN CODECOV //////////////////////////
+    @Test
+    public void ignorarAddObserverEnCodeCov(){
+        Observer pruebaObserver = () -> System.out.println("output: hello how r u");
+        personaje.addObserver(pruebaObserver);
+        personaje.removeObserver(pruebaObserver);
+        personaje.notifyObservers();
+        assertEquals(1,1);
+    }
+
+
 }

@@ -78,5 +78,7 @@ class SectorDibujoTest {
         SectorDibujo s1 = new SectorDibujo();
         SectorDibujo s2 = new SectorDibujo();
         assertEquals(true, s1.equals(s2));
+        assertEquals(true, s1.equals(s1));
+        assertEquals(false, s1.equals(null));
     }
 }
