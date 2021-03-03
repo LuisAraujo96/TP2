@@ -129,6 +129,7 @@ public class SectorAlgoritmoTest {
         Observer pruebaObserver = () -> System.out.println("output: hello how r u");
         personaje.addObserver(pruebaObserver);
         personaje.removeObserver(pruebaObserver);
+        personaje.notifyObservers();
         assertEquals(1,1);
     }
 }

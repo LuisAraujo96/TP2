@@ -98,6 +98,7 @@ public class BloqueContenedorTest {
         Observer pruebaObserver = () -> System.out.println("output: hello how r u");
         bloqueContenedor.addObserver(pruebaObserver);
         bloqueContenedor.removeObserver(pruebaObserver);
+        bloqueContenedor.notifyObservers();
         assertEquals(1,1);
     }
 

@@ -78,6 +78,7 @@ class PosicionTest {
         Posicion p2 = new Posicion(0, 0);
         assertEquals(true, p1.equals(p2));
         assertEquals(true, p1.equals(p1));
+        assertEquals((p1.getX() == p1.getY()), p2.getX() == p2.getY() );
         assertEquals(false,p1.equals(null));
     }
 
