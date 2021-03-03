@@ -6,7 +6,6 @@ import edu.fiuba.algo3.controlador.ReiniciadorDePantallaEventHandler;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
-import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.modelo.SectorDibujo;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
@@ -33,32 +32,11 @@ public class SeccionBloques extends VBox {
 
         setBotonesDeBloquesSimples();
 
-        setBotonesDeBloquesDefinidos();
+        setBotonesDeHerramienta();
+
+        setBotonesDeBloquesContenedores();
 
         setBotoneDeReinicioDePantalla( unSectorDibujo,  unPersonaje);
-
-    }
-
-
-    private void setBotonesDeBloquesDefinidos(){
-
-        /*GridPane subSeccionDeBloquesSimples = new GridPane();
-        setBotonesDeBloquesSimplesEn(subSeccionDeBloquesSimples);*/
-
-        HBox subSeccionDeBloquesDeHerramientas = new HBox();
-        setBotonesDeHerramientaEn(subSeccionDeBloquesDeHerramientas);
-
-        HBox subSeccionDeBloquesContenedores = new HBox();
-        setBotonesDeBloquesContenedoresEn( subSeccionDeBloquesContenedores);
-
-
-        VBox subSeccionGeneral = new VBox(50, subSeccionDeBloquesDeHerramientas, subSeccionDeBloquesContenedores);
-
-        subSeccionGeneral.setAlignment(Pos.CENTER);
-
-
-
-        this.getChildren().add(subSeccionGeneral);
 
     }
 
@@ -77,7 +55,6 @@ public class SeccionBloques extends VBox {
             unaGrilla.setStyle("-fx-background-color: #019de3");
         }
 
-        //unaGrilla.setStyle("-fx-background-color: #019de3");
         unaGrilla.setMinSize(235, 235);
         unaGrilla.setMaxSize(235, 235);
 
@@ -142,9 +119,10 @@ public class SeccionBloques extends VBox {
         this.getChildren().add(unaGrilla);
     }
 
-    private void setBotonesDeHerramientaEn (HBox unaFila){
+    private void setBotonesDeHerramienta(){
         String botonID, rutaDeImagen;
 
+        HBox unaFila = new HBox();
         unaFila.setStyle("-fx-background-color: #019de3");
         unaFila.setMinHeight(90);
         unaFila.setMaxWidth(236);
@@ -171,11 +149,13 @@ public class SeccionBloques extends VBox {
 
         unaFila.getChildren().addAll(botonSubirLapiz, botonBajarLapiz);
 
+        this.getChildren().add(unaFila);
     }
 
-    private void setBotonesDeBloquesContenedoresEn (HBox unaFila){
+    private void setBotonesDeBloquesContenedores(){
         String botonID, rutaDeImagen;
 
+        HBox unaFila = new HBox();
         unaFila.setStyle("-fx-background-color: #019de3");
         unaFila.setMinHeight(90);
         unaFila.setMaxWidth(234);
@@ -213,12 +193,14 @@ public class SeccionBloques extends VBox {
 
         unaFila.getChildren().addAll(botonBloqueInversor, botonBloqueRepetidorDoble, botonBloqueRepetidorTriple);
 
+        this.getChildren().add(unaFila);
     }
 
     private void setBotoneDeReinicioDePantalla (SectorDibujo unSectorDibujo, Personaje unPersonaje){
         String botonID, rutaDeImagen;
 
         HBox unaFila = new HBox();
+        unaFila.setAlignment(Pos.CENTER);
         unaFila.setStyle("-fx-background-color: #019de3");
         unaFila.setMinHeight(90);
         unaFila.setMaxWidth(234);
@@ -228,8 +210,8 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoBorrarDibujo.png";
 
         BotonDePrograma botonReiniciarPantalla = new BotonDePrograma(botonID, rutaDeImagen);
-        botonReiniciarPantalla.setMinSize(44,44);
-        botonReiniciarPantalla.setMaxSize(44,44);
+        botonReiniciarPantalla.setMinSize(232,88);
+        botonReiniciarPantalla.setMaxSize(232,88);
         botonReiniciarPantalla.setStyle("-fx-background-color: transparent");
 
         botonReiniciarPantalla.setOnAction(new ReiniciadorDePantallaEventHandler(unSectorDibujo, unPersonaje));

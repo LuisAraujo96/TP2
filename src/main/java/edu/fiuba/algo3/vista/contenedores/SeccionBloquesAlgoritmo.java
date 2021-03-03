@@ -63,13 +63,12 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         Set<String> nombres = sectorBloques.obtenerListaDeBloques();
 
         VBox columna = new VBox(16);
-        //columna.setMaxSize(215,565);
         columna.setMinSize(215,565);
         columna.setAlignment(Pos.TOP_CENTER);
         ventanaDeBloques.setContent(columna);
 
         for(String nombre : nombres){
-            VistaDeBloquesAlgoritmo fila = new VistaDeBloquesAlgoritmo(nombre, sectorBloques.seleccionarBloque(nombre));
+            VistaDeBloquesAlgoritmo fila = new VistaDeBloquesAlgoritmo(nombre);
             fila.setOnMouseClicked(new CreadorDeBloquesAlgoritmoEventHandler(this.sectorAlgoritmo, this.sectorBloques, nombre));
 
             columna.getChildren().add(fila);
@@ -88,7 +87,7 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
 
         this.botonGuardarBloqueAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
         this.botonGuardarBloqueAlgoritmo.setStyle("-fx-background-color: transparent");
-        this.botonGuardarBloqueAlgoritmo.setMinSize(117,80);
+        this.botonGuardarBloqueAlgoritmo.setMinSize(230,78);
         this.botonGuardarBloqueAlgoritmo.setDisable(true);
 
         this.botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(this.sectorAlgoritmo, unSectorBloques));
