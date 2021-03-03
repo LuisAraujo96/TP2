@@ -90,12 +90,6 @@ class PersonajeTest {
     }
 
     @Test
-    public void test08BajoElLapizDelPersonajeYDebeEstarDibujando(){
-        personaje.bajarLapiz();
-        assertEquals(personaje.estaDibujando(), true);
-    }
-
-    @Test
     public void test09ReseteoLaPosicionYElLapizDelPersonajeASuEstadoInicialDespuesDeMoverseDibujando(){
         personaje.bajarLapiz();
         personaje.moverseHacia(new DireccionDerecha());

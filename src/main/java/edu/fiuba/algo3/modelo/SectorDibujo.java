@@ -2,12 +2,14 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.*;
 
-public class SectorDibujo {
+public class SectorDibujo implements Subject {
+    private List<Observer> observadores;
 
     private final HashMap<Posicion, HashSet<Posicion>> trazos;
 
     public SectorDibujo(){
-        trazos = new HashMap<>();
+        this.trazos = new HashMap<>();
+        this.observadores = new ArrayList<>();
     }
 
     public void agregarTrazo (Posicion inicio, Posicion fin){
@@ -16,6 +18,17 @@ public class SectorDibujo {
 
         trazos.get(inicio).add(fin);
         trazos.get(fin).add(inicio);
+        notifyObservers();
+    }
+
+    public HashMap<Posicion, HashSet<Posicion>> obtenerTrazos(){
+        return this.trazos;
+    }
+
+    public void reset(){
+        this.trazos.clear();
+        System.out.println(this.trazos);
+        notifyObservers();
     }
 
     @Override
@@ -24,6 +37,21 @@ public class SectorDibujo {
         if (o == null || getClass() != o.getClass()) return false;
         SectorDibujo that = (SectorDibujo) o;
         return Objects.equals(trazos, that.trazos);
+    }
+
+    @Override
+    public void addObserver(Observer obs) {
+        observadores.add(obs);
+    }
+
+    @Override
+    public void removeObserver(Observer obs) {
+        observadores.remove(obs);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer obs : observadores) obs.update();
     }
 
 }

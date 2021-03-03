@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
+import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.modelo.SectorDibujo;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,6 +13,8 @@ import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class SeccionDibujo extends StackPane implements Observer {
 
@@ -19,8 +23,9 @@ public class SeccionDibujo extends StackPane implements Observer {
     GraphicsContext gc;
     final int pixelRatio;
     Personaje personaje;
+    SectorDibujo sectorDibujo;
 
-    public SeccionDibujo(Personaje unPersonaje){
+    public SeccionDibujo(Personaje unPersonaje, SectorDibujo unSectorDibujo){
         super();
 
         this.setStyle("-fx-background-color: #282828");
@@ -30,8 +35,9 @@ public class SeccionDibujo extends StackPane implements Observer {
         setMinSize(680,510);
 
         personaje = unPersonaje;
+        this.sectorDibujo = unSectorDibujo;
+        this.sectorDibujo.addObserver(this);
         seccionPersonaje = new SeccionPersonaje(unPersonaje);
-        this.personaje.addObserver(this);
 
         seccionCanvas = new Canvas(672,480);
 
@@ -60,17 +66,15 @@ public class SeccionDibujo extends StackPane implements Observer {
 
     @Override
     public void update(){
-        int posX = personaje.obtenerPosicion().getX();
-        int posY = personaje.obtenerPosicion().getY();
-        if (personaje.estaDibujando()){
-            gc.lineTo( 336 + pixelRatio * posX , 240  - pixelRatio * posY);
-            gc.stroke();
-            System.out.println("pinta");
-        }else{
-            gc.moveTo( 336 + pixelRatio * posX , 240  - pixelRatio * posY);
-            System.out.println("no pinta");
-        }
-    };
 
+        gc.clearRect(0, 0, 672, 480);
+
+        HashMap<Posicion, HashSet<Posicion>> trazos = this.sectorDibujo.obtenerTrazos();
+
+        for (Posicion posicionInicial: trazos.keySet())
+            for (Posicion posicionFinal : trazos.get(posicionInicial))
+                gc.strokeLine(336 + pixelRatio * posicionInicial.getX(), 240 - pixelRatio * posicionInicial.getY(),
+                        336 + pixelRatio * posicionFinal.getX(), 240 - pixelRatio * posicionFinal.getY());
+    }
 }
 

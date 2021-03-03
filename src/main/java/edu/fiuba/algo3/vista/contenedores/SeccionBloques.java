@@ -2,11 +2,12 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.CreadorDeBloquesContenedoresEventHandler;
 import edu.fiuba.algo3.controlador.CreadorDeBloquesEventHandler;
-import edu.fiuba.algo3.controlador.cliqueadores.BotonGuardarAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.ReiniciadorDePantallaEventHandler;
 import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
-import edu.fiuba.algo3.modelo.Observer;
+import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
+import edu.fiuba.algo3.modelo.SectorDibujo;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,8 +21,8 @@ public class SeccionBloques extends VBox {
 
     private SectorAlgoritmo sectorAlgoritmo;
 
-    public SeccionBloques(SectorBloques sectorBloques, SectorAlgoritmo sectorAlgoritmo){
-        super();
+    public SeccionBloques(SectorAlgoritmo sectorAlgoritmo, SectorDibujo unSectorDibujo, Personaje unPersonaje){
+        super(50);
 
         this.setMinWidth(290);
         this.setAlignment(Pos.CENTER);
@@ -30,15 +31,19 @@ public class SeccionBloques extends VBox {
 
         this.sectorAlgoritmo = sectorAlgoritmo;
 
+        setBotonesDeBloquesSimples();
+
         setBotonesDeBloquesDefinidos();
+
+        setBotoneDeReinicioDePantalla( unSectorDibujo,  unPersonaje);
 
     }
 
 
     private void setBotonesDeBloquesDefinidos(){
 
-        GridPane subSeccionDeBloquesSimples = new GridPane();
-        setBotonesDeBloquesSimplesEn(subSeccionDeBloquesSimples);
+        /*GridPane subSeccionDeBloquesSimples = new GridPane();
+        setBotonesDeBloquesSimplesEn(subSeccionDeBloquesSimples);*/
 
         HBox subSeccionDeBloquesDeHerramientas = new HBox();
         setBotonesDeHerramientaEn(subSeccionDeBloquesDeHerramientas);
@@ -47,7 +52,7 @@ public class SeccionBloques extends VBox {
         setBotonesDeBloquesContenedoresEn( subSeccionDeBloquesContenedores);
 
 
-        VBox subSeccionGeneral = new VBox(50, subSeccionDeBloquesSimples, subSeccionDeBloquesDeHerramientas, subSeccionDeBloquesContenedores);
+        VBox subSeccionGeneral = new VBox(50, subSeccionDeBloquesDeHerramientas, subSeccionDeBloquesContenedores);
 
         subSeccionGeneral.setAlignment(Pos.CENTER);
 
@@ -59,7 +64,9 @@ public class SeccionBloques extends VBox {
 
 
 
-    private void setBotonesDeBloquesSimplesEn (GridPane unaGrilla){
+    private void setBotonesDeBloquesSimples(){
+        GridPane unaGrilla = new GridPane();
+
         String botonID, rutaDeImagen;
 
         try {
@@ -131,6 +138,8 @@ public class SeccionBloques extends VBox {
         unaGrilla.add(botonMoverAbajo, 1,2);
         unaGrilla.setMargin(botonMoverAbajo, new Insets(4,4,27,4));
 
+
+        this.getChildren().add(unaGrilla);
     }
 
     private void setBotonesDeHerramientaEn (HBox unaFila){
@@ -204,6 +213,30 @@ public class SeccionBloques extends VBox {
 
         unaFila.getChildren().addAll(botonBloqueInversor, botonBloqueRepetidorDoble, botonBloqueRepetidorTriple);
 
+    }
+
+    private void setBotoneDeReinicioDePantalla (SectorDibujo unSectorDibujo, Personaje unPersonaje){
+        String botonID, rutaDeImagen;
+
+        HBox unaFila = new HBox();
+        unaFila.setStyle("-fx-background-color: #019de3");
+        unaFila.setMinHeight(90);
+        unaFila.setMaxWidth(234);
+
+
+        botonID = "BotonReiniciarPantalla";
+        rutaDeImagen = "src/main/resources/IconoBorrarDibujo.png";
+
+        BotonDePrograma botonReiniciarPantalla = new BotonDePrograma(botonID, rutaDeImagen);
+        botonReiniciarPantalla.setMinSize(44,44);
+        botonReiniciarPantalla.setMaxSize(44,44);
+
+        botonReiniciarPantalla.setOnAction(new ReiniciadorDePantallaEventHandler(unSectorDibujo, unPersonaje));
+
+
+        unaFila.getChildren().add(botonReiniciarPantalla);
+
+        this.getChildren().add(unaFila);
     }
 }
 
