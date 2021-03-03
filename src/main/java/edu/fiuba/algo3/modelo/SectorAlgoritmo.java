@@ -6,18 +6,15 @@ import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class SectorAlgoritmo implements Subject {
     List<Observer> observadores;
 
     BloqueContenedor contenedorInicial;
     BloqueContenedor contenedorActual;
-    Stack<BloqueContenedor> registroDeContenedores;
 
     public SectorAlgoritmo() {
         contenedorInicial = new BloqueContenedor();
-        registroDeContenedores = new Stack<>();
         setContenedor(contenedorInicial);
 
         observadores = new ArrayList<>();
@@ -34,15 +31,13 @@ public class SectorAlgoritmo implements Subject {
 
     public void vaciarSector() {
         contenedorInicial.vaciarContenedor();
-        registroDeContenedores = new Stack<>();
         setContenedor(contenedorInicial);
 
         notifyObservers();
     }
 
     public void setContenedor(BloqueContenedor unContenedor) {
-        registroDeContenedores.add(unContenedor);
-        contenedorActual = registroDeContenedores.peek();
+        this.contenedorActual = unContenedor;
     }
 
     public BloqueContenedor getContenedor() {
@@ -56,7 +51,7 @@ public class SectorAlgoritmo implements Subject {
 
     public void agregarBloqueContenedor(BloqueContenedor unContenedor) {
         BloqueContenedor contenedorTemp = contenedorActual;
-        setContenedor(unContenedor);
+        this.setContenedor(unContenedor);
         contenedorTemp.agregarBloque(unContenedor);
         notifyObservers();
     }
