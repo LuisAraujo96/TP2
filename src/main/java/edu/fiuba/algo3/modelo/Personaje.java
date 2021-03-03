@@ -11,11 +11,10 @@ import java.util.List;
 
 public class Personaje implements Subject{
 
-    List<Observer> observadores;
+    private List<Observer> observadores;
     private HerramientaDeDibujo herramienta;
     private Posicion posicion;
     private Movimiento movimiento;
-    boolean dibujando;
 
     public Personaje(HerramientaDeDibujo unaHerramienta){
         this.posicion = new Posicion(0,0);
@@ -26,12 +25,10 @@ public class Personaje implements Subject{
 
     public void bajarLapiz() {
         this.movimiento = new MoverseDibujando(herramienta);
-        dibujando = true;
     }
 
     public void subirLapiz() {
         this.movimiento = new MoverseSinDibujar();
-        dibujando = false;
     }
 
     public void moverseHacia(Direccion unaDireccion){

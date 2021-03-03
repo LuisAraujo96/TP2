@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
@@ -41,7 +42,7 @@ public class SeccionDibujo extends StackPane implements Observer {
 
         seccionCanvas = new Canvas(672,480);
 
-        setCanvasImage(seccionCanvas, "src/main/resources/background.png");
+        setCanvasImage("src/main/resources/background.png");
 
         gc = seccionCanvas.getGraphicsContext2D();
         gc.setLineWidth(5);
@@ -55,12 +56,15 @@ public class SeccionDibujo extends StackPane implements Observer {
         this.setMargin(seccionPersonaje, new Insets(15,14,15,14));
     }
 
-    private void setCanvasImage (Canvas unCanvas, String ImgPath){
+    private void setCanvasImage (String ImgPath){
         try {
             FileInputStream input = new FileInputStream(ImgPath);
-            unCanvas.getGraphicsContext2D().drawImage(new Image(input), 0, 0);
+            ImageView imageView = new ImageView(new Image((input)));
+            this.getChildren().add(imageView);
+
         }catch (FileNotFoundException e){
             System.out.println("Archivo background no encontrado");
+
         }
     }
 
