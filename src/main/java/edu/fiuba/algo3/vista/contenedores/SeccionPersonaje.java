@@ -75,10 +75,10 @@ public class SeccionPersonaje extends GridPane implements Observer {
 
         if (deltaX > 1 || deltaX < -1 || deltaY > 1 || deltaY < -1){ deltaX = 0; deltaY = 0; }
 
-        //System.out.println("Delta x: " + deltaX);
-        //System.out.println("Delta y: " + deltaY);
+        System.out.println("Delta x: " + deltaX);
+        System.out.println("Delta y: " + deltaY);
 
-        return "Personaje(" + deltaX + "," + deltaY + ").png";
+        return "Kirby(" + deltaX + "," + deltaY + ").png";
 
     }
 

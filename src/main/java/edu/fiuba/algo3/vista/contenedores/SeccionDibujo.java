@@ -2,10 +2,7 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
-import edu.fiuba.algo3.modelo.Posicion;
-import edu.fiuba.algo3.modelo.SectorDibujo;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -38,13 +35,11 @@ public class SeccionDibujo extends StackPane implements Observer {
 
         seccionCanvas = new Canvas(672,480);
 
-        seccionCanvas.getGraphicsContext2D().setFill(Color.WHITE);
-        seccionCanvas.getGraphicsContext2D().fillRect(0,0,672,480);
-        seccionCanvas.getGraphicsContext2D().setFill(Color.BLACK);
-
+        setCanvasImage(seccionCanvas, "src/main/resources/background.png");
 
         gc = seccionCanvas.getGraphicsContext2D();
         gc.setLineWidth(5);
+        gc.setStroke(Color.YELLOW.brighter());
         gc.beginPath();
         gc.moveTo(336, 240);
 
@@ -54,9 +49,13 @@ public class SeccionDibujo extends StackPane implements Observer {
         this.setMargin(seccionPersonaje, new Insets(15,14,15,14));
     }
 
-    private void setCanvasImage (Canvas unCanvas, String ImgPath) throws FileNotFoundException{
-        FileInputStream input = new FileInputStream(ImgPath);
-        unCanvas.getGraphicsContext2D().drawImage(new Image(input), 0, 0);
+    private void setCanvasImage (Canvas unCanvas, String ImgPath){
+        try {
+            FileInputStream input = new FileInputStream(ImgPath);
+            unCanvas.getGraphicsContext2D().drawImage(new Image(input), 0, 0);
+        }catch (FileNotFoundException e){
+            System.out.println("Archivo background no encontrado");
+        }
     }
 
     @Override
