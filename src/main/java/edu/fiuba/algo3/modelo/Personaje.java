@@ -22,7 +22,6 @@ public class Personaje implements Subject{
         this.movimiento = new MoverseSinDibujar();
         this.herramienta = unaHerramienta;
         observadores = new ArrayList<>();
-        dibujando = false;
     }
 
     public void bajarLapiz() {
@@ -33,10 +32,6 @@ public class Personaje implements Subject{
     public void subirLapiz() {
         this.movimiento = new MoverseSinDibujar();
         dibujando = false;
-    }
-
-    public boolean estaDibujando(){
-        return dibujando;
     }
 
     public void moverseHacia(Direccion unaDireccion){

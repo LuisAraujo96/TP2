@@ -38,7 +38,6 @@ public class SeccionDibujo extends StackPane implements Observer {
         this.sectorDibujo = unSectorDibujo;
         this.sectorDibujo.addObserver(this);
         seccionPersonaje = new SeccionPersonaje(unPersonaje);
-        //this.personaje.addObserver(this);
 
         seccionCanvas = new Canvas(672,480);
 
@@ -72,30 +71,10 @@ public class SeccionDibujo extends StackPane implements Observer {
 
         HashMap<Posicion, HashSet<Posicion>> trazos = this.sectorDibujo.obtenerTrazos();
 
-        for (Posicion posicionInicial: trazos.keySet()){
-            for (Posicion posicionFinal: trazos.get(posicionInicial)){
-                gc.strokeLine(336 + pixelRatio * posicionInicial.getX() , 240  - pixelRatio * posicionInicial.getY(),
-                        336 + pixelRatio * posicionFinal.getX() , 240  - pixelRatio * posicionFinal.getY());
-                //gc.moveTo( 336 + pixelRatio * posicionInicial.getX() , 240  - pixelRatio * posicionInicial.getY());
-                //gc.lineTo( 336 + pixelRatio * posicionFinal.getX() , 240  - pixelRatio * posicionFinal.getY());
-                //gc.stroke();
-            }
-        }
-
-        //gc.stroke();
-
-        /*this.sectorDibujo.obtenerTrazos();
-
-        int posX = personaje.obtenerPosicion().getX();
-        int posY = personaje.obtenerPosicion().getY();
-        if (personaje.estaDibujando()){
-            gc.lineTo( 336 + pixelRatio * posX , 240  - pixelRatio * posY);
-            gc.stroke();
-            System.out.println("pinta");
-        }else{
-            gc.moveTo( 336 + pixelRatio * posX , 240  - pixelRatio * posY);
-            System.out.println("no pinta");
-        }*/
+        for (Posicion posicionInicial: trazos.keySet())
+            for (Posicion posicionFinal : trazos.get(posicionInicial))
+                gc.strokeLine(336 + pixelRatio * posicionInicial.getX(), 240 - pixelRatio * posicionInicial.getY(),
+                        336 + pixelRatio * posicionFinal.getX(), 240 - pixelRatio * posicionFinal.getY());
     }
 }
 

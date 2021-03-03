@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.*;
-import edu.fiuba.algo3.modelo.Bloques.BloqueContenedor;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
@@ -9,8 +8,14 @@ import edu.fiuba.algo3.modelo.SectorDibujo;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class SeccionAlgoritmo extends HBox implements Observer {
     private SectorDibujo sectorDibujo;
@@ -30,7 +35,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         this.sectorAlgoritmo.addObserver(this);
 
 
-        setBotonesDeLimpieza(unPersonaje);
+        setBotonesDeLimpieza();
 
         setVentana();
 
@@ -47,7 +52,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
 
 
-    private void setBotonesDeLimpieza(Personaje unPersonaje){
+    private void setBotonesDeLimpieza(){
         String botonID, rutaDeImagen;
 
 
@@ -61,32 +66,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         botonLimpiarSectorAlgoritmo.setOnAction( new LimpiadorDeSectorAlgoritmoDeBloques( this.sectorAlgoritmo ) );
 
 
-
-
-        botonID = "BotonLimpiarCanvas";
-        rutaDeImagen = "src/main/resources/IconoBorrarDibujo.png";
-
-        BotonDePrograma botonLimpiarCanvas = new BotonDePrograma(botonID, rutaDeImagen);
-        botonLimpiarCanvas.setMinSize(44,44);
-        botonLimpiarCanvas.setMaxSize(44,44);
-
-        botonLimpiarCanvas.setOnAction(new LimpiadorDeSectorDibujoEventHandler(this.sectorDibujo));
-
-
-        botonID = "botonReiniciarPosicionDelPersonaje";
-        rutaDeImagen = "src/main/resources/IconoKirby.png";
-
-        BotonDePrograma botonReiniciarPosicionDelPersonaje = new BotonDePrograma(botonID, rutaDeImagen);
-        botonReiniciarPosicionDelPersonaje.setMinSize(44,44);
-        botonReiniciarPosicionDelPersonaje.setMaxSize(44,44);
-
-        botonReiniciarPosicionDelPersonaje.setOnAction(new BotonReiniciarPosicionDelPersonaje(unPersonaje));
-
-
-
-        VBox seccionDeBotones = new VBox(botonLimpiarSectorAlgoritmo, botonLimpiarCanvas, botonReiniciarPosicionDelPersonaje);
-
-        this.getChildren().add(seccionDeBotones);
+        this.getChildren().add(botonLimpiarSectorAlgoritmo);
 
     }
 
@@ -106,7 +86,26 @@ public class SeccionAlgoritmo extends HBox implements Observer {
     }
 
     private void setVentanaContent(){
-        this.ventana.setContent(new VistaDeContenedorDeBloques(this.sectorAlgoritmo, this.sectorAlgoritmo.getContenedor()));
+        Pane panel = new Pane();
+
+        try {
+            FileInputStream input = new FileInputStream("src/main/resources/target.png");
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            panel.getChildren().add(imageView);
+
+        } catch (FileNotFoundException e) {
+            System.out.println(" no encontro : tagert.png");
+
+        }
+
+        panel.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, sectorAlgoritmo.getContenedor()));
+
+        VistaDeContenedorDeBloques VistaDeSectorAlgoritmo = new VistaDeContenedorDeBloques(this.sectorAlgoritmo, this.sectorAlgoritmo.getContenedor());
+
+        HBox holder = new HBox(panel, VistaDeSectorAlgoritmo);
+
+        this.ventana.setContent(holder);
 
     }
 
@@ -124,19 +123,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         botonEjecutarSectorAlgoritmo.setMaxSize(44,44);
 
 
-        botonID = "botonEstablecerContenedorSectorAlgoritmo";
-        rutaDeImagen = "src/main/resources/IconoSeccionAlgoritmo.png";
-
-        BotonDePrograma botonEstablecerContenedorSectorAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
-        botonEstablecerContenedorSectorAlgoritmo.setMinSize(44,44);
-        botonEstablecerContenedorSectorAlgoritmo.setMaxSize(44,44);
-
-        botonEstablecerContenedorSectorAlgoritmo.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, sectorAlgoritmo.getContenedor()));
-        VBox vbox = new VBox(botonEjecutarSectorAlgoritmo, botonEstablecerContenedorSectorAlgoritmo);
-
-        this.getChildren().add(vbox);
+        this.getChildren().add(botonEjecutarSectorAlgoritmo);
 
     }
-
-
 }
