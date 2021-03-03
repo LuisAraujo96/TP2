@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Bloques.*;
-import edu.fiuba.algo3.modelo.FabricasDeBloques.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,26 +11,25 @@ public class SectorBloques implements Subject{
 
     private List<Observer> observadores;
 
-    private HashMap<String, FabricaDeBloques> menuBloques;
+    private HashMap<String, Bloque> menuBloquesAlgoritmo;
 
     public SectorBloques(){
         this.observadores = new ArrayList<>();
 
-        this.menuBloques = new HashMap<>();
+        this.menuBloquesAlgoritmo = new HashMap<>();
     }
 
     public Bloque seleccionarBloque(String nombreBloque){
-        FabricaDeBloques fabricaSeleccionada = this.menuBloques.get(nombreBloque);
-        return fabricaSeleccionada.crearBloque();
+        return this.menuBloquesAlgoritmo.get(nombreBloque);
     }
 
     public void guardarBloqueAlgoritmoPersonalizado(String nombreBloque, Bloque[] bloquesAlgoritmo){
-        this.menuBloques.put(nombreBloque, new FabricaBloqueAlgoritmo(bloquesAlgoritmo));
+        this.menuBloquesAlgoritmo.put(nombreBloque, new BloqueAlgoritmo(bloquesAlgoritmo));
         notifyObservers();
     }
 
     public Set<String> obtenerListaDeBloques(){
-        return menuBloques.keySet();
+        return menuBloquesAlgoritmo.keySet();
     }
 
     @Override
