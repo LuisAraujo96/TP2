@@ -47,6 +47,7 @@ class PosicionTest {
 
         assertEquals(posicionArriba, posicionObtenida);
     }
+
     @Test
     public void test05ObtenerPosicionHaciaAbajoDesdeLaCoordenadaCeroCeroDebeDevolverCoordenadaCeroMenosUno(){
         Posicion unaPosicion = new Posicion(0, 0);
@@ -58,9 +59,26 @@ class PosicionTest {
     }
 
     @Test
+    public void test06ObtengoCoordenadaXDeUnaPosicionConCoordenadaXEnTres(){
+        Posicion posicion = new Posicion(1,3);
+        assertEquals(1, posicion.getX());
+    }
+
+
+    @Test
+    public void test07ObtengoCoordenadaYDeUnaPosicionConCoordenadaYEnTres(){
+        Posicion posicion = new Posicion(1,3);
+        assertEquals(3, posicion.getY());
+    }
+
+    @Test
     public void test06TestEquals(){
 
-        assertTrue(new Posicion(0,0).equals(new Posicion(0, 0)));
+        Posicion p1 = new Posicion(0,0);
+        Posicion p2 = new Posicion(0, 0);
+        assertEquals(true, p1.equals(p2));
+        assertEquals(true, p1.equals(p1));
+        assertEquals(false,p1.equals(null));
     }
 
 

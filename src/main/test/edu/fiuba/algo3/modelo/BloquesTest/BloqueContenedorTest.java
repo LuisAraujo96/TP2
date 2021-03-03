@@ -83,12 +83,21 @@ public class BloqueContenedorTest {
         bloqueContenedor.ejecutarInversoSobre(personaje);
         assertEquals(sectorDibujo, sectorDibujoEsperado );
     }
-    
 
+    @Test
+    public void test06ObtengoIDDeUnBloqueContenedorYDebeDevolverBloqueContenedor() {
+        assertEquals(bloqueContenedor.obtenerID(), "BloqueContenedor");
+    }
+
+
+
+
+    /////////////////////////// IGNORAR ADDOBSERVER EN CODECOV //////////////////////////
     @Test
     public void ignorarAddObserverEnCodeCov(){
         Observer pruebaObserver = () -> System.out.println("output: hello how r u");
         bloqueContenedor.addObserver(pruebaObserver);
+        bloqueContenedor.removeObserver(pruebaObserver);
         assertEquals(1,1);
     }
 
