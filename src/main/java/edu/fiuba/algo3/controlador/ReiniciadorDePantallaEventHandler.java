@@ -16,7 +16,7 @@ public class ReiniciadorDePantallaEventHandler implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.sectorDibujo.reset();
-        this.personaje.resetPersonaje();
+        this.sectorDibujo.restablecerDibujo();
+        this.personaje.restablecerPersonaje();
     }
 }

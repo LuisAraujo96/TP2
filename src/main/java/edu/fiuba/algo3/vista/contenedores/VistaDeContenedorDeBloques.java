@@ -33,8 +33,8 @@ public class VistaDeContenedorDeBloques extends HBox implements Observer {
         VistaDeBloque vistaDeBloqueActual = new VistaDeBloque(ultimoBloque);
         vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(this.sectorAlgoritmo, this.contenedor));
 
-        if (sectorAlgoritmo.getContenedor() == ultimoBloque){
-            BloqueContenedor unContenedor = this.sectorAlgoritmo.getContenedor();
+        if (sectorAlgoritmo.obtenerContenedor() == ultimoBloque){
+            BloqueContenedor unContenedor = this.sectorAlgoritmo.obtenerContenedor();
 
             VistaDeContenedorDeBloques nuevaVistaDeContenedor = new VistaDeContenedorDeBloques(this.sectorAlgoritmo, unContenedor);
             vistaDeBloqueActual.setOnMouseClicked(new SelectorDeContenedoresEventHandler(this.sectorAlgoritmo, unContenedor));

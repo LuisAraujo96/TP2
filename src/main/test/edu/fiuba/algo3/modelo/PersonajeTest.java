@@ -96,7 +96,7 @@ class PersonajeTest {
         sectorDibujoEsperado.agregarTrazo(new Posicion(0,0), new Posicion(1,0));
         assertEquals(sectorDibujo, sectorDibujoEsperado);
         assertEquals(personaje.obtenerPosicion(), new Posicion(1,0));
-        personaje.resetPersonaje();
+        personaje.restablecerPersonaje();
         assertEquals(personaje.obtenerPosicion(), new Posicion(0,0));
         personaje.moverseHacia(new DireccionArriba());
         assertEquals(sectorDibujo, sectorDibujoEsperado);

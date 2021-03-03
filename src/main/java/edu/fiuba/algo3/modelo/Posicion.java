@@ -20,11 +20,11 @@ public class Posicion {
         return new Posicion(nuevaX, nuevaY);
     }
 
-    public int getX() {
+    public int obtenerX() {
         return x;
     }
 
-    public int getY() {
+    public int obtenerY() {
         return y;
     }
 

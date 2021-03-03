@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -99,9 +98,9 @@ public class SeccionAlgoritmo extends HBox implements Observer {
 
         }
 
-        panel.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, sectorAlgoritmo.getContenedor()));
+        panel.setOnMouseClicked(new SelectorDeContenedoresEventHandler(sectorAlgoritmo, sectorAlgoritmo.obtenerContenedor()));
 
-        VistaDeContenedorDeBloques VistaDeSectorAlgoritmo = new VistaDeContenedorDeBloques(this.sectorAlgoritmo, this.sectorAlgoritmo.getContenedor());
+        VistaDeContenedorDeBloques VistaDeSectorAlgoritmo = new VistaDeContenedorDeBloques(this.sectorAlgoritmo, this.sectorAlgoritmo.obtenerContenedor());
 
         HBox holder = new HBox(panel, VistaDeSectorAlgoritmo);
 
