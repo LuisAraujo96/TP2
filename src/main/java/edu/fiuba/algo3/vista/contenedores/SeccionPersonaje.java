@@ -72,6 +72,7 @@ public class SeccionPersonaje extends GridPane implements Observer {
         int deltaY = this.personaje.obtenerPosicion().obtenerY() - personajeFilaAnterior;
 
         if (deltaX > 1 || deltaX < -1 || deltaY > 1 || deltaY < -1){ deltaX = 0; deltaY = 0; }
+        if (Math.abs(deltaX) == 1 && Math.abs(deltaY) == 1 ) { deltaX = 0; deltaY = 0; }
 
         return "Kirby(" + deltaX + "," + deltaY + ").png";
 
