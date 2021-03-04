@@ -22,7 +22,6 @@ public class SectorAlgoritmo implements Subject {
 
     public void ejecutarPrograma(Personaje personaje) {
         contenedorInicial.ejecutarSobre(personaje);
-        System.out.println(personaje.obtenerPosicion().toString());
     }
 
     public Bloque[] obtenerBloques() throws SinBloquesADevolverException {

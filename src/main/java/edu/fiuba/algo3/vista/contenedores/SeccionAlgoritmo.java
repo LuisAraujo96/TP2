@@ -18,12 +18,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class SeccionAlgoritmo extends HBox implements Observer {
-    private SectorDibujo sectorDibujo;
     private SectorAlgoritmo sectorAlgoritmo;
     private ScrollPane ventana;
 
 
-    public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, SectorDibujo unSectorDibujo, Personaje unPersonaje){
+    public SeccionAlgoritmo(SectorAlgoritmo unSectorAlgoritmo, Personaje unPersonaje){
         super(15);
 
         this.setAlignment(Pos.CENTER);
@@ -32,7 +31,6 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         this.setStyle("-fx-background-color: #282828");
 
         this.sectorAlgoritmo = unSectorAlgoritmo;
-        this.sectorDibujo = unSectorDibujo;
         this.sectorAlgoritmo.addObserver(this);
 
         setBotonDeEjecucion(unPersonaje);

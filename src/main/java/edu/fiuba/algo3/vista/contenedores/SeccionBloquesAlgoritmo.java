@@ -1,17 +1,14 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.controlador.CreadorDeBloquesAlgoritmoEventHandler;
-import edu.fiuba.algo3.controlador.cliqueadores.BotonGuardarAlgoritmoEventHandler;
+import edu.fiuba.algo3.controlador.MostradorDeVentanaParaGuardarAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.util.Set;
@@ -73,7 +70,6 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
 
             columna.getChildren().add(fila);
 
-
         }
     }
 
@@ -90,20 +86,10 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         this.botonGuardarBloqueAlgoritmo.setMinSize(230,78);
         this.botonGuardarBloqueAlgoritmo.setDisable(true);
 
-        this.botonGuardarBloqueAlgoritmo.setOnAction(new BotonGuardarAlgoritmoEventHandler(this.sectorAlgoritmo, unSectorBloques));
-
-        /*
-        botonID = "BorrarBloqueAlgoritmo";
-        rutaDeImagen = "src/main/resources/IconoBorrarAlgoritmo.png";
-
-        BotonDePrograma botonBorrarBloqueAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBorrarBloqueAlgoritmo.setStyle("-fx-background-color: transparent");
-        botonBorrarBloqueAlgoritmo.setMinSize(117,80);
-        botonBorrarBloqueAlgoritmo.setDisable(true);
-        */
+        this.botonGuardarBloqueAlgoritmo.setOnAction(new MostradorDeVentanaParaGuardarAlgoritmoEventHandler(this.sectorAlgoritmo, unSectorBloques));
 
 
-        HBox fila = new HBox(botonGuardarBloqueAlgoritmo/*, botonBorrarBloqueAlgoritmo*/);
+        HBox fila = new HBox(botonGuardarBloqueAlgoritmo);
         fila.setMaxWidth(235);
         fila.setMinHeight(80);
         fila.setStyle("-fx-background-color: #e86060");
