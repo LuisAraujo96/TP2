@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.vista.alertas;
 
-import edu.fiuba.algo3.controlador.cliqueadores.GuardarAlgoritmoPersonalizadoEventHandler;
+import edu.fiuba.algo3.controlador.GuardardorDeAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.SectorAlgoritmo;
 import edu.fiuba.algo3.modelo.SectorBloques;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,10 +27,10 @@ public class VentanaGuardarAlgoritmoPersonalizado {
         label.setText(mensaje);
 
         TextField campoDeTexto = new TextField();
-        campoDeTexto.setOnAction(new GuardarAlgoritmoPersonalizadoEventHandler(campoDeTexto, sectorAlgoritmo, sectorBloques, ventana));
+        campoDeTexto.setOnAction(new GuardardorDeAlgoritmoEventHandler(campoDeTexto, sectorAlgoritmo, sectorBloques, ventana));
 
         Button botonAceptar = new Button("Aceptar");
-        botonAceptar.setOnAction(new GuardarAlgoritmoPersonalizadoEventHandler(campoDeTexto, sectorAlgoritmo, sectorBloques, ventana));
+        botonAceptar.setOnAction(new GuardardorDeAlgoritmoEventHandler(campoDeTexto, sectorAlgoritmo, sectorBloques, ventana));
 
         Button botonCancelar = new Button("Cancelar");
         botonCancelar.setOnAction(e -> ventana.close());

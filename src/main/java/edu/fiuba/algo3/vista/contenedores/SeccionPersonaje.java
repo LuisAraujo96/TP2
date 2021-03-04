@@ -43,8 +43,6 @@ public class SeccionPersonaje extends GridPane implements Observer {
         int columnaActual = personaje.obtenerPosicion().obtenerX() + (numColumnas / 2);
         int filaActual = (numFilas / 2) - personaje.obtenerPosicion().obtenerY();
 
-        //System.out.println("ColumnaAnterior: " + this.columnaAnterior + " FilaAnterior: " + this.filaAnterior);
-        //System.out.println("ColumnaActual: " + columnaActual + " FilaActual: " + filaActual);
 
         for (Node node : this.getChildren()) {
 
@@ -74,9 +72,6 @@ public class SeccionPersonaje extends GridPane implements Observer {
         int deltaY = this.personaje.obtenerPosicion().obtenerY() - personajeFilaAnterior;
 
         if (deltaX > 1 || deltaX < -1 || deltaY > 1 || deltaY < -1){ deltaX = 0; deltaY = 0; }
-
-        System.out.println("Delta x: " + deltaX);
-        System.out.println("Delta y: " + deltaY);
 
         return "Kirby(" + deltaX + "," + deltaY + ").png";
 

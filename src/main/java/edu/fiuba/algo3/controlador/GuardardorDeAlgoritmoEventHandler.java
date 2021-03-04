@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador.cliqueadores;
+package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Bloques.Bloque;
 import edu.fiuba.algo3.modelo.Excepciones.SinBloquesADevolverException;
@@ -9,14 +9,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class GuardarAlgoritmoPersonalizadoEventHandler implements EventHandler{
-
+public class GuardardorDeAlgoritmoEventHandler implements EventHandler{
     SectorAlgoritmo sectorAlgoritmo;
     SectorBloques sectorBloques;
     TextField textfield;
     Stage window;
 
-    public GuardarAlgoritmoPersonalizadoEventHandler(TextField textfield, SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques, Stage window){
+    public GuardardorDeAlgoritmoEventHandler(TextField textfield, SectorAlgoritmo sectorAlgoritmo, SectorBloques sectorBloques, Stage window){
         this.textfield = textfield;
         this.sectorAlgoritmo = sectorAlgoritmo;
         this.sectorBloques = sectorBloques;
