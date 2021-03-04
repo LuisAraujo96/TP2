@@ -1,9 +1,14 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.io.FileInputStream;
@@ -16,7 +21,13 @@ public class VistaDeBloquesAlgoritmo extends HBox{
 
         this.setMaxWidth(215);
         this.setMinSize(215,88);
-        this.setStyle("-fx-background-color: #a9aaaa");
+        this.setAlignment(Pos.CENTER);
+
+        this.setBackground(new Background(new BackgroundFill(
+                Color.web("a9aaaa"),
+                new CornerRadii(15,15,15,15,false),
+                null
+        )));
 
         this.setImage();
         Label nombre = new Label(unNombre);
