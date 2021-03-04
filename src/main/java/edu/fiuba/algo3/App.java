@@ -8,7 +8,11 @@ import edu.fiuba.algo3.modelo.SectorDibujo;
 import edu.fiuba.algo3.vista.contenedores.SeccionPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 
 /**
  * JavaFX App
@@ -25,6 +29,7 @@ public class App extends Application {
         Personaje personaje = new Personaje(lapiz);
 
         stage.setTitle("AlgoBlocks");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Kirbyicon.png")));
         stage.setResizable(false);
         SeccionPrincipal contenedorPrincipal = new SeccionPrincipal(sectorAlgoritmo, sectorBloques, sectorDibujo, personaje);
         Scene scene = new Scene(contenedorPrincipal,1280, 720);
