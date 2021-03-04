@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -22,7 +23,7 @@ public class VentanaGuardarAlgoritmoPersonalizado {
         ventana.initModality(Modality.APPLICATION_MODAL);
         ventana.setTitle(titulo);
         ventana.setMinWidth(250);
-
+        ventana.getIcons().add(new Image(VentanaGuardarAlgoritmoPersonalizado.class.getResourceAsStream("/Kirbyprogram.png")));
         Label label = new Label();
         label.setText(mensaje);
 
