@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.contenedores;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -17,11 +18,12 @@ import java.io.FileNotFoundException;
 public class VistaDeBloquesAlgoritmo extends HBox{
 
     public VistaDeBloquesAlgoritmo(String unNombre) {
-        super();
+        super(15);
 
         this.setMaxWidth(215);
         this.setMinSize(215,88);
-        this.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.CENTER_LEFT);
+        this.setPadding(new Insets(0, 20,0,10));
 
         this.setBackground(new Background(new BackgroundFill(
                 Color.web("a9aaaa"),
