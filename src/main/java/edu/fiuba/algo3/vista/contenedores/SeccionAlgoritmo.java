@@ -11,8 +11,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,7 +28,12 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         this.setAlignment(Pos.CENTER);
         this.setMinSize(650,160);
         this.setPadding(new Insets(14,14,14,14));
-        this.setStyle("-fx-background-color: #282828");
+        //this.setStyle("-fx-background-color: #282828");
+        this.setBackground(new Background(new BackgroundFill(
+                Color.web("282828"),
+                new CornerRadii(80,80,80,80,false),
+                null
+        )));
 
         this.sectorAlgoritmo = unSectorAlgoritmo;
         this.sectorAlgoritmo.addObserver(this);
@@ -74,6 +79,7 @@ public class SeccionAlgoritmo extends HBox implements Observer {
         scrollPane.setPannable(true);
         scrollPane.setMinSize(494,132);
         scrollPane.setMaxSize(494,132);
+        scrollPane.setStyle("-fx-background-color: #3e3e3e");
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         this.ventana = scrollPane;

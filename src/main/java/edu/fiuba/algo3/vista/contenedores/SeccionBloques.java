@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -121,7 +122,7 @@ public class SeccionBloques extends VBox {
         String botonID, rutaDeImagen;
 
         HBox unaFila = new HBox();
-        unaFila.setStyle("-fx-background-color: #019de3");
+        //unaFila.setStyle("-fx-background-color: #019de3");
         unaFila.setMinHeight(90);
         unaFila.setMaxWidth(236);
 
@@ -130,7 +131,12 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoKirbyBrochaArriba.png";
 
         BotonDePrograma botonSubirLapiz = new BotonDePrograma(botonID, rutaDeImagen);
-        botonSubirLapiz.setStyle("-fx-background-color: transparent");
+        //botonSubirLapiz.setStyle("-fx-background-color: transparent");
+        botonSubirLapiz.setBackground(new Background(new BackgroundFill(
+                Color.web("019de3"),
+                new CornerRadii(15,0,0,15,false),
+                null
+        )));
         botonSubirLapiz.setMinSize(118, 90);
 
         botonSubirLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new BloqueLapizArriba()));
@@ -140,7 +146,12 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoKirbyBrochaAbajo.png";
 
         BotonDePrograma botonBajarLapiz = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBajarLapiz.setStyle("-fx-background-color: transparent");
+        //botonBajarLapiz.setStyle("-fx-background-color: transparent");
+        botonBajarLapiz.setBackground(new Background(new BackgroundFill(
+                Color.web("019de3"),
+                new CornerRadii(0,15,15,0,false),
+                null
+        )));
         botonBajarLapiz.setMinSize(118, 90);
 
         botonBajarLapiz.setOnAction(new CreadorDeBloquesEventHandler(sectorAlgoritmo, new BloqueLapizAbajo()));
@@ -154,7 +165,7 @@ public class SeccionBloques extends VBox {
         String botonID, rutaDeImagen;
 
         HBox unaFila = new HBox();
-        unaFila.setStyle("-fx-background-color: #019de3");
+        //unaFila.setStyle("-fx-background-color: #019de3");
         unaFila.setMinHeight(90);
         unaFila.setMaxWidth(234);
 
@@ -163,7 +174,12 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoInvertir.png";
 
         BotonDePrograma botonBloqueInversor = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBloqueInversor.setStyle("-fx-background-color: transparent");
+        //botonBloqueInversor.setStyle("-fx-background-color: transparent");
+        botonBloqueInversor.setBackground(new Background(new BackgroundFill(
+                Color.web("019de3"),
+                new CornerRadii(15,0,0,15,false),
+                null
+        )));
         botonBloqueInversor.setMinSize(78, 90);
 
         botonBloqueInversor.setOnAction(new CreadorDeBloquesInversoresEventHandler(sectorAlgoritmo));
@@ -173,7 +189,7 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoRepetir2.png";
 
         BotonDePrograma botonBloqueRepetidorDoble = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBloqueRepetidorDoble.setStyle("-fx-background-color: transparent");
+        botonBloqueRepetidorDoble.setStyle("-fx-background-color: #019de3");
         botonBloqueRepetidorDoble.setMinSize(78, 90);
 
         botonBloqueRepetidorDoble.setOnAction(new CreadorDeBloquesRepetidoresDoblesEventHandler(sectorAlgoritmo));
@@ -183,7 +199,12 @@ public class SeccionBloques extends VBox {
         rutaDeImagen = "src/main/resources/IconoRepetir3.png";
 
         BotonDePrograma botonBloqueRepetidorTriple = new BotonDePrograma(botonID, rutaDeImagen);
-        botonBloqueRepetidorTriple.setStyle("-fx-background-color: transparent");
+        //botonBloqueRepetidorTriple.setStyle("-fx-background-color: transparent");
+        botonBloqueRepetidorTriple.setBackground(new Background(new BackgroundFill(
+                Color.web("019de3"),
+                new CornerRadii(0,15,15,0,false),
+                null
+        )));
         botonBloqueRepetidorTriple.setMinSize(78, 90);
 
         botonBloqueRepetidorTriple.setOnAction(new CreadorDeBloquesRepetidoresTriplesEventHandler(sectorAlgoritmo));
@@ -197,27 +218,24 @@ public class SeccionBloques extends VBox {
     private void setBotoneDeReinicioDePantalla (SectorDibujo unSectorDibujo, Personaje unPersonaje){
         String botonID, rutaDeImagen;
 
-        HBox unaFila = new HBox();
-        unaFila.setAlignment(Pos.CENTER);
-        unaFila.setStyle("-fx-background-color: #019de3");
-        unaFila.setMinHeight(90);
-        unaFila.setMaxWidth(234);
-
 
         botonID = "BotonReiniciarPantalla";
         rutaDeImagen = "src/main/resources/IconoBorrarDibujo.png";
 
         BotonDePrograma botonReiniciarPantalla = new BotonDePrograma(botonID, rutaDeImagen);
-        botonReiniciarPantalla.setMinSize(232,88);
-        botonReiniciarPantalla.setMaxSize(232,88);
-        botonReiniciarPantalla.setStyle("-fx-background-color: transparent");
+        botonReiniciarPantalla.setMinSize(236,90);
+        botonReiniciarPantalla.setMaxSize(236,90);
+        //botonReiniciarPantalla.setStyle("-fx-background-color: transparent");
+        botonReiniciarPantalla.setBackground(new Background(new BackgroundFill(
+                Color.web("019de3"),
+                new CornerRadii(15,15,15,15,false),
+                null
+        )));
 
         botonReiniciarPantalla.setOnAction(new ReiniciadorDePantallaEventHandler(unSectorDibujo, unPersonaje));
 
 
-        unaFila.getChildren().add(botonReiniciarPantalla);
-
-        this.getChildren().add(unaFila);
+        this.getChildren().add(botonReiniciarPantalla);
     }
 }
 

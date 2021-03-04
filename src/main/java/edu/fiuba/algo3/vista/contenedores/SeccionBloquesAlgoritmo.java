@@ -8,8 +8,8 @@ import edu.fiuba.algo3.modelo.SectorBloques;
 import edu.fiuba.algo3.vista.botones.BotonDePrograma;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.util.Set;
 
@@ -44,7 +44,13 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         holder.setMaxWidth(235);
         holder.setMinHeight(585);
         holder.setAlignment(Pos.CENTER);
-        holder.setStyle("-fx-background-color: #bbbcbc");
+        //holder.setStyle("-fx-background-color: #bbbcbc");
+
+        holder.setBackground(new Background(new BackgroundFill(
+                Color.web("bbbcbc"),
+                new CornerRadii(15,15,0,0,false),
+                null
+        )));
 
         this.getChildren().add(holder);
 
@@ -82,19 +88,20 @@ public class SeccionBloquesAlgoritmo extends VBox implements Observer {
         rutaDeImagen = "src/main/resources/IconoGuardarAlgoritmo.png";
 
         this.botonGuardarBloqueAlgoritmo = new BotonDePrograma(botonID, rutaDeImagen);
-        this.botonGuardarBloqueAlgoritmo.setStyle("-fx-background-color: transparent");
-        this.botonGuardarBloqueAlgoritmo.setMinSize(230,78);
+
+        this.botonGuardarBloqueAlgoritmo.setBackground(new Background(new BackgroundFill(
+                Color.web("e86060"),
+                new CornerRadii(0,0,15,15,false),
+                null
+        )));
+
+        this.botonGuardarBloqueAlgoritmo.setMinSize(235,80);
         this.botonGuardarBloqueAlgoritmo.setDisable(true);
 
         this.botonGuardarBloqueAlgoritmo.setOnAction(new MostradorDeVentanaParaGuardarAlgoritmoEventHandler(this.sectorAlgoritmo, unSectorBloques));
 
 
-        HBox fila = new HBox(botonGuardarBloqueAlgoritmo);
-        fila.setMaxWidth(235);
-        fila.setMinHeight(80);
-        fila.setStyle("-fx-background-color: #e86060");
-
-        this.getChildren().add(fila);
+        this.getChildren().add(botonGuardarBloqueAlgoritmo);
 
     }
 }
